@@ -1,0 +1,14 @@
+重设 album_cover 数据库 , because一开始的时候我把path字段也设置了主键,导致现在不能够修改,so,现在重新创建数据库
+1
+	字段名			类型
+	id				tinyint(4)			自增 主键  
+	uid				int(0)
+	username		varchar(18)
+	title			varchar(30)
+	time			date
+	power			tinyint(4)
+	description		varchar(200)
+	browseNum		int(0)
+	commentNum		int(0)
+	path 			text
+	folderPath		varchar(50)

@@ -1,0 +1,53 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+#container{
+		width: 950px; height: 450px;
+		position: relative;
+		overflow: hidden;
+		margin:0 auto; 
+		z-index: 2;
+}
+
+#list {
+ width: 4750px;height: 450px;
+ position: absolute;
+ z-index: 1;
+}
+
+#list img { float: left;}
+
+#buttons { 
+	position: absolute; 
+	height: 10px; width: 100px;
+	z-index: 2; bottom: 20px; 
+	left: 450px;
+}
+
+#buttons span {
+	cursor: pointer; float: left;
+	border: 1px solid #fff; 
+	width: 10px; height: 10px;
+	border-radius: 50%;
+	background: #333;
+	margin-right: 5px;
+	font-family:Arial, Helvetica, sans-serif;
+ }
+
+#buttons .on {background:#393;}
+
+.arrow { 
+		cursor: pointer;line-height:60px;
+		display: none;
+		font-family:"Comic Sans MS", cursive;
+		text-align: center; font-size: 36px; 
+		font-weight: bold; width: 60px; height: 60px;  position: absolute; 
+		z-index: 2; top: 180px; background-color: RGBA(0,0,0,.3); color: #fff;
+		border-radius:10px;
+}
+
+.arrow:hover {background-color: RGBA(0,0,0,.7);}
+#container:hover .arrow { display: block;} /*  鼠标移到父元素上 显示他的.arrow */
+#prev { left: 20px;}  /* 控制左右按钮的位置 */
+#next { right: 20px;}

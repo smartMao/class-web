@@ -1,0 +1,38 @@
+.photo-list li{
+	width:295px;height: 400px;
+	border:1px solid #969696;
+	display: block;
+	float: left;
+	margin-left:50px;
+	margin-bottom:50px;
+}
+
+
+.photo-box{
+	padding: 0px;
+}
+
+.photo-box .cover-box{
+	width:295px;height: 210px;
+	margin:0;
+}
+
+
+.photo-box table tr th{
+
+	text-align: center;
+	width: 10px;
+	border: 1px solid #000;
+	line-height: 25px;
+
+}
+
+
+.photo-box table tr td{
+	padding:0;
+	margin:0;
+	text-align: center;
+	width: 315px;
+	border: 1px solid #000;
+
+}

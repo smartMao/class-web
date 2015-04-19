@@ -1,0 +1,81 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*   footer  样式文件   */
+
+
+.footer{
+	width:100%;height:120px; background:#3899ec;
+	font-size:14px;;color:#fff;
+	margin: 0 auto;
+	}
+.footer-icon{
+	display: block;
+	padding-top:25px;
+	margin:0 auto;
+	clear: both;
+	width:180px;
+	}
+
+
+.footer-icon ul li a{
+	width:30px;height:30px;
+	display:block; background:#09C;
+	float:left;margin:0 7px;
+	}
+
+/* wechat */	
+.footer-icon ul li .footer-icon-wechat{
+	background:url(../../images/footer/footer-icon-wechat.png);
+	}
+.footer-icon ul li .footer-icon-wechat:hover{
+	background:url(../../images/footer/footer-icon-wechat-hover.png);
+	}
+
+/* weibo */
+.footer-icon ul li .footer-icon-weibo{
+	background:url(../../images/footer/footer-icon-weibo.png);
+	}
+.footer-icon ul li .footer-icon-weibo:hover{
+	background:url(../../images/footer/footer-icon-weibo-hover.png);
+	}
+
+
+/* facebook */
+.footer-icon ul li .footer-icon-facebook{
+	background:url(../../images/footer/footer-icon-facebook.png);
+	}
+.footer-icon ul li .footer-icon-facebook:hover{
+	background:url(../../images/footer/footer-icon-facebook-hover.png);
+	}
+
+
+/* qq */
+.footer-icon ul li .footer-icon-qq{
+	background:url(../../images/footer/footer-icon-qq.png);
+	}
+.footer-icon ul li .footer-icon-qq:hover{
+	background:url(../../images/footer/footer-icon-qq-hover.png);
+	}
+
+
+
+.footer-about{
+	text-align:center;
+	padding-top:38px;
+	}
+.footer-about a{
+	color:#fff;
+	}
+.footer-about a:hover{
+	text-decoration:underline;
+	}
+.footer-about .cutline{ 
+	font-style:normal;
+	margin:0px;
+	}
+.footer-icp{
+	text-align:center;
+	margin-top:14px;
+	}
+	

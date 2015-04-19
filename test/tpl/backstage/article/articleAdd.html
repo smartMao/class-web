@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>添加文章</title>
+<script type="text/javascript" src="js/common.js"></script>
+</head>
+<body>
+	<form method="post" action="admin.php?controller=back&method=artAdd">
+		
+		 <span>标题</span>
+		 <input type="text" id="artTitle" name="artTitle" value="" />
+
+
+		 <span>发布者:</span>
+		 <span>{$userName}</span>
+		
+		 
+
+
+		{include file='tpl/backstage/article/ueditor1_4_3-utf8-php/editor.html'}
+		<script id="container" name="content" type="text/plain" style="width:1024px;height:500px;">
+       
+   		</script>
+
+	<input type="submit" id="artAddsubmit" name="addSubmit" value="提交">
+	<input type="button" onclick="goBack()" value="返回">
+
+	</form>
+</body>
+</html>

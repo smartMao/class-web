@@ -1,0 +1,16 @@
+body{overflow-y:hidden;}
+.backHeader{width:100%;height:50px;}
+.index-frame{width: 100px;height: 500px;float:left;}
+.go-back-index i{
+	width: 100px;height:50px;
+	display: block;
+	background:url(../images/header/logo.jpg);
+}
+
+.back-name{
+	font-size: 26px;
+	line-height: 50px;
+	padding:10px;
+	cursor: default;
+	
+}	

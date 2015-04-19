@@ -1,0 +1,256 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+.study-content{
+	width:950px;
+	height:329px;
+	margin:0 auto;
+	background:#FFF;
+.	}
+.study-bgimg{
+	width:950px;
+	height:84px;
+	background:url(../../images/study/study-bgimg.jpg) no-repeat;
+	}
+.study-text{
+	width:950px;
+	height:60px;
+	margin-top:10px;
+	}
+.study-text-left{
+	display:block;
+	float:left;
+	margin-left:128px;
+	}
+.study-text-right{
+	display:block;
+	float:right;
+	margin-right:120px;
+	}
+
+.study-text-left i,
+.study-text-right i{
+							font-size:18px;
+							color:#010101;}	
+
+.study-text-left em,
+.study-text-right em{
+								display:block;
+								font-size:15px;
+								color:#2b2b2b;
+								margin-left:10px;}
+
+.study-module{
+	width:950px;
+	height:346px;
+	}
+.study-module-front{
+	width:453px;
+	height:130px;
+	margin:12px 10px 0 10px;
+	float:left;
+	}
+.study-module-backstage{
+	width:453px;
+	height:130px;
+	margin:12px 10px 0 10px;
+	float:right;
+	}
+	
+	
+
+	
+
+/*   photoshop 模块  */
+
+.study-module-front-photoshop{  /*主*/
+	width:224px;
+	height:131px;
+	float:left;
+	position:relative;
+	}
+	
+.study-module-front-photoshop a p{
+	display:none;
+	font-size:12px;
+	color:#000;
+	text-indent:15px;
+	}
+.study-module-front-photoshop:hover a p{
+	display:block;
+	}
+.study-module-front-photoshop a span{
+	color:#fff;
+	padding:12px;
+	background:rgba(0,0,0,0.5);
+	position:absolute;
+	top:43px;
+	left:58px;
+	}
+
+.study-module-front-photoshop:hover a span{
+	width:224px;
+	height:131px;
+	top:0;
+	left:0;
+	padding:0;
+	}
+
+.study-module-front-photoshop:hover a span i{
+	border-radius:5px;
+	padding:12px;
+	background:#FFF;
+	color:#000;
+	position:absolute;
+	top:43px;
+	left:58px;
+	}
+
+/*   html 模块  */
+.study-module-front-html{   /* 主 */
+	width:224px;
+	height:131px;
+	float:right;
+	position:relative;
+	}
+	
+.study-module-front-html a p{
+	display:none;
+	font-size:12px;
+	color:#000;
+	text-indent:15px;
+	}
+.study-module-front-html:hover a p{
+	display:block;
+	}
+
+
+.study-module-front-html a span{
+	color:#fff;
+	padding:12px;
+	background:rgba(0,0,0,0.5);
+	position:absolute;
+	top:43px;
+	left:83px;
+	}
+
+.study-module-front-html:hover a span{
+	width:224px;
+	height:131px;
+	top:0;
+	left:0;
+	padding:0;
+	}
+
+.study-module-front-html:hover a span i{
+	border-radius:5px;
+	padding:12px;
+	background:#FFF;
+	color:#000;
+	position:absolute;
+	top:43px;
+	left:83px;
+	}
+
+/*   php 模块  */
+.study-module-backstage-php{
+	width:224px;
+	height:131px;
+	float:left;
+	position:relative;
+	
+	}
+	
+.study-module-backstage-php a p{
+	display:none;
+	font-size:12px;
+	color:#000;
+	text-indent:15px;
+	}
+.study-module-backstage-php:hover a p{
+	display:block;
+	}
+
+.study-module-backstage-php a span{
+	color:#fff;
+	padding:12px;
+	background:rgba(0,0,0,0.5);
+	position:absolute;
+	top:43px;
+	left:83px;
+	}
+
+.study-module-backstage-php:hover a span{
+	width:224px;
+	height:131px;
+	top:0;
+	left:0;
+	padding:0;
+	}
+
+.study-module-backstage-php:hover a span i{
+	border-radius:5px;
+	padding:12px;
+	background:#FFF;
+	color:#000;
+	position:absolute;
+	top:43px;
+	left:83px;
+	}
+
+/*   linux 模块  */
+
+.study-module-backstage-linux{
+	width:224px;
+	height:131px;
+	float:right;
+	position:relative;
+	
+	}
+	
+.study-module-backstage-linux a p{
+	display:none;
+	font-size:12px;
+	color:#000;
+	text-indent:15px;
+	}
+.study-module-backstage-linux:hover a p{
+	display:block;
+	}	
+.study-module-backstage-linux a span{
+	color:#fff;
+	padding:12px;
+	background:rgba(0,0,0,0.5);
+	position:absolute;
+	top:43px;
+	left:83px;
+	}
+
+.study-module-backstage-linux:hover a span{
+	width:224px;
+	height:131px;
+	top:0;
+	left:0;
+	padding:0;
+	}
+
+.study-module-backstage-linux:hover a span i{
+	border-radius:5px;
+	padding:12px;
+	background:#FFF;
+	color:#000;
+	position:absolute;
+	top:43px;
+	left:83px;
+	}
+
+	
+	
+	
+
+	
+
+
+
+

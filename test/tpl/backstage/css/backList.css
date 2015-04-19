@@ -1,0 +1,27 @@
+.funcList li{
+	width:100%;height: 47px;
+	display: block;
+}
+.funcList li a{
+	width: 100%;height: 47px;
+	border-bottom: 1px solid #d0d0d0;
+	display: block;
+	text-align: center;
+	line-height: 47px;
+}
+
+.funcList li a:hover{
+	border-left:3px solid #f14e00;
+	border-top: 1px solid #d0d0d0;
+	width: 100%;
+	text-indent: -5px;
+	background: #f2f5f7;
+}
+
+.on{
+	border-left:3px solid #f14e00;
+	border-top: 1px solid #d0d0d0;
+	width: 100%;
+	text-indent: -5px;
+	background: #f2f5f7;
+}

@@ -1,0 +1,264 @@
+
+
+.ui-dialog{
+		width:400px;
+		height: 252px;
+		position:absolute;
+		top: 100px;
+		left: 100px;
+		border: 1px solid #d5d5d5;
+		background: #fff;
+		z-index: 6;
+		display:none;
+}
+
+.ui-dialog-title{
+		height: 35px;
+		line-height: 35px;
+		padding-left: 20px;
+		color: #000;
+		font-size:16px;
+		text-align:center;
+		cursor:pointer；
+}
+
+.ui-dialog-title h1{font-size:16px;}
+
+.ui-dialog-title .cut-off-rule{
+		width:350px;height:1px;
+		background:#e6e6e6;
+		margin:0 auto;
+		display:block;
+}
+
+.ui-dialog-title-closebutton{
+		width:18px;
+		height: 16px;
+		display: block;
+		position: absolute;
+		top:7px;
+		right: 4px;
+		background:url(../../images/login/close_def.png) no-repeat;
+}
+
+.ui-dialog-title-closebutton:hover{
+		background:url(../../images/login/close_hov.png) no-repeat;
+}
+
+.ui-dialog-content{
+		width:100%;
+		height: 200px;
+		position: relative;
+}  
+
+.ui-mask{
+		width:100%;
+		background:#000;
+		opacity: 0.4;
+		filter:Alpha(opacity=40);  /* 为兼容低版本IE */
+		position: absolute;
+		top:0;right:0px;		
+		display:none;
+		z-index: 5;
+}
+
+.link{padding:50px;}
+.ui-dialog-form input[type=text]{margin-top:11px;}
+.ui-dialog-form input[type=text],
+.ui-dialog-form input[type=password]{
+	width:210px;height:35px;
+	border:2px solid #949494;
+	border-radius: 5px;
+	background:url(../../images/login/number-bgimg.png) no-repeat;
+	padding-left:42px; 
+	outline:none;
+	margin-bottom:27px;
+	margin-left:74px;
+}
+
+
+.ui-dialog-form input[type=text]:hover,
+.ui-dialog-form input[type=password]:hover{
+	box-shadow:1px 1px 10px #7ed3ee;
+	border:2px solid #7ed3ee;
+	background:url(../../images/login/number-bgimg_over.png) no-repeat;
+}
+
+.ui-dialog-form input[type=text]:focus,
+.ui-dialog-form input[type=password]:focus{
+	box-shadow:1px 1px 10px #7ed3ee;
+	border:2px solid #7ed3ee;
+	background:url(../../images/login/number-bgimg_over.png) no-repeat;
+}
+.ui-dialog-form input[type=password]{ 
+	background:url(../../images/login/password-bgimg.png) no-repeat;}
+
+.ui-dialog-form input[type=password]:hover{
+	background:url(../../images/login/password-bgimg_over.png) no-repeat;}
+
+.ui-dialog-form input[type=password]:focus{
+	background:url(../../images/login/password-bgimg_over.png) no-repeat;}
+
+.ui-dialog-form input[type=checkbox]{
+	vertical-align:middle;
+	margin-left:80px;
+}
+
+.ui-dialog-form label{
+	vertical-align:middle;
+	font-size:14px;
+	position: absolute;
+	bottom: 36px;
+}
+
+.ui-dialog-form a{
+	font-size:14px;color:#7ed3ee;
+	margin-left:170px;
+}
+
+.ui-dialog-form input[type=submit]{
+	width:170px;height:30px;
+	border:none;
+	margin-left:116px;
+	margin-top:15px;
+	background:url(../../images/login/login_mouse.png);
+}
+
+.ui-dialog-form input[type=submit]:hover{
+	background:url(../../images/login/login_mouse_over.png);
+}
+
+/*   注册   */
+
+
+.ui-dialog-register{
+		width:400px;
+		height: 360px;
+		position:absolute;
+		top: 100px;
+		left: 100px;
+		border: 1px solid #d5d5d5;
+		background: #fff;
+		z-index: 6;
+		display:none;
+}
+
+.ui-dialog-register-title-line{
+		width:400px;
+		height: 2px;
+		background:url(../../images/login/login-top.png);
+		display: block;
+}
+
+.ui-dialog-register-title{
+		height:35px;
+		width:400px;
+		cursor:pointer;
+		line-height: 35px;
+		text-align: center;
+		color: #000;font-size:18px;
+}
+
+.ui-dialog-register-title-closebutton{
+	display: block;
+	position: absolute;
+	top:9px;right:7px;
+	width:18px;height:16px;
+	background:url(../../images/login/close_def.png) no-repeat;
+}
+
+.ui-dialog-register-title-closebutton:hover{
+	background:url(../../images/login/close_hov.png) no-repeat;
+}
+
+.ui-dialog-register--title-cut-off-rule{
+	width:350px;height: 1px;
+	background: #e6e6e6;margin: 0 auto;
+}
+
+
+.ui-dialog-register-form{position:relative;}
+.ui-dialog-register-form [type=text]{
+	width:240px;height:35px;
+	padding-left:10px;
+	font-size:14px;
+	margin-left:73px;
+	margin-top:11px;
+	border-radius: 5px;
+	border:2px solid #9d9d9d;
+	outline:none;
+}
+
+.ui-dialog-register-form [type=text]:hover{
+	border:2px solid #7ed3ee;
+	box-shadow:1px 1px 10px #7ed3ee;
+	outline:none;
+}
+
+.ui-dialog-register-form [type=text]:focus{
+	border:2px solid #7ed3ee;
+	box-shadow:1px 1px 10px #7ed3ee;
+	outline:none;
+}
+
+.ui-dialog-register-form [type=password]{
+	width:240px;height:35px;
+	padding-left:10px;
+	font-size:14px;
+	margin-left:73px;
+	margin-top:11px;
+	border-radius: 5px;
+	border:2px solid #9d9d9d;
+	outline:none;
+}
+.ui-dialog-register-form [type=password]:hover{
+		border:2px solid #7ed3ee;
+		box-shadow:1px 1px 10px #7ed3ee;
+		outline:none;
+}
+.ui-dialog-register-form [type=password]:focus{
+		border:2px solid #7ed3ee;
+		box-shadow:1px 1px 10px #7ed3ee;
+		outline:none;
+}
+
+#ui-dialog-register-form-check{
+	cursor: pointer;position: absolute;
+	vertical-align: middle;
+	margin-top:22px;padding-left:3px;
+	margin-left:135px;
+}
+.ui-dialog-register-form-text{
+	cursor: pointer;display:inline-block;
+	font-size:12px;vertical-align: middle;
+	margin-top:20px;
+	margin-left: 150px;
+}
+.ui-dialog-register-form input[type=submit]{
+	width:170px;height:30px;
+	margin-top:25px;margin-left:115px;
+	border:none;
+	background:url(../../images/login/register_btn.png) no-repeat;	
+}
+.ui-dialog-register-form input[type=submit]:hover{
+	background:url(../../images/login/register_btn_over.png) no-repeat;	
+}
+#userOk{  margin-left:5px;display:none; position: absolute; top:25px; right:45px;}
+#pasOk{   margin-left:5px;display:none; position: absolute; top:75px; right:45px;}
+#twoPasOk{margin-left:5px;display:none; position: absolute; top:125px; right:45px;}
+#emailOk{ margin-left:5px;display:none; position: absolute; top:175px; right:45px;}
+#userErrorPrompt{	  position:absolute;margin-top:-38px;margin-left:337px;display:none;}
+#passFormatError{	  position:absolute;margin-top:-38px;margin-left:337px;display:none;					  border: 1px solid #000;}
+#passErrorPrompt{	  position:absolute;margin-top:-38px;margin-left:337px;display:none;}
+#inconsistentPassword{position:absolute;margin-top:-38px;margin-left:337px;display:none;}
+#trueNameFormatError{ position:absolute;margin-top:-38px;margin-left:337px;display:none;border: 1px solid #000;}
+#trueNameErrorPrompt{ position:absolute;margin-top:-38px;margin-left:337px;display:none;border: 1px solid #000;}
+
+
+
+
+
+
+
+
+

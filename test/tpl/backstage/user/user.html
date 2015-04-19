@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+<link rel="stylesheet" type="text/css" href="tpl\backstage\user\style/user.css">
+</head>
+<body>
+<span>本站一共有{$count}个用户</span>
+<table class="user-list">
+	<tr>
+		<th>id</th>
+		<th>userName</th>
+		<th>trueName</th>
+		<th>power</th>
+		<th>registerTime</th>
+		<th>操作</th>
+	</tr>
+{foreach from=$userList item=item key=key}
+	<tr>
+		<td>{$userList.$key.id}</td>
+		<td>{$userList.$key.userName}</td>
+		<td>{$userList.$key.trueName}</td>
+		<td>{$userList.$key.power}</td>
+		<td>{$userList.$key.registerTime}</td>
+		<td>
+			<a href="admin.php?controller=back&method=userDetails&id={{$userList.$key.id}}">详细资料</a><br/>	
+			<a href="admin.php?controller=back&method=userDel&id={{$userList.$key.id}}" 
+				onclick="return confirm('是否删除!');">删除</a>
+		</td>
+	</tr>
+{/foreach}
+
+
+
+</table>
+	
+</body>
+</html>

@@ -1,0 +1,154 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*   header  样式文件   */
+
+
+.header{
+	width:100%;height:50px;
+	background:#fff;
+	margin:0 auto;
+	position:relative;
+	}
+.header-frame{
+	width: 950px;height: 50px;
+	margin: 0 auto;
+	position: relative;
+}
+.logo img{ float:left;}
+.nav{clear:inherit;margin-left:13%;}
+.nav ul li a{
+	height:50px;display:block;
+	line-height: 50px;
+	font-size:16px;
+	float:left;padding:0 27px;
+	color:#000;
+	}
+.nav ul li a:hover {
+	border-top:4px solid #3C6;
+	height:46px;line-height:42px;
+	}
+.nav ul li .on:hover{
+	border-top:4px solid #fecd06;
+	height:46px;line-height:42px;
+	}
+
+.nav ul li .on{
+	border-top:4px solid #fecd06;
+	height:46px;line-height:42px;
+	}
+
+.login{
+	width:130px;height:19px;
+	margin-top:16px;
+	position: absolute;
+	right:5%;
+
+	}
+.login-btn{
+	width:59px;height:17px;
+	border:1px solid #000;
+	border-radius:5px;
+	float:left;text-align:center;
+	font-size:14px;
+	display:block;
+	}
+.login-btn:hover{
+	background:#b8b8b8;border-color:#b8b8b8;
+	color:#fff;
+	}
+.register-btn{
+	width:59px;height:17px;
+	border:1px solid #000;
+	border-radius:5px;
+	float:right;text-align:center;
+	font-size:14px;
+	display:block;
+	}
+.register-btn:hover{
+	background:#b8b8b8;border-color:#b8b8b8;
+	color:#fff;
+	}
+.user-username {
+	margin-left:30px;
+	position: absolute;	
+	right: 3%;
+	font-size:16px;
+	
+	}
+
+
+.user-photo-frame{
+	width:110px;height: 50px;
+	background: #FFE4B5;
+}
+
+.user-photo{
+	width: 50px;height: 50px;
+	border-radius: 25px;
+	background:#FFE4E1;
+	position: absolute;
+	left:30px;
+	margin:0 auto;
+}
+.user-options{z-index: 3; position:absolute;}
+.user-options ul li{
+	display: block;
+	z-index: 3;
+	background: #fff;
+	text-align: center;
+	line-height: 40px;
+	width:108px;height: 40px;
+	border-bottom:1px solid #dedede;
+	border-left:  1px solid #dedede;
+	border-right: 1px solid #dedede;
+	
+}
+
+.user-options ul li:hover{
+	cursor: default;
+	background: #f2f5f7;
+}
+
+.user-options ul li a{
+	display: block;
+	color:#000;
+	width:108px;height: 40px;
+
+}
+
+.user-options ul li .user-set-icon{
+	width:15px;height: 15px;
+	display: block;
+	position: absolute;
+	top:53px;left: 10px;
+	background: url(../../images/header/user-set-icon.png);
+}
+
+.user-options ul li .user-logout-icon{
+	width:15px;height: 15px;
+	display: block;
+	position: absolute;
+	top:94px;left: 10px;
+	background: url(../../images/header/user-logout-icon.png);
+}
+
+.user-options ul .text-indent-25{
+	text-indent: 25px;
+
+}
+
+
+
+
+/*	
+.user-username p{
+	text-indent: 90px
+
+	
+	}
+*/
+.on{
+	border-top:4px solid #fecd06;
+	height:46px;line-height:42px;
+	}

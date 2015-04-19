@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+<link rel="stylesheet" type="text/css" href="ueditor1_4_3-utf8-php/themes/default/dialogbase.css" />
+<script type="text/javascript" src="js/common.js"></script>
+</head>
+<body>
+<form method="post" action="admin.php?controller=back&method=changeArticleOk&id={$changeInfo.id}">
+	<span>文章id:</span>
+	<span>{$changeInfo.id}</span>
+	<br/>
+
+	<span>uid:</span>
+	<span>{$changeInfo.uid}</span>
+	
+	<br/>
+
+	<span>作者:</span>
+	<span>{$changeInfo.author}</span>
+	<br/>
+
+	<span>发布时间:</span>
+	<span>{$changeInfo.time}</span>
+	<br/>
+
+	<span>标题:</span>
+	<input type="text" name="artTitle" value="{$changeInfo.title}">
+	<br/>
+
+	<span>文章内容:</span>
+
+
+
+	{include file='tpl/backstage/article/ueditor1_4_3-utf8-php/editor.html'}	
+	<script id="container" name="content" type="text/plain" style="width:1024px;height:500px;">
+       {$changeInfo.content}
+    </script>
+	<input type="submit" name="artChangeSubmit" value="修改">
+	<input type="button" onclick="goBack()" value="返回">
+
+
+</form>
+
+
+
+</body>
+</html>

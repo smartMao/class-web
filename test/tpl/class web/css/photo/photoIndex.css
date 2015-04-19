@@ -1,0 +1,269 @@
+*{margin:0;padding:0; font-family: "微软雅黑";}
+.photo-content{
+	width:950px;height:900px; 
+	border:1px solid #000;
+	background: #fff;
+	margin:0 auto;}
+
+/*
+	相册搜索框
+*/
+
+
+.photo-search{
+	width:258px;height:36px;
+	margin:0 auto; margin-top:16px;
+
+}
+.photo-search input[type=text]{
+	width:209px;height:34px;
+	float: left;border: 1px solid #000;
+	text-indent: 10px;
+
+}
+
+.photo-search input[type=button]{
+	width:47px;height:36px;
+	float: right;
+	border: none;
+	background: url('/test/tpl/class web/images/photo/photoSearch.jpg') no-repeat;
+
+}
+
+.photo-search input[type=button]:hover{
+	background: url('/test/tpl/class web/images/photo/photoSearch-hover.jpg') no-repeat;
+	cursor: pointer;
+
+}
+/*
+	相册公告栏 与 排序
+*/
+
+.photo-public{
+	width:950px;height:31px;
+	margin-top:5px;
+	border-top: 1px solid #e6e6e6;
+	border-bottom: 1px solid #e6e6e6;
+	position: relative;
+	
+}
+
+.photo-public-icon{
+	width:18px;height:16px;
+	display: block;
+	float: left;
+	margin:9px 0px 0px 20px;
+	background: url('/test/tpl/class web/images/photo/photo-public-icon.png') no-repeat;
+}
+
+.photo-public-span{
+	line-height: 31px;
+	text-indent: 5px;
+	padding-left:0px;
+	float: left;
+	color:#6c707d;
+}
+
+.photo-public-name,
+.photo-public-time,
+.photo-public-photoname{
+	color:#0089ff;
+}
+
+.photo-public-sort{
+	width:143px;
+	height:31px;
+	float: right;
+	margin-right: 38px;
+}
+
+
+.photo-public-sort-span{
+	display:block;
+	width:70px;height:26px;
+	line-height: 26px;
+	border: 1px solid #b2b2b2;
+	text-align:center;
+	cursor: pointer;
+	float: left;
+	margin-top:1px;
+	margin-right:5px;
+}
+
+.photo-public-sort-UP,
+.photo-public-sort-DOWN{
+	display: inline-block;
+	width:26px;height:26px;
+	line-height: 26px;
+	text-align: center;
+	color: #6f7380;
+	font-size:20px;
+	border:1px solid #d4d4d4;
+	margin-top:1px;
+	cursor: pointer;
+	font-weight: bold;
+
+}
+
+.photo-public-sort-UP:hover,
+.photo-public-sort-DOWN:hover{
+	border-color:#ff7336;
+	color: #ff7336; 
+	cursor: pointer;
+	font-weight: bold;s
+}
+
+/*
+	阴影线
+*/
+.photo-public-shadow-line{
+	margin-top:0px;
+	width:100%;height:2px;
+	background: #e6e6e6;
+	display: inline-block;
+	box-shadow:0px 2px 5px 0px #000;
+
+}
+
+/*
+	相册列表
+*/
+.photo-list{
+	width:100%;height:740px;
+	background: #efefef;
+	position: relative;
+}
+
+.photo-list ul li{
+	background: #fff;
+	width:295px;height: 320px;
+	display: block;
+	margin:8px 0px 45px 3px;
+	float: left;
+	border: 1px solid #cbcbcb; 
+}
+
+.photo-list ul li .position{
+	width:295px;height: 320px;
+	position: absolute;
+
+}
+
+.photo-list ul li .photo-list-cover{
+	width:295px;height: 210px;
+	background: #9BCD9B;
+	position: relative;
+}
+
+.photo-list ul li .photo-list-more{
+	width:83px;height: 37px;
+	background: #fff;
+	position: absolute;
+	bottom:0;right: 0;
+	line-height: 37px;
+	text-align: center;
+	opacity:0.3;
+	-moz-opacity:0.3;
+	filter:alpha(opacity=30);
+}
+
+.photo-list ul li .photo-list-more:hover{
+	font-weight: bold;
+	cursor: pointer;
+	opacity:0.6;
+	-moz-opacity:0.6;
+	filter:alpha(opacity=60);
+}
+
+.photo-list ul li .photo-list-title{
+	color:#0089ff;
+	font-weight: 200;
+	margin-top:6px;
+	text-align: center;
+}
+
+.photo-list ul li .photo-list-user-photo{
+	width:100px;height:79px;
+	background:#fff;
+	overflow: hidden;
+	position: relative;
+}
+
+.photo-list-user-format{
+	width:50px;height: 50px;
+	border-radius: 25px;
+	background: #EEDFCC;
+	margin: 0 auto;
+	position: absolute;
+	top:15px;left:25px;
+
+
+}
+
+/*
+	相册发布时间
+*/
+.photo-list-time{
+	width:86px;height:12px;
+	position: absolute;
+	bottom:44px;right: 0px;
+}
+
+.photo-list-time-icon{
+	width: 12px;height: 12px;
+	display: block;
+	float: left;
+	background: url('/test/tpl/class web/images/photo/photo-list-time.png') no-repeat;
+}
+
+.photo-list-time-span{
+	font-size:12px;
+	line-height: 11px;
+	padding-left:5px;
+}
+
+
+/*
+	浏览与评论数
+*/
+.photo-list-browse-and-comment{
+	width:200px;height: 13px;
+	position: absolute;
+	bottom: 6px;right: 0px;
+}
+
+.photo-list-browse{width: 95px;height: 12px;float:left;}
+.photo-list-comment{width: 94px;height: 12px;float:right}
+
+.photo-list-browse-icon{
+	width: 30px;height: 12px;
+	display: block;
+	float: left;
+	background: url('/test/tpl/class web/images/photo/photo-list-browse.png') no-repeat;
+}
+
+.photo-list-browse-span{
+	width: 70px;
+	font-size: 14px;
+	line-height: 12px;
+	padding-left:3px;
+	
+
+}
+
+
+.photo-list-comment-icon{
+	width: 30px;height: 12px;
+	display: block;
+	float: left;
+	background: url('/test/tpl/class web/images/photo/photo-list-comment.png') no-repeat;
+}
+
+.photo-list-comment-span{
+	width: 70px;
+	font-size: 14px;
+	line-height: 12px;
+	padding-left:0px;
+	
+
+}

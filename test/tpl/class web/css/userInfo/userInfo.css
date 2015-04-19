@@ -1,0 +1,216 @@
+
+.user-info{
+	width: 950px;height: 1000px;
+	background: #fff;
+	margin: 0 auto;
+	margin-top:34px; 
+}
+
+
+/* 用户信息展示 */
+.user-info-show{
+	width: 950px;height: 265px;
+}
+
+/* 展示头像与个人简介 */
+.show-photo-and-introduction{
+	width: 950px;height: 120px;
+	border-bottom: 1px solid #d0d0d0;
+}
+
+.show-photo{
+	height: 120px;width: 120px;
+	border-right: 1px solid #d0d0d0;
+	float: left;
+}
+.show-introduction{
+	height: 120px;width: 829px;
+	float: right;
+	position: relative;
+}
+
+.show-introduction i{
+	width: 26px;height: 26px;
+	display: block;
+	margin-left:5px;
+	margin-top:5px;
+	background:url(../../images/userInfo/introduction-icon.png);
+}
+
+.show-introduction span{
+	width:780px;height: 100%;
+	word-wrap: break-word;
+	position: absolute;
+	top:7px;left: 20px;
+	text-indent: 20px;
+	line-height: 25px;
+	display:block;
+}
+
+
+/* 展示详细信息 */
+.show-info{
+	width: 950px;height: 100px;
+}
+
+
+.show-info ul .border-left-none{
+	border-left:none;
+	width: 239px;
+}
+
+.show-info ul li{
+	width: 236px;height: 49px;
+	border-bottom: 1px solid #d0d0d0;
+	border-left:1px solid #d0d0d0;
+	float: left;
+	
+
+}
+
+.show-info ul li i{
+	width: 26px;height: 26px;
+	display: block;
+	margin-top:12px;
+	margin-left:18px;
+	float: left;
+}
+
+.show-info ul li span{
+	margin-top:14px;
+	text-indent: 12px;
+	cursor: default;
+	width: 220px;height:32px;
+	display: block;
+
+}
+
+
+.show-info-truename i{background: url(../../images/userInfo/truename-icon.png);}
+.show-info-birthday i{background: url(../../images/userInfo/birthday-icon.png);}
+.show-info-phone    i{background: url(../../images/userInfo/phone-icon.png);}
+.show-info-sex      i{background: url(../../images/userInfo/sex-icon.png);}
+.show-info-address  i{background: url(../../images/userInfo/address-icon.png);}
+.show-info-height   i{background: url(../../images/userInfo/height-icon.png);}
+.show-info-registertime i{background: url(../../images/userInfo/registertime-icon.png);}
+.show-info-school   i{background: url(../../images/userInfo/school-icon.png);}
+
+
+/* 资料修改按钮 */
+
+.show-change-info-frame{
+	width: 950px;height:42px;
+	border-bottom: 1px solid #d0d0d0;
+}
+
+.change-btn{
+	width: 162px;height: 37px;
+	float: right;
+	margin-top:5px;
+	cursor: pointer;
+	margin-right:20px; 
+	background: url(../../images/userInfo/change-info-btn.png); 
+}
+
+
+
+/* 资料修改框 */
+.user-info-change{
+	width: 500px;
+	margin:0 auto;
+	font-size:16px;
+	position: relative;
+}
+
+
+.userInfo-change li{
+	margin-top:10px;
+	margin-bottom: 10px;
+
+}
+
+.userInfo-change li span{
+	letter-spacing:2px;
+	display:line-block;
+	text-indent: 20px;
+}
+
+.userInfo-change li #address{
+	width: 410px;
+}
+
+.userInfo-change li input[type=text]{
+	width: 230px;height:40px;
+	text-indent: 10px;
+}
+
+
+.userInfo-change li input[type=radio]{
+	margin-left:5px;
+	margin-right: 2px;	
+}
+
+
+.userInfo-change li .sex-span,
+.userInfo-change li .height-span,
+.userInfo-change li .address-span{
+	padding-left: 36px;
+}
+
+.userInfo-change li .introduction{
+	margin-left:83px;
+	padding:10px;
+}
+
+.userInfo-change li .introduction-span{
+	position: absolute;
+	left: -20px;
+}
+
+.userInfo-change li .change{
+	width: 80px;
+	height: 30px;
+	border:none;
+	border:1px solid #d4a728;
+	background: #fcbb00;
+	position: absolute;
+	right: -25px;
+}
+
+.userInfo-change li .change:hover{
+	background: #000;
+	color: #fff
+	
+}
+
+.userInfo-change li select{
+	height: 30px;width: 60px;
+	padding-left:2px;
+	text-align: center;
+}
+
+.userInfo-change li #month{
+	padding-left:13px;
+}
+
+
+.userInfo-change li #day{
+	padding-left:13px;
+}
+
+.userInfo-change li select{
+ 	background: #ebebe4;
+}
+
+.userInfo-change li .span-man,
+.userInfo-change li .span-woman,
+.userInfo-change li .span-secrecy{
+	color:#CDC9C9;
+}
+
+.goback{
+	width: 70px;height: 30px;
+	border: 1px solid #000;
+	text-align: center;line-height: 30px;
+	cursor: pointer;
+}

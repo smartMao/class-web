@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+
+<link href="tpl/class web/css/gather.css" rel="stylesheet" type="text/css" />
+<link href="tpl/class web/css/index/header.css" rel="stylesheet" type="text/css" />
+<link href="tpl/class web/css/index/login.css"  rel="stylesheet" type="text/css" /> 
+<link href="tpl/class web/css/index/footer.css" rel="stylesheet" type="text/css" />
+<link href="tpl/class web/css/userInfo/userInfo.css" rel="stylesheet" type="text/css" />
+
+</head>
+<body>
+
+	
+{include file="class web/index/header.html"}
+{include file="class web/index/login.html"}
+
+
+<div class="user-info">
+	
+<!-- 用户信息展示 -->
+	<div class="user-info-show">
+		
+		<div class="show-photo-and-introduction">
+			<div class="show-photo"><!-- 头像 --></div>
+			<div class="show-introduction"><i></i><span><!-- 个人简介 -->{$introduction|default:"暂无"}</span></div>
+		</div>
+
+		<div class="show-info">
+			<ul>
+				<li class="show-info-truename border-left-none" title="真实姓名"><i></i>
+					<span>{$trueName}</span>
+				</li>
+				<li class="show-info-birthday" title="生日"><i></i>
+					<span>{$birthday|default:"暂无"}</span>
+				</li>
+				<li class="show-info-phone" title="手机号码"><i></i>
+					<span>{$phone|default:"暂无"}</span>
+				</li>
+				<li class="show-info-sex" title="性别"><i></i>
+					<span>
+						{if $sex eq 1}
+							{$sexDef}
+						{elseif $sex eq 2}
+							<span>女</span>
+						{elseif $sex eq 3}
+							<span>男</span>
+						{/if}
+
+					</span>
+				</li>
+				<li class="show-info-address border-left-none" title="地址"><i></i>
+					<span>
+						{if $addressLength lt 28}
+							{$address}				
+						{/if}
+						
+						{if $addressLength gt 27}
+							{$address|substr:"0":"27"|cat:"..."}		
+						{/if}
+
+						{if not $address}
+							{$address|default:"暂无"}			
+						{/if}
+					</span>
+				</li>
+				<li class="show-info-height" title="身高"><i></i>
+					<span>
+						{if $height eq 0}
+								{$heightDef}
+						{else}
+								{$height}
+						{/if}
+					</span>
+				</li>
+				<li class="show-info-registertime" title="注册时间"><i></i>
+					<span>{$registerTime|default:"暂无"}</span>
+				</li>
+				<li class="show-info-school" title="学校"><i></i>
+					<span>{$school|default:"暂无"}</span>
+				</li>
+			</ul>
+		</div>
+
+		<div class="show-change-info-frame">
+			<div class="change-btn" onclick="changeUserInfoBtn();"></div>
+		</div>
+	</div>
+
+
+<!-- 用户信息修改 -->
+	<div class="user-info-change">
+		<form method="post" action="admin.php?controller=admin&method=userInfoChangeWork">	
+			<ul class="userInfo-change">			
+				<li>
+					<span>真实姓名:</span>
+					<input type="text" name="trueName" id="trueName" value="{$trueName}" />
+				</li>
+
+				<li>
+					<span>手机号码:</span>
+					<input type="text" name="phone" id="phone" value="{$phone}"/>
+				</li>
+
+				<li>
+					<span>出生年月:</span>
+
+					<!-- 生日隐藏域 -->
+				
+					<input type="hidden"  id="yearHidd"  value="{$birthday|substr:0:4}" />
+					<input type="hidden"  id="monthHidd" value="{$birthday|substr:5:2}" />
+					<input type="hidden"  id="dayHidd"   value="{$birthday|substr:8:2}" />
+
+					<select id="year" name="year" style="background:#fff;"></select>
+					<select id="month"  name="month" style="background:#fff;"></select>
+					<select id="day" name="day"  style="background:#fff;"></select>
+				
+
+					
+
+				</li>
+
+				<li>
+					<span class="sex-span">性别:</span>
+					
+				
+					
+					<input type="hidden" id="sexHidd" value="{$sex}" />
+
+					<input type="radio" id="man" name="sex"  value="3" class="sex-man" /><span>男</span>
+					<input type="radio" id="woman" name="sex" value="2" class="sex-woman" /><span>女</span>
+					<input type="radio" id="secrecy" name="sex" value="1" /><span>保密</span>
+				
+					
+				</li>
+
+				<li>
+					<span class="height-span">身高:</span>
+					<input type="text" name="height" value="{$height}" id="height"  class="height" />
+				</li>
+
+				<li>
+					<span  class="address-span">地址:</span>
+					<input type="text" name="address" value="{$address}" id="address" class="address" />
+				</li>
+
+				<li>
+					<span class="introduction-span">个人简介:</span>
+					
+					<textarea rows="10" cols="60" class="introduction" id="introduction" name="introduction">{$introduction}</textarea>
+				</li>
+				
+				<li>
+					<div class="goback" onclick="goBack();">返回</div>
+					<input type="submit" value="修改" onclick="checkUserInfoChange();" class="change"/>
+
+				</li>
+
+
+			</ul>
+		</form>
+	</div>
+
+</div>
+
+{if $power eq 2}
+		<h2><a href="admin.php?controller=back&method=backIndex">进入后台管理中心</a></h2>
+{/if}
+
+{include file="class web/index/footer.html"}
+
+
+{if $userName}
+	<script type="text/javascript">
+		var loginModel  = document.getElementById('loginModel');
+		var userUserName  = document.getElementById('userUserName');
+
+		loginModel.style.display = "none";
+		userUserName.style.display = "block";
+	</script>
+{else}
+	<script type="text/javascript">
+		var loginModel  = document.getElementById('loginModel');
+		var userUserName  = document.getElementById('userUserName');
+
+		loginModel.style.display = "block";
+		userUserName.style.display = "none";
+	</script>
+{/if}
+
+</body>
+</html>
+
+	
+<script type="text/javascript" src="tpl/class web/js/common.js"></script>
+<script type="text/javascript" src="tpl/class web/js/js.js"></script>
+<script type="text/javascript" src="tpl/class web/js/userPhoto.js"></script>
+<script type="text/javascript" src="tpl/class web/js/userInfo.js"></script>
+<script type="text/javascript">
+	createOption();
+	birthdayValue();
+	sexValue();
+	a();
+</script>

@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+<link rel="stylesheet" type="text/css" href="style/index.css">
+</head>
+<body>
+<div class="leftBox">
+	{include file='admin/leftmenu.html'}
+</div>	
+<center>
+<h3 class="newsAddH3">添加文章</h3>
+<form method="post">
+	
+		
+		<label class="newsAddTitle">标题:</label>
+		<input type="text" name="title" class="newsAddTitleText" value="{$data.title|default:''}" />
+		<br/>
+		
+	<!--
+		<label>时间</label>
+		<input type="text" name="time" value="{$data.time|default:''}" />
+		<br/>
+	-->
+
+		
+
+		<textarea name="content" class="newsAddContentText" rows="10" cols="60">
+			{$data.content|default:''}
+		</textarea>
+		<br/>
+
+		<input type="hidden" name="id" value="{$data.id|default:''}" />
+		<input type="submit" name="submit" class="newsAddSubmit" value="发布" />
+	
+
+
+</form>
+</center>
+</body>
+</html>

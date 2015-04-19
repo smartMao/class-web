@@ -1,0 +1,18 @@
+*{margin:0px;padding:0px; font-family: "微软雅黑";}
+
+.leftBox{width:200px;height:600px; background: #FFDAB9; float: left;}
+.leftBox li{margin-top:10px;margin-left:30px;}
+.leftBox li a{text-decoration: none;}
+.leftBox li a:hover{text-decoration:underline; }
+.leftBox h3{margin-top:10px;}
+
+.newsAdmin{padding-top:50px;padding-bottom:20px;}
+.newsList thead tr th{width:270px;border: 1px solid #000;}
+.newsList thead tr{height:40px;border:1px solid #000;}
+.newsList{border:2px solid #000;padding:20px;}
+.newsList thead tr td{width:270px;text-align:center;}
+
+.newsAddH3{padding-top:50px;padding-bottom:20px;}
+.newsAddTitle{font-size:20px;margin-bottom:40px;display: inline-block;}
+.newsAddTitleText{width:260px;height:30px;padding-left:10px;}
+.newsAddSubmit{width:100px;height:60px;}
