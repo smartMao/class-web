@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-04-20 02:55:31
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-04-20 11:50:57
          compiled from "tpl\class web\index\login.html" */ ?>
 <?php /*%%SmartyHeaderCode:1731255344e837a4d89-31171275%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '55e73b55e352fecc7039dca98e5a0bc96170353e' => 
     array (
       0 => 'tpl\\class web\\index\\login.html',
-      1 => 1426745166,
+      1 => 1429523456,
       2 => 'file',
     ),
   ),
@@ -15,9 +15,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
-  'has_nocache_code' => false,
   'version' => 'Smarty-3.1.21-dev',
   'unifunc' => 'content_55344e837a8c01_66391509',
+  'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_55344e837a8c01_66391509')) {function content_55344e837a8c01_66391509($_smarty_tpl) {?><!DOCTYPE html>
 <html>
@@ -34,7 +34,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             <i class="cut-off-rule"></i>
         </div>
 		<div class="ui-dialog-content">
-        	<form method="post" class="ui-dialog-form" action="http://localhost/test/admin.php?controller=admin&method=login">
+        	<form method="post" class="ui-dialog-form" action="admin.php?controller=admin&method=login">
             	<input type="text" name="username" id="" class="" placeholder="请输入用户名"/>
                 <input type="password" name="password" id="" class="" placeholder="请输入密码"/><br/>
                 <input type="checkbox" name="remPass" id="ui-dialog-content-checkbox"  class="" />
@@ -51,7 +51,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		<div class="ui-dialog-register-title" id="dialogTitle-register"><span>注册用户</span></div>
 		<div class="ui-dialog-register--title-cut-off-rule"></div>
 		<div class="ui-dialog-register-content">
-			<form name="regForm" method="post" class="ui-dialog-register-form" id="registerForm" action="http://localhost/test/admin.php?controller=admin&method=register" onsubmit="return checkInput()">
+			<form name="regForm" method="post" class="ui-dialog-register-form" id="registerForm" action="admin.php?controller=admin&method=register" onsubmit="return checkInput()">
               
                 <input type="text" name="r_username" id="r_username" class="" placeholder="用户名" tabIndex="3"/>
                 <i id="userErrorPrompt"><img src="tpl/class web/images/login/userErrorPrompt.png" /></i>

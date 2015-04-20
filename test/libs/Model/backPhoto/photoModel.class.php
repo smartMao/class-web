@@ -32,8 +32,9 @@ class photoModel{
 			}
 		}
 
+		return $allFilesArr;
 		
-		$this->imgLessen( $allFilesArr );  // 图片等比例缩小
+		//$this->imgLessen( $allFilesArr );  // 图片等比例缩小
 	}
 
 
@@ -47,12 +48,13 @@ class photoModel{
 		foreach( $allFilesArr as $k => $v ){
 
 			$imgInfo = getimagesize($allFilesArr[$k]);
-
+			
 			$w=$imgInfo['0'];
 		    $h=$imgInfo['1'];
+
 		    $imgTypeNum = $imgInfo[2];
 		    $imgType = image_type_to_extension($imgTypeNum , false); // 返回图片后缀(没有 "."
-		    var_dump($imgType); 
+	
 		   
 		    //指定缩放出来的最大的宽度（也有可能是高度）
 		    $max=300;
@@ -66,18 +68,24 @@ class photoModel{
 		        $w=$w*($max/$imgInfo['1']);
 		    }
 		    
-		    
+		    $imgCreate = "imagecreatefrom{$imgType}"; 
+
+			$image = $imgCreate($allFilesArr[$k]);
+	    
 		    //声明一个$w宽，$h高的真彩图片资源
-		    $image=imagecreatetruecolor($w, $h);
+		    $trueimage=imagecreatetruecolor($w, $h);
+		   
 		    				
 		    
 		    //关键函数，参数（目标资源，源，目标资源的开始坐标x,y, 源资源的开始坐标x,y,目标资源的宽高w,h,源资源的宽高w,h）
-		    imagecopyresampled($image, $allFilesArr[$k] , 0, 0, 0, 0, $w, $h, $imgInfo['0'], $imgInfo['1']);
+		    imagecopyresampled($trueimage, $image , 0, 0, 0, 0, $w, $h, $imgInfo['0'], $imgInfo['1']);
 		    
 		    //告诉浏览器以图片形式解析
-		   // header('content-type:image/{$imgType[$k]}');
-		    $outputImg = "image{$imgType[$k]}";
-		    var_dump($outputImg);
+
+		    header('content-type:image/'.$imgType);
+		    $outputImg = "image{$imgType}";
+		   	$outputImg( $trueimage );
+		    //var_dump($imgType[$k]);
 		   // imagepng($image);	
    
 		}
@@ -86,12 +94,9 @@ class photoModel{
 
 //  照片批量上传操作
 	public function photoBatchUpload(){
-
+	
 		$this->albumID  = $_POST['albumID'];
-
-		$this->photoDir = $this -> queryFolderPath(); // 返回相册的文件夹路径
-
-		echo "<pre>";
+		$this -> queryFolderPath(); // 从数据库取出相册文件夹路径 保存在 $this->photoDir
 
 		// 如果等于0,代表上传文件错误,上传文件过大 8M
 		if( count($_FILES) == 0 ){ exit('上传文件大于2M,请检查'); }
@@ -105,8 +110,6 @@ class photoModel{
 
 		$allowType = array( 'image/jpg' , 'image/jpeg' , 'image/png' , 'image/gif' );
 
-		$photoDir = $this->photoDir; // 存放上传文件的目录
-
 		$this->fileName  = $fileName; // 把文件信息放进类属性里
 		$this->fileType  = $fileType;
 		$this->fileTmp   = $fileTmp;
@@ -114,10 +117,6 @@ class photoModel{
 		$this->fileSize  = $fileSize;
 		$this->allowType = $allowType;
 	
-		if( !file_exists($photoDir) ){ // 如果检测到 $photoDir 目录不存在,那就创建一个
-			mkdir( $photoDir , 0777 , true );
-			chmod( $photoDir , 0777 );
-		}
 		
 		$count = count($_FILES['files']['name']);
 
@@ -158,20 +157,18 @@ class photoModel{
 
 		// 3
 			// 判断是否为真实的图片类型 (以防用户直接重命名文件成jpg的)
-			if( @getimagesize($this->fileTmp[$i]) ){
-				echo "1";
-			}else{
+			if( @!getimagesize($this->fileTmp[$i]) ){
 				exit($this->fileName[$i].'不是真实的图片类型,请换张图片');
 			}
 			
 
 		// 4
-			$photoMd5    = $albumID .'_'. md5(uniqid()); // 这里的'id'替换为数据库对应相册的id
+			$photoMd5    = $albumID .'_'. md5(uniqid(mt_rand(1,100))); // 这里的'id'替换为数据库对应相册的id
 			$photoSuffix = '.'.pathinfo( $this->fileName[$i] , PATHINFO_EXTENSION ); //取出文件后缀,大概输出:.jpg
-			
+	
 			// 通过了上面的上传方式的检测
-			// 执行移动文件 move_uploaded_file() "只能移动通过POST方式上传的文件(其他方式上传的不能移动)"
-
+			// 执行移动文件 move_uploaded_file() "只能移动通过POST方式上传的文件(其他方式上传的不能移动)
+			
 			if( move_uploaded_file( $this->fileTmp[$i] , $this->photoDir . $photoMd5 . $photoSuffix )){
 				echo $this->fileName[$i]."上传成功<br/>";
 			}else{
@@ -225,7 +222,7 @@ class photoModel{
 	public function queryFolderPath(){
 		$sql = "SELECT folderPath FROM album_cover WHERE id=$this->albumID";
 		$res = DB::findOne($sql);
-		return $res['folderPath'];
+		$this->photoDir = $res['folderPath'];
 
 	}
 

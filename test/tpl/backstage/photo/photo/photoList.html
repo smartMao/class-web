@@ -3,15 +3,16 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<title>Document</title>
+
+<link rel="stylesheet" type="text/css" href="tpl/backstage/photo/style/photo-list.css">
 </head>
 <body>
 	<a href="admin.php?controller=back&method=photoAddShow&id={$id}">添加照片</a>
 	
-	<ul>
-		<li><img src="{$allFilesArr.0}" width="200" height="150"></li>
-		<li></li>
-		<li></li>
-		<li></li>
+	<ul class="photo-list">
+		{foreach from=$allFilesArr item=item key=key}
+			<li><img src="{$allFilesArr.$key}" width="260" ></li>
+		{/foreach}
 	</ul>
 </body>
 </html>

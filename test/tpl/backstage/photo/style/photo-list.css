@@ -1,0 +1,9 @@
+.photo-list li{
+	border:2px solid #DBDBDB;
+	float: left;
+	list-style: none;
+	padding:10px;
+	margin-right: 20px;
+
+}
+

@@ -337,6 +337,7 @@ class backController{
 		VIEW::display('tpl/backstage/photo/photo/photoAdd.html');
 	} 
 
+
 //  照片添加操作
 	public function photoBatchUpload(){
 		$album['album'] = $_POST['albumID'];
