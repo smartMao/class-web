@@ -2,6 +2,7 @@
 
 class photoModel{
 
+	private $_tableName3 = 'album_cover';
 	private $fileInfo;
 	private $fileName;
 	private $fileType;
@@ -14,10 +15,79 @@ class photoModel{
 	private $albumID;
 
 
+//  展示相册里面的所有照片
+	public function photoList(){
+
+		$this->albumID = $_GET['id'];
+
+		$sql = "SELECT folderPath FROM $this->_tableName3 WHERE id=$this->albumID";
+		$res = DB::findOne($sql);
+		$folderPath = $res['folderPath'];
+		
+		$folderArr = scandir($folderPath); //   列出指定路径中的文件和目录 Array
+
+		foreach($folderArr as $k => $v){
+			if( $v != '.' && $v != '..' ){ // 剔除 当前目录 . 与 上级目录 ..
+				$allFilesArr[] = $folderPath.$folderArr[$k];
+			}
+		}
+
+		
+		$this->imgLessen( $allFilesArr );  // 图片等比例缩小
+	}
+
+
+/*
+	拆分于: 本类中 photoList()
+	作用:   图片等比例缩小
+	参数:   图片路径数组
+*/
+	public function imgLessen( $allFilesArr ){
+		
+		foreach( $allFilesArr as $k => $v ){
+
+			$imgInfo = getimagesize($allFilesArr[$k]);
+
+			$w=$imgInfo['0'];
+		    $h=$imgInfo['1'];
+		    $imgTypeNum = $imgInfo[2];
+		    $imgType = image_type_to_extension($imgTypeNum , false); // 返回图片后缀(没有 "."
+		    var_dump($imgType); 
+		   
+		    //指定缩放出来的最大的宽度（也有可能是高度）
+		    $max=300;
+		    
+		    //根据最大值为300，算出另一个边的长度，得到缩放后的图片宽度和高度
+		    if($w > $h){
+		        $w=$max;
+		        $h=$h*($max/$imgInfo['0']);
+		    }else{
+		        $h=$max;
+		        $w=$w*($max/$imgInfo['1']);
+		    }
+		    
+		    
+		    //声明一个$w宽，$h高的真彩图片资源
+		    $image=imagecreatetruecolor($w, $h);
+		    				
+		    
+		    //关键函数，参数（目标资源，源，目标资源的开始坐标x,y, 源资源的开始坐标x,y,目标资源的宽高w,h,源资源的宽高w,h）
+		    imagecopyresampled($image, $allFilesArr[$k] , 0, 0, 0, 0, $w, $h, $imgInfo['0'], $imgInfo['1']);
+		    
+		    //告诉浏览器以图片形式解析
+		   // header('content-type:image/{$imgType[$k]}');
+		    $outputImg = "image{$imgType[$k]}";
+		    var_dump($outputImg);
+		   // imagepng($image);	
+   
+		}
+	}
+
+
 //  照片批量上传操作
 	public function photoBatchUpload(){
 
-		$this->albumID   = $_POST['albumID'];
+		$this->albumID  = $_POST['albumID'];
 
 		$this->photoDir = $this -> queryFolderPath(); // 返回相册的文件夹路径
 
@@ -148,13 +218,19 @@ class photoModel{
 	}
 	
 
-//  SELECT出当前相册存放照片的文件夹
+/*
+	拆分于: 本类中 photoBatchUpload()
+	作用: SELECT出当前相册存放照片的文件夹
+*/
 	public function queryFolderPath(){
 		$sql = "SELECT folderPath FROM album_cover WHERE id=$this->albumID";
 		$res = DB::findOne($sql);
 		return $res['folderPath'];
 
 	}
+
+
+//  
 
 
 

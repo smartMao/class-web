@@ -303,18 +303,29 @@ class backController{
 	public function albumDel(){
 		$delRes = M('album','backPhoto') -> albumDel();
 
-		if($delRes){
-			$this->showmessage('删除成功','admin.php?controller=back&method=albumList');
-		}else{
-			$this->showmessage('删除相册失败,请检查本相册文件夹里是否还有文件夹','admin.php?controller=back&method=albumList');
+		switch( $delRes ){
+			case '1':
+				$this->showmessage('删除成功','admin.php?controller=back&method=albumList');
+				break;
+			case '2':
+				$this->showmessage('相册封面图片删除失败','admin.php?controller=back&method=albumList');
+				break;
+			case '3':
+				$this->showmessage('相册文件夹删除失败','admin.php?controller=back&method=albumList');
+				break;
 		}
 	}
 
 
 //  照片列表显示
 	public function photoList(){
+
+		$res = M( 'photo' , 'backPhoto' )->photoList();
+		$res['allFilesArr'] = $res;
+
 		$id['id'] = $_GET['id'];
 		VIEW::assign($id);
+		VIEW::assign($res);
 		VIEW::display('tpl/backstage/photo/photo/photoList.html');
 	}
 
@@ -328,7 +339,10 @@ class backController{
 
 //  照片添加操作
 	public function photoBatchUpload(){
+		$album['album'] = $_POST['albumID'];
+		VIEW::assign($album);
 		VIEW::display('tpl/backstage/photo/photo/photoUploadRes.html');
+		
 		$res = M('photo','backPhoto') -> photoBatchUpload();
 	
 	}

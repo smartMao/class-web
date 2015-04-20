@@ -5,10 +5,11 @@
 class albumModel{
 
 	public $_tableName3 = 'album_cover';
-	public $albumPath = 'testImg/';
+	public $albumPath = 'albumCover/';
 	public $albumName = ''; // 保存相册封面的path
 	private $albumFolderName = 'albumFolderTest';
 	private $albumFolderPath = '';
+	private $albumID = '';
 
 
 //  展示相册列表页
@@ -267,7 +268,6 @@ class albumModel{
 		chmod( $folderName , 0777 );
 
 		return $newFolder;  // 把文件夹创建的结果返回出去, t / f
-
 	}
 
 
@@ -275,8 +275,8 @@ class albumModel{
 
 //  展示相册编辑页
 	public function albumEditShow(){
-		$albumID = $_GET['id'];
-		$sql = "SELECT id,title,power,description,`path` FROM $this->_tableName3 WHERE id=$albumID";
+		$this->albumID = $_GET['id'];
+		$sql = "SELECT id,title,power,description,`path` FROM $this->_tableName3 WHERE id=$this->albumID";
 		$res = DB::findOne($sql);
 		return $res;
 	}
@@ -284,23 +284,23 @@ class albumModel{
 //  相册编辑页操作 
 	public function albumEditOP(){
 
-
+		$this->albumID = $_GET['id'];
 
 		//  如果相册名为空
 		if(empty($_POST['albumName'])){ return 2; }
 	
-		$albumID = 'id='.$_GET['id'];
+		$albumID = 'id='.$this->albumID;
 
 		$fileUploadError = $_FILES['myFile']['error'];
 
 		// 根据文件上传的错误号 判断更新操作
 
 		if( $fileUploadError == 4 ){
-			return $this -> updateAlbumData( $albumID ); // 返回 / 1 / 5
+			return $this -> updateAlbumData(); // 返回 / 1 / 5
 		}
 
 		if( $fileUploadError == 0 ){
-			return $this -> updateAlbumDataAndPhoto( $albumID ); // 返回 / 1 / 3 / 4 / 5
+			return $this -> updateAlbumDataAndPhoto(); // 返回 / 1 / 3 / 4 / 5
 		}
 
 	}
@@ -310,9 +310,9 @@ class albumModel{
 	调用处: 拆分于本类中 albumEditOP
 	作用: 既更新相册封面 , 又更新相册数据
 */
-	public function updateAlbumDataAndPhoto($albumID){
+	public function updateAlbumDataAndPhoto(){
 		
-			$sql = "SELECT `path` FROM $this->_tableName3 WHERE $albumID";
+			$sql = "SELECT `path` FROM $this->_tableName3 WHERE $this->albumID";
 			$res = DB::findOne($sql);
 
 			$OPImgRes = $this->OPImgSize( $_FILES['myFile']['tmp_name']); // 返回 t / f
@@ -323,7 +323,8 @@ class albumModel{
 
 					$updateArr['path'] = $this->albumPath.$this->albumName;
 					// 更新数据库的相册封面path
-					$res = DB::update($this->_tableName3 , $updateArr , $albumID);
+					$res = DB::update($this->_tableName3 , $updateArr , $this->albumID);
+					//var_dump($res);
 
 					if($res){
 						return 1; // 相册封面 更新成功
@@ -347,13 +348,13 @@ class albumModel{
 	调用处:拆分于本类中 albumEditOP 
 	作用: 不更新相册封面 , 只更新相册数据
 */
-	public function updateAlbumData($albumID){
+	public function updateAlbumData(){
 
 			$updateArr['title']       = $_POST['albumName'];
 			$updateArr['power']       = $_POST['albumPower'];
 			$updateArr['description'] = $_POST['description'];
 
-			$res = DB::update($this->_tableName3 , $updateArr , $albumID);  // t / f
+			$res = DB::update($this->_tableName3 , $updateArr , $this->albumID);  // t / f
 			
 			if($res){
 				return 1;
@@ -367,26 +368,38 @@ class albumModel{
 //  相册删除操作 
 	public function albumDel(){
 
-		$albumID = $_GET['id'];
-
-		if( $this->albumFolderDel($_GET['id']) ){
-			return DB::del($this->_tableName3 , $albumID);
+		$this->albumID = $_GET['id'];
+		
+		if( $this->albumFolderDel() ){ // 删除相册文件夹
+			
+			if( $this->albumCoverDel()){   // 删除相册封面图片
+				DB::del( $this->_tableName3 , $this->albumID ); // 向数据库删除该条数据
+				return 1;
+			}else{
+				return 2; // 相册封面图片删除失败
+			}
+			
 		}else{
-			return false;
+			return 3; // 相册文件夹删除失败
 		}
 
 		
 	
 	}
 
-	public function albumFolderDel($albumID){
 
-		$sql = "SELECT folderPath FROM $this->_tableName3 WHERE id=$albumID";
+/*
+	调用于: 本类中 albumDel()
+	作用: 根据相册id查出相册文件夹,删除
+*/
 
-		$dir = './albumFolderTest/'.$albumID.'_2015-04-16/';
-		//echo $dir;
-		$openDir = opendir($dir);
-		//var_dump($openDir);
+	public function albumFolderDel(){
+
+		$sql = "SELECT folderPath FROM $this->_tableName3 WHERE id=$this->albumID";
+		$dir = DB::findOne($sql); // 取出当前要删除的相册文件夹路径
+		$dir = $dir['folderPath'];
+
+		$openDir = opendir($dir);	
 
 		while($file = readdir($openDir)){ // 循环删除里面的文件. (不能删除文件夹)
 			if($file != '.' && $file != '..'){
@@ -402,8 +415,27 @@ class albumModel{
 			return true;
 		}else{
 			return false; // 可能是这个相册文件夹里面 有文件夹
-		}	
+		}
 	}
+
+
+
+/*
+	调用于: 本类中 albumDel()
+	作用: 根据相册id查出相册封面图片,删除
+*/
+		public function albumCoverDel(){
+			$sql = "SELECT `path` FROM $this->_tableName3 WHERE id=$this->albumID";
+			$res = DB::findOne( $sql );
+			$path = $res['path'];
+			if( unlink( './' . $path )){
+				return true;
+			}else{
+				return false;
+			}
+			
+
+		}
 
 
 }
