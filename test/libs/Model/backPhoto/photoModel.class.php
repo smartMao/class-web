@@ -3,6 +3,7 @@
 class photoModel{
 
 	private $_tableName3 = 'album_cover';
+	private $_tableName4 = 'photo_content';
 	private $fileInfo;
 	private $fileName;
 	private $fileType;
@@ -17,13 +18,17 @@ class photoModel{
 
 //  展示相册里面的所有照片
 	public function photoList(){
-
+		
 		$this->albumID = $_GET['id'];
 
-		$sql = "SELECT folderPath FROM $this->_tableName3 WHERE id=$this->albumID";
-		$res = DB::findOne($sql);
-		$folderPath = $res['folderPath'];
+		$albumSQL = "SELECT folderPath FROM $this->_tableName3 WHERE id=$this->albumID"; // 查找出这个相册的文件夹
+		$photoSQL = "SELECT id FROM $this->_tableName4 WHERE cid=$this->albumID";  // 查找出这个相册的照片的所有id
 		
+		$albumRes = DB::findOne($albumSQL);
+		$photoRes= DB::findAll($photoSQL);
+
+		$folderPath = $albumRes['folderPath'];
+
 		$folderArr = scandir($folderPath); //   列出指定路径中的文件和目录 Array
 
 		foreach($folderArr as $k => $v){
@@ -32,8 +37,12 @@ class photoModel{
 			}
 		}
 
-		return $allFilesArr;
-		
+		@$pathArrAndphotoIdArr['photoPathArr'] = $allFilesArr;
+		$pathArrAndphotoIdArr['photoIdArr']   = $photoRes;
+
+		return $pathArrAndphotoIdArr;
+
+		// WHERE cid = albumID and id=
 		//$this->imgLessen( $allFilesArr );  // 图片等比例缩小
 	}
 
@@ -125,8 +134,12 @@ class photoModel{
 	 	while( $i < $count ){
 			
 			if( $fileErr[$i] == 0 ){
+				
 				// 四项上传判断,最后移动文件
 				$this->imgUploadJudge( $i , $this->albumID );
+					
+
+
 			}else{
 				// 根据文件上传的错误号, switch匹配
 				$this->fileErrorSwitch($i);	
@@ -140,6 +153,8 @@ class photoModel{
 /*
 	拆分于: 本类中的 photoBatchUpload()
 	作用: 四项上传判断 , 最后移动文件
+	参数: $i: 当前的循环次数 ,
+		  $albumID: 当前相册的ID
 */
 	public function imgUploadJudge( $i , $albumID ){
 
@@ -170,8 +185,15 @@ class photoModel{
 			// 执行移动文件 move_uploaded_file() "只能移动通过POST方式上传的文件(其他方式上传的不能移动)
 			
 			if( move_uploaded_file( $this->fileTmp[$i] , $this->photoDir . $photoMd5 . $photoSuffix )){
-				echo $this->fileName[$i]."上传成功<br/>";
+				
+				$path = $this->photoDir . $photoMd5 . $photoSuffix;
+				
+				if( $this->photoInsertDB( $i , $this->fileSize , $path) ){ // 照片数据插入数据库
+					echo $this->fileName[$i]."上传成功<br/>";
+				}
+
 			}else{
+
 				echo $this->fileName[$i]."上传失败<br/>";
 			}
 	}
@@ -217,6 +239,58 @@ class photoModel{
 
 /*
 	拆分于: 本类中 photoBatchUpload()
+	作用: 将每张照片的数据库插入数据库
+*/
+	public function photoInsertDB($i , $fileSize , $path){
+
+		date_default_timezone_set('PRC');
+		$date = date('Y-m-d');
+
+		$photoArr['cid']  = $this->albumID;
+		$photoArr['size'] = $this->transformBytes( $fileSize[$i] ); // 字节数转换
+		$photoArr['path'] = $path;
+		$photoArr['date'] = $date;
+
+		$res = DB::insert( $this->_tableName4 , $photoArr );
+		if($res){
+			return true;
+		}else{
+			return false;
+		}
+
+		//var_dump($photoArr);
+		//var_dump($_POST);
+		
+
+
+		
+	}
+
+
+/*
+	本类中 photoInsertDB()
+	作用: 字节单位转换 例如: fileSize: int(2048) 转换为 2KB
+	参数: $size: int类型的字节;
+		  $digits: 默认不填,指返回的数只包含2位小数;
+*/
+	public function transformBytes($size,$digits=2){ 
+
+		$unit = array('','K','M','G','T','P');
+		$base = 1024;
+		$i    = floor(log($size,$base));
+		$n    = count($unit);
+		
+		if($i >= $n){
+			$i=$n-1;
+		}
+	    
+	    return round( $size/pow($base,$i) , $digits).' '.$unit[$i] . 'B';
+	}
+		
+
+
+/*
+	拆分于: 本类中 photoBatchUpload()
 	作用: SELECT出当前相册存放照片的文件夹
 */
 	public function queryFolderPath(){
@@ -227,7 +301,31 @@ class photoModel{
 	}
 
 
-//  
+//  照片批量删除操作  参数: id 传进要删除照片的id
+	public function photoBatchDel( $photoID ){
+		echo "<pre>";
+		//var_dump($photoID);
+
+
+		
+		$count = count( $photoID );
+		for($i=0; $i<$count; $i++){
+			
+			$sql = "SELECT `path` FROM $this->_tableName4 WHERE id=$photoID[$i]";
+			$res = DB::findOne($sql);
+
+			//$res2 = unlink( $res['path'] );
+			//var_dump($photoID[$i]);
+			//var_dump($res['path']);
+			
+			if( unlink( $res['path'] ) ){
+				DB::del( $this->_tableName4 , $photoID[$i] );
+			}
+		}
+
+		return true;
+
+	}
 
 
 

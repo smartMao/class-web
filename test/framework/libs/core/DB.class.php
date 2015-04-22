@@ -44,6 +44,10 @@ class DB{ // 类名在PHP里面是一个全局变量 (全局变量在任何地�
 	public static function del($table,$where){
 		return self::$db -> del($table,$where);
 	}
+
+	public static function del2($table,$where){
+		return self::$db -> del2($table,$where);
+	}
 }
 
 

@@ -10,9 +10,20 @@
 	<a href="admin.php?controller=back&method=photoAddShow&id={$id}">添加照片</a>
 	
 	<ul class="photo-list">
-		{foreach from=$allFilesArr item=item key=key}
-			<li><img src="{$allFilesArr.$key}" width="260" ></li>
+	<button class="photoBatchBtn" id="photoBatchBtn">批量删除</button>
+	<button class="photoBatchDelCancel" id="photoBatchDelCancel">取消</button>
+	<form method="post" id="checkForm" action="admin.php?controller=back&method=photoBatchDel&id={$id}">
+		{foreach from=$data.photoPathArr item=item key=key}
+			<li>
+				<img src="{$data.photoPathArr.$key}" width="260" height="auto" >
+						
+				<input type="checkbox" name="photoIdDel[]" class="checkbox" value="{$data.photoIdArr.$key.id}">
+			</li>
 		{/foreach}
+		<input type="submit"  id="submit" value="确认" />
+	</form>
 	</ul>
 </body>
 </html>
+
+<script type="text/javascript" src="tpl/backstage/js/photoBatchDel.js"></script>

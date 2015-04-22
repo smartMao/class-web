@@ -118,11 +118,16 @@ class mysql{
 
 
 	function del($table,$where){
-
 		$sql = 'DELETE FROM '.$table.' WHERE id='.$where;
 		return $this -> query($sql);
-
 	}
+
+	// 两个 del 方法是 WHERE id | WHERE cid
+	function del2($table,$where){
+		$sql = 'DELETE FROM '.$table.' WHERE cid='.$where;
+		return $this -> query($sql);
+	}
+
 
 
 }

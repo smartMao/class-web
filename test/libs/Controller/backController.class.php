@@ -321,11 +321,12 @@ class backController{
 	public function photoList(){
 
 		$res = M( 'photo' , 'backPhoto' )->photoList();
-		$res['allFilesArr'] = $res;
 
 		$id['id'] = $_GET['id'];
+		$data['data'] =  $res;
+
 		VIEW::assign($id);
-		VIEW::assign($res);
+		VIEW::assign($data);
 		VIEW::display('tpl/backstage/photo/photo/photoList.html');
 	}
 
@@ -346,6 +347,17 @@ class backController{
 		
 		$res = M('photo','backPhoto') -> photoBatchUpload();
 	
+	}
+
+//  照片批量删除
+	public function photoBatchDel(){
+		//echo "<pre>";
+		$albumID = $_GET['id'];
+		$res = M('photo' , 'backPhoto')->photoBatchDel( $_POST['photoIdDel'] );
+		if( $res ){
+			$this->showmessage('照片删除成功',"admin.php?controller=back&method=photoList&id=$albumID");
+		}
+		//var_dump($res);
 	}
 
 

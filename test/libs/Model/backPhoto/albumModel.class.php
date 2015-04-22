@@ -4,12 +4,13 @@
 
 class albumModel{
 
-	public $_tableName3 = 'album_cover';
-	public $albumPath = 'albumCover/';
-	public $albumName = ''; // 保存相册封面的path
+	private $_tableName3 = 'album_cover';
+	private $_tableName4 = 'photo_content';
+	private $albumPath   = 'albumCover/';
+	private $albumName   = ''; // 保存相册封面的path
 	private $albumFolderName = 'albumFolderTest';
 	private $albumFolderPath = '';
-	private $albumID = '';
+	private $albumID     = '';
 
 
 //  展示相册列表页
@@ -373,7 +374,10 @@ class albumModel{
 		if( $this->albumFolderDel() ){ // 删除相册文件夹
 			
 			if( $this->albumCoverDel()){   // 删除相册封面图片
-				DB::del( $this->_tableName3 , $this->albumID ); // 向数据库删除该条数据
+				
+				DB::del( $this->_tableName3 , $this->albumID ); // 向相册数据库删除该条数据 WHERE id = 
+				DB::del2($this->_tableName4 , $this->albumID ); // 向照片数据库删除多条数据 WHERE cid = 
+
 				return 1;
 			}else{
 				return 2; // 相册封面图片删除失败
