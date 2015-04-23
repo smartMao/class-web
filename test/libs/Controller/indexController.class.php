@@ -10,17 +10,22 @@ class indexController{
 		if($this->checkPassword()){
 			
 			$res = $this->checkPassword();
-			$userName['username'] = $res['userName'];
-			
-			VIEW::assign($userName);
-			VIEW::display('tpl/class web/index.html');
+			$userInfo['username'] = $res['userName'];
+			echo "<pre>";
+			var_dump($res);
+			/*$userInfo['photoPath'] = $res['photo'];
+			VIEW::assign($userInfo);
+			VIEW::display('tpl/class web/index.html');*/
 
 		}else if(isset($_SESSION['auth']['userName'])){
 			// 如果SESSION有值
-		
-			$userName['username'] = $_SESSION['auth']['userName'];
+
+			$res = M('admin')->findOne_by_username( $_SESSION['auth']['userName'] );
+
+			$userInfo['username'] = $res['userName'];
+			$userInfo['photoPath'] = $res['photo'];
 			
-			VIEW::assign($userName);
+			VIEW::assign($userInfo);
 			VIEW::display('tpl/class web/index.html');
 		
 		}else{

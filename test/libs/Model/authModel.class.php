@@ -2,8 +2,8 @@
 
 class authModel{
 	
-	private $auth = 'asdas';  // 当前管理员信息.
-	public $maoInfo = 'aa';
+	private $auth = '';  // 当前管理员信息.
+	private $defaultPhotoPath = 'pictureGroup/userPhotoFolder/defaultPhoto.jpg';
 
 	public function __construct(){
 	
@@ -93,7 +93,7 @@ class authModel{
 
 
 //  用户注册方法
-	public function register($arr){
+	public function register(){
 
 		$adminobj = M('admin');
 		$tableName = $adminobj->_table; // 取出表名
@@ -101,18 +101,19 @@ class authModel{
 		date_default_timezone_set('PRC');
 		$regTime = date('Y-m-d');
 
-		$userRepeat = $this -> checkUserNameRepeat($tableName,$arr);  // 返回已经存在的用户名或false
+		$userRepeat = $this -> checkUserNameRepeat($tableName,$_POST);  // 返回已经存在的用户名或false
 	
 		if(!$userRepeat){
 			
 			// 如果不存在,证明可以注册
 			
-			$fieldArr = array('userName','password','trueName','registerTime'); // 字段
-			$regInfoArr = array($arr['r_username'],$arr['r_password'],$arr['r_truename'],$regTime);  
+			$registerInfo['userName']     = $_POST['r_username'];
+			$registerInfo['password']     = $_POST['r_password'];
+			$registerInfo['trueName']     = $_POST['r_truename'];
+			$registerInfo['photo']        = $this->defaultPhotoPath;
+			$registerInfo['registerTime'] = $regTime;
 
-			$sqlArr = array_combine($fieldArr,$regInfoArr);  // 字段为键,注册信息为值组成新数组
-
-			$res = DB::insert($tableName,$sqlArr);
+			$res = DB::insert($tableName , $registerInfo);
 
 			if($res){
 				return 1;

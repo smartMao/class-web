@@ -27,7 +27,7 @@ class adminController{
 	public function register(){
 
 		$authobj = M('auth');
-		$res = $authobj -> register($_POST);
+		$res = $authobj -> register();
 		
 		if($res == 0){
 			$this -> showmessage('注册失败！','admin.php?controller=index&method=index');
@@ -136,10 +136,11 @@ class adminController{
 		$userInfo = M('auth') -> UserInfolist();
 		$userInfo['username'] = $userInfo['userName'];// 由于smarty用户名需要{$username}
 		$defualtArr = array(
-			'phoneDef'=>'暂无',
-			'sexDef'=>'保密',
-			'addressDef'=>'暂无',
-			'heightDef'=>'暂无',
+			'trueNameDef'=>'暂无',
+			'phoneDef'   =>'暂无',
+			'sexDef'     =>'保密',
+			'addressDef' =>'暂无',
+			'heightDef'  =>'暂无',
 			'introductionDef'=>'暂无',
 			'registerTimeDef'=>'暂无');
 

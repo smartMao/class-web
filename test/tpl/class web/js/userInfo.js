@@ -3,7 +3,9 @@
 	作用: 用户修改其个人资料时的文本框判断(例如:真实姓名不能小于2个字)
 
 */
+
 function checkUserInfoChange(){
+
 
 	var trueNameVal     = document.getElementById('trueName').value;
 	var phoneVal        = document.getElementById('phone').value;

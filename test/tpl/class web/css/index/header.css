@@ -80,7 +80,7 @@
 
 .user-photo-frame{
 	width:110px;height: 50px;
-	background: #FFE4B5;
+	background: #fff;
 }
 
 .user-photo{
@@ -90,6 +90,8 @@
 	position: absolute;
 	left:30px;
 	margin:0 auto;
+	border:1px solid #FFF0F5;
+	overflow: hidden;
 }
 .user-options{z-index: 3; position:absolute;}
 .user-options ul li{

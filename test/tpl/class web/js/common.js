@@ -1,12 +1,15 @@
 function changeUserInfoBtn(){
 	// if判断避免重复点击
-	if(window.location.href == 'http://localhost/test/admin.php?controller=admin&method=UserInfoList'){
+	
+	if(window.location.href == 'http://localhost/class-web/test/admin.php?controller=admin&method=UserInfoList'){
 		window.location.href='admin.php?controller=admin&method=userInfoChange';
-	}else if(window.location.href == 'http://localhost/test/admin.php?controller=admin&method=UserInfoChange'){
+	}else if(window.location.href == 'http://localhost/class-web/test/admin.php?controller=admin&method=UserInfoChange'){
 		return;
 	}
 
 }
+
+
 
 
 //  返回上一层

@@ -6,9 +6,9 @@ class albumModel{
 
 	private $_tableName3 = 'album_cover';
 	private $_tableName4 = 'photo_content';
-	private $albumPath   = 'albumCover/';
+	private $albumPath   = 'pictureGroup/albumCover/'; // 保存相册封面图的文件夹路径
 	private $albumName   = ''; // 保存相册封面的path
-	private $albumFolderName = 'albumFolderTest';
+	private $albumFolderName = 'pictureGroup/albumFolder'; // 相册文件夹路径
 	private $albumFolderPath = '';
 	private $albumID     = '';
 
