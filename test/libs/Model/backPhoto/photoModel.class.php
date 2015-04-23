@@ -21,27 +21,11 @@ class photoModel{
 		
 		$this->albumID = $_GET['id'];
 
-		$albumSQL = "SELECT folderPath FROM $this->_tableName3 WHERE id=$this->albumID"; // 查找出这个相册的文件夹
-		$photoSQL = "SELECT id FROM $this->_tableName4 WHERE cid=$this->albumID";  // 查找出这个相册的照片的所有id
+		$sql = "SELECT id,`path` FROM $this->_tableName4 WHERE cid=$this->albumID"; // 找出该相册下所有的id和Path
+		$idAndPath = DB::findAll($sql);
 		
-		$albumRes = DB::findOne($albumSQL);
-		$photoRes= DB::findAll($photoSQL);
-
-		$folderPath = $albumRes['folderPath'];
-
-		$folderArr = scandir($folderPath); //   列出指定路径中的文件和目录 Array
-
-		foreach($folderArr as $k => $v){
-			if( $v != '.' && $v != '..' ){ // 剔除 当前目录 . 与 上级目录 ..
-				$allFilesArr[] = $folderPath.$folderArr[$k];
-			}
-		}
-
-		@$pathArrAndphotoIdArr['photoPathArr'] = $allFilesArr;
-		$pathArrAndphotoIdArr['photoIdArr']   = $photoRes;
-
-		return $pathArrAndphotoIdArr;
-
+		return $idAndPath;
+		
 		// WHERE cid = albumID and id=
 		//$this->imgLessen( $allFilesArr );  // 图片等比例缩小
 	}
@@ -64,7 +48,6 @@ class photoModel{
 		    $imgTypeNum = $imgInfo[2];
 		    $imgType = image_type_to_extension($imgTypeNum , false); // 返回图片后缀(没有 "."
 	
-		   
 		    //指定缩放出来的最大的宽度（也有可能是高度）
 		    $max=300;
 		    
@@ -126,7 +109,6 @@ class photoModel{
 		$this->fileSize  = $fileSize;
 		$this->allowType = $allowType;
 	
-		
 		$count = count($_FILES['files']['name']);
 
 		$i = 0;
@@ -135,11 +117,9 @@ class photoModel{
 			
 			if( $fileErr[$i] == 0 ){
 				
-				// 四项上传判断,最后移动文件
+				// 四项上传判断,最后移动文件 和 插入数据库
 				$this->imgUploadJudge( $i , $this->albumID );
 					
-
-
 			}else{
 				// 根据文件上传的错误号, switch匹配
 				$this->fileErrorSwitch($i);	
@@ -186,10 +166,12 @@ class photoModel{
 			
 			if( move_uploaded_file( $this->fileTmp[$i] , $this->photoDir . $photoMd5 . $photoSuffix )){
 				
-				$path = $this->photoDir . $photoMd5 . $photoSuffix;
+				echo $this->fileName[$i]."上传成功<br/>";
 				
+				$path = $this->photoDir . $photoMd5 . $photoSuffix;
+			
 				if( $this->photoInsertDB( $i , $this->fileSize , $path) ){ // 照片数据插入数据库
-					echo $this->fileName[$i]."上传成功<br/>";
+					
 				}
 
 			}else{
@@ -251,18 +233,17 @@ class photoModel{
 		$photoArr['path'] = $path;
 		$photoArr['date'] = $date;
 
-		$res = DB::insert( $this->_tableName4 , $photoArr );
-		if($res){
-			return true;
-		}else{
-			return false;
-		}
+		//DB::insert( $this->_tableName4 , $photoArr );
+		/* 
+			这里不能用自定义的SQL函数,自定义的SQL函数会有返回(return),
+			在运行第一次结束后就会return,所以要是用 DB::insert(); 
+			那在这里只能插入一次就return了,就做不到批量添加
+		*/
 
-		//var_dump($photoArr);
-		//var_dump($_POST);
-		
-
-
+		$sql = "INSERT INTO $this->_tableName4 (`cid`,`size`,`path`,`date`) VALUES 
+		( {$photoArr['cid']},'{$photoArr['size']}','{$photoArr['path']}','{$photoArr['date']}' )";
+					   
+		mysql_query($sql); // return t / f
 		
 	}
 
@@ -274,7 +255,7 @@ class photoModel{
 		  $digits: 默认不填,指返回的数只包含2位小数;
 */
 	public function transformBytes($size,$digits=2){ 
-
+ 
 		$unit = array('','K','M','G','T','P');
 		$base = 1024;
 		$i    = floor(log($size,$base));
@@ -303,26 +284,18 @@ class photoModel{
 
 //  照片批量删除操作  参数: id 传进要删除照片的id
 	public function photoBatchDel( $photoID ){
-		echo "<pre>";
-		//var_dump($photoID);
 
 
-		
 		$count = count( $photoID );
 		for($i=0; $i<$count; $i++){
 			
 			$sql = "SELECT `path` FROM $this->_tableName4 WHERE id=$photoID[$i]";
 			$res = DB::findOne($sql);
-
-			//$res2 = unlink( $res['path'] );
-			//var_dump($photoID[$i]);
-			//var_dump($res['path']);
-			
+	
 			if( unlink( $res['path'] ) ){
 				DB::del( $this->_tableName4 , $photoID[$i] );
 			}
 		}
-
 		return true;
 
 	}

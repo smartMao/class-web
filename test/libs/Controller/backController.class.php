@@ -325,6 +325,7 @@ class backController{
 		$id['id'] = $_GET['id'];
 		$data['data'] =  $res;
 
+		
 		VIEW::assign($id);
 		VIEW::assign($data);
 		VIEW::display('tpl/backstage/photo/photo/photoList.html');

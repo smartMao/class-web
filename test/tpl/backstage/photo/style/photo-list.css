@@ -16,20 +16,31 @@ body{position: relative;}
 .photoBatchBtn{
 	display: block;
 	position: absolute;
-	top: 5px;left:100px;
+	top: 0px;left:180px;
 }
 
 
 .photoBatchDelCancel{
 	display: none;
 	position: absolute;
-	top: 5px;left:240px;
+	top: 0px;left:410px;
 }
 
 #submit{
 	display: none;
 	position: absolute;
-	top: 5px;left:190px;
+	top: 0px;left:360px;
+}
+
+.photoSelectAll{
+	position: absolute;
+	top: 0;left: 260px;
+	display: none;
+}
+.photoInverseAll{
+	position: absolute;
+	top: 0;left: 310px;
+	display: none;
 }
 
 

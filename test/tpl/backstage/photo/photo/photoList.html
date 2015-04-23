@@ -4,26 +4,36 @@
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<title>Document</title>
 
-<link rel="stylesheet" type="text/css" href="tpl/backstage/photo/style/photo-list.css">
+<link rel="stylesheet" type="text/css" href="tpl/backstage/photo/style/photo-list.css?ver=1">
 </head>
 <body>
+	<button onclick="goBack()" class="goBack">返回相册列表</button>
 	<a href="admin.php?controller=back&method=photoAddShow&id={$id}">添加照片</a>
 	
 	<ul class="photo-list">
 	<button class="photoBatchBtn" id="photoBatchBtn">批量删除</button>
 	<button class="photoBatchDelCancel" id="photoBatchDelCancel">取消</button>
+	<button class="photoSelectAll" id="photoSelectAll">全选</button>
+	<button class="photoInverseAll" id="photoInverseAll">反选</button>
+
 	<form method="post" id="checkForm" action="admin.php?controller=back&method=photoBatchDel&id={$id}">
-		{foreach from=$data.photoPathArr item=item key=key}
-			<li>
-				<img src="{$data.photoPathArr.$key}" width="260" height="auto" >
-						
-				<input type="checkbox" name="photoIdDel[]" class="checkbox" value="{$data.photoIdArr.$key.id}">
-			</li>
-		{/foreach}
+		{if $data eq ''} <!-- 如果当前数据库传出来的数据是空的 -->
+			<span>当前相册暂无照片</span>
+		   
+		{else}
+			{foreach from=$data item=item key=key}
+				<li>
+					<img src="{$data.$key.path}" width="260" height="auto" >
+					<input type="checkbox" name="photoIdDel[]" class="checkbox" value="{$data.$key.id}">
+				</li>
+			{/foreach}
+		{/if}
 		<input type="submit"  id="submit" value="确认" />
+	   
 	</form>
 	</ul>
 </body>
 </html>
 
-<script type="text/javascript" src="tpl/backstage/js/photoBatchDel.js"></script>
+<script type="text/javascript" src="tpl/backstage/js/photoBatchDel.js?ver=3"></script>
+<script type="text/javascript" src="tpl/backstage/js/common.js"></script>
