@@ -9,19 +9,25 @@ class headerController{
 			
 			$res = $this->checkPassword();
 
+			$albumData['albumData'] = M('front')->findAllAlbumData(); // 相册数据
+
 			$userInfo['username'] = $res['userName'];
 			$userInfo['photo']    = $res['photo'];
 			
+			VIEW::assign($albumData);		 
 			VIEW::assign($userInfo);
 			VIEW::display('class web/classPhoto/photoIndex.html');
 
 		}else if(isset($_SESSION['auth']['userName'])){
 
+			$albumData['albumData'] = M('front')->findAllAlbumData(); // 相册数据
 			$res = M('admin')->findOne_by_username( $_SESSION['auth']['userName'] );
-
+			//echo "<pre>";
+		//var_dump($albumData);exit;
 			$userInfo['username'] = $res['userName'];
 			$userInfo['photo'] = $res['photo'];
 
+			VIEW::assign($albumData);
 		 	VIEW::assign($userInfo);
 			VIEW::display('class web/classPhoto/photoIndex.html');
 

@@ -214,8 +214,10 @@ class backController{
 
 // 	创建相册操作
 	public function albumCreateOp(){	
-				
-
+		/*var_dump($_POST);
+		echo "<br/>";
+		var_dump($_FILES);	
+		exit;*/
 		$res = M('album','backPhoto')->albumCreateOp($_POST,$_FILES);
 
 		$jumpUrl = 'admin.php?controller=back&method=showAlbumCreate';

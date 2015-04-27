@@ -167,7 +167,6 @@ class albumModel{
 
 		$albumArr['id']          = '';
 		$albumArr['uid']         = $userInfo['id'];
-		$albumArr['username']    = $userInfo['userName'];
 		$albumArr['title']       = $POST['albumName'];
 		$albumArr['time']        = $time;
 		$albumArr['power']		 = $POST['albumPower'];
@@ -205,7 +204,7 @@ class albumModel{
 
 			$imgCreate = "imagecreatefrom{$imgType}"; // 根据不同的图片类型,创建不同的图像
 
-			// 把图片保存在内容当中
+			$image = $imgCreate($imgSrc);// 把图片保存在内容当中
 
 			//  操作图片
 
@@ -219,9 +218,9 @@ class albumModel{
 
 			//  输出图片
 
-			header("Content-type:".$imgMime);
+			//header("Content-type:".$imgMime);
 
-			//$imgOutput = "image{$imgType}"; // 根据不同的图片类型,使用不同的输出函数
+			$imgOutput = "image{$imgType}"; // 根据不同的图片类型,使用不同的输出函数
 
 			//$imgOutput($imgBox); // (假如图片类型是png) 这里等同于: imagepng($imgBox);
 
@@ -321,7 +320,7 @@ class albumModel{
 
 					$updateArr['path'] = $this->albumPath.$this->albumName;
 					// 更新数据库的相册封面path
-					$res = DB::update($this->_tableName3 , $updateArr , $this->albumID);
+					$res = DB::update($this->_tableName3 , $updateArr , 'id='.$this->albumID);
 					//var_dump($res);
 
 					if($res){
@@ -352,7 +351,7 @@ class albumModel{
 			$updateArr['power']       = $_POST['albumPower'];
 			$updateArr['description'] = $_POST['description'];
 
-			$res = DB::update($this->_tableName3 , $updateArr , $this->albumID);  // t / f
+			$res = DB::update($this->_tableName3 , $updateArr , 'id='.$this->albumID);  // t / f
 			
 			if($res){
 				return 1;

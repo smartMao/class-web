@@ -84,15 +84,20 @@
 			</ul>
 		</div>
 
-		<div class="show-change-info-frame">
-			<div class="change-btn" onclick="changeUserInfoBtn();"></div>
-		</div>
+		
 	</div>
 
 
 <!-- 用户信息修改 -->
 	<div class="user-info-change">
-		<form method="post" action="admin.php?controller=admin&method=userInfoChangeWork">	
+		<form method="post" action="admin.php?controller=admin&method=userInfoChangeWork">
+
+			<div class="show-change-info-frame2">
+				<div class="change-btn" onclick="changeUserInfoBtn();"></div>
+				<input type="submit" value="修改" onclick="checkUserInfoChange();" class="changeBtn"/>
+				<div class="goback" onclick="goBack();">返回</div>
+			</div>
+
 			<ul class="userInfo-change">			
 				<li>
 					<span>真实姓名:</span>
@@ -158,8 +163,8 @@
 				</li>
 				
 				<li>
-					<div class="goback" onclick="goBack();">返回</div>
-					<input type="submit" value="修改" onclick="checkUserInfoChange();" class="change"/>
+					
+					
 
 				</li>
 

@@ -138,7 +138,7 @@
 	background: #fff;
 	width:295px;height: 320px;
 	display: block;
-	margin:8px 0px 45px 3px;
+	margin:8px 11px 25px 8px;
 	float: left;
 	border: 1px solid #cbcbcb; 
 }
@@ -157,22 +157,22 @@
 
 .photo-list ul li .photo-list-more{
 	width:83px;height: 37px;
-	background: #fff;
+	background: #FF7F00;
 	position: absolute;
 	bottom:0;right: 0;
 	line-height: 37px;
 	text-align: center;
-	opacity:0.3;
-	-moz-opacity:0.3;
-	filter:alpha(opacity=30);
+	opacity:0.7;
+	-moz-opacity:0.7;
+	filter:alpha(opacity=70);
 }
 
 .photo-list ul li .photo-list-more:hover{
 	font-weight: bold;
 	cursor: pointer;
-	opacity:0.6;
-	-moz-opacity:0.6;
-	filter:alpha(opacity=60);
+	opacity:0.9;
+	-moz-opacity:0.9;
+	filter:alpha(opacity=90);
 }
 
 .photo-list ul li .photo-list-title{
@@ -192,21 +192,30 @@
 .photo-list-user-format{
 	width:50px;height: 50px;
 	border-radius: 25px;
-	background: #EEDFCC;
+	background: #000;
 	margin: 0 auto;
 	position: absolute;
 	top:15px;left:25px;
-
-
 }
 
+/* 用户头像圆形 */ 
+
+.photo-list-user-format a img{
+	border:1px solid #FFEFD5;
+	width: 50px;height: 50px;
+	border-radius: 25px;
+}
+
+.photo-list-user-format a img:hover{
+	box-shadow: 0px 0px 20px #FFDEAD;
+}
 /*
 	相册发布时间
 */
 .photo-list-time{
 	width:86px;height:12px;
 	position: absolute;
-	bottom:44px;right: 0px;
+	bottom:44px;right: 10px;
 }
 
 .photo-list-time-icon{

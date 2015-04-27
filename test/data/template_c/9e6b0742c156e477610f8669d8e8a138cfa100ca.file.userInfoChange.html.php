@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-04-26 15:24:42
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-04-27 12:09:32
          compiled from "tpl\class web\userInfo\userInfoChange.html" */ ?>
 <?php /*%%SmartyHeaderCode:257795538d46f24c2f1-57140870%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '9e6b0742c156e477610f8669d8e8a138cfa100ca' => 
     array (
       0 => 'tpl\\class web\\userInfo\\userInfoChange.html',
-      1 => 1430054510,
+      1 => 1430129359,
       2 => 'file',
     ),
   ),
@@ -138,15 +138,20 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			</ul>
 		</div>
 
-		<div class="show-change-info-frame">
-			<div class="change-btn" onclick="changeUserInfoBtn();"></div>
-		</div>
+		
 	</div>
 
 
 <!-- 用户信息修改 -->
 	<div class="user-info-change">
-		<form method="post" action="admin.php?controller=admin&method=userInfoChangeWork">	
+		<form method="post" action="admin.php?controller=admin&method=userInfoChangeWork">
+
+			<div class="show-change-info-frame2">
+				<div class="change-btn" onclick="changeUserInfoBtn();"></div>
+				<input type="submit" value="修改" onclick="checkUserInfoChange();" class="changeBtn"/>
+				<div class="goback" onclick="goBack();">返回</div>
+			</div>
+
 			<ul class="userInfo-change">			
 				<li>
 					<span>真实姓名:</span>
@@ -222,8 +227,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 				</li>
 				
 				<li>
-					<div class="goback" onclick="goBack();">返回</div>
-					<input type="submit" value="修改" onclick="checkUserInfoChange();" class="change"/>
+					
+					
 
 				</li>
 

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-04-23 16:41:51
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-04-27 16:24:44
          compiled from "tpl\class web\classPhoto\photoContent.html" */ ?>
 <?php /*%%SmartyHeaderCode:28794553904af8e4a15-70980815%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '6addfe6276cf0aaf9e956686c92f26410bb31c81' => 
     array (
       0 => 'tpl\\class web\\classPhoto\\photoContent.html',
-      1 => 1429714272,
+      1 => 1430144659,
       2 => 'file',
     ),
   ),
@@ -15,9 +15,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
-  'has_nocache_code' => false,
   'version' => 'Smarty-3.1.21-dev',
   'unifunc' => 'content_553904afa387e6_58398938',
+  'variables' => 
+  array (
+    'albumData' => 0,
+    'key' => 0,
+  ),
+  'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_553904afa387e6_58398938')) {function content_553904afa387e6_58398938($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
@@ -60,24 +65,47 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 		<div class="photo-list">
 			<ul>
+				<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
+ $_smarty_tpl->tpl_vars['key'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->tpl_vars['albumData']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['item']->key => $_smarty_tpl->tpl_vars['item']->value) {
+$_smarty_tpl->tpl_vars['item']->_loop = true;
+ $_smarty_tpl->tpl_vars['key']->value = $_smarty_tpl->tpl_vars['item']->key;
+?>
 				<li>
 					<div class="position"><!-- 此div用于position定位 -->
 						<div class="photo-list-cover">
 							<!-- 放封面图片 295*210 -->
+							<img src="<?php echo $_smarty_tpl->tpl_vars['albumData']->value[$_smarty_tpl->tpl_vars['key']->value]['path'];?>
+" />
 							<span class="photo-list-more">MORE＞</span>
 						</div>
-						<h3  class="photo-list-title"><!-- 相册标题 -->大夫山一日游</h3>
+						<h3  class="photo-list-title">
+							<!-- 相册标题 -->
+							<?php if ($_smarty_tpl->tpl_vars['albumData']->value[$_smarty_tpl->tpl_vars['key']->value]['titleLength']>42) {?>
+								<?php echo (substr($_smarty_tpl->tpl_vars['albumData']->value[$_smarty_tpl->tpl_vars['key']->value]['title'],"0","42")).("...");?>
+	
+							<?php } else { ?>
+								<?php echo $_smarty_tpl->tpl_vars['albumData']->value[$_smarty_tpl->tpl_vars['key']->value]['title'];?>
+
+							<?php }?>
+						</h3>
 						<div class="photo-list-user-photo">
 							<div class="photo-list-user-format">
 								<!-- 用户头像 -->
-								<a href="#"><img src="tpl/class web/images/photo/photo-user-photo.png" /></a>
+								<a href="#">
+									<img src="<?php echo $_smarty_tpl->tpl_vars['albumData']->value[$_smarty_tpl->tpl_vars['key']->value]['photo'];?>
+" title="<?php echo $_smarty_tpl->tpl_vars['albumData']->value[$_smarty_tpl->tpl_vars['key']->value]['username'];?>
+" />
+								</a>
 							</div>
 						</div>
 
 						<!-- 相册发布时间 -->
 						<div class="photo-list-time">
 							<span class="photo-list-time-icon"></span>
-							<span class="photo-list-time-span"><!-- 时间 -->2015/3/12</span>				
+							<span class="photo-list-time-span"><!-- 时间 --><?php echo $_smarty_tpl->tpl_vars['albumData']->value[$_smarty_tpl->tpl_vars['key']->value]['time'];?>
+</span>				
 						</div>
 
 						<!-- 浏览与评论 -->
@@ -85,95 +113,24 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 							<div class="photo-list-browse">
 								<span class="photo-list-browse-icon"></span>
 								<span class="photo-list-browse-span">
-									浏览(<span class="photo-list-browse-number"><!-- 浏览人数 -->123</span>)
+									浏览(<span class="photo-list-browse-number"><?php echo $_smarty_tpl->tpl_vars['albumData']->value[$_smarty_tpl->tpl_vars['key']->value]['browseNum'];?>
+<!-- 浏览人数 --></span>)
 								</span>
 							</div>
 							<div class="photo-list-comment">
 								<span class="photo-list-comment-icon"></span>
 								<span class="photo-list-comment-span">
-									评论(<span class="photo-list-comment-number"><!-- 评论人数 -->123</span>)
+									评论(<span class="photo-list-comment-number"><?php echo $_smarty_tpl->tpl_vars['albumData']->value[$_smarty_tpl->tpl_vars['key']->value]['commentNum'];?>
+<!-- 评论人数 --></span>)
 								</span>
 							</div>
 						</div>
 					</div>
 				</li>
-
-				<li  style="margin-left:27px;">
-					<div class="position"><!-- 此div用于position定位 -->
-						<div class="photo-list-cover">
-							<!-- 放封面图片 295*210 -->
-							<span class="photo-list-more">MORE＞</span>
-						</div>
-						<h3  class="photo-list-title"><!-- 相册标题 -->大夫山一日游</h3>
-						<div class="photo-list-user-photo">
-							<div class="photo-list-user-format">
-								<!-- 用户头像 -->
-								<a href="#"><img src="tpl/class web/images/photo/photo-user-photo.png" /></a>
-							</div>
-						</div>
-
-						<!-- 相册发布时间 -->
-						<div class="photo-list-time">
-							<span class="photo-list-time-icon"></span>
-							<span class="photo-list-time-span"><!-- 时间 -->2015/3/12</span>				
-						</div>
-
-						<!-- 浏览与评论 -->
-						<div class="photo-list-browse-and-comment">
-							<div class="photo-list-browse">
-								<span class="photo-list-browse-icon"></span>
-								<span class="photo-list-browse-span">
-									浏览(<span class="photo-list-browse-number"><!-- 浏览人数 -->123</span>)
-								</span>
-							</div>
-							<div class="photo-list-comment">
-								<span class="photo-list-comment-icon"></span>
-								<span class="photo-list-comment-span">
-									评论(<span class="photo-list-comment-number"><!-- 评论人数 -->123</span>)
-								</span>
-							</div>
-						</div>
-					</div>
-				</li>
-
-				<li style="margin-left:27px;">
-					<div class="position"><!-- 此div用于position定位 -->
-						<div class="photo-list-cover">
-							<!-- 放封面图片 295*210 -->
-							<span class="photo-list-more">MORE＞</span>
-						</div>
-						<h3  class="photo-list-title"><!-- 相册标题 -->大夫山一日游</h3>
-						<div class="photo-list-user-photo">
-							<div class="photo-list-user-format">
-								<!-- 用户头像 -->
-								<a href="#"><img src="tpl/class web/images/photo/photo-user-photo.png" /></a>
-							</div>
-						</div>
-
-						<!-- 相册发布时间 -->
-						<div class="photo-list-time">
-							<span class="photo-list-time-icon"></span>
-							<span class="photo-list-time-span"><!-- 时间 -->2015/3/12</span>				
-						</div>
-
-						<!-- 浏览与评论 -->
-						<div class="photo-list-browse-and-comment">
-							<div class="photo-list-browse">
-								<span class="photo-list-browse-icon"></span>
-								<span class="photo-list-browse-span">
-									浏览(<span class="photo-list-browse-number"><!-- 浏览人数 -->123</span>)
-								</span>
-							</div>
-							<div class="photo-list-comment">
-								<span class="photo-list-comment-icon"></span>
-								<span class="photo-list-comment-span">
-									评论(<span class="photo-list-comment-number"><!-- 评论人数 -->123</span>)
-								</span>
-							</div>
-						</div>
-					</div>
-				</li>
+			<?php } ?>
+				
 			</ul>
+			
 		</div>
 
 	</div>
