@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-04-23 13:21:15
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-04-27 02:33:18
          compiled from "tpl\class web\userInfo\userInfoShow.html" */ ?>
 <?php /*%%SmartyHeaderCode:233005538cfea8ae7a3-13483466%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'f081134be8356e2a6182086a1dafa28fdbc0f735' => 
     array (
       0 => 'tpl\\class web\\userInfo\\userInfoShow.html',
-      1 => 1429788064,
+      1 => 1430058389,
       2 => 'file',
     ),
   ),
@@ -19,6 +19,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'unifunc' => 'content_5538cfea931bb6_52430556',
   'variables' => 
   array (
+    'photo' => 0,
     'introduction' => 0,
     'trueName' => 0,
     'birthday' => 0,
@@ -30,6 +31,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'height' => 0,
     'heightDef' => 0,
     'registerTime' => 0,
+    'schoolLength' => 0,
     'school' => 0,
     'power' => 0,
     'userName' => 0,
@@ -64,7 +66,19 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	<div class="user-info-show">
 		
 		<div class="show-photo-and-introduction">
-			<div class="show-photo"><!-- 头像 --></div>
+			<div class="show-photo"><!-- 头像 -->
+				<a href="javascript:void(0)" class="show-photo-a" title="修改头像">
+					<img src="./<?php echo $_smarty_tpl->tpl_vars['photo']->value;?>
+" width="120" height="120" />
+					<form method="post" action="admin.php?controller=admin&method=changeUserPhoto" enctype="multipart/form-data">
+						<input type="hidden" name="MAX_FILE_SIZE" value="2097152">
+						<input type="file" name="userPhotoFiles" accept="image/*"
+						class="show-photo-input-file" onchange="triggerSubmit()">
+						
+						<input type="submit" id="submit">
+					</form>
+				</a>
+			</div>
 			<div class="show-introduction"><i></i><span><!-- 个人简介 --><?php echo (($tmp = @$_smarty_tpl->tpl_vars['introduction']->value)===null||$tmp==='' ? "暂无" : $tmp);?>
 </span></div>
 		</div>
@@ -131,8 +145,23 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 </span>
 				</li>
 				<li class="show-info-school" title="学校"><i></i>
-					<span><?php echo (($tmp = @$_smarty_tpl->tpl_vars['school']->value)===null||$tmp==='' ? "暂无" : $tmp);?>
-</span>
+					<span>
+					
+						<?php if ($_smarty_tpl->tpl_vars['schoolLength']->value<25) {?>
+							<?php echo $_smarty_tpl->tpl_vars['school']->value;?>
+				
+						<?php }?>
+						
+						<?php if ($_smarty_tpl->tpl_vars['schoolLength']->value>24) {?>
+							<?php echo (substr($_smarty_tpl->tpl_vars['school']->value,"0","24")).("...");?>
+		
+						<?php }?>
+
+						<?php if (!$_smarty_tpl->tpl_vars['school']->value) {?>
+							<?php echo (($tmp = @$_smarty_tpl->tpl_vars['school']->value)===null||$tmp==='' ? "暂无" : $tmp);?>
+			
+						<?php }?>
+					</span>
 				</li>
 			</ul>
 		</div>
@@ -181,6 +210,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 				<li>
 					<span class="height-span">身高:</span>
 					<input type="text" name="" value=""  class="height" disabled="disabled"/>
+				</li>
+
+				<li>
+					<span class="school-span">学校:</span>
+					<input type="text" name="" value=""  class="school" disabled="disabled"/>
 				</li>
 
 				<li>

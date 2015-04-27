@@ -122,7 +122,7 @@ class adminController{
 			'heightDef'=>'暂无',
 			'introductionDef'=>'暂无',
 			'registerTimeDef'=>'暂无');
-
+		
 		VIEW::assign($defualtArr);
 		VIEW::assign($userInfo);
 		VIEW::display('class web/userInfo/userInfoShow.html');
@@ -158,11 +158,60 @@ class adminController{
 		$authobj = M('auth');
 		$res = $authobj -> userInfoChangeWork($_POST);
 
-
 		if($res){
 			$this->showmessage('更新成功！','admin.php?controller=admin&method=UserInfoList');
 		}else{
 			$this->showmessage('更新失败！','admin.php?controller=admin&method=userInfoChange');
+		}
+
+	}
+
+
+//  接收用户修改头像的请求
+	public function changeUserPhoto(){
+		//var_dump($_FILES['userPhotoFiles']);
+		$userPhotoFolder = 'pictureGroup/userPhotoFolder/'; // 存放用户头像图片的文件夹
+
+		$userPhotoPath=M('common')->imgHandle($_FILES['userPhotoFiles'],120 ,120 ,120 ,120,$userPhotoFolder);
+
+		$jumpUrl = 'admin.php?controller=admin&method=UserInfoList';
+
+		switch( $userPhotoPath ){
+			case false:
+				$this->showmessage('头像上传失败', $jumpUrl);
+				break;
+
+			case "1":
+				$this->showmessage('上传的头像超过了 php.ini 中 upload_max_filesize 选项限制的值。', $jumpUrl);
+				break;
+				
+			case "2":
+				$this->showmessage('上传文件大于2M , 请重试',$jumpUrl);
+				break;
+				
+			case "3":
+				$this->showmessage('文件只有部分被上传', $jumpUrl);
+				break;
+
+			case "4":
+				$this->showmessage('没有文件被上传。', $jumpUrl);
+				break;
+		
+			case "6":
+				$this->showmessage('找不到临时文件夹', $jumpUrl);
+				break;
+		
+			case "7":
+				$this->showmessage('文件写入失败', $jumpUrl);
+				break;		
+		}
+
+		$res = M('auth')->changeUserPhoto( $userPhotoPath );
+
+		if( $res ){
+			$this->showmessage('头像修改成功！','admin.php?controller=admin&method=UserInfoList');
+		}else{
+			$this->showmessage('头像修改失败！','admin.php?controller=admin&method=UserInfoList');
 		}
 
 	}

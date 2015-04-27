@@ -23,6 +23,24 @@
 	border-right: 1px solid #d0d0d0;
 	float: left;
 }
+
+.show-photo-a{
+	display: block;
+	width: 120px;height: 120px;
+}
+
+.show-photo-input-file{
+	width: 119px;height: 119px;
+	position: absolute;
+	top:83px;
+	opacity: 0;
+}
+
+.show-photo #submit{
+	display: none;
+}
+
+
 .show-introduction{
 	height: 120px;width: 829px;
 	float: right;
@@ -153,7 +171,8 @@
 
 .userInfo-change li .sex-span,
 .userInfo-change li .height-span,
-.userInfo-change li .address-span{
+.userInfo-change li .address-span,
+.userInfo-change li .school-span{
 	padding-left: 36px;
 }
 

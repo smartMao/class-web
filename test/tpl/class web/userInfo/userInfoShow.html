@@ -24,7 +24,18 @@
 	<div class="user-info-show">
 		
 		<div class="show-photo-and-introduction">
-			<div class="show-photo"><!-- 头像 --></div>
+			<div class="show-photo"><!-- 头像 -->
+				<a href="javascript:void(0)" class="show-photo-a" title="修改头像">
+					<img src="./{$photo}" width="120" height="120" />
+					<form method="post" action="admin.php?controller=admin&method=changeUserPhoto" enctype="multipart/form-data">
+						<input type="hidden" name="MAX_FILE_SIZE" value="2097152">
+						<input type="file" name="userPhotoFiles" accept="image/*"
+						class="show-photo-input-file" onchange="triggerSubmit()">
+						
+						<input type="submit" id="submit">
+					</form>
+				</a>
+			</div>
 			<div class="show-introduction"><i></i><span><!-- 个人简介 -->{$introduction|default:"暂无"}</span></div>
 		</div>
 
@@ -80,7 +91,20 @@
 					<span>{$registerTime|default:"暂无"}</span>
 				</li>
 				<li class="show-info-school" title="学校"><i></i>
-					<span>{$school|default:"暂无"}</span>
+					<span>
+					
+						{if $schoolLength lt 25}
+							{$school}				
+						{/if}
+						
+						{if $schoolLength gt 24}
+							{$school|substr:"0":"24"|cat:"..."}		
+						{/if}
+
+						{if not $school}
+							{$school|default:"暂无"}			
+						{/if}
+					</span>
 				</li>
 			</ul>
 		</div>
@@ -129,6 +153,11 @@
 				<li>
 					<span class="height-span">身高:</span>
 					<input type="text" name="" value=""  class="height" disabled="disabled"/>
+				</li>
+
+				<li>
+					<span class="school-span">学校:</span>
+					<input type="text" name="" value=""  class="school" disabled="disabled"/>
 				</li>
 
 				<li>

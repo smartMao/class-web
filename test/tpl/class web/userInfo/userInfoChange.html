@@ -24,7 +24,7 @@
 	<div class="user-info-show">
 		
 		<div class="show-photo-and-introduction">
-			<div class="show-photo"><!-- 头像 --></div>
+			<div class="show-photo"><!-- 头像 --><img src="./{$photo}" width="120" height="120" /></div>
 			<div class="show-introduction"><i></i><span><!-- 个人简介 -->{$introduction|default:"暂无"}</span></div>
 		</div>
 
@@ -139,6 +139,11 @@
 				<li>
 					<span class="height-span">身高:</span>
 					<input type="text" name="height" value="{$height}" id="height"  class="height" />
+				</li>
+
+				<li>
+					<span class="school-span">学校:</span>
+					<input type="text" name="school" value="{$school}" id="school" class="school"/>
 				</li>
 
 				<li>

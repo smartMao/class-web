@@ -146,6 +146,7 @@ window.onload = function(){
 			5. 添加点击后的class
 		*/
 		dynamicContentScheduleUl.style.overflow = "visible";
+		dynamicContentScheduleUl.style.display = 'block';
 		dynamicContentTiebaUl.style.display = "none";
 		dynamicContentTieba.className = "dynamic-content-tieba";
 		this.className = "";
@@ -153,7 +154,8 @@ window.onload = function(){
 
 	}
 	dynamicContentTieba.onclick = function(){
-		dynamicContentScheduleUl.style.overflow = "hidden";
+
+		dynamicContentScheduleUl.style.display = "none";
 		dynamicContentTiebaUl.style.display = "block";
 		dynamicContentSchedule.className = "dynamic-content-schedule";
 		this.className = "";

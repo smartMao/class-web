@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-04-23 16:32:23
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-04-24 11:19:45
          compiled from "tpl\class web\index\header.html" */ ?>
 <?php /*%%SmartyHeaderCode:104775538cfea9398b0-42654598%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '5f53bdc837c29e0b4e2512673802febe44fcc56d' => 
     array (
       0 => 'tpl\\class web\\index\\header.html',
-      1 => 1429799540,
+      1 => 1429867180,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'unifunc' => 'content_5538cfea93d738_63924080',
   'variables' => 
   array (
-    'photoPath' => 0,
+    'photo' => 0,
     'username' => 0,
   ),
   'has_nocache_code' => false,
@@ -53,8 +53,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       <div class="user-username" id="userUserName" style="display:none;">
         <div class="user-photo-frame" id="userPhotoFrame">
             <a href="admin.php?controller=admin&method=UserInfoList">
-              <div class="user-photo"><!--用户头像--><img src="./<?php echo $_smarty_tpl->tpl_vars['photoPath']->value;?>
-" width="50" height="50"/></div>
+              <div class="user-photo"><!--用户头像--><img src="./<?php echo $_smarty_tpl->tpl_vars['photo']->value;?>
+" width="48" height="48"/></div>
             </a>
         </div>
         <div class="user-options" id="userOptions" style="display:none;">

@@ -21,7 +21,6 @@
 
 {include file="class web/index/header.html"}
 {include file="class web/index/login.html"}
-
 {include file="class web/index/banner.html"}
 {include file="class web/index/study.html"}
 {include file="class web/index/info.html"}
@@ -41,7 +40,7 @@
 
 {if $username}
 	<script type="text/javascript">
-		var loginModel  = document.getElementById('loginModel');
+		var loginModel    = document.getElementById('loginModel');
 		var userUserName  = document.getElementById('userUserName');
 
 		loginModel.style.display = "none";
@@ -49,7 +48,7 @@
 	</script>
 {else}
 	<script type="text/javascript">
-		var loginModel  = document.getElementById('loginModel');
+		var loginModel    = document.getElementById('loginModel');
 		var userUserName  = document.getElementById('userUserName');
 
 		loginModel.style.display = "block";

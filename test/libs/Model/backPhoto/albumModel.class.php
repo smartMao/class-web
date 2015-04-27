@@ -23,10 +23,6 @@ class albumModel{
 
 
 
-
-
-
-
 // 	创建相册操作
 	public function albumCreateOp($POST,$FILES){
 
@@ -193,6 +189,7 @@ class albumModel{
 	public function OPImgSize($tmp_name){
 
 		$imgSrc  = $tmp_name;
+
 		$imgInfo = getimagesize($imgSrc);
 
 		$imgWidth   = $imgInfo[0];
@@ -208,7 +205,7 @@ class albumModel{
 
 			$imgCreate = "imagecreatefrom{$imgType}"; // 根据不同的图片类型,创建不同的图像
 
-			$image = $imgCreate($imgSrc); // 把图片保存在内容当中
+			// 把图片保存在内容当中
 
 			//  操作图片
 
@@ -222,9 +219,9 @@ class albumModel{
 
 			//  输出图片
 
-			//header("Content-type:".$imgMime);
+			header("Content-type:".$imgMime);
 
-			$imgOutput = "image{$imgType}"; // 根据不同的图片类型,使用不同的输出函数
+			//$imgOutput = "image{$imgType}"; // 根据不同的图片类型,使用不同的输出函数
 
 			//$imgOutput($imgBox); // (假如图片类型是png) 这里等同于: imagepng($imgBox);
 

@@ -6,17 +6,23 @@ class headerController{
 
 
 		if($this -> checkPassword()){
-
-			$res = $this->checkPassword();
-			$userName['username'] = $res['userName'];
 			
-			VIEW::assign($userName);
+			$res = $this->checkPassword();
+
+			$userInfo['username'] = $res['userName'];
+			$userInfo['photo']    = $res['photo'];
+			
+			VIEW::assign($userInfo);
 			VIEW::display('class web/classPhoto/photoIndex.html');
 
 		}else if(isset($_SESSION['auth']['userName'])){
-		 	
-		 	$userName['username'] = $_SESSION['auth']['userName'];
-		 	VIEW::assign($userName);
+
+			$res = M('admin')->findOne_by_username( $_SESSION['auth']['userName'] );
+
+			$userInfo['username'] = $res['userName'];
+			$userInfo['photo'] = $res['photo'];
+
+		 	VIEW::assign($userInfo);
 			VIEW::display('class web/classPhoto/photoIndex.html');
 
 		 }else{

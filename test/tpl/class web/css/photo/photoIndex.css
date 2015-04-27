@@ -26,12 +26,12 @@
 	width:47px;height:36px;
 	float: right;
 	border: none;
-	background: url('/test/tpl/class web/images/photo/photoSearch.jpg') no-repeat;
-
+	background: url(../../images/photo/photoSearch.jpg) no-repeat;
+												
 }
 
 .photo-search input[type=button]:hover{
-	background: url('/test/tpl/class web/images/photo/photoSearch-hover.jpg') no-repeat;
+	background: url(../../images/photo/photoSearch-hover.jpg) no-repeat;
 	cursor: pointer;
 
 }
@@ -53,7 +53,7 @@
 	display: block;
 	float: left;
 	margin:9px 0px 0px 20px;
-	background: url('/test/tpl/class web/images/photo/photo-public-icon.png') no-repeat;
+	background: url(../../images/photo/photo-public-icon.png) no-repeat;
 }
 
 .photo-public-span{
@@ -213,7 +213,7 @@
 	width: 12px;height: 12px;
 	display: block;
 	float: left;
-	background: url('/test/tpl/class web/images/photo/photo-list-time.png') no-repeat;
+	background: url(../../images/photo/photo-list-time.png) no-repeat;
 }
 
 .photo-list-time-span{
@@ -239,7 +239,7 @@
 	width: 30px;height: 12px;
 	display: block;
 	float: left;
-	background: url('/test/tpl/class web/images/photo/photo-list-browse.png') no-repeat;
+	background: url(../../images/photo/photo-list-browse.png) no-repeat;
 }
 
 .photo-list-browse-span{
@@ -253,10 +253,10 @@
 
 
 .photo-list-comment-icon{
-	width: 30px;height: 12px;
+	width: 30px;height: 15px;
 	display: block;
 	float: left;
-	background: url('/test/tpl/class web/images/photo/photo-list-comment.png') no-repeat;
+	background: url(../../images/photo/photo-list-comment.png) no-repeat;
 }
 
 .photo-list-comment-span{

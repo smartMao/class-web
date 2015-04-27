@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-04-23 13:20:46
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-04-26 15:24:42
          compiled from "tpl\class web\userInfo\userInfoChange.html" */ ?>
 <?php /*%%SmartyHeaderCode:257795538d46f24c2f1-57140870%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '9e6b0742c156e477610f8669d8e8a138cfa100ca' => 
     array (
       0 => 'tpl\\class web\\userInfo\\userInfoChange.html',
-      1 => 1429788043,
+      1 => 1430054510,
       2 => 'file',
     ),
   ),
@@ -19,6 +19,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'unifunc' => 'content_5538d46f2cd181_74873837',
   'variables' => 
   array (
+    'photo' => 0,
     'introduction' => 0,
     'trueName' => 0,
     'birthday' => 0,
@@ -64,7 +65,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	<div class="user-info-show">
 		
 		<div class="show-photo-and-introduction">
-			<div class="show-photo"><!-- 头像 --></div>
+			<div class="show-photo"><!-- 头像 --><img src="./<?php echo $_smarty_tpl->tpl_vars['photo']->value;?>
+" width="120" height="120" /></div>
 			<div class="show-introduction"><i></i><span><!-- 个人简介 --><?php echo (($tmp = @$_smarty_tpl->tpl_vars['introduction']->value)===null||$tmp==='' ? "暂无" : $tmp);?>
 </span></div>
 		</div>
@@ -198,6 +200,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 					<span class="height-span">身高:</span>
 					<input type="text" name="height" value="<?php echo $_smarty_tpl->tpl_vars['height']->value;?>
 " id="height"  class="height" />
+				</li>
+
+				<li>
+					<span class="school-span">学校:</span>
+					<input type="text" name="school" value="<?php echo $_smarty_tpl->tpl_vars['school']->value;?>
+" id="school" class="school"/>
 				</li>
 
 				<li>

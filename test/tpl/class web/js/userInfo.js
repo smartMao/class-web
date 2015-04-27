@@ -11,6 +11,7 @@ function checkUserInfoChange(){
 	var phoneVal        = document.getElementById('phone').value;
 	var heightVal       = document.getElementById('height').value;
 	var addressVal      = document.getElementById('address').value;
+	var schoolVal       = document.getElementById('school').value;
 	var introductionVal = document.getElementById('introduction').value;
 
 
@@ -18,6 +19,7 @@ function checkUserInfoChange(){
 	//var phoneLength        = checkStrLength(phoneVal);
 	//var heightLength       = checkStrLength(heightVal);
 	var addressLength      = checkStrLength(addressVal);
+	var schoolLength       = checkStrLength(schoolVal);
 	var introductionLength = checkStrLength(introductionVal);
 	
 	//alert(phoneVal.length);
@@ -25,7 +27,6 @@ function checkUserInfoChange(){
 	//alert(trueNameLength);
 	if(trueNameLength > 8){
 		alert("真实姓名过长,请修改");
-		//return false;
 	}
 
 	if(phoneVal.length > 11){
@@ -34,6 +35,10 @@ function checkUserInfoChange(){
 
 	if(heightVal.length > 3){
 		alert("身高太高!");
+	}
+
+	if(schoolLength > 30){
+		alert("学校名过长！");
 	}
 
 	if(addressLength > 100){

@@ -158,7 +158,7 @@ class photoModel{
 			
 
 		// 4
-			$photoMd5    = $albumID .'_'. md5(uniqid(mt_rand(1,100))); // 这里的'id'替换为数据库对应相册的id
+			$photoMd5    = $albumID .'_'. md5(uniqid(mt_rand(1,1000))); // 这里的'id'替换为数据库对应相册的id
 			$photoSuffix = '.'.pathinfo( $this->fileName[$i] , PATHINFO_EXTENSION ); //取出文件后缀,大概输出:.jpg
 	
 			// 通过了上面的上传方式的检测

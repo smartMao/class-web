@@ -3,7 +3,7 @@
 class authModel{
 	
 	private $auth = '';  // 当前管理员信息.
-	private $defaultPhotoPath = 'pictureGroup/userPhotoFolder/defaultPhoto.jpg';
+	private $defaultPhotoPath = 'pictureGroup/userPhotoFolder/defaultPhoto.jpg'; // 用户注册时,默认头像的路径
 
 	public function __construct(){
 	
@@ -156,14 +156,12 @@ class authModel{
 //  用户信息修改操作
 	public function userInfoChangeWork($POST){
 		echo "<pre>";
-		//var_dump($POST);
-		$length = strlen($POST['trueName']);
 
 		//  用户修改信息时,判断上传的数据是否超过限制长度
-		$checPostkRes = $this -> checkPostInfo($POST);
+		$checkPostkRes = $this -> checkPostInfo();
 		
 		// 检测返回的POST判断结果(如果返回结果是false,停止,返回结果正常的话将不做任何操作)
-		if(!$checPostkRes){ 
+		if(!$checkPostkRes){ 
 			return 0; 
 		}
 
@@ -183,7 +181,6 @@ class authModel{
 		if($res){
 			return 1;
 		}else{
-			echo '<script>alert("2")</script>';
 			return 0;
 		}
 
@@ -193,29 +190,26 @@ class authModel{
 	调用处:本类中userInfoChangeWork拆分出来的子方法
 	作用:检查POST出来的用户信息,是否符合长度的规范
 */
-	public function checkPostInfo($POST){	
-
-		$trueNameLength     = strlen($POST['trueName']);
-		$phoneLength        = strlen($POST['phone']);
-		$heightLength       = strlen($POST['height']);
-		$addressLength      = strlen($POST['address']);
-		$introductionLength = strlen($POST['introduction']);
-
+	public function checkPostInfo(){	
+		
+		$trueNameLength     = strlen($_POST['trueName']);
+		$phoneLength        = strlen($_POST['phone']);
+		$heightLength       = strlen($_POST['height']);
+		$schoolLength       = strlen($_POST['school']);
+		$addressLength      = strlen($_POST['address']);
+		$introductionLength = strlen($_POST['introduction']);
+		
 		if($trueNameLength > 12){
-			//echo '<script>alert("1")</script>';
 			return false;
 		}else if($phoneLength > 11){
-			//echo '<script>alert("2")</script>';
-			//echo '<script>alert("$phoneLength")</script>';
 			return false;
 		}else if($heightLength > 3){
-			//echo '<script>alert("3")</script>';
+			return false;
+		}else if($schoolLength > 45){
 			return false;
 		}else if($addressLength > 150){
-			//echo '<script>alert("4")</script>';
 			return false;
 		}else if($introductionLength > 200){
-			//echo '<script>alert("5")</script>';
 			return false;
 		}else{
 			return true;
@@ -274,10 +268,40 @@ class authModel{
 		$data['phone']    = str_replace(' ', '', $data['phone']);
 		$data['height']   = str_replace(' ', '', $data['height']);
 		$data['address']  = str_replace(' ', '', $data['address']);
+		$data['school']   = str_replace(' ', '', $data['school']);
 
 		$data['addressLength'] = strlen($data['address']);
+		$data['schoolLength']  = strlen($data['school']);
 
 		return $data;
+	}
+
+
+//  把传入进来的用户头像路径更新到用户数据库
+	public function changeUserPhoto( $newPhotoPath ){
+		/*
+			两步操作:
+				1. 修改头像时, 先删除头像文件夹里旧的头像文件 (默认头像文件除外defaultPhoto.jpg) 
+				2. 更新用户数据库的photo路径, 指向新的头像文件路径
+		*/
+		// 不只是更新数据库 还需要把用户头像文件夹里的历史头像文件也删除
+
+		$id = 'id='.$this->auth['id'];
+		$userTableName = M('back')->_tableName2;
+
+		$sql = "SELECT photo FROM $userTableName WHERE $id";
+		$agoPhotoPath = DB::findOne( $sql ); // 取出以前的头像地址 
+
+		// 当用户第一次修改头像时,不用在文件中删除默认的头像
+		if( $agoPhotoPath['photo'] !== 'pictureGroup/userPhotoFolder/defaultPhoto.jpg'){
+			// 当删除头像文件失败时
+			if(!unlink($agoPhotoPath['photo'])){ return false; }
+		}
+
+		$arr['photo'] = $newPhotoPath;
+
+		$res = DB::update( $userTableName , $arr , $id );
+		return $res;
 	}
 
 

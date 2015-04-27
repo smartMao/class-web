@@ -30,7 +30,7 @@
 		background: url(../../images/info/dynamic-title-icon.png);
 }
 
-.dynamic-content{width:230px;height: 419px;}	
+.dynamic-content{width:230px;height: 419px; position: relative;}	
 
 .dynamic-content-schedule{width:105px;float: left;}
 
@@ -66,28 +66,59 @@
 		   background: #ccc;
 		   color: #000;
 		   padding-left: 3px;
+		  
 }
 
 
+
 .dynamic-content-tieba{width:119px;float:right;}
+.dynamic-content-tieba-ul{height:370px; display: none;}
+.dynamic-content-tieba-ul ul{padding-top:32px;}
+
 .dynamic-content-schedule-ul{height:377px;}	                        
 .dynamic-content-schedule-ul ul{padding-top:32px;}
+
+
+
 
 .dynamic-content-schedule-ul ul li,
 .dynamic-content-tieba-ul ul li{
 			   width:100%;
-			   height: 27px;
-			   line-height: 27px;
+			   height: 35px;
+			   line-height: 33px;
 			   border-bottom: 2px dashed #c0c0c0;
-			   text-indent: 15px;
 			   cursor: pointer;
+			 
+}
+
+.dynamic-content-schedule-ul .bottom,
+.dynamic-content-tieba-ul .bottom{
+	background: #ccc;
+}
+
+.dynamic-content-schedule-ul ul i,
+.dynamic-content-tieba-ul ul i{ 
+	float: left;
+	width: 12px;height: 12px;
+	background: #3999ed;
+	color:#fff;
+	font-size: 4px;
+	text-align: center;
+	line-height: 12px;
+	margin-top: 11px;
+	margin-left:4px;
+}
+
+.dynamic-content-schedule-ul ul span,
+.dynamic-content-tieba-ul ul span{
+	display: block;
+	text-indent: 10px;
 }
 
 .dynamic-content-schedule-ul ul li:hover,
 .dynamic-content-tieba-ul ul li:hover{color: #0089ff;}
-.dynamic-content-schedule-ul ul li img,
-.dynamic-content-tieba-ul ul li img{position:relative;left:-10px;}
-.dynamic-content-tieba-ul{position: relative;margin-top:-345px;display: none;}								
+
+								
 .dynamic-title,
 .video-title,
 .resources-title{

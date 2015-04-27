@@ -1,0 +1,130 @@
+﻿<?php
+
+class commonModel{
+	
+	// 此 Model 为公共模块 , 放置可复用的方法
+
+
+
+
+/*
+	名称: 图像处理方法
+	作用: 操作上传图片的 宽度 与 高度
+	参数: $imgFileInfo : 传入 $_FILES
+		  $imgWidth    : 希望得到的宽度
+		  $imgHeight   : 希望得到的高度
+		  $minWidth    : 规定上传图片的最小宽度
+		  $minHeight   : 规定上传图片的最小高度
+*/
+	public function imgHandle( $imgFileInfo , $imgWidth , $imgHeight , $minWidth , $minHeight ){
+	
+		if( empty( $imgFileInfo )){ return false; } // 如果并没有$_FILES传入 , 不做任何操作
+
+//  1.文件上传判断
+		$this->checkFilesErrorNum( $imgFileInfo['error'] );
+
+//  2.GD库处理图片大小,并保存在 userPhotoFolder 文件里
+		$this->GdHandelIamge( $imgFileInfo['tmp_name'] , $imgWidth , $imgHeight , $minWidth , $minHeight );
+
+
+	}
+
+
+/*
+	拆分于: 本类中 imgHandle()
+	作用:接收文件上传的错误号return相应的值
+	参数: $file_error : 文件上传的错误号
+*/
+	public function checkFilesErrorNum( $file_error ){
+
+		if( $file_error == UPLOAD_ERR_OK ){
+
+			// 图片文件上传无误
+			return 8; // 暂定
+
+		}else{
+
+			// 图片文件上传有误,进行判断
+			switch( $file_error ){
+				case UPLOAD_ERR_INI_SIZE:
+					return 1;
+					break;
+				case UPLOAD_ERR_FORM_SIZE:
+					return 2;
+					break;
+				case UPLOAD_ERR_PARTIAL:
+					return 3;
+					break;
+				case UPLOAD_ERR_NO_FILE:
+					return 4;
+					break;
+				case UPLOAD_ERR_NO_TMP_DIR:
+					return 6;
+					break;
+				case UPLOAD_ERR_CANT_WRITE:
+					return 7;
+					break;
+			}
+		}
+
+	}
+
+
+/*
+	拆分于: 本类中 imgHandle()
+	作用: 操作图片的大小
+	参数: $file_tmp : 上传图片的临时路径;
+		  $width    : 希望得到的图片宽度;
+		  $height   : 希望得到的图片高度;
+		  $minWidth : 规定上传图片的最小宽度
+		  $minHeight: 规定上传图片的最小高度
+*/
+	public function GdHandelIamge( $file_tmp , $width , $height , $minWidth , $minHeight ){
+		//var_dump($file_tmp);
+		//echo $width;
+		//echo $height;
+
+		$imgInfo = getimagesize( $file_tmp );
+		//var_dump($imgInfo);exit;
+		
+		$imgWidth   = $imgInfo[0]; // 上传图片的width height
+		$imgHeight  = $imgInfo[1];
+		$imgTypeNum = $imgInfo[2];
+
+		/*if( ($imgWidth < $minWidth) || ($imgHeight < $minHeight) ){
+			echo "<script>alert('您上传的图片,宽度少于'+$minWidth+'或高度少于'+$minHeight);</script>";
+		}*/
+
+		$imgType =  image_type_to_extension( $imgTypeNum , false ); // 返回 jpeg / png / ......
+		$imgCreate  =  "imagecreatefrom{$imgType}";
+		$image = $imgCreate( $file_tmp ); // 把图片文件, 装进了图像里 ,可以返回资源类型
+
+		$imgBox = imagecreatetruecolor( $width , $height );   // 创建一个图像容器
+
+		// 把上传图片放进 设置好大小的 $imgBox 里 
+		imagecopyresampled( $imgBox , $image , 0 , 0 , 0 , 0 , $width , $height , $imgWidth , $imgHeight ); 
+		 
+		imagedestroy($image); // 上传图片已经放入$imgBox了,所以现在它没用了销毁
+
+		header("Content-type: ".$imgInfo['mime']);
+
+		$imgOutput = "image{$imgType}";
+
+		$imgOutput($imgBox); // (假如图片类型是png) 这里等同于: imagepng($imgBox);
+
+
+
+		
+
+
+
+
+	}	  
+
+
+
+}
+
+
+
+?>

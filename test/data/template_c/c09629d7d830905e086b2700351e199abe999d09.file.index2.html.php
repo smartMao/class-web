@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-04-23 13:24:08
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-04-24 10:45:12
          compiled from "tpl\class web\index2.html" */ ?>
 <?php /*%%SmartyHeaderCode:212755538d6584de987-26597618%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c09629d7d830905e086b2700351e199abe999d09' => 
     array (
       0 => 'tpl\\class web\\index2.html',
-      1 => 1429714272,
+      1 => 1429865110,
       2 => 'file',
     ),
   ),
@@ -15,9 +15,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
-  'has_nocache_code' => false,
   'version' => 'Smarty-3.1.21-dev',
   'unifunc' => 'content_5538d658519317_61943533',
+  'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5538d658519317_61943533')) {function content_5538d658519317_61943533($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -38,6 +38,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 </head>
 
 <body onselectstart="return false;">
+
 <?php echo $_smarty_tpl->getSubTemplate ("class web/index/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 
 <?php echo $_smarty_tpl->getSubTemplate ("class web/index/login.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
@@ -50,16 +51,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 <?php echo $_smarty_tpl->getSubTemplate ("class web/index/footer.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 
-
-
-<!--
-	include('header.html'); 
-	include('login.html');  
-	include('banner.html'); 
-	include('study.html');  
-	include('info.html');  
-	include('footer.html');
--->
 
 </body>
 </html>

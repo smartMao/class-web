@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-04-23 16:20:38
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-04-27 03:44:20
          compiled from "tpl\class web\index.html" */ ?>
 <?php /*%%SmartyHeaderCode:214745538d3e8b63614-31816139%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c02ee5bef5e0364265fe0b6b5d0c141a45b4652b' => 
     array (
       0 => 'tpl\\class web\\index.html',
-      1 => 1429798837,
+      1 => 1430098827,
       2 => 'file',
     ),
   ),
@@ -48,7 +48,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 <?php echo $_smarty_tpl->getSubTemplate ("class web/index/login.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 
-
 <?php echo $_smarty_tpl->getSubTemplate ("class web/index/banner.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 
 <?php echo $_smarty_tpl->getSubTemplate ("class web/index/study.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
@@ -73,7 +72,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <?php if ($_smarty_tpl->tpl_vars['username']->value) {?>
 	<?php echo '<script'; ?>
  type="text/javascript">
-		var loginModel  = document.getElementById('loginModel');
+		var loginModel    = document.getElementById('loginModel');
 		var userUserName  = document.getElementById('userUserName');
 
 		loginModel.style.display = "none";
@@ -83,7 +82,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <?php } else { ?>
 	<?php echo '<script'; ?>
  type="text/javascript">
-		var loginModel  = document.getElementById('loginModel');
+		var loginModel    = document.getElementById('loginModel');
 		var userUserName  = document.getElementById('userUserName');
 
 		loginModel.style.display = "block";

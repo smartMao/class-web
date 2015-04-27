@@ -8,28 +8,26 @@ class indexController{
 		// 是否已经登录的判断
 		
 		if($this->checkPassword()){
-			
+			// cookie 登录
 			$res = $this->checkPassword();
 			$userInfo['username'] = $res['userName'];
-			echo "<pre>";
-			var_dump($res);
-			/*$userInfo['photoPath'] = $res['photo'];
+	
+			$userInfo['photo'] = $res['photo'];
 			VIEW::assign($userInfo);
-			VIEW::display('tpl/class web/index.html');*/
+			VIEW::display('tpl/class web/index.html');
 
 		}else if(isset($_SESSION['auth']['userName'])){
-			// 如果SESSION有值
-
+			// 正常登录 如果SESSION有值
 			$res = M('admin')->findOne_by_username( $_SESSION['auth']['userName'] );
 
 			$userInfo['username'] = $res['userName'];
-			$userInfo['photoPath'] = $res['photo'];
+			$userInfo['photo'] = $res['photo'];
 			
 			VIEW::assign($userInfo);
 			VIEW::display('tpl/class web/index.html');
 		
 		}else{
-			// 如果SESSION没值
+			// 没有登录 如果SESSION没值
 			VIEW::display('tpl/class web/index2.html');
 		}
 	}

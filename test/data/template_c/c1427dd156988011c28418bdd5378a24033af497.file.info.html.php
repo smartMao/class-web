@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-04-23 13:13:44
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-04-27 04:52:00
          compiled from "tpl\class web\index\info.html" */ ?>
 <?php /*%%SmartyHeaderCode:283295538d3e8bb56a8-46548803%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c1427dd156988011c28418bdd5378a24033af497' => 
     array (
       0 => 'tpl\\class web\\index\\info.html',
-      1 => 1429714272,
+      1 => 1430103119,
       2 => 'file',
     ),
   ),
@@ -15,9 +15,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
-  'has_nocache_code' => false,
   'version' => 'Smarty-3.1.21-dev',
   'unifunc' => 'content_5538d3e8bb9535_14877759',
+  'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5538d3e8bb9535_14877759')) {function content_5538d3e8bb9535_14877759($_smarty_tpl) {?><!DOCTYPE html>
 <html>
@@ -42,37 +42,93 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 				</div>
 				<div class="dynamic-content-schedule-ul" id="dynamicContentScheduleUl">
 					<ul>
-						<li><img src="tpl/class web/images/info/dynamic-ul-1.jpg" />schedule</li>
-						<li><img src="tpl/class web/images/info/dynamic-ul-2.jpg" />schedule</li>
-						<li><img src="tpl/class web/images/info/dynamic-ul-3.jpg" />schedule</li>
-						<li><img src="tpl/class web/images/info/dynamic-ul-4.jpg" />schedule</li>
-						<li><img src="tpl/class web/images/info/dynamic-ul-5.jpg" />schedule</li>
-						<li><img src="tpl/class web/images/info/dynamic-ul-6.jpg" />schedule</li>
-						<li><img src="tpl/class web/images/info/dynamic-ul-7.jpg" /></li>
-						<li><img src="tpl/class web/images/info/dynamic-ul-8.jpg" /></li>
-						<li><img src="tpl/class web/images/info/dynamic-ul-9.jpg" /></li>
-						<li><img src="tpl/class web/images/info/dynamic-ul-10.jpg" /></li>
-						<li><img src="tpl/class web/images/info/dynamic-ul-11.jpg" /></li>
-						<li><img src="tpl/class web/images/info/dynamic-ul-12.jpg" /></li>
-						<li><img src="tpl/class web/images/info/dynamic-ul-13.jpg" /></li>
-					</ul>
+						<li>
+							<i>1</i>
+							<span>近期活动日程sss</span>
+						</li>
+						<li>
+							<i>2</i>
+							<span>手机</span>
+						</li>
+						<li>
+							<i>3</i>
+							<span>ss</span>
+						</li>
+						<li>
+							<i class="bottom">4</i>
+							<span>ss</span>
+						</li>
+						<li>
+							<i class="bottom">5</i>
+							<span>ss</span>
+						</li>
+						<li>
+							<i class="bottom">6</i>
+							<span>ss</span>
+						</li>
+						<li>
+							<i class="bottom">7</i>
+							<span>ss</span>
+						</li>
+						<li>
+							<i class="bottom">8</i>
+							<span>ss</span>
+						</li>
+						<li>
+							<i class="bottom">9</i>
+							<span>ss</span>
+						</li>
+						<li>
+							<i class="bottom">10</i>
+							<span>ss</span>
+						</li>
+
+					</ul>			
 				</div>
 				<div class="dynamic-content-tieba-ul" id="dynamicContentTiebaUl">
 					<ul>
-						<li><img src="tpl/class web/images/info/dynamic-ul-1.jpg" />tieba</li>
-						<li><img src="tpl/class web/images/info/dynamic-ul-2.jpg" />tieba</li>
-						<li><img src="tpl/class web/images/info/dynamic-ul-3.jpg" />tieba</li>
-						<li><img src="tpl/class web/images/info/dynamic-ul-4.jpg" />tieba</li>
-						<li><img src="tpl/class web/images/info/dynamic-ul-5.jpg" />tieba</li>
-						<li><img src="tpl/class web/images/info/dynamic-ul-6.jpg" />tieba</li>
-						<li><img src="tpl/class web/images/info/dynamic-ul-7.jpg" />tieba</li>
-						<li><img src="tpl/class web/images/info/dynamic-ul-8.jpg" /></li>
-						<li><img src="tpl/class web/images/info/dynamic-ul-9.jpg" /></li>
-						<li><img src="tpl/class web/images/info/dynamic-ul-10.jpg" /></li>
-						<li><img src="tpl/class web/images/info/dynamic-ul-11.jpg" /></li>
-						<li><img src="tpl/class web/images/info/dynamic-ul-12.jpg" /></li>
-						<li><img src="tpl/class web/images/info/dynamic-ul-13.jpg" /></li>
-					</ul>
+						<li>
+							<i>1</i>
+							<span>班级社区热门帖ss</span>
+						</li>
+						<li>
+							<i>2</i>
+							<span>手asdsadasd</span>
+						</li>
+						<li>
+							<i>3</i>
+							<span>ss</span>
+						</li>
+						<li>
+							<i class="bottom">4</i>
+							<span>ss</span>
+						</li>
+						<li>
+							<i class="bottom">5</i>
+							<span>ss</span>
+						</li>
+						<li>
+							<i class="bottom">6</i>
+							<span>sasdass</span>
+						</li>
+						<li>
+							<i class="bottom">7</i>
+							<span>ss</span>
+						</li>
+						<li>
+							<i class="bottom">8</i>
+							<span>sasdasdasds</span>
+						</li>
+						<li>
+							<i class="bottom">9</i>
+							<span>ss</span>
+						</li>
+						<li>
+							<i class="bottom">10</i>
+							<span>ss</span>
+						</li>
+
+					</ul>								
 				</div>
 			</div>
 		</div>
