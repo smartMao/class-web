@@ -39,13 +39,18 @@
 
 		<div class="photo-list">
 			<ul>
+			{if $albumData eq ''}
+				<span>{$albumData|default:'暂无相册'}</span>
+			{else}
 				{foreach from=$albumData item=item key=key}
 				<li>
 					<div class="position"><!-- 此div用于position定位 -->
 						<div class="photo-list-cover">
 							<!-- 放封面图片 295*210 -->
 							<img src="{$albumData.$key.path}" />
-							<span class="photo-list-more">MORE＞</span>
+							<a class="photo-list-more" href="admin.php?controller=photo&method=photoList&albumID={$albumData.$key.id}">
+								MORE＞
+							</a>
 						</div>
 						<h3  class="photo-list-title">
 							<!-- 相册标题 -->
@@ -88,6 +93,7 @@
 					</div>
 				</li>
 			{/foreach}
+		{/if}
 				
 			</ul>
 			

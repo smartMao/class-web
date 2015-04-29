@@ -51,6 +51,7 @@ function checkUserInfoChange(){
 
 }
 
+// 返回字符长度	
 function checkStrLength(data){
 	var str = escape(data);
     for(var i = 0, length = 0;i < str.length; i++, length++) {
@@ -64,6 +65,15 @@ function checkStrLength(data){
     }
     
     return length;
-
-
 }
+
+
+/*	
+	调用处：userInfoShow.html 
+	作用：当用户想要修改头像时,点击了file框, onchange捕获到了就执行当前方法 ( 触发submit按钮让$_FILES提交到PHP )
+*/
+	function triggerSubmit(){
+		
+		var submit = document.getElementById('submit');
+		submit.click();
+	}

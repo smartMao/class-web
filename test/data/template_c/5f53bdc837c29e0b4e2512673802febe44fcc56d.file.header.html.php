@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-04-24 11:19:45
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-04-29 09:36:39
          compiled from "tpl\class web\index\header.html" */ ?>
 <?php /*%%SmartyHeaderCode:104775538cfea9398b0-42654598%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '5f53bdc837c29e0b4e2512673802febe44fcc56d' => 
     array (
       0 => 'tpl\\class web\\index\\header.html',
-      1 => 1429867180,
+      1 => 1430292997,
       2 => 'file',
     ),
   ),
@@ -40,7 +40,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       	<ul id="headerNav">
           	<li><a href="admin.php?controller=index&method=index"  class="on">首页</a></li>
           	<li><a href="#">班级社区</a></li>
-          	<li><a href="admin.php?controller=header&method=photoIndex">班级相册</a></li>
+          	<li><a href="admin.php?controller=header&method=albumIndex">班级相册</a></li>
           	<li><a href="#" >站务留言</a></li>
           	<li><a href="http://www.gzittc.com/">学校主页</a></li>
           </ul>

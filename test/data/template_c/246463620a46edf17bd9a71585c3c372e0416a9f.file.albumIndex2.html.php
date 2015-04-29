@@ -1,29 +1,25 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-04-29 09:35:08
-         compiled from "tpl\class web\classPhoto\photoIndex.html" */ ?>
-<?php /*%%SmartyHeaderCode:18750553c6368086967-74452217%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-04-29 15:49:16
+         compiled from "tpl\class web\classPhoto\albumIndex2.html" */ ?>
+<?php /*%%SmartyHeaderCode:171255540e119121f24-95747681%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    '0fa91c451ea415a48640341c752934e299755530' => 
+    '246463620a46edf17bd9a71585c3c372e0416a9f' => 
     array (
-      0 => 'tpl\\class web\\classPhoto\\photoIndex.html',
-      1 => 1430292869,
+      0 => 'tpl\\class web\\classPhoto\\albumIndex2.html',
+      1 => 1430315349,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '18750553c6368086967-74452217',
+  'nocache_hash' => '171255540e119121f24-95747681',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_553c63681ab939_76887283',
-  'variables' => 
-  array (
-    'username' => 0,
-  ),
+  'unifunc' => 'content_5540e1194758f7_01122114',
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_553c63681ab939_76887283')) {function content_553c63681ab939_76887283($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if ($_valid && !is_callable('content_5540e1194758f7_01122114')) {function content_5540e1194758f7_01122114($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
@@ -42,7 +38,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 </head>
 <body>
 	
-	
 
 	<?php echo $_smarty_tpl->getSubTemplate ('class web/index/header.html', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
            <!--  header -->
@@ -56,28 +51,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
            <!--  footer -->
 
 
-<?php if ($_smarty_tpl->tpl_vars['username']->value) {?>
-	<?php echo '<script'; ?>
- type="text/javascript">
-		var loginModel  = document.getElementById('loginModel');
-		var userUserName  = document.getElementById('userUserName');
-
-		loginModel.style.display = "none";
-		userUserName.style.display = "block";
-	<?php echo '</script'; ?>
->
-<?php } else { ?>
-	<?php echo '<script'; ?>
- type="text/javascript">
-		var loginModel  = document.getElementById('loginModel');
-		var userUserName  = document.getElementById('userUserName');
-
-		loginModel.style.display = "block";
-		userUserName.style.display = "none";
-	<?php echo '</script'; ?>
->
-
-<?php }?>
 
 
 </body>
@@ -96,7 +69,4 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <?php echo '<script'; ?>
  type="text/javascript" src="tpl/class web/js/nav.js"><?php echo '</script'; ?>
 >
-<?php echo '<script'; ?>
- type="text/javascript" src="tpl/class web/js/userPhoto.js"><?php echo '</script'; ?>
->
- <?php }} ?>
+<?php }} ?>

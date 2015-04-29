@@ -4,6 +4,7 @@ class frontModel{
 
 	private $_tableName2 = 'user_info';
 	private $_tableName3 = 'album_cover';
+	private $_tableName4 = 'photo_content';
 	// 此模块 为前端模块 , 用于辅助控制器取数据
 
 
@@ -14,9 +15,12 @@ class frontModel{
 	public function findAllAlbumData(){
 
 		// 查询出所有相册的数据
-		$sql = "SELECT `uid`,`title`,`time`,`power`,`browseNum`,`commentNum`,`path` FROM $this->_tableName3";
+		$sql = "SELECT `id`,`uid`,`title`,`time`,`power`,`browseNum`,`commentNum`,`path` FROM $this->_tableName3";
 		
 		$albumData = DB::findAll($sql);
+
+		if($albumData == ''){ return false; } // 如果当前并没有相册
+		
 		$albumNum = count($albumData);
 
 		for($i=0; $i<$albumNum; $i++){
@@ -41,21 +45,22 @@ class frontModel{
 	}
 
 /*
-	调用处: headerController 的 photoIndex 方法
-	作用: 根据传入进来的 用户id ,把他的头像路径取出
-	参数: $userID : 用户ID
+	调用处: photoController 的 photoList 方法
+	作用: 根据传入进来的相册ID , 往数据表查询此ID下所有的照片
+	参数: $albumID : 相册ID
 */
-	/*public function findUserPhotoPath( $userID , $i ){
-		
+	public function photoList( $albumID ){
+		$sql = "SELECT `id`,`path` FROM $this->_tableName4 WHERE cid=$albumID";
+		$res = DB::findAll( $sql );
+		if($res){
+			return $res;
+		}else{
+			return false;
+		}
 	
-	
-			$sql = "SELECT photo FROM $this->_tableName2 WHERE id=$userID";
-			echo $sql;
-			echo "<br/>";
-		
 		
 
-	}*/
+	}
 
 
 

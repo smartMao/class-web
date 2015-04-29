@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-04-27 12:09:32
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-04-28 11:07:43
          compiled from "tpl\class web\userInfo\userInfoChange.html" */ ?>
 <?php /*%%SmartyHeaderCode:257795538d46f24c2f1-57140870%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '9e6b0742c156e477610f8669d8e8a138cfa100ca' => 
     array (
       0 => 'tpl\\class web\\userInfo\\userInfoChange.html',
-      1 => 1430129359,
+      1 => 1430211997,
       2 => 'file',
     ),
   ),
@@ -65,8 +65,17 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	<div class="user-info-show">
 		
 		<div class="show-photo-and-introduction">
-			<div class="show-photo"><!-- 头像 --><img src="./<?php echo $_smarty_tpl->tpl_vars['photo']->value;?>
-" width="120" height="120" /></div>
+			<div class="show-photo"><!-- 头像 -->
+				<img src="./<?php echo $_smarty_tpl->tpl_vars['photo']->value;?>
+" width="120" height="120" />
+				<form method="post" action="admin.php?controller=admin&method=changeUserPhoto" enctype="multipart/form-data">
+						<input type="hidden" name="MAX_FILE_SIZE" value="2097152">
+						<input type="file" name="userPhotoFiles" accept="image/*"
+						class="show-photo-input-file" onchange="triggerSubmit()">
+						
+						<input type="submit" id="submit">
+				</form>
+			</div>
 			<div class="show-introduction"><i></i><span><!-- 个人简介 --><?php echo (($tmp = @$_smarty_tpl->tpl_vars['introduction']->value)===null||$tmp==='' ? "暂无" : $tmp);?>
 </span></div>
 		</div>

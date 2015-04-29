@@ -1,0 +1,13 @@
+.photo-list li{
+	width: 260px;height: auto;
+	padding: 10px; 
+	border:2px solid #000;
+	margin:10px;
+	float: left;
+
+}
+
+.photo-list li img{
+	width: 260px;height: auto;
+
+}

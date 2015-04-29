@@ -24,7 +24,16 @@
 	<div class="user-info-show">
 		
 		<div class="show-photo-and-introduction">
-			<div class="show-photo"><!-- 头像 --><img src="./{$photo}" width="120" height="120" /></div>
+			<div class="show-photo"><!-- 头像 -->
+				<img src="./{$photo}" width="120" height="120" />
+				<form method="post" action="admin.php?controller=admin&method=changeUserPhoto" enctype="multipart/form-data">
+						<input type="hidden" name="MAX_FILE_SIZE" value="2097152">
+						<input type="file" name="userPhotoFiles" accept="image/*"
+						class="show-photo-input-file" onchange="triggerSubmit()">
+						
+						<input type="submit" id="submit">
+				</form>
+			</div>
 			<div class="show-introduction"><i></i><span><!-- 个人简介 -->{$introduction|default:"暂无"}</span></div>
 		</div>
 

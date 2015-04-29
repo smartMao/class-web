@@ -1,8 +1,10 @@
 <?php
 
 class headerController{
-	
-	public function photoIndex(){
+
+
+//  此方法展示相册列表	
+	public function albumIndex(){  
 
 
 		if($this -> checkPassword()){
@@ -11,31 +13,39 @@ class headerController{
 
 			$albumData['albumData'] = M('front')->findAllAlbumData(); // 相册数据
 
+	   	    if( !$albumData['albumData']){ $albumData['albumData'] = ''; } // 当无相册数据时 让smarty判断
+
 			$userInfo['username'] = $res['userName'];
 			$userInfo['photo']    = $res['photo'];
 			
 			VIEW::assign($albumData);		 
 			VIEW::assign($userInfo);
-			VIEW::display('class web/classPhoto/photoIndex.html');
+			VIEW::display('class web/classPhoto/albumIndex.html'); 
 
 		}else if(isset($_SESSION['auth']['userName'])){
 
 			$albumData['albumData'] = M('front')->findAllAlbumData(); // 相册数据
+
+			if( !$albumData['albumData']){ $albumData['albumData'] = ''; } // 当无相册数据时 让smarty判断
+
 			$res = M('admin')->findOne_by_username( $_SESSION['auth']['userName'] );
-			//echo "<pre>";
-		//var_dump($albumData);exit;
+
 			$userInfo['username'] = $res['userName'];
 			$userInfo['photo'] = $res['photo'];
 
 			VIEW::assign($albumData);
 		 	VIEW::assign($userInfo);
-			VIEW::display('class web/classPhoto/photoIndex.html');
+			VIEW::display('class web/classPhoto/albumIndex.html');
 
 		 }else{
-		 	
-		 	VIEW::display('class web/classPhoto/photoIndex2.html');
 
-		 }	
+		 	$albumData['albumData'] = M('front')->findAllAlbumData(); // 相册数据
+		 	if( !$albumData['albumData']){ $albumData['albumData'] = ''; } // 当无相册数据时 让smarty判断
+
+			VIEW::assign($albumData);
+		 	VIEW::display('class web/classPhoto/albumIndex2.html');
+
+		 }	 
 		
 		
 

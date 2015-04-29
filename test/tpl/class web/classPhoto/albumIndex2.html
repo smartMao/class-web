@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<title>Document</title>
 
-<link href="tpl/class web/css/photo/photoIndex.css" rel="stylesheet" type="text/css" /><!-- 相册css文件 -->
+<link href="tpl/class web/css/photo/albumIndex.css" rel="stylesheet" type="text/css" /><!-- 相册css文件 -->
 <link href="tpl/class web/css/gather.css"           rel="stylesheet" type="text/css" /><!-- 公共css文件 -->
 <link href="tpl/class web/css/index/header.css"           rel="stylesheet" type="text/css" /><!-- 头部css文件 -->
 <link href="tpl/class web/css/index/login.css"            rel="stylesheet" type="text/css" /><!-- 登录注册css文件 -->
@@ -17,33 +17,14 @@
 </head>
 <body>
 	
-	
 
 	{include file='class web/index/header.html'}           <!--  header -->
 	{include file='class web/index/login.html'}            <!--  login -->
 	{include file='class web/index/banner.html'}           <!--  banner -->
-	{include file='class web/classPhoto/photoContent.html'}<!--  photoContent -->
+	{include file='class web/classPhoto/albumContent.html'}<!--  photoContent -->
 	{include file='class web/index/footer.html'}           <!--  footer -->
 
 
-{if $username}
-	<script type="text/javascript">
-		var loginModel  = document.getElementById('loginModel');
-		var userUserName  = document.getElementById('userUserName');
-
-		loginModel.style.display = "none";
-		userUserName.style.display = "block";
-	</script>
-{else}
-	<script type="text/javascript">
-		var loginModel  = document.getElementById('loginModel');
-		var userUserName  = document.getElementById('userUserName');
-
-		loginModel.style.display = "block";
-		userUserName.style.display = "none";
-	</script>
-
-{/if}
 
 
 </body>
@@ -54,4 +35,3 @@
 <script type="text/javascript" src="tpl/class web/js/js.js"></script>
 <script type="text/javascript" src="tpl/class web/js/registerCheck.js"></script>
 <script type="text/javascript" src="tpl/class web/js/nav.js"></script>
-<script type="text/javascript" src="tpl/class web/js/userPhoto.js"></script>
