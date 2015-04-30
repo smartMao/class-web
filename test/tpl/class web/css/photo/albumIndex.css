@@ -274,5 +274,11 @@
 	line-height: 12px;
 	padding-left:0px;
 	
+}
 
+.photo-page{
+	display: block;
+	width: 950px;height: 160px;
+	background: #fff;
+	padding:0 auto;
 }

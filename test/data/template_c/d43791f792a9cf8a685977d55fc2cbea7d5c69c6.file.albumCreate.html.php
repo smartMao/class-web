@@ -1,25 +1,25 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-04-23 04:40:51
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-04-30 06:05:55
          compiled from "tpl\backstage\photo\album\albumCreate.html" */ ?>
-<?php /*%%SmartyHeaderCode:3223155385bb3174cb6-16162006%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:1832955419de2738412-96061427%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'd43791f792a9cf8a685977d55fc2cbea7d5c69c6' => 
     array (
       0 => 'tpl\\backstage\\photo\\album\\albumCreate.html',
-      1 => 1429714271,
+      1 => 1430364317,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '3223155385bb3174cb6-16162006',
+  'nocache_hash' => '1832955419de2738412-96061427',
   'function' => 
   array (
   ),
-  'has_nocache_code' => false,
   'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_55385bb32ff591_93238747',
+  'unifunc' => 'content_55419de27a98b2_41300137',
+  'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_55385bb32ff591_93238747')) {function content_55385bb32ff591_93238747($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if ($_valid && !is_callable('content_55419de27a98b2_41300137')) {function content_55419de27a98b2_41300137($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
@@ -62,10 +62,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			</tr>
 
 			<tr>
-				<td><input type="submit" name="createSubmit" value="创建"></td>
+				<td><input type="submit" id="createSubmit" name="createSubmit" value="创建"></td>
 			</tr>
 
 		</table>
 	</form>
 </body>
-</html><?php }} ?>
+</html>
+
+<?php echo '<script'; ?>
+ type="text/javascript" src="tpl/backstage/js/common.js"><?php echo '</script'; ?>
+>
+<?php }} ?>

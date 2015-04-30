@@ -113,29 +113,41 @@ function birthdayValue(){
 /*
 	调用处: class web / userInfoChange.html
 	用处:   判断从数据库出来的代表性别的int 和 本地代表性别的int 相比较,相同的选中单选框
+	*/
+	function sexValue(){
+
+	//  从数据获取来的int
+		//var sexValue = document.getElementById('sexHidd').value;
+
+	//  获取数值int  3代表男,2代表女,1代表保密,
+		var sexMan = document.getElementById('man');
+		var sexWoman = document.getElementById('woman');
+		var sexSecrecy = document.getElementById('secrecy');
+	//  判断从数据库出来的代表性别的int 和 本地代表性别的int 相比较
+		if(sexValue == sexMan.value){
+			sexMan.setAttribute('checked','checked');
+		}
+
+		if(sexValue == sexWoman.value){
+			sexWoman.setAttribute('checked','checked');
+		}
+
+		if(sexValue == sexSecrecy.value){
+			sexSecrecy.setAttribute('checked','checked');
+		}
+	}
+
+
+/*
+ 	调用处: \backstage\photo\album\albumCreate.html 
+ 	作用: 点击了相册创建按钮后, 会有 零点几秒的延迟,如果在延迟的时间内,再次点击创建按钮,会创建到同一样的相册,
+ 		  为了解决这个问题, 把创建按钮点击一次后 ,就变为 disabled 禁止点击
 */
-function sexValue(){
-
-//  从数据获取来的int
-	//var sexValue = document.getElementById('sexHidd').value;
-
-//  获取数值int  3代表男,2代表女,1代表保密,
-	var sexMan = document.getElementById('man');
-	var sexWoman = document.getElementById('woman');
-	var sexSecrecy = document.getElementById('secrecy');
-//  判断从数据库出来的代表性别的int 和 本地代表性别的int 相比较
-	if(sexValue == sexMan.value){
-		sexMan.setAttribute('checked','checked');
+	function createBtnDisabled(){
+		var createSubmit = document.getElementById('createSubmit');
+		createSubmit.disabled = 'disabled';
 	}
 
-	if(sexValue == sexWoman.value){
-		sexWoman.setAttribute('checked','checked');
-	}
-
-	if(sexValue == sexSecrecy.value){
-		sexSecrecy.setAttribute('checked','checked');
-	}
-}
 
 
 	

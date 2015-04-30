@@ -12,10 +12,16 @@ class frontModel{
 	调用处: headerController 的 photoIndex 方法
 	作用: 查询出所有的相册数据, 给photoIndex.htmL 使用
 */
-	public function findAllAlbumData(){
+	public function findAllAlbumData( $CurrentPage ){
+
+		$zero = $CurrentPage * 6; // limit 起点
+		$zero = $zero - 6;
 
 		// 查询出所有相册的数据
-		$sql = "SELECT `id`,`uid`,`title`,`time`,`power`,`browseNum`,`commentNum`,`path` FROM $this->_tableName3";
+		$sql = "SELECT `id`,`uid`,`title`,`time`,`power`,`browseNum`,`commentNum`,`path` 
+				FROM $this->_tableName3 
+				LIMIT $zero,6";
+			//echo $sql;exit;
 		
 		$albumData = DB::findAll($sql);
 
@@ -62,6 +68,16 @@ class frontModel{
 
 	}
 
+
+/*
+	调用处: headerController 的 photoIndex 方法
+	作用: 查询出相册数据库的所有数据条数, 用于分页的页数显示
+*/
+	public function albumDataNum(){
+		$sql = "SELECT count(id) FROM $this->_tableName3";
+		$res = DB::findOne( $sql );
+		return $res['count(id)'];
+	}
 
 
 

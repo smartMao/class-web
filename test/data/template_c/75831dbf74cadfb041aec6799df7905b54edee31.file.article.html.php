@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-04-23 05:33:50
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-04-30 04:12:19
          compiled from "tpl\backstage\article\article.html" */ ?>
 <?php /*%%SmartyHeaderCode:180645538681ee64636-29337780%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '75831dbf74cadfb041aec6799df7905b54edee31' => 
     array (
       0 => 'tpl\\backstage\\article\\article.html',
-      1 => 1429714271,
+      1 => 1429714272,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.21-dev',
+  'unifunc' => 'content_5538681ef10451_09572591',
   'variables' => 
   array (
     'artCount' => 0,
@@ -22,8 +24,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'key' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_5538681ef10451_09572591',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5538681ef10451_09572591')) {function content_5538681ef10451_09572591($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
