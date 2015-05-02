@@ -8,7 +8,7 @@ class commonModel{
 
 
 /*
-	名称: 图像处理方法
+	名称: 图像处理方法 （固定缩小）
 	作用: 操作上传图片的 宽度 与 高度
 	参数: $imgFileInfo : 传入 $_FILES
 		  $imgWidth    : 希望得到的宽度
@@ -125,7 +125,52 @@ class commonModel{
 		imagedestroy($imgBox);
 
 		return $photoName; // 将保存后的图片路径返回出去
-	}	  
+	}	
+
+
+
+
+
+
+//  照片处理函数
+/*	
+	作用: 复制把上传的照片进行 等比例缩小 , 具体缩小多少PX ,按传入进来的百分比来确定 
+	参数: $tmp : 上传照片的临时路径
+		  $scale : 比例,  照片缩放的比例 例如: 0.5 (50%)
+		  $path  : 处理完的照片保存路径
+
+*/
+	function photoHandle( $tmp , $scale , $path ){
+		//var_dump($_FILES);exit;
+		$imgInfo = getimagesize( $tmp );
+
+		//var_dump($imgInfo);exit;
+		$imgWidth   = $imgInfo[0];
+		$imgHeight  = $imgInfo[1];
+		$imgTypeNum = $imgInfo[2];
+		$imgMine    = $imgInfo['mime'];
+
+		$newImgWidth   = $imgWidth * (float)$scale;
+		$newImgHeight = $imgHeight * (float)$scale;
+
+		$imgType = image_type_to_extension($imgTypeNum , false);
+		
+		$newImg = imagecreatetruecolor( $newImgWidth  , $newImgHeight );
+		$imgCreate = "imagecreatefrom{$imgType}";
+		$image = $imgCreate($tmp);
+
+
+		imagecopyresized($newImg, $image , 0, 0, 0, 0, $newImgWidth, $newImgHeight, $imgWidth, $imgHeight);
+		imagedestroy( $image );
+		//header('Content-type:'.$imgMine);
+
+		$imgOutput = "image{$imgType}";
+		$imgOutput($newImg , $path );
+		imagedestroy( $newImg );
+	}
+
+
+  
 
 
 

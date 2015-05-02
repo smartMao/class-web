@@ -11,6 +11,9 @@ class photoModel{
 	private $fileErr;
 	private $fileSize;
 
+	private $fixWidth = 1200; // 根据百分比缩小后的图片宽高
+	private $fixHeight = 630;
+
 	private $allowType;
 	private $photoDir;
 	private $albumID;
@@ -25,63 +28,9 @@ class photoModel{
 		$idAndPath = DB::findAll($sql);
 		
 		return $idAndPath;
-		
-		// WHERE cid = albumID and id=
-		//$this->imgLessen( $allFilesArr );  // 图片等比例缩小
 	}
 
 
-/*
-	拆分于: 本类中 photoList()
-	作用:   图片等比例缩小
-	参数:   图片路径数组
-*/
-	public function imgLessen( $allFilesArr ){
-		
-		foreach( $allFilesArr as $k => $v ){
-
-			$imgInfo = getimagesize($allFilesArr[$k]);
-			
-			$w=$imgInfo['0'];
-		    $h=$imgInfo['1'];
-
-		    $imgTypeNum = $imgInfo[2];
-		    $imgType = image_type_to_extension($imgTypeNum , false); // 返回图片后缀(没有 "."
-	
-		    //指定缩放出来的最大的宽度（也有可能是高度）
-		    $max=300;
-		    
-		    //根据最大值为300，算出另一个边的长度，得到缩放后的图片宽度和高度
-		    if($w > $h){
-		        $w=$max;
-		        $h=$h*($max/$imgInfo['0']);
-		    }else{
-		        $h=$max;
-		        $w=$w*($max/$imgInfo['1']);
-		    }
-		    
-		    $imgCreate = "imagecreatefrom{$imgType}"; 
-
-			$image = $imgCreate($allFilesArr[$k]);
-	    
-		    //声明一个$w宽，$h高的真彩图片资源
-		    $trueimage=imagecreatetruecolor($w, $h);
-		   
-		    				
-		    
-		    //关键函数，参数（目标资源，源，目标资源的开始坐标x,y, 源资源的开始坐标x,y,目标资源的宽高w,h,源资源的宽高w,h）
-		    imagecopyresampled($trueimage, $image , 0, 0, 0, 0, $w, $h, $imgInfo['0'], $imgInfo['1']);
-		    
-		    //告诉浏览器以图片形式解析
-
-		    header('content-type:image/'.$imgType);
-		    $outputImg = "image{$imgType}";
-		   	$outputImg( $trueimage );
-		    //var_dump($imgType[$k]);
-		   // imagepng($image);	
-   
-		}
-	}
 
 
 //  照片批量上传操作
@@ -94,6 +43,8 @@ class photoModel{
 		if( count($_FILES) == 0 ){ exit('上传文件大于2M,请检查'); }
 		
 		$fileInfo = $_FILES['files'];
+		//echo "<pre>";
+		//var_dump($fileInfo);exit;
 		$fileName = $fileInfo['name']; // 在同时传多文件的时候,$fileName 是一个索引数组
 		$fileType = $fileInfo['type'];
 		$fileTmp  = $fileInfo['tmp_name'];
@@ -153,32 +104,72 @@ class photoModel{
 		// 3
 			// 判断是否为真实的图片类型 (以防用户直接重命名文件成jpg的)
 			if( @!getimagesize($this->fileTmp[$i]) ){
-				exit($this->fileName[$i].'不是真实的图片类型,请换张图片');
+				exit('<span style="color:red;">'.$this->fileName[$i].'</span> 不是真实的图片类型,请换张图片');
+			}
+			
+		//  4
+			// 判断上传的图片是否超过10M
+			if( $this->fileSize[$i] > 10485760 ){ 
+				exit('<span style="color:red;">'.$this->fileName[$i].'</span> 大于10M,无法上传,请处理后重试');
 			}
 			
 
 		// 4
 			$photoMd5    = $albumID .'_'. md5(uniqid(mt_rand(1,1000))); // 这里的'id'替换为数据库对应相册的id
 			$photoSuffix = '.'.pathinfo( $this->fileName[$i] , PATHINFO_EXTENSION ); //取出文件后缀,大概输出:.jpg
-	
-			// 通过了上面的上传方式的检测
-			// 执行移动文件 move_uploaded_file() "只能移动通过POST方式上传的文件(其他方式上传的不能移动)
 			
-			if( move_uploaded_file( $this->fileTmp[$i] , $this->photoDir . $photoMd5 . $photoSuffix )){
-				
-				echo $this->fileName[$i]."上传成功<br/>";
-				
-				$path = $this->photoDir . $photoMd5 . $photoSuffix;
+			$path = $this->photoDir . $photoMd5 . $photoSuffix;
+
+			$res = $this->photoHandle( $this->fileTmp[$i] , $i , $path); // 对上传的照片进行缩放处理
 			
-				if( $this->photoInsertDB( $i , $this->fileSize , $path) ){ // 照片数据插入数据库
-					
-				}
-
-			}else{
-
-				echo $this->fileName[$i]."上传失败<br/>";
+			if( $res == 1 ){
+				echo "<script>alert('图片宽度或高度大于8000px,请选择其他图片上传');</script>";return;
+			}else if( $res == 2 ){
+				echo "<script>alert('未知错误,请联系管理员');</script>";return;
 			}
+
+			echo $this->fileName[$i]."上传成功<br/>";
+			
+			$res2 = $this->photoInsertDB( $i , $this->fileSize , $path);	
 	}
+
+
+/*
+	调用于:本类 imgUploadJudge()
+	作用：根据上传图片的宽高自动计算等比例缩小的百分比，并进行保存处理后的图片
+	参数: $file_tmp : 上传图片的临时路径
+*/
+	public function photoHandle( $file_tmp , $i , $path){
+
+		$imgInfo = getimagesize( $file_tmp );
+
+		$imgWidth   = $imgInfo[0];
+		$imgHeight  = $imgInfo[1];
+
+		$commonobj = M('common');
+
+		if( $imgHeight <= 630 && $imgWidth <= 1200 ){
+
+			$commonobj -> photoHandle( $file_tmp , 1 , $path); // 表示不用缩放, 按原比例1
+
+		}else if( $imgHeight >= 8000 || $imgWidth > 8000 ){
+			return 1;
+		}else if( $imgHeight > 630 ){
+
+			$scale = $this->fixHeight / $imgHeight; 
+			$commonobj -> photoHandle( $file_tmp , $scale , $path);
+
+		}else if( $imgWidth > 1200 ){
+
+			$scale = $this->fixWidth / $imgWidth; 
+			$commonobj -> photoHandle( $file_tmp , $scale , $path);
+
+		}else{
+			return 2;
+		}
+	}
+
+
 
 
 
@@ -187,14 +178,14 @@ class photoModel{
 	作用: 根据文件上传的错误号, switch 匹配
 */
 	public function fileErrorSwitch($i){
-
+		$fileName = $this->fileName[$i];
 		switch($this->fileErr[$i]){
 			case 1:
-				echo "<script>alert('上传文件超过了PHP配置文件中的upload_max_filesize选项的值')</script>";
+				echo "<script>alert('文件 {$fileName}  超过了PHP配置文件中的upload_max_filesize选项的值')</script>";
 				return;
 				break;
 			case 2:
-				echo "<script>alert('超过了表单MAX_FILE_SIZE限制的大小')</script>";
+				echo "<script>alert('文件 {$fileName} 超过了表单MAX_FILE_SIZE限制的大小')</script>";
 				return;
 				break;
 			case 3:
@@ -233,6 +224,7 @@ class photoModel{
 		$photoArr['path'] = $path;
 		$photoArr['date'] = $date;
 
+
 		//DB::insert( $this->_tableName4 , $photoArr );
 		/* 
 			这里不能用自定义的SQL函数,自定义的SQL函数会有返回(return),
@@ -242,7 +234,6 @@ class photoModel{
 
 		$sql = "INSERT INTO $this->_tableName4 (`cid`,`size`,`path`,`date`) VALUES 
 		( {$photoArr['cid']},'{$photoArr['size']}','{$photoArr['path']}','{$photoArr['date']}' )";
-					   
 		mysql_query($sql); // return t / f
 		
 	}
@@ -290,8 +281,10 @@ class photoModel{
 		for($i=0; $i<$count; $i++){
 			
 			$sql = "SELECT `path` FROM $this->_tableName4 WHERE id=$photoID[$i]";
+			
 			$res = DB::findOne($sql);
-	
+		//$res2 = unlink( $res['path'] );
+		//var_dump($res2);exit;
 			if( unlink( $res['path'] ) ){
 				DB::del( $this->_tableName4 , $photoID[$i] );
 			}

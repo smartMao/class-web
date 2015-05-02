@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-04-27 12:45:21
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-01 05:47:50
          compiled from "tpl\backstage\photo\album\albumCreate.html" */ ?>
 <?php /*%%SmartyHeaderCode:64155538f6af1f4070-82719155%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '9f3486e910fe8fd5518e6b3a328671b0a8fff641' => 
     array (
       0 => 'tpl\\backstage\\photo\\album\\albumCreate.html',
-      1 => 1430131470,
+      1 => 1430364318,
       2 => 'file',
     ),
   ),
@@ -62,10 +62,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			</tr>
 
 			<tr>
-				<td><input type="submit" name="createSubmit" value="创建"></td>
+				<td><input type="submit" id="createSubmit" name="createSubmit" value="创建"></td>
 			</tr>
 
 		</table>
 	</form>
 </body>
-</html><?php }} ?>
+</html>
+
+<?php echo '<script'; ?>
+ type="text/javascript" src="tpl/backstage/js/common.js"><?php echo '</script'; ?>
+>
+<?php }} ?>
