@@ -41,7 +41,11 @@
 			</tr>
 
 			<tr>
-				<td><input type="submit" id="createSubmit" name="createSubmit" value="创建"></td>
+				<td>
+					<input type="submit" id="submit" name="createSubmit" value="创建" onclick="stopRepeatSubmit()">
+					<span id="message"></span>
+				</td>
+				
 			</tr>
 
 		</table>
@@ -49,4 +53,4 @@
 </body>
 </html>
 
-<script type="text/javascript" src="tpl/backstage/js/common.js"></script>
+<script type="text/javascript" src="tpl/backstage/js/common.js?1"></script>

@@ -11,7 +11,7 @@
        $pageStr= $myPage->GetPagerContent();   
        echo $pageStr;   
  */   
-class Pager {    
+class pager {    
     private $pageSize = 6;    
     private $pageIndex;    
     private $totalNum;    

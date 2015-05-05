@@ -4,9 +4,9 @@
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<title>Document</title>
 
-<link rel="stylesheet" type="text/css" href="tpl/backstage/photo/style/photo-list.css?ver=1">
+<link rel="stylesheet" type="text/css" href="tpl/backstage/photo/style/photo-list.css">
 </head>
-<body>
+<body onload=" waterfall( 'main' , 1 ) ">
 	<button onclick="goBack()" class="goBack">返回相册列表</button>
 	<a href="admin.php?controller=back&method=photoAddShow&id={$id}">添加照片</a>
 	
@@ -21,14 +21,21 @@
 			<span>当前相册暂无照片</span>
 		   
 		{else}
-			{foreach from=$data item=item key=key}
-				<li>
-					<img src="{$data.$key.path}" width="260" height="auto" >
-					<input type="checkbox" name="photoIdDel[]" class="checkbox" value="{$data.$key.id}">
-				</li>
-			{/foreach}
+			<div class="main" id="main">
+				{foreach from=$data item=item key=key}
+
+					<li>
+						<div class="pic">
+							<img src="{$data.$key.path}" width="165" height="auto" >
+							<input type="checkbox" name="photoIdDel[]" class="checkbox" value="{$data.$key.id}">
+						</div>
+					</li>
+
+				{/foreach}
+			</div>
 		{/if}
-		<input type="submit"  id="submit" value="确认" />
+		<input type="submit"  id="submit" value="确认" onclick="stopRepeatDelBtn()" />
+		<span id="message" class="message"></span>
 	   
 	</form>
 	</ul>
@@ -36,4 +43,5 @@
 </html>
 
 <script type="text/javascript" src="tpl/backstage/js/photoBatchDel.js?ver=3"></script>
-<script type="text/javascript" src="tpl/backstage/js/common.js"></script>
+<script type="text/javascript" src="tpl/backstage/js/common.js?1"></script>
+<script type="text/javascript" src="tpl/backstage/js/waterfall.js"></script>

@@ -3,41 +3,48 @@
 class headerController{
 
 
-//  此方法展示相册列表	
+//  header  首页标签
+	public function index(){
+
+		// 是否已经登录的判断
+		$userInfo = C('index','checkLoginState');
+		if( empty($userInfo) ){   
+			
+			// 未登录
+			$userInfo = array( 'username' => '' , 'photo' => '' );
+			VIEW::assign( $userInfo ); // 空的用户信息
+		}
+
+		if( is_array($userInfo) ){
+
+			// COOKIE SESSION 登录
+			VIEW::assign( $userInfo );
+		}	
+		VIEW::display('tpl/class web/index.html');
+	}
+
+
+
+//  header  相册标签
 	public function albumIndex(){  
 
+		$userInfo = C('index','checkLoginState');
+		// 是否已经登录的判断
+		if( empty($userInfo) ){   	  
+			$userInfo = array('username'=>'','photo' => '' );
 
-		if($this -> checkPassword()){
-			
-		// 	COOKIE 登录
-			$res = $this->checkPassword();
-			$userInfo['username'] = $res['userName'];
-			$userInfo['photo']    = $res['photo'];
-	
-			VIEW::assign($userInfo);
+			//   未登录  
+			$this->albumData();
+			VIEW::assign($userInfo);	
+		}
 
-			$this->albumData(); //  相册数据
+		if( is_array($userInfo) ){
 
-
-
-		}else if(isset($_SESSION['auth']['userName'])){
-
-		//  SESSION 登录
-			$res = M('admin')->findOne_by_username( $_SESSION['auth']['userName'] );
-			$userInfo['username'] = $res['userName'];
-			$userInfo['photo']    = $res['photo'];
-
-		 	VIEW::assign($userInfo);
-
-		 	$this->albumData(); //  相册数据
-		
-
-		}else{
-
-		//  未登录
-			$this->albumData( false );
-
-		}	 
+			// COOKIE SESSION 登录
+			$this->albumData();        // 相册数据
+			VIEW::assign( $userInfo ); // 用户数据
+		}
+		VIEW::display('tpl/class web/classPhoto/albumIndex.html');
 	}
 
 
@@ -46,14 +53,13 @@ class headerController{
 	作用:显示相册板块数据  
 
 */ 	
-
-	public function albumData( $judge = true ){
+	public function albumData(){
 
 		
 		$albumNum = M('front')->albumDataNum(); // 相册数量
 
 		// 相册分页
-		include 'libs/Model/pager.class.php';  
+		include_once 'libs/Model/pager.class.php';  
 		$CurrentPage = isset( $_GET['page'] ) ? $_GET['page'] : 1 ;   
 		 
  		$myPage = new pager( $albumNum ,intval($CurrentPage) );    
@@ -66,31 +72,9 @@ class headerController{
 
 		VIEW::assign($pageStr);
 		VIEW::assign($albumData);
-
-		if( $judge ){
-			VIEW::display('class web/classPhoto/albumIndex.html');
-		}else{
-			VIEW::display('class web/classPhoto/albumIndex2.html');
-		}
-
 	}
 
 
-
-
-	public function checkPassword(){
-
-		$indexobj = M('index');
-
-		//  这两条判断不可放进indexModel里,正常登录时会因没有检查有没有COOKIE而报错
-		$username = isset($_COOKIE['username'])? $_COOKIE['username'] : false ;
-		$password = isset($_COOKIE['password'])? $_COOKIE['password'] : false ;
-
-		$res = $indexobj -> checkCookiePassword($username,$password);
-		return $res;
-
-
-	}
 
 
 }

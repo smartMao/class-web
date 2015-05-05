@@ -1,13 +1,84 @@
+
+.theme{
+	width: 100%;height: 200px;
+	background: linear-gradient(to right,#b9d1d6 , #86a2a9 ,#51737c);
+	 /*background: linear-gradient(to  right, red , blue);*/
+}
+
+
+.theme .info-box{
+	width: 950px;height: 200px;
+	margin:0 auto;
+	
+}
+
+.theme .info-box .title{
+	display:block;
+	text-align: center;
+	line-height: 110px;
+	font-size: 35px;
+	color:#fff;
+
+}
+
+.theme .author-photo{
+	width: 50px;height: 50px;
+	margin:0 auto;
+}
+
+.theme .author-photo img{
+	width: 50px;height: 50px;
+	border-radius:25px;
+}
+
+.theme .author-photo img:hover{
+	box-shadow: 0px 0px 10px #FFE4C4	
+}
+
+.theme .author-name{
+	display: block;
+	color: #fff;
+	text-align: center;
+	line-height: 28px
+}
+
+
+.content{
+	width: 950px;
+	height: 100%;
+	margin:0 auto;
+	
+}
+
+.photo-list li img{
+	width: 153px;
+	height: auto;
+}
+
+
+.main{
+	position: relative;
+	width: 950px;
+	
+}
 .photo-list li{
-	width: 260px;height: auto;
-	padding: 10px; 
-	border:2px solid #000;
-	margin:10px;
+
+	/*float: left;*/
+	padding: 15px 0 0 15px;
+	list-style: none;
 	float: left;
 
 }
 
-.photo-list li img{
-	width: 260px;height: auto;
 
+
+.photo-list .pic{
+	padding: 10px;
+	border:1px solid #ccc;
+	border-radius: 10px;
+	box-shadow: 0px 0px 10px #ccc;
+}
+
+.photo-list .pic:hover{
+	box-shadow: 0px 0px 10px #EEC900;	
 }

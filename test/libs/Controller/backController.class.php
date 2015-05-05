@@ -70,6 +70,7 @@ class backController{
 
 //  文章添加操作
 	public function artAdd(){
+
 		$backobj = M('article','backArticle');
 		$addRes  = $backobj -> artAdd($_POST); 
 
@@ -356,11 +357,15 @@ class backController{
 	public function photoBatchDel(){
 		//echo "<pre>";
 		$albumID = $_GET['id'];
+		if(empty($_POST['photoIdDel'])){ 
+			$this->showmessage('请先选中您要删除的图片',"admin.php?controller=back&method=photoList&id=$albumID");
+		}
+
 		$res = M('photo' , 'backPhoto')->photoBatchDel( $_POST['photoIdDel'] );
+
 		if( $res ){
 			$this->showmessage('照片删除成功',"admin.php?controller=back&method=photoList&id=$albumID");
 		}
-		//var_dump($res);
 	}
 
 

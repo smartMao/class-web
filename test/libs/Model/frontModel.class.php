@@ -7,7 +7,7 @@ class frontModel{
 	private $_tableName4 = 'photo_content';
 	// 此模块 为前端模块 , 用于辅助控制器取数据
 
-
+	function aa(){ return "aa"; }
 /*
 	调用处: headerController 的 photoIndex 方法
 	作用: 查询出所有的相册数据, 给photoIndex.htmL 使用
@@ -25,7 +25,7 @@ class frontModel{
 		
 		$albumData = DB::findAll($sql);
 
-		if($albumData == ''){ return false; } // 如果当前并没有相册
+		if( $albumData == ''){ return false; } // 如果当前并没有相册
 		
 		$albumNum = count($albumData);
 

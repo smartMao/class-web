@@ -24,7 +24,7 @@ class PC{
 	}
 
 	private static function init_controller(){
-		self::$controller = isset($_GET['controller'])?addslashes($_GET['controller']):"index";
+		self::$controller = isset($_GET['controller'])?addslashes($_GET['controller']):"header";
 		// 如果有url设置了controller,那么就使用url上面的,如果没有,那就使用默认的.
 	}
 

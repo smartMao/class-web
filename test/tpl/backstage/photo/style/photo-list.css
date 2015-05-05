@@ -1,12 +1,26 @@
-body{position: relative;}
+.main{
+	position: relative;
+}
 .photo-list li{
-	border:2px solid #000;
-	float: left;
-	list-style: none;
-	padding:10px;
-	margin-right: 20px;
-	margin-bottom: 20px;
 
+	/*float: left;*/
+	padding: 15px 0 0 15px;
+	list-style: none;
+	float: left;
+
+}
+
+
+
+.photo-list .pic{
+	padding: 10px;
+	border:1px solid #ccc;
+	border-radius: 10px;
+	box-shadow: 0px 0px 10px #ccc;
+}
+
+.photo-list .pic:hover{
+	box-shadow: 0px 0px 10px #EEC900;	
 }
 
 .photo-list li input[type=checkbox]{
@@ -16,32 +30,37 @@ body{position: relative;}
 .photoBatchBtn{
 	display: block;
 	position: absolute;
-	top: 0px;left:180px;
+	top: 10px;left:180px;
 }
 
 
 .photoBatchDelCancel{
 	display: none;
 	position: absolute;
-	top: 0px;left:410px;
+	top: 10px;left:480px;
 }
 
 #submit{
 	display: none;
 	position: absolute;
-	top: 0px;left:360px;
+	top: 10px;left:410px;
 }
 
 .photoSelectAll{
 	position: absolute;
-	top: 0;left: 260px;
+	top: 10px;left: 270px;
 	display: none;
 }
 .photoInverseAll{
 	position: absolute;
-	top: 0;left: 310px;
+	top: 10px;left: 340px;
 	display: none;
 }
 
+.message{
+	
+	position: absolute;
+	top: 10px;left:400px;
+}
 
 

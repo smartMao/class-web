@@ -22,9 +22,7 @@ class authModel{
 	}
 
 
-	public function loginsubmit(){   // 进行登录验证的一系列业务逻辑.
-		
-		
+	public function loginsubmit(){   // 进行登录验证的一系列业务逻辑. 
 
 		if(empty($_POST['username']) || empty($_POST['password'])){
 			// 如果 用户名 或 密码 其中一个为空 返回 false

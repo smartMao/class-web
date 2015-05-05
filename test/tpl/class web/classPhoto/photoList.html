@@ -3,15 +3,70 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<title>Document</title>
-<link rel="stylesheet" type="text/css" href="tpl/class web/css/gather.css">
-<link rel="stylesheet" type="text/css" href="tpl/class web/css/photo/photoList.css">
+<link href="tpl/class web/css/gather.css"  	 		rel="stylesheet" type="text/css" >
+<link href="tpl/class web/css/photo/photoList.css"  rel="stylesheet" type="text/css" >
+<link href="tpl/class web/css/index/header.css"     rel="stylesheet" type="text/css" /><!-- 头部css文件 -->
+<link href="tpl/class web/css/index/login.css"      rel="stylesheet" type="text/css" /><!-- 登录注册css文件 -->
+<link href="tpl/class web/css/index/footer.css"     rel="stylesheet" type="text/css" />
 </head>
-<body>
-	<ul class="photo-list">
-		{foreach from=$photoData item=item key=key}
-		<li><img src="{$photoData.$key.path}"></li>
-		{/foreach}
+<body onload=" waterfall( 'main' , 2 ) "> <!-- 调用瀑布流函数 -->
 
+{include file='class web/index/header.html'}         
+{include file='class web/index/login.html'}
+
+<div class="theme">
+	<div class="info-box">
+		<span class="title">死死死死死死<!-- title --></span>
+		<div class="author-photo">
+			<img src="./tpl/class web/images/banner/01.jpg" /><!-- src -->
+		</div>
+		<span class="author-name"><!-- name --></span>
+	</div>
+</div>
+
+<div class="content">
+
+	<ul class="photo-list">
+		<div class="main" id="main">
+			{foreach from=$photoData item=item key=key}
+				<li>
+					<div class="pic">
+						<img src="{$photoData.$key.path}">
+					</div>
+				</li>
+			{/foreach}
+		</div>
 	</ul>
+</div>
+
+
+
+{include file='class web/index/footer.html'} 	
+
+
+
+{if $username}
+	<script type="text/javascript">
+		var loginModel    = document.getElementById('loginModel');
+		var userUserName  = document.getElementById('userUserName');
+
+		loginModel.style.display = "none";
+		userUserName.style.display = "block";
+	</script>
+{else}
+	<script type="text/javascript">
+		var loginModel    = document.getElementById('loginModel');
+		var userUserName  = document.getElementById('userUserName');
+
+		loginModel.style.display = "block";
+		userUserName.style.display = "none";
+	</script>
+{/if}
+
 </body>
 </html>
+<script type="text/javascript" src="tpl/backstage/js/waterfall.js"></script>
+<script type="text/javascript" src="tpl/class web/js/registerCheck.js"></script>
+<script type="text/javascript" src="tpl/class web/js/nav.js"></script>
+<script type="text/javascript" src="tpl/class web/js/js.js"></script>
+<script type="text/javascript" src="tpl/class web/js/userPhoto.js"></script>

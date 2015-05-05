@@ -1,4 +1,5 @@
 <?php
+	
 
 	function C($name,$method){
 		/*
@@ -8,8 +9,11 @@
 				3. 执行控制器里边的方法
 		*/
 		require_once('/libs/Controller/'.$name.'Controller.class.php');
+		
 		// eval()   把字符串 code 作为PHP代码执行.
-		eval('$obj = new '.$name.'Controller(); $obj -> '.$method.'();');
+		eval('$obj = new '.$name.'Controller(); $res = $obj->'.$method.'();');	
+
+		return $res;
 	}
 
 

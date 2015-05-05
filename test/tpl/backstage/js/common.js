@@ -139,13 +139,34 @@ function birthdayValue(){
 
 
 /*
+	名称: 阻止多次提交函数
  	调用处: \backstage\photo\album\albumCreate.html 
- 	作用: 点击了相册创建按钮后, 会有 零点几秒的延迟,如果在延迟的时间内,再次点击创建按钮,会创建到同一样的相册,
- 		  为了解决这个问题, 把创建按钮点击一次后 ,就变为 disabled 禁止点击
+ 	作用: 为了解决按钮点击后有延时,因为服务器要时间做出反应, 所以在这段延时的时候里,是可以点击两次甚至多次的,
+ 		  这个函数就是在用户点击一次按钮后,就把按钮display none 掉, 避免点击两次
 */
-	function createBtnDisabled(){
-		var createSubmit = document.getElementById('createSubmit');
-		createSubmit.disabled = 'disabled';
+	function stopRepeatSubmit(){
+
+		var submit = document.getElementById('submit');
+		var message = document.getElementById('message');
+		
+		submit.style.display = 'none';
+		message.innerText = '操作中........';
+		
+		
+	}
+
+//  阻止重复点击后台照片删除按钮 (与上面的函数类似)
+//  调用处: backstage/photo/photo/photoList.html
+	function stopRepeatDelBtn(){
+
+		var submit = document.getElementById('submit');
+		var message = document.getElementById('message');
+		var photoBatchDelCancel = document.getElementById('photoBatchDelCancel'); // 取消按钮
+		
+		submit.style.display = 'none';
+		photoBatchDelCancel.style.display = 'none';
+		message.innerText = '操作中......';
+
 	}
 
 

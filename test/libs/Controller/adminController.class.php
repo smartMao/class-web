@@ -30,15 +30,15 @@ class adminController{
 		$res = $authobj -> register();
 		
 		if($res == 0){
-			$this -> showmessage('注册失败！','admin.php?controller=index&method=index');
+			$this -> showmessage('注册失败！', $_SERVER['HTTP_REFERER'] );
 		}
 
 		if($res == 1){
-			$this -> showmessage('注册成功！','admin.php?controller=index&method=index');
+			$this -> showmessage('注册成功！', $_SERVER['HTTP_REFERER'] );
 		}
 
 		if($res == 2){
-			$this -> showmessage('用户名重复！','admin.php?controller=index&method=index');
+			$this -> showmessage('用户名重复！', $_SERVER['HTTP_REFERER'] );
 		}
 		
 	}
@@ -57,53 +57,27 @@ class adminController{
 			//把一系列的登录处理操作拆分到新的方法里去
 
 			$this -> checklogin();
-
-		}else{
-			// 显示登录界面
-
-			VIEW::display('class web/index2.html');
 		}
-
 	}
 
 //  登录的验证操作(拆分出来的)
 	private function checklogin(){
 		
 		$authobj = M('auth');
-		
+
 		if($authobj -> loginsubmit()){
-			$this->showmessage('登录成功','admin.php?controller=index&method=index');
+			$this->showmessage('登录成功', $_SERVER['HTTP_REFERER'] ); // 登录后还是在当前的页面(不会再跳转到index)
 		}else{			
-			$this->showmessage('登录失败','admin.php?controller=index&method=index');
+			$this->showmessage('登录失败', $_SERVER['HTTP_REFERER'] );
 		}
-
-	
-
 	}
 
-	
-//  暂时无用
-	public function index(){
-		
-		$newsobj = M('news');
-		$authobj = M('auth');
-		$userInfo = $authobj -> getauth();
-		$newsnum = $newsobj -> count();
-
-		VIEW::assign(array('username'=>$userInfo['userName']));
-		VIEW::assign(array('newsnum'=>$newsnum));
-		VIEW::display('class web/index.html');
-	
-	}
-
-
-	
 
 	public function logout(){
 	//  登录产生的$_SESSION['auth']; 在auth模型的 logout()方法里清除
 		$authobj = M('auth');
 		$authobj -> logout();
-		$this->showmessage('退出成功！','admin.php?controller=admin&method=login');
+		$this->showmessage('退出成功！', $_SERVER['HTTP_REFERER'] );
 
 	}
 
@@ -113,13 +87,13 @@ class adminController{
 		
 		$userInfo = M('auth') -> userInfoList();
 		$userInfo['username'] = $userInfo['userName']; // 由于smarty用户名需要{$username}
-
+		
 		//默认信息
 		$defualtArr = array(
-			'phoneDef'=>'暂无',
-			'sexDef'=>'保密',
-			'addressDef'=>'暂无',
-			'heightDef'=>'暂无',
+			'phoneDef'    =>'暂无',
+			'sexDef'      =>'保密',
+			'addressDef'  =>'暂无',
+			'heightDef'   =>'暂无',
 			'introductionDef'=>'暂无',
 			'registerTimeDef'=>'暂无');
 		

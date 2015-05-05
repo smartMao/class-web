@@ -12,7 +12,7 @@
   	<div class="logo"><a href="#"><img src="tpl/class web/images/header/logo.jpg" /></a></div>
       <div class="nav" >
       	<ul id="headerNav">
-          	<li><a href="admin.php?controller=index&method=index"  class="on">首页</a></li>
+          	<li><a href="admin.php?controller=header&method=index"  class="on">首页</a></li>
           	<li><a href="#">班级社区</a></li>
           	<li><a href="admin.php?controller=header&method=albumIndex">班级相册</a></li>
           	<li><a href="#" >站务留言</a></li>
@@ -27,12 +27,12 @@
       <div class="user-username" id="userUserName" style="display:none;">
         <div class="user-photo-frame" id="userPhotoFrame">
             <a href="admin.php?controller=admin&method=UserInfoList">
-              <div class="user-photo"><!--用户头像--><img src="./{$photo}" width="48" height="48"/></div>
+              <div class="user-photo"><!--用户头像--><img src="./{$photo|default:""}" width="48" height="48"/></div>
             </a>
         </div>
         <div class="user-options" id="userOptions" style="display:none;">
             <ul>
-                <li>{$username}</li>
+                <li>{$username|default:""}</li>
                 <li class="text-indent-25"><i class="user-set-icon"></i>
                 	<a href="admin.php?controller=admin&method=UserInfoList">账号设置</a>
                 </li>

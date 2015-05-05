@@ -9,9 +9,12 @@
 		<input type="hidden" name="albumID" value="{$id}">
 		<input type="hidden" name="MAX_FILE_SIZE" value="10485760">
 		<input type="file" name="files[]" value="" multiple="multiple" accept="image/*" />
-		<input type="submit" name="submit" value="上传" />
+		<input type="submit" name="submit" id="submit" value="上传" onclick="stopRepeatSubmit()" />
+		<span id="message"></span> <!-- js存放提示信息 -->
 	</form>
+	<sapn>小提示:每次只上传10张图片,分多次上传,速度更快!</sapn>
 
 	
 </body>
 </html>
+<script type="text/javascript" src="./tpl/backstage/js/common.js?1"></script>

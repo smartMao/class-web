@@ -130,7 +130,7 @@ class photoModel{
 
 			echo $this->fileName[$i]."上传成功<br/>";
 			
-			$res2 = $this->photoInsertDB( $i , $this->fileSize , $path);	
+			$res2 = $this->photoInsertDB( $i , $this->fileSize , $path);			
 	}
 
 
@@ -148,11 +148,11 @@ class photoModel{
 
 		$commonobj = M('common');
 
-		if( $imgHeight <= 630 && $imgWidth <= 1200 ){
+		if( ($imgHeight <= $this->fixHeight) && ($imgWidth <= $this->fixWidth) ){ // 如果小于或等于我们要缩小的宽高
 
 			$commonobj -> photoHandle( $file_tmp , 1 , $path); // 表示不用缩放, 按原比例1
 
-		}else if( $imgHeight >= 8000 || $imgWidth > 8000 ){
+		}else if( $imgHeight >= 8000 || $imgWidth >= 8000 ){
 			return 1;
 		}else if( $imgHeight > 630 ){
 
@@ -223,7 +223,6 @@ class photoModel{
 		$photoArr['size'] = $this->transformBytes( $fileSize[$i] ); // 字节数转换
 		$photoArr['path'] = $path;
 		$photoArr['date'] = $date;
-
 
 		//DB::insert( $this->_tableName4 , $photoArr );
 		/* 
