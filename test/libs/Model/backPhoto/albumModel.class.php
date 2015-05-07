@@ -167,6 +167,7 @@ class albumModel{
 
 		$albumArr['id']          = '';
 		$albumArr['uid']         = $userInfo['id'];
+		$albumArr['username']    = $userInfo['userName'];
 		$albumArr['title']       = $POST['albumName'];
 		$albumArr['time']        = $time;
 		$albumArr['power']		 = $POST['albumPower'];
@@ -174,7 +175,7 @@ class albumModel{
 		$albumArr['browseNum']   = '';
 		$albumArr['commentNum']  = '';
 		$albumArr['path']        = $path;
-
+	
 		return $albumArr;
 
 

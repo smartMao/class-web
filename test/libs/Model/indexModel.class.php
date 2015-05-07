@@ -11,7 +11,7 @@ class indexModel{
 
 		$adminobj = M('admin');
 		$userInfo = $adminobj -> findOne_by_username($username);
-		
+	
 		if($userInfo['password'] == $password){
 			//  验证成功, COOKIE密码  与 数据库密码对应
 			return $userInfo;

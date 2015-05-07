@@ -1,20 +1,22 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-05 12:51:47
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-07 10:13:42
          compiled from "tpl\class web\classPhoto\albumContent.html" */ ?>
-<?php /*%%SmartyHeaderCode:155105548a0c3be2302-55038857%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:275555549a6bc457708-31894725%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'ea808956fa3c68f542f76f2927f4d3dc7353be78' => 
     array (
       0 => 'tpl\\class web\\classPhoto\\albumContent.html',
-      1 => 1430357518,
+      1 => 1430919470,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '155105548a0c3be2302-55038857',
+  'nocache_hash' => '275555549a6bc457708-31894725',
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.21-dev',
+  'unifunc' => 'content_5549a6bc48e213_54030859',
   'variables' => 
   array (
     'albumData' => 0,
@@ -22,10 +24,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'pageStr' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_5548a0c3c4f919_17122373',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5548a0c3c4f919_17122373')) {function content_5548a0c3c4f919_17122373($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if ($_valid && !is_callable('content_5549a6bc48e213_54030859')) {function content_5549a6bc48e213_54030859($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
@@ -37,8 +37,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		
 		<!-- 相册搜索 -->
 		<div class="photo-search">
-			<input type="text" placeholder="发布人/标题"/>
-			<input type="button"  value="" />
+			<form method="post" action="index.php?controller=album&method=search">
+				<input type="text" name="search" placeholder="发布人/标题"/>
+				<input type="submit" value="" />
+			</form>
 		</div>
 
 		<!-- 相册公告与排序 -->
@@ -52,6 +54,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 				<span class="photo-public-time">2014/11/22</span>
 				 上传《<span class="photo-public-photoname">大夫人一日游</span>》组图 
 			</span>
+			
 
 			<!-- 排序 -->
 			<div class="photo-public-sort">

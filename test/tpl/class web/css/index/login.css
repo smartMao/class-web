@@ -32,17 +32,18 @@
 }
 
 .ui-dialog-title-closebutton{
-		width:18px;
-		height: 16px;
-		display: block;
-		position: absolute;
-		top:7px;
-		right: 4px;
-		background:url(../../images/login/close_def.png) no-repeat;
+	width:30px;
+	height: 35px;
+	display: block;
+	position: absolute;
+	top:-1px;right: -1px;
+	color:#cfcfcf;
+	font-weight: bold;
 }
 
 .ui-dialog-title-closebutton:hover{
-		background:url(../../images/login/close_hov.png) no-repeat;
+	 background: #ff4343;
+	 color:#fff;
 }
 
 .ui-dialog-content{
@@ -111,28 +112,41 @@
 	bottom: 36px;
 }
 
+.ui-dialog-form label:hover{	
+	border-bottom:1px solid #000;
+	position: absolute;
+	bottom: 35px;
+}
+
 .ui-dialog-form a{
 	font-size:14px;color:#7ed3ee;
 	margin-left:170px;
 }
 
+.ui-dialog-form a:hover{
+	text-decoration:underline	
+}
+
 .ui-dialog-form input[type=submit]{
-	width:170px;height:30px;
-	border:none;
+	width:168px;height:28px;
+	border: 1px solid #2e82cf;
 	margin-left:116px;
 	margin-top:15px;
-	background:url(../../images/login/login_mouse.png);
+	background: #4397e4;
+	color:#fff;
+	font-size: 16px;
+	
 }
 
 .ui-dialog-form input[type=submit]:hover{
-	background:url(../../images/login/login_mouse_over.png);
+	background: #4a9fec;
 }
 
 /*   注册   */
 
 
 .ui-dialog-register{
-		width:400px;
+		width:570px;
 		height: 360px;
 		position:absolute;
 		top: 100px;
@@ -141,18 +155,14 @@
 		background: #fff;
 		z-index: 6;
 		display:none;
+		margin: 0 auto;
 }
 
-.ui-dialog-register-title-line{
-		width:400px;
-		height: 2px;
-		background:url(../../images/login/login-top.png);
-		display: block;
-}
+
 
 .ui-dialog-register-title{
 		height:35px;
-		width:400px;
+		width:570px;
 		cursor:pointer;
 		line-height: 35px;
 		text-align: center;
@@ -162,27 +172,32 @@
 .ui-dialog-register-title-closebutton{
 	display: block;
 	position: absolute;
-	top:9px;right:7px;
-	width:18px;height:16px;
-	background:url(../../images/login/close_def.png) no-repeat;
+	top:-1px;right:-1px;
+	width:30px;height:35px;
+	font-weight: bold;
+	
+	color:#cfcfcf;
+	line-height: 35px;
+	text-align: center;
+	
 }
 
 .ui-dialog-register-title-closebutton:hover{
-	background:url(../../images/login/close_hov.png) no-repeat;
+	background: #ff4343;color:#fff;
 }
 
 .ui-dialog-register--title-cut-off-rule{
-	width:350px;height: 1px;
+	width:480px;height: 1px;
 	background: #e6e6e6;margin: 0 auto;
 }
 
-
+.ui-dialog-register-content{ margin: 0 auto; }
 .ui-dialog-register-form{position:relative;}
 .ui-dialog-register-form [type=text]{
-	width:240px;height:35px;
+	width:240px;height:40px;
 	padding-left:10px;
 	font-size:14px;
-	margin-left:73px;
+	margin-left:158px;
 	margin-top:11px;
 	border-radius: 5px;
 	border:2px solid #9d9d9d;
@@ -202,10 +217,10 @@
 }
 
 .ui-dialog-register-form [type=password]{
-	width:240px;height:35px;
+	width:240px;height:40px;
 	padding-left:10px;
 	font-size:14px;
-	margin-left:73px;
+	margin-left:158px;
 	margin-top:11px;
 	border-radius: 5px;
 	border:2px solid #9d9d9d;
@@ -225,35 +240,57 @@
 #ui-dialog-register-form-check{
 	cursor: pointer;position: absolute;
 	vertical-align: middle;
-	margin-top:22px;padding-left:3px;
-	margin-left:135px;
+	margin-top:23px;padding-left:3px;
+	margin-left:205px;
+
 }
 .ui-dialog-register-form-text{
 	cursor: pointer;display:inline-block;
-	font-size:12px;vertical-align: middle;
+	font-size:14px;vertical-align: middle;
 	margin-top:20px;
-	margin-left: 150px;
+	margin-left: 220px;
 }
 .ui-dialog-register-form input[type=submit]{
-	width:170px;height:30px;
-	margin-top:25px;margin-left:115px;
-	border:none;
-	background:url(../../images/login/register_btn.png) no-repeat;	
+	width:168px;height:28px;
+	border:1px solid #e50006;
+	margin-top:20px;margin-left:200px;
+	background: #e50006;
+	color: #fff;font-size:16px;
 }
 .ui-dialog-register-form input[type=submit]:hover{
-	background:url(../../images/login/register_btn_over.png) no-repeat;	
+	background: #fe4145;
 }
-#userOk{  margin-left:5px;display:none; position: absolute; top:25px; right:45px;}
-#pasOk{   margin-left:5px;display:none; position: absolute; top:75px; right:45px;}
-#twoPasOk{margin-left:5px;display:none; position: absolute; top:125px; right:45px;}
-#emailOk{ margin-left:5px;display:none; position: absolute; top:175px; right:45px;}
-#userErrorPrompt{	  position:absolute;margin-top:-38px;margin-left:337px;display:none;}
-#passFormatError{	  position:absolute;margin-top:-38px;margin-left:337px;display:none;					  border: 1px solid #000;}
-#passErrorPrompt{	  position:absolute;margin-top:-38px;margin-left:337px;display:none;}
-#inconsistentPassword{position:absolute;margin-top:-38px;margin-left:337px;display:none;}
-#trueNameFormatError{ position:absolute;margin-top:-38px;margin-left:337px;display:none;border: 1px solid #000;}
-#trueNameErrorPrompt{ position:absolute;margin-top:-38px;margin-left:337px;display:none;border: 1px solid #000;}
 
+.ui-dialog-register-form i{font-size: 14px;}
+
+
+#userOk{  margin-left:5px;display:none; position: absolute; top:27px; right:130px;}
+#pasOk{   margin-left:5px;display:none; position: absolute; top:82px; right:130px;}
+#twoPasOk{margin-left:5px;display:none; position: absolute; top:135px; right:130px;}
+#emailOk{ margin-left:5px;display:none; position: absolute; top:189px; right:130px;}
+#userErrorPrompt{	  position:absolute;margin-top:-33px;margin-left:417px;display:none;}
+#userErrorPrompt img{position:absolute;top:3px;}
+#userErrorPrompt span{text-indent: 18px;display:block;}
+
+#passFormatError{	  position:absolute;margin-top:-33px;margin-left:417px;display:none;}
+#passFormatError img{position:absolute;top:3px;}
+#passFormatError span{text-indent: 18px;display:block;}
+
+#passErrorPrompt{	  position:absolute;margin-top:-33px;margin-left:417px;display:none;}
+#passErrorPrompt img{position:absolute;top:3px;}
+#passErrorPrompt span{text-indent: 18px;display:block;}
+
+#inconsistentPassword{position:absolute;margin-top:-33px;margin-left:417px;display:none;}
+#inconsistentPassword img{position:absolute;top:3px;}
+#inconsistentPassword span{text-indent: 18px;display:block;}
+
+#trueNameFormatError{ position:absolute;margin-top:-33px;margin-left:417px;display:none;}
+#trueNameFormatError img{position:absolute;top:3px;}
+#trueNameFormatError span{text-indent: 18px;display:block;}
+
+#trueNameErrorPrompt{ position:absolute;margin-top:-31px;margin-left:417px;display:none;}
+#trueNameErrorPrompt img{position:absolute;top:2px;}
+#trueNameErrorPrompt span{text-indent: 18px;display:block;}
 
 
 

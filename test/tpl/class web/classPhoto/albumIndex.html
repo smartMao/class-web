@@ -22,9 +22,18 @@
 
 	{include file='class web/index/header.html'}           <!--  header -->
 	{include file='class web/index/login.html'}            <!--  login -->
-	{include file='class web/index/banner.html'}           <!--  banner -->
-	{include file='class web/classPhoto/albumContent.html'}<!--  photoContent -->
+	{include file='class web/index/banner.html'}
+	           <!--  banner -->
+	{if $albumState eq 'normal'}
+		{include file='class web/classPhoto/albumContent.html'}<!--  photoContent -->
+	{/if}
+
+	{if $albumState eq 'search'}
+		{include file='class web/classPhoto/albumSearch.html'}<!--  photoSearch -->
+	{/if}
+
 	{include file='class web/index/footer.html'}           <!--  footer -->
+	
 
 
 {if $username}
@@ -43,7 +52,6 @@
 		loginModel.style.display = "block";
 		userUserName.style.display = "none";
 	</script>
-
 {/if}
 
 

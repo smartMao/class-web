@@ -11,25 +11,28 @@ class indexController{
 
 		if( $this->checkPassword() ){
 			// COOKIE 登录
-			$res = $this->checkPassword();
+			$userInfo = $this->checkPassword();
 
-			$userInfo['username'] = $res['userName'];
-			$userInfo['photo']    = $res['photo'];
+			$userInfo['username'] = $userInfo['userName'];
 			return $userInfo;
 			
 
 		}else if( isset($_SESSION['auth']) ){
 			// SESSION 登录
-			$res = $_SESSION['auth'];
+			/*
+				这里设置每一次验证登录都要去数据库取新的用户数据,
+				如果使用旧的用户数据,会出现修改了新的用户头像,其他页面却又显示旧的
+			*/
+			$adminobj = M('admin');
+			$userInfo = $adminobj -> findOne_by_username( $_SESSION['auth']['userName'] );
 
-			$userInfo['username'] = $res['userName'];
-			$userInfo['photo']    = $res['photo'];
+			$userInfo['username'] = $userInfo['userName'];
 			return $userInfo;
 			
 		}else{
 
 			// 并没有登录
-			$userInfo = array('userName'=>'' , 'photo'=>'');
+			$userInfo = array('username'=>'' , 'photo'=>'');
 			return $userInfo;
 		}
 

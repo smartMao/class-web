@@ -10,8 +10,10 @@
 		
 		<!-- 相册搜索 -->
 		<div class="photo-search">
-			<input type="text" placeholder="发布人/标题"/>
-			<input type="button"  value="" />
+			<form method="post" action="index.php?controller=album&method=search">
+				<input type="text" name="search" placeholder="发布人/标题"/>
+				<input type="submit" value="" />
+			</form>
 		</div>
 
 		<!-- 相册公告与排序 -->
@@ -25,6 +27,7 @@
 				<span class="photo-public-time">2014/11/22</span>
 				 上传《<span class="photo-public-photoname">大夫人一日游</span>》组图 
 			</span>
+			
 
 			<!-- 排序 -->
 			<div class="photo-public-sort">

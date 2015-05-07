@@ -49,7 +49,8 @@ class pager {
         $urlQuery   = $arrUrl["query"];    
 
         if($urlQuery){    
-            $urlQuery  = ereg_replace("(^|&)page=" . $this->pageIndex, "", $urlQuery);    
+            //$urlQuery  = ereg_replace("(^|&)page=" . $this->pageIndex, "", $urlQuery);    
+            $urlQuery  = preg_replace("/(^|&)page=" . $this->pageIndex."/", "", $urlQuery);    
             $CurrentUrl = str_replace($arrUrl["query"], $urlQuery, $CurrentUrl);    
 
             if($urlQuery){    

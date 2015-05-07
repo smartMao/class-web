@@ -75,9 +75,23 @@ class adminController{
 
 	public function logout(){
 	//  登录产生的$_SESSION['auth']; 在auth模型的 logout()方法里清除
+		
 		$authobj = M('auth');
 		$authobj -> logout();
-		$this->showmessage('退出成功！', $_SERVER['HTTP_REFERER'] );
+
+		$url = $_SERVER['HTTP_REFERER'];
+
+		$indexUrl = 'http://localhost/class-web/test/admin.php?controller=header&method=index';	// 首页url
+		$stopUrl  = 'http://localhost/class-web/test/admin.php?controller=admin&method=UserInfoList'; // 用户资料页Url
+		$stopUrl2 = 'http://localhost/class-web/test/admin.php?controller=admin&method=userInfoChange'; // 用户资料修改页Url
+
+		if( $url == $stopUrl ){ // 如果用户是在资料修改页点击 退出登录的 那就跳回到index
+  			$url = $indexUrl;
+		}else if( $url == $stopUrl2 ){
+			$url = $indexUrl;
+		}
+
+		$this->showmessage('退出成功！', $url );
 
 	}
 

@@ -250,7 +250,6 @@ class authModel{
 		
 		// 将$newUserInfo 这个数据再去处理 ( 过滤空格,添加地址长度等 )
 		$newUserInfo = $this -> newUserInfoOp($newUserInfo); // 处理数据
-
 		return $newUserInfo;
 	}
 

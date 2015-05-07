@@ -1,29 +1,30 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-05 12:51:47
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-07 10:13:42
          compiled from "tpl\class web\classPhoto\albumIndex.html" */ ?>
-<?php /*%%SmartyHeaderCode:35305548a0c3b846e9-01653187%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:160825549a6bc418ef5-72038986%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '68bf505ac8226d37bf59e4e9a9c74b596b537142' => 
     array (
       0 => 'tpl\\class web\\classPhoto\\albumIndex.html',
-      1 => 1430821758,
+      1 => 1430893798,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '35305548a0c3b846e9-01653187',
+  'nocache_hash' => '160825549a6bc418ef5-72038986',
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.21-dev',
+  'unifunc' => 'content_5549a6bc447d09_72122590',
   'variables' => 
   array (
+    'albumState' => 0,
     'username' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_5548a0c3bb34f3_27471980',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5548a0c3bb34f3_27471980')) {function content_5548a0c3bb34f3_27471980($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if ($_valid && !is_callable('content_5549a6bc447d09_72122590')) {function content_5549a6bc447d09_72122590($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
@@ -50,11 +51,21 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	<?php echo $_smarty_tpl->getSubTemplate ('class web/index/login.html', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
             <!--  login -->
 	<?php echo $_smarty_tpl->getSubTemplate ('class web/index/banner.html', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
-           <!--  banner -->
-	<?php echo $_smarty_tpl->getSubTemplate ('class web/classPhoto/albumContent.html', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+
+	           <!--  banner -->
+	<?php if ($_smarty_tpl->tpl_vars['albumState']->value=='normal') {?>
+		<?php echo $_smarty_tpl->getSubTemplate ('class web/classPhoto/albumContent.html', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 <!--  photoContent -->
+	<?php }?>
+
+	<?php if ($_smarty_tpl->tpl_vars['albumState']->value=='search') {?>
+		<?php echo $_smarty_tpl->getSubTemplate ('class web/classPhoto/albumSearch.html', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+<!--  photoSearch -->
+	<?php }?>
+
 	<?php echo $_smarty_tpl->getSubTemplate ('class web/index/footer.html', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
            <!--  footer -->
+	
 
 
 <?php if ($_smarty_tpl->tpl_vars['username']->value) {?>
@@ -77,7 +88,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		userUserName.style.display = "none";
 	<?php echo '</script'; ?>
 >
-
 <?php }?>
 
 

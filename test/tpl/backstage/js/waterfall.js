@@ -45,7 +45,16 @@
 		}
 
 		var maxColsWidth = Math.max.apply( null ,  heightArr); // 选出完成瀑布流后 , 最高的一列,作为父元素main的高
-		main.style.height = 50 + maxColsWidth+'px';
+		if( maxColsWidth < 559 ){
+			// 如果main的高度小于559,那就把他设为559
+			maxColsWidth = 559;
+			main.style.height = 50 + maxColsWidth+'px';
+
+		}else if( maxColsWidth >= 559 ){
+			// 如果main高度大于559,那就自动匹配
+			main.style.height = 50 + maxColsWidth+'px';
+		}
+		
 		
 
 	}
