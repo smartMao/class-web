@@ -15,7 +15,8 @@ class albumModel{
 
 //  展示相册列表页
 	public function albumList(){
-		$sql = "SELECT id,username,title,time,power,browseNum,commentNum,`path` FROM $this->_tableName3";
+		$sql = "SELECT id,username,title,time,power,browseNum,commentNum,`path` 
+		FROM $this->_tableName3 order by id desc";
 		$res = DB::findAll($sql);
 		
 		return $res;

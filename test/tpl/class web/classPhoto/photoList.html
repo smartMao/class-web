@@ -8,8 +8,13 @@
 <link href="tpl/class web/css/index/header.css"     rel="stylesheet" type="text/css" /><!-- 头部css文件 -->
 <link href="tpl/class web/css/index/login.css"      rel="stylesheet" type="text/css" /><!-- 登录注册css文件 -->
 <link href="tpl/class web/css/index/footer.css"     rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="tpl/class web/classPhoto/layer-v1.9.1/js/jquery-1.11.3.js"></script>
+<script type="text/javascript" src="tpl/class web/classPhoto/layer-v1.9.1/layer/layer.js"></script>
+
+
 </head>
-<body onload=" waterfall( 'main' , 2 ) "> <!-- 调用瀑布流函数 -->
+<body onload=" waterfall( 'photoBox' , 2 ) "> <!-- 调用瀑布流函数 -->
 
 {include file='class web/index/header.html'}         
 {include file='class web/index/login.html'}
@@ -28,17 +33,18 @@
 
 	<ul class="photo-list">
 		<div class="main" id="main">
-			{foreach from=$photoData item=item key=key}
-				<li>
-					<div class="pic">
-						<img src="{$photoData.$key.path}">
+			
+				<li id="li">
+					<div class="pic" id="photoBox">
+					{foreach from=$photoData item=item key=key}
+						<img src="{$photoData.$key.path}" layer-src="{$photoData.$key.path}">
+					{/foreach}
 					</div>
 				</li>
-			{/foreach}
+			
 		</div>
 	</ul>
 </div>
-
 
 
 {include file='class web/index/footer.html'} 	
@@ -65,8 +71,9 @@
 
 </body>
 </html>
-<script type="text/javascript" src="tpl/backstage/js/waterfall.js"></script>
-<script type="text/javascript" src="tpl/class web/js/registerCheck.js"></script>
-<script type="text/javascript" src="tpl/class web/js/nav.js"></script>
-<script type="text/javascript" src="tpl/class web/js/js.js"></script>
-<script type="text/javascript" src="tpl/class web/js/userPhoto.js"></script>
+<script type="text/javascript" src="tpl/backstage/js/waterfallFront.js"></script><!-- 照片瀑布流 -->
+<script type="text/javascript" src="tpl/class web/js/registerCheck.js"></script><!-- 注册验证 -->
+<script type="text/javascript" src="tpl/class web/js/nav.js"></script><!-- 导航点击焦点 -->
+<script type="text/javascript" src="tpl/class web/js/js.js"></script><!-- 登录层 -->
+<script type="text/javascript" src="tpl/class web/js/userPhoto.js"></script><!-- move到用户头像上出来的选项卡 -->
+<script type="text/javascript" src="tpl/class web/js/frontPhotoShow.js"></script> <!-- 照片展出层 -->

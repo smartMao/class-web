@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-07 10:13:42
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-09 17:04:34
          compiled from "tpl\class web\classPhoto\albumContent.html" */ ?>
 <?php /*%%SmartyHeaderCode:275555549a6bc457708-31894725%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'ea808956fa3c68f542f76f2927f4d3dc7353be78' => 
     array (
       0 => 'tpl\\class web\\classPhoto\\albumContent.html',
-      1 => 1430919470,
+      1 => 1431183428,
       2 => 'file',
     ),
   ),
@@ -19,6 +19,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'unifunc' => 'content_5549a6bc48e213_54030859',
   'variables' => 
   array (
+    'albumDynamic' => 0,
     'albumData' => 0,
     'key' => 0,
     'pageStr' => 0,
@@ -47,14 +48,20 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		<div class="photo-public">
 			
 			<!-- 公告 -->
-			<span class="photo-public-icon"></span>
-			<span class="photo-public-span">相册动态: 
-				<span class="photo-public-name">随便</span>
-				 在 
-				<span class="photo-public-time">2014/11/22</span>
-				 上传《<span class="photo-public-photoname">大夫人一日游</span>》组图 
-			</span>
-			
+			<?php if ($_smarty_tpl->tpl_vars['albumDynamic']->value=='') {?>
+				<span><!-- 现在相册数据库没有数据, 所以没有相册动态 --></span>
+			<?php } else { ?>
+				<span class="photo-public-icon"></span>
+				<span class="photo-public-span">相册动态: 
+					<span class="photo-public-name"><?php echo $_smarty_tpl->tpl_vars['albumDynamic']->value['username'];?>
+<!-- 上传作者 --></span>
+					 在 
+					<span class="photo-public-time"><?php echo $_smarty_tpl->tpl_vars['albumDynamic']->value['time'];?>
+<!-- 上传时间 --></span>
+					 上传《<span class="photo-public-photoname"><?php echo $_smarty_tpl->tpl_vars['albumDynamic']->value['title'];?>
+<!-- 相册标题 --></span>》组图 
+				</span>
+			<?php }?>
 
 			<!-- 排序 -->
 			<div class="photo-public-sort">
@@ -100,6 +107,7 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 								<?php echo $_smarty_tpl->tpl_vars['albumData']->value[$_smarty_tpl->tpl_vars['key']->value]['title'];?>
 
 							<?php }?>
+							
 						</h3>
 						<div class="photo-list-user-photo">
 							<div class="photo-list-user-format">

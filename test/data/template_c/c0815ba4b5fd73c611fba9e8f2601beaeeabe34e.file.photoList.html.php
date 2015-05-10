@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-06 07:45:43
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-08 14:49:16
          compiled from "tpl\backstage\photo\photo\photoList.html" */ ?>
 <?php /*%%SmartyHeaderCode:319255549aa877f9850-60349172%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c0815ba4b5fd73c611fba9e8f2601beaeeabe34e' => 
     array (
       0 => 'tpl\\backstage\\photo\\photo\\photoList.html',
-      1 => 1430656064,
+      1 => 1431089313,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.21-dev',
+  'unifunc' => 'content_5549aa87830363_32910723',
   'variables' => 
   array (
     'id' => 0,
@@ -22,8 +24,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'key' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_5549aa87830363_32910723',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5549aa87830363_32910723')) {function content_5549aa87830363_32910723($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
@@ -86,6 +86,6 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
  type="text/javascript" src="tpl/backstage/js/common.js?1"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
- type="text/javascript" src="tpl/backstage/js/waterfall.js"><?php echo '</script'; ?>
+ type="text/javascript" src="tpl/backstage/js/waterfallBackstage.js"><?php echo '</script'; ?>
 >
 <?php }} ?>

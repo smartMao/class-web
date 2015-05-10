@@ -19,7 +19,7 @@ class frontModel{
 
 		// 查询出所有相册的数据
 		$sql = "SELECT `id`,`uid`,`title`,`time`,`power`,`browseNum`,`commentNum`,`path` 
-				FROM $this->_tableName3 LIMIT $zero,6";
+				FROM $this->_tableName3  order by id desc LIMIT $zero,6";
 
 		$albumData = DB::findAll($sql);
 
@@ -77,7 +77,8 @@ class frontModel{
 		$zero = $CurrentPage * 6;
 		$zero = $zero - 6;
 
-		$titleSql = "SELECT * FROM $this->_tableName3 WHERE title LIKE '%$searchText%' LIMIT $zero,6";
+		$titleSql = "SELECT id,uid,username,title,time,browseNum,commentNum,`path` FROM $this->_tableName3
+		 WHERE title LIKE '%$searchText%' LIMIT $zero,6";
 		$titleRes = DB::findAll( $titleSql );
 
 	// 搜索的值,在title字段里有
@@ -87,7 +88,8 @@ class frontModel{
 			return $titleRes; // 搜索到了title
 		}
 
-		$usernameSql = "SELECT * FROM $this->_tableName3 WHERE username LIKE '%$searchText%' LIMIT $zero,6";
+		$usernameSql = "SELECT id,uid,username,title,time,browseNum,commentNum,`path` FROM $this->_tableName3 
+		WHERE username LIKE '%$searchText%' LIMIT $zero,6";
 		$usernameRes = DB::findAll( $usernameSql );
 
     // 搜索的值,在username字段里有
@@ -166,6 +168,28 @@ class frontModel{
 			return $usernameCount;
 		}	
 	}
+
+
+
+/*
+	调用处：headerContorller 中的 albumIndex()
+	作用: 相册页面的 相册动态
+*/
+	public function albumDynamic(){
+
+		$sql = "SELECT id FROM $this->_tableName3";
+		$res = DB::findAll( $sql ); // 取出所有的相册id
+
+		if( empty($res) ){ return $res; }  // 此时相册数据表里没有数据
+		
+		$maxArr = max($res);
+		$maxId = $maxArr['id']; // 找出最大相册id (也代表最新的记录)
+
+		$sql2 = "SELECT username,title,time FROM $this->_tableName3 WHERE id=$maxId";
+		$res2 = DB::findOne($sql2); // 取出最新上传相册的信息用于 相册动态显示
+		
+		return $res2;	
+	} 
 
 }
 

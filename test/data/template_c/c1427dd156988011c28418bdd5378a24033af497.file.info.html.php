@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-06 07:10:37
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-10 15:04:44
          compiled from "tpl\class web\index\info.html" */ ?>
 <?php /*%%SmartyHeaderCode:49165549a24d4645d3-24564513%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c1427dd156988011c28418bdd5378a24033af497' => 
     array (
       0 => 'tpl\\class web\\index\\info.html',
-      1 => 1430103120,
+      1 => 1431184617,
       2 => 'file',
     ),
   ),
@@ -15,9 +15,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
-  'has_nocache_code' => false,
   'version' => 'Smarty-3.1.21-dev',
   'unifunc' => 'content_5549a24d468456_28625349',
+  'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5549a24d468456_28625349')) {function content_5549a24d468456_28625349($_smarty_tpl) {?><!DOCTYPE html>
 <html>
@@ -97,7 +97,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 						</li>
 						<li>
 							<i>3</i>
-							<span>ss</span>
+							<span>scccs</span>
 						</li>
 						<li>
 							<i class="bottom">4</i>
@@ -109,11 +109,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 						</li>
 						<li>
 							<i class="bottom">6</i>
-							<span>sasdass</span>
+							<span>sa5151sdass</span>
 						</li>
 						<li>
 							<i class="bottom">7</i>
-							<span>ss</span>
+							<span>ss2515</span>
 						</li>
 						<li>
 							<i class="bottom">8</i>

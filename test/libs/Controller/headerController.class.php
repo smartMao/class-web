@@ -18,6 +18,11 @@ class headerController{
 //  header  相册标签
 	public function albumIndex(){  
 
+		$albumDynamic['albumDynamic'] = M('front')->albumDynamic();
+	
+		VIEW::assign( $albumDynamic );
+
+
 		$userInfo = C('index','checkLoginState');
 		$albumState['albumState'] = 'normal'; // 此相册状态用于区分当前是显示相册 还是 搜索相册
 		//var_dump($userInfo); 

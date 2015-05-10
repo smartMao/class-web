@@ -72,13 +72,24 @@
 
 
 
-.photo-list .pic{
-	padding: 10px;
-	border:1px solid #ccc;
-	border-radius: 10px;
-	box-shadow: 0px 0px 10px #ccc;
-}
+
 
 .photo-list .pic:hover{
+	box-shadow: 0px 0px 10px #EEC900;	
+}
+#photoBox{position: relative;}
+#photoBox img{
+	display: block;
+	width: 168px;
+	height: auto;
+	padding: 10px;
+
+	border-radius: 20px;
+	border:1px solid #ccc;
+	box-shadow: 0px 0px 2px #fff;	
+	float: left;
+}
+
+#photoBox img:hover{
 	box-shadow: 0px 0px 10px #EEC900;	
 }

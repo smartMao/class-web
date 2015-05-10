@@ -20,14 +20,17 @@
 		<div class="photo-public">
 			
 			<!-- 公告 -->
-			<span class="photo-public-icon"></span>
-			<span class="photo-public-span">相册动态: 
-				<span class="photo-public-name">随便</span>
-				 在 
-				<span class="photo-public-time">2014/11/22</span>
-				 上传《<span class="photo-public-photoname">大夫人一日游</span>》组图 
-			</span>
-			
+			{if $albumDynamic eq ''}
+				<span><!-- 现在相册数据库没有数据, 所以没有相册动态 --></span>
+			{else}
+				<span class="photo-public-icon"></span>
+				<span class="photo-public-span">相册动态: 
+					<span class="photo-public-name">{$albumDynamic.username}<!-- 上传作者 --></span>
+					 在 
+					<span class="photo-public-time">{$albumDynamic.time}<!-- 上传时间 --></span>
+					 上传《<span class="photo-public-photoname">{$albumDynamic.title}<!-- 相册标题 --></span>》组图 
+				</span>
+			{/if}
 
 			<!-- 排序 -->
 			<div class="photo-public-sort">
@@ -62,6 +65,7 @@
 							{else}
 								{$albumData.$key.title}
 							{/if}
+							
 						</h3>
 						<div class="photo-list-user-photo">
 							<div class="photo-list-user-format">

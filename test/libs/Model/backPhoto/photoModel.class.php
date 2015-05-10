@@ -35,6 +35,8 @@ class photoModel{
 
 //  照片批量上传操作
 	public function photoBatchUpload(){
+
+
 	
 		$this->albumID  = $_POST['albumID'];
 		$this -> queryFolderPath(); // 从数据库取出相册文件夹路径 保存在 $this->photoDir
@@ -60,7 +62,16 @@ class photoModel{
 		$this->fileSize  = $fileSize;
 		$this->allowType = $allowType;
 	
-		$count = count($_FILES['files']['name']);
+		$count = count($_FILES['files']['name']); // 上传图片的数量
+
+		if( $count > 21 ){ 
+			echo "<script>
+					alert('只允许 20 张图片同时上传,请减少后重试');
+					window.location.href='index.php?controller=back&method=photoAddShow&id=$this->albumID';
+				  </script>";
+
+			exit;  
+		}
 
 		$i = 0;
 		
