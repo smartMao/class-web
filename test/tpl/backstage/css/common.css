@@ -1,0 +1,89 @@
+.common-list{
+	border:1px solid #d0d0d0; 
+	margin:10px auto;padding:15px;
+	border-collapse: collapse;
+}
+
+.common-list tr th{
+	border:1px solid #d0d0d0;
+	padding:22px;
+	border-collapse: collapse;
+}
+
+.common-list tr td{
+	border:1px solid #d0d0d0;
+	border-collapse: collapse;
+	padding:20px 37px 20px 36px; 
+	text-align: center;
+}
+
+.add-common-frame{
+	width: 96%;height: 36px;
+	margin:10px auto;
+	display: block;
+	border-radius: 5px;
+	background: #404d55;
+
+}
+
+.add-common-frame span{
+	color: #fff;
+	display:inline-block;
+	line-height: 36px;
+	padding-left:20px;
+	
+}
+ 
+.add-common-frame .common-add-btn{  /* 添加文章按钮样式 */
+	display: block;
+	width: 120px;height: 30px;
+	float: right;
+	margin-top:3px;
+	margin-right:5px; 
+	cursor: pointer;
+	background:url(../../backstage/images/article/add-art-btn.png);
+}
+
+.add-common-frame .resource-add-btn{ /* 添加链接按钮样式 */
+	display: block;
+	width: 120px;height: 30px;
+	float: right;
+	margin-top:3px;
+	margin-right:5px; 
+	cursor: pointer;
+	background: #fff;
+	color: #000;
+	text-align: center;
+	line-height: 30px;
+	border-radius: 3px;
+}
+
+
+
+.common-option{position:relative;width: 80px;}
+
+.common-option .change{
+	width: 21px;height: 21px;
+	display: block;
+	float: left;
+	background: url(../../backstage/images/article/art-list-change-btn.png);
+}
+
+
+.common-option .del{
+	width: 21px;height: 21px;
+	display: block;
+	float: right;
+	position:absolute;
+	right: 27px;
+	background: url(../../backstage/images/article/art-list-del-btn.png);
+}
+
+.common-option i{
+	width: 1px;height: 48px;
+	display: block;
+	position: absolute;
+	left:80px;top:7px;
+	background: url(../../backstage/images/article/cut-off-rule.png);
+}
+	

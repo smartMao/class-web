@@ -92,15 +92,27 @@ class backController{
 	public function artList(){
 		$backobj = M('article','backArticle');
 		$res = $backobj -> artList();
-		
-		$count = count($res);  // 统计有多少篇文章
-		$artCount['artCount'] = $count;
 
-		$res2['artInfo'] = $res; // 将所有文章信息保存在$res2['artInfo']里方便smarty调用
+		if( !empty($res) ){ //  有文章数据
+
+			$count = count($res);  // 统计有多少篇文章
+			$artCount['artCount'] = $count;
+			$res2['artInfo'] = $res; // 将所有文章信息保存在$res2['artInfo']里方便smarty调用
+			
+			//  smarty 操作二维数组
+			VIEW::assign($res2);
+			VIEW::assign($artCount);
+
+		}else{ // 没有文章数据
+
+			$artCount['artCount'] = 0;
+			$res2['artInfo'] = '';
+			VIEW::assign($res2);
+			VIEW::assign($artCount);
+		}
+
 		
-		//  smarty 操作二维数组
-		VIEW::assign($res2);
-		VIEW::assign($artCount);
+		
 		VIEW::display('tpl/backstage/article/article.html');
 	}
 
@@ -369,6 +381,69 @@ class backController{
 	}
 
 
+//  资源管理列表
+	public function resourceList(){
+		$resource['resourceData'] = M('resource','backResource')->resourceData();
+		
+		VIEW::assign( $resource );
+		VIEW::display('tpl/backstage/resource/resourceList.html');
+	}
+
+
+//  添加资源链接
+	public function addResource(){
+		VIEW::display('tpl/backstage/resource/resourceAdd.html');
+	}
+
+
+//  资源添加操作
+	public function addResourceOP(){
+		$res = M('resource','backResource')->addResource();
+		if( $res ){
+			$this->showmessage('添加成功', 'admin.php?controller=back&method=resourceList' );
+		}else{
+			$this->showmessage('添加失败', $_SERVER['HTTP_REFERER'] );
+		}
+	}
+
+
+//  资源链接修改页展示
+	public function resourceModifyshow(){
+
+		$res['resourceData'] = M('resource','backResource')->getResourceOneData();
+		
+		if( $res['resourceData'] ){
+			VIEW::assign( $res );
+		}else{
+			$res['resourceData'] = '';
+			VIEW::assign( $res );
+		}
+
+		VIEW::display('tpl/backstage/resource/resourceModify.html');
+	}
+
+
+// 资源链接修改操作
+	public function resourceModifyOP(){
+
+		$res = M('resource','backResource')->resourceModifyOP();
+		if( $res ){
+			$this->showmessage('更新成功', 'admin.php?controller=back&method=resourceList' );
+		}else{
+			$this->showmessage( '更新失败', $_SERVER['HTTP_REFERER'] );
+		}
+	}
+
+
+//  资源链接删除操作
+	public function resourceDel(){
+		$res = M('resource','backResource')->resourceDel();
+		if( $res ){
+			$this->showmessage( '删除成功', 'admin.php?controller=back&method=resourceList');
+		}else{
+			$this->showmessage( '删除失败', $_SERVER['HTTP_REFERER']);
+		}
+	}
 
 //  弹框后跳转方法
 	private function showmessage($mes, $url){

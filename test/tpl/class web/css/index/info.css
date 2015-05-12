@@ -71,6 +71,17 @@
 
 
 
+.dynamic-content-schedule-ul ul li a{ 
+		color:#000;
+		display: block;
+}
+
+
+.dynamic-content-schedule-ul ul li a:hover{ 
+		color: #0089ff;
+}
+
+
 .dynamic-content-tieba{width:119px;float:right;}
 .dynamic-content-tieba-ul{height:370px; display: none;}
 .dynamic-content-tieba-ul ul{padding-top:32px;}
@@ -84,16 +95,32 @@
 .dynamic-content-schedule-ul ul li,
 .dynamic-content-tieba-ul ul li{
 			   width:100%;
-			   height: 35px;
-			   line-height: 33px;
+			   height: 32px;
+			   line-height: 29px;
 			   border-bottom: 2px dashed #c0c0c0;
 			   cursor: pointer;
 			 
 }
 
+
+
 .dynamic-content-schedule-ul .bottom,
 .dynamic-content-tieba-ul .bottom{
 	background: #ccc;
+}
+
+.dynamic-content-schedule-ul .see-more{ /* 查看更多按钮 */
+	display: block;
+	width: 80px;height: 35px;
+	background: #ff4f03;color:#fff;
+	line-height: 35px;font-size:12px;
+	text-align: center;
+	position:absolute;right:0px;
+	bottom: 4px;
+}
+
+.dynamic-content-schedule-ul .see-more:hover{
+	background: #000;
 }
 
 .dynamic-content-schedule-ul ul i,
@@ -108,6 +135,8 @@
 	margin-top: 11px;
 	margin-left:4px;
 }
+
+
 
 .dynamic-content-schedule-ul ul span,
 .dynamic-content-tieba-ul ul span{

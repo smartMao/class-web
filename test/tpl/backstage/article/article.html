@@ -4,20 +4,29 @@
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<title>Document</title>
 
-<link rel="stylesheet" type="text/css" href="tpl/backstage/css/article1.css" />
+<link rel="stylesheet" type="text/css" href="tpl/backstage/css/common.css?ver=1" />
 <link rel="stylesheet" type="text/css" href="tpl/backstage/css/gather.css" />
 
 
 </head>
 <body>
 
-	<div class="add-art-frame">
-		<span>本站一共有{$artCount}篇文章</span>
-		<a href="admin.php?controller=back&method=addArticle" class="art-add-btn"></a>
+	<div class="add-common-frame">
+		<span>
+		本站一共有
+			{if $artCount eq 0}
+				0
+			{else}
+				{$artCount}
+			{/if}
+		篇文章
+
+		</span>
+		<a href="admin.php?controller=back&method=addArticle" class="common-add-btn"></a>
 		
 	</div>
 		
-	<table class="art-list">
+	<table class="common-list">
 		<tr>
 			<th>id</th>
 			<th>uid</th>
@@ -27,32 +36,27 @@
 			<th>content</th>
 			<th>操作</th>
 		</tr>
-	{foreach from=$artInfo item=name key=key}
-		<tr>
-			<td>{$artInfo.$key.id}</td>
-			<td>{$artInfo.$key.uid}</td>
-			<td>{$artInfo.$key.title}</td>
-			<td>{$artInfo.$key.author}</td>
-			<td>{$artInfo.$key.time}</td>
-			<td>此处不显示</td>
-			<td class="art-option">
-				<a href="admin.php?controller=back&method=changeArticle&id={{$artInfo.$key.id}}" class="change" title="修改"></a>
-				<i></i>
-				<a href="admin.php?controller=back&method=artDel&id={{$artInfo.$key.id}}" 
-				onclick="return confirm('是否删除!');" title="删除" class="del"></a>
-			</td>
+		{if $artInfo eq ''} 
+			<span>暂无文章</span>
+		{else}
+			{foreach from=$artInfo item=name key=key}
+				<tr>
+					<td>{$artInfo.$key.id}</td>
+					<td>{$artInfo.$key.uid}</td>
+					<td>{$artInfo.$key.title|truncate:18:"..."}</td>
+					<td>{$artInfo.$key.author}</td>
+					<td>{$artInfo.$key.time}</td>
+					<td>此处不显示</td>
+					<td class="common-option">
+						<a href="admin.php?controller=back&method=changeArticle&id={$artInfo.$key.id}" class="change" title="修改"></a>
+						<i></i>
+						<a href="admin.php?controller=back&method=artDel&id={$artInfo.$key.id}" 
+						onclick="return confirm('是否删除!');" title="删除" class="del"></a>
+					</td>
 
-		</tr>
-	{/foreach}
-
-		
-	<!--
-		<a href="admin.php?controller=back&method=addArticle">文章添加</a>
-	
-		<span>本站一共有{$artCount}篇文章</span>
-			
-	-->
-		
+				</tr>
+			{/foreach}
+		{/if}
 
 	</table>
 </body>

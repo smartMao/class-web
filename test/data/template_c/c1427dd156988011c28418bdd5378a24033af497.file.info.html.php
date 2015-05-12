@@ -1,25 +1,32 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-10 15:04:44
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-12 16:41:58
          compiled from "tpl\class web\index\info.html" */ ?>
-<?php /*%%SmartyHeaderCode:49165549a24d4645d3-24564513%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:146665552113684c845-64391172%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'c1427dd156988011c28418bdd5378a24033af497' => 
     array (
       0 => 'tpl\\class web\\index\\info.html',
-      1 => 1431184617,
+      1 => 1431441584,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '49165549a24d4645d3-24564513',
+  'nocache_hash' => '146665552113684c845-64391172',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_5549a24d468456_28625349',
+  'variables' => 
+  array (
+    'articleData' => 0,
+    'key' => 0,
+    'resourceData' => 0,
+  ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.21-dev',
+  'unifunc' => 'content_555211368871d9_54263437',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5549a24d468456_28625349')) {function content_5549a24d468456_28625349($_smarty_tpl) {?><!DOCTYPE html>
+<?php if ($_valid && !is_callable('content_555211368871d9_54263437')) {function content_555211368871d9_54263437($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_truncate')) include 'E:\\XAMPP\\htdocs\\class-web\\test\\framework\\libs\\view\\Smarty\\plugins\\modifier.truncate.php';
+?><!DOCTYPE html>
 <html>
 <head>
 	<title>信息栏</title>
@@ -42,46 +49,52 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 				</div>
 				<div class="dynamic-content-schedule-ul" id="dynamicContentScheduleUl">
 					<ul>
-						<li>
-							<i>1</i>
-							<span>近期活动日程sss</span>
-						</li>
-						<li>
-							<i>2</i>
-							<span>手机</span>
-						</li>
-						<li>
-							<i>3</i>
-							<span>ss</span>
-						</li>
-						<li>
-							<i class="bottom">4</i>
-							<span>ss</span>
-						</li>
-						<li>
-							<i class="bottom">5</i>
-							<span>ss</span>
-						</li>
-						<li>
-							<i class="bottom">6</i>
-							<span>ss</span>
-						</li>
-						<li>
-							<i class="bottom">7</i>
-							<span>ss</span>
-						</li>
-						<li>
-							<i class="bottom">8</i>
-							<span>ss</span>
-						</li>
-						<li>
-							<i class="bottom">9</i>
-							<span>ss</span>
-						</li>
-						<li>
-							<i class="bottom">10</i>
-							<span>ss</span>
-						</li>
+						<?php if ($_smarty_tpl->tpl_vars['articleData']->value) {?>
+
+							<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
+ $_smarty_tpl->tpl_vars['key'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->tpl_vars['articleData']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['item']->key => $_smarty_tpl->tpl_vars['item']->value) {
+$_smarty_tpl->tpl_vars['item']->_loop = true;
+ $_smarty_tpl->tpl_vars['key']->value = $_smarty_tpl->tpl_vars['item']->key;
+?>
+
+								<?php if ($_smarty_tpl->tpl_vars['key']->value+1<4) {?> <!-- 如果是前三条文章 -->
+									<li>
+										<i><?php echo $_smarty_tpl->tpl_vars['key']->value+1;?>
+</i>
+										<span>
+										<a href="index.php?controller=frontInfo&method=readArticle&id=<?php echo $_smarty_tpl->tpl_vars['articleData']->value[$_smarty_tpl->tpl_vars['key']->value]['id'];?>
+"><?php echo smarty_modifier_truncate($_smarty_tpl->tpl_vars['articleData']->value[$_smarty_tpl->tpl_vars['key']->value]['title'],14,'...');?>
+
+										</a>
+										</span>
+									</li>
+								<?php }?>
+
+								<?php if ($_smarty_tpl->tpl_vars['key']->value+1>=4&&$_smarty_tpl->tpl_vars['key']->value+1<=10) {?> <!-- 如果是后7条文章 -->
+									<li>
+										<i class="bottom"><?php echo $_smarty_tpl->tpl_vars['key']->value+1;?>
+</i>
+										<span><a href="index.php?controller=frontInfo&method=readArticle&id=<?php echo $_smarty_tpl->tpl_vars['articleData']->value[$_smarty_tpl->tpl_vars['key']->value]['id'];?>
+"><?php echo smarty_modifier_truncate($_smarty_tpl->tpl_vars['articleData']->value[$_smarty_tpl->tpl_vars['key']->value]['title'],14,'...');?>
+</a>
+										</span>
+									</li>
+								<?php }?>
+
+								<?php if ($_smarty_tpl->tpl_vars['key']->value+1==10) {?> <!-- 如果有10篇文章以上,显示 “查看更多” 按钮 -->
+									<a href="index.php?controller=frontInfo&method=articleList" class="see-more">		查看更多→
+									</a>
+								<?php }?>
+
+							<?php } ?>
+
+						<?php } else { ?>
+							<span>当前并没有文章</span>
+						<?php }?>
+
+						
 
 					</ul>			
 				</div>
@@ -169,18 +182,28 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			</div>
 			<div class="resources-ul">
 				<ul>
-					<li>经典电子书</li>
-					<li>经典电子书</li>
-					<li>经典电子书</li>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
+					
+					<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
+ $_smarty_tpl->tpl_vars['key'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->tpl_vars['resourceData']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['item']->key => $_smarty_tpl->tpl_vars['item']->value) {
+$_smarty_tpl->tpl_vars['item']->_loop = true;
+ $_smarty_tpl->tpl_vars['key']->value = $_smarty_tpl->tpl_vars['item']->key;
+?>
+						
+						<?php if ($_smarty_tpl->tpl_vars['key']->value+1<=10) {?>
+							<li><?php echo $_smarty_tpl->tpl_vars['resourceData']->value[$_smarty_tpl->tpl_vars['key']->value]['title'];?>
+</li>
+						<?php }?>
+
+						<?php if ($_smarty_tpl->tpl_vars['key']->value+1>10) {?>
+							<div class="resources-more">浏览更多→</div>   
+						<?php }?>
+					<?php } ?>
+		
 				</ul>
 			</div>
-			<div class="resources-more">浏览更多→</div>
+			 
 		</div>
 	</div>	
 </div>

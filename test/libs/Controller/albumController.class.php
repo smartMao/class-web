@@ -13,15 +13,15 @@ class albumController{
 		if( empty( $userInfo['username']) ){   VIEW::assign( $userInfo ); } // 未登录
 		if( count( $userInfo ) > 3 ){          VIEW::assign( $userInfo ); }	// COOKIE SESSION 登录
 
-		
+		$frontAlbumObj = M('frontAlbum','front'); // 实例化
   		// 相册数据
   		$CurrentPage = isset( $_GET['page'] ) ? $_GET['page'] : 1 ;
-		$searchRes['albumData'] = M('front') -> search( $CurrentPage );
+		$searchRes['albumData'] = $frontAlbumObj -> search( $CurrentPage );
 		$albumState['albumState'] = 'search'; // 当前的状态
-		$searchAlbumCount = M('front')->selectSearchNum(); // 被搜索到的相册总数
+		$searchAlbumCount = $frontAlbumObj->selectSearchNum(); // 被搜索到的相册总数
 
 		// 相册分页
-		$pageStr = M('front')->pager( $searchAlbumCount ); // 传入 搜索出来的数组数量
+		$pageStr = $frontAlbumObj ->pager( $searchAlbumCount ); // 传入 搜索出来的数组数量
 		$albumCount['albumCount'] = $searchAlbumCount; // 用于搜索相册后显示,被搜索到的相册总数
 		
 		if( $searchRes['albumData'] ){

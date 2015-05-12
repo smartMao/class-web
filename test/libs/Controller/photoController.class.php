@@ -12,7 +12,7 @@ class photoController{
 		$userInfo = C('index','checkLoginState');
 		VIEW::assign( $userInfo );
 
-		$res = M('front')->photoList( $_GET['albumID'] );
+		$res = M('frontPhoto','front')->photoList( $_GET['albumID'] );
 		if( !$res ){ $this->showmessage( '打开相册失败!请重试' , $_SERVER['HTTP_REFERER'] ); }
 		$photoData['photoData'] = $res;
 

@@ -47,20 +47,9 @@ class articleModel{
 
 		$sql   = "SELECT * FROM $this->_tableName  order by time desc"; // 通过倒序的方式查出数据
 		$res = DB::findAll($sql);
-	
-		$resArrLength= count($res); // 统计数组长度
 
-	//  此for截取title长度大于10的,避免title过长 list 不好显示
-		for($i=0; $i<$resArrLength; $i++){
-			if(strlen($res[$i]['title']) > 24){
-				//echo "第{$i}个的标题大于10"."<br/>";
-				$res[$i]['title'] = substr($res[$i]['title'],0,24);
-				$res[$i]['title'] .= '...';
-			}
-		}
-
+		if( empty($res) ){ return $res; } // 如果没有查出数据,返回空
 		return $res;
-
 	}
 
 

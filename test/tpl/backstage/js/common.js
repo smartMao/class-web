@@ -158,7 +158,7 @@ function birthdayValue(){
 //  阻止重复点击后台照片删除按钮 (与上面的函数类似)
 //  调用处: backstage/photo/photo/photoList.html
 	function stopRepeatDelBtn(){
-
+		alert(12);
 		var submit = document.getElementById('submit');
 		var message = document.getElementById('message');
 		var photoBatchDelCancel = document.getElementById('photoBatchDelCancel'); // 取消按钮

@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+<link rel="stylesheet" type="text/css" href="tpl/backstage/css/gather.css" />
+<link rel="stylesheet" type="text/css" href="tpl/backstage/css/common.css?ver=2" />
+</head>
+<body>
+
+
+	<div class="add-common-frame">
+		<span>
+		本站一共有
+			0
+		个外链
+
+		</span>
+		<a href="admin.php?controller=back&method=addResource" class="resource-add-btn">添加资源链接</a>
+		
+	</div>
+
+	<table class="common-list">
+		
+		{if $resourceData eq ''}
+			<span>暂无外链</span>
+		{else}
+
+			<tr>
+				<th>资源名称</th>
+				<th>上传用户</th>
+				<th>资源链接</th>
+				<th>操作</th>
+			</tr>
+
+			{foreach from=$resourceData item=item key=key}
+				<tr>
+					<td>{$resourceData.$key.title}</td>
+					<td>{$resourceData.$key.username}</td>
+					<td>{$resourceData.$key.link|truncate:55:"..."}</td>	
+					<td class="common-option">
+						<a href="admin.php?controller=back&method=resourceModifyshow&id={$resourceData.$key.id}" class="change" title="修改"></a>
+						<i></i>
+						<a href="admin.php?controller=back&method=resourceDel&id={$resourceData.$key.id}" 
+						onclick="return confirm('是否删除!');" title="删除" class="del"></a>
+					</td>		
+				</tr>
+		
+			{/foreach}
+		{/if}
+
+	</table>
+</body>
+</html>
