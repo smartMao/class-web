@@ -205,15 +205,27 @@ class backController{
 //  展示相册列表
 	public function albumList(){
 		$res = M('album','backPhoto') -> albumList();
-		$albumList['albumList'] = $res; // 由于奇怪的smarty,调试出来这样写
-		//var_dump($photoList['photoList']);
-		//var_dump(empty($photoList['photoList']));
-		if(empty($albumList['albumList'])){
-			VIEW::display('tpl/backstage/photo/album/album2.html');
+		$albumList['albumList'] = $res;
+
+
+		if( empty($albumList['albumList']) ){
+
+			$albumList['albumList'] = '';
+			$count['count']         = 0;
+			VIEW::assign( $count );
+			VIEW::assign( $albumList );
+
 		}else{
-			VIEW::assign($albumList);
-			VIEW::display('tpl/backstage/photo/album/album.html');
+
+			$count['count'] = count( $albumList['albumList'] );
+			VIEW::assign( $count );
+			VIEW::assign( $albumList);
+
 		}
+		//var_dump($albumList['albumList']);exit;
+
+		VIEW::display('tpl/backstage/photo/album/album.html');
+		
 		
 		
 	}
@@ -385,6 +397,13 @@ class backController{
 	public function resourceList(){
 		$resource['resourceData'] = M('resource','backResource')->resourceData();
 		
+		if( empty($resource['resourceData']) ){ 
+			$count['count'] = 0;			
+		}else{
+			$count['count'] = count($resource['resourceData']);
+		}
+		
+		VIEW::assign( $count );
 		VIEW::assign( $resource );
 		VIEW::display('tpl/backstage/resource/resourceList.html');
 	}
@@ -399,6 +418,7 @@ class backController{
 //  资源添加操作
 	public function addResourceOP(){
 		$res = M('resource','backResource')->addResource();
+		
 		if( $res ){
 			$this->showmessage('添加成功', 'admin.php?controller=back&method=resourceList' );
 		}else{

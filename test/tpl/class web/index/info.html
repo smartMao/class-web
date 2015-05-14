@@ -62,43 +62,43 @@
 					<ul>
 						<li>
 							<i>1</i>
-							<span>班级社区热门帖ss</span>
+							<span></span>
 						</li>
 						<li>
 							<i>2</i>
-							<span>手asdsadasd</span>
+							<span></span>
 						</li>
 						<li>
 							<i>3</i>
-							<span>scccs</span>
+							<span></span>
 						</li>
 						<li>
 							<i class="bottom">4</i>
-							<span>ss</span>
+							<span></span>
 						</li>
 						<li>
 							<i class="bottom">5</i>
-							<span>ss</span>
+							<span></span>
 						</li>
 						<li>
 							<i class="bottom">6</i>
-							<span>sa5151sdass</span>
+							<span></span>
 						</li>
 						<li>
 							<i class="bottom">7</i>
-							<span>ss2515</span>
+							<span></span>
 						</li>
 						<li>
 							<i class="bottom">8</i>
-							<span>sasdasdasds</span>
+							<span></span>
 						</li>
 						<li>
 							<i class="bottom">9</i>
-							<span>ss</span>
+							<span></span>
 						</li>
 						<li>
 							<i class="bottom">10</i>
-							<span>ss</span>
+							<span></span>
 						</li>
 
 					</ul>								
@@ -142,17 +142,22 @@
 			</div>
 			<div class="resources-ul">
 				<ul>
-					
-					{foreach from=$resourceData item=item key=key}
-						
-						{if $key +1 lte 10}
-							<li>{$resourceData.$key.title}</li>
-						{/if}
+					{if $resourceData neq ''}
+						{foreach from=$resourceData item=item key=key}
+							
+							{if $key +1 lte 10}
+								<li>{$resourceData.$key.title}</li>
+							{/if}
 
-						{if $key +1 gt 10}
-							<div class="resources-more">浏览更多→</div>   
-						{/if}
-					{/foreach}
+							
+						{/foreach}
+					{else}
+						<span>暂无数据</span>
+					{/if}
+
+					{if $count gt 10}
+						<div class="resources-more">浏览更多→</div>  
+					{/if}
 		
 				</ul>
 			</div>

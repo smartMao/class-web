@@ -3,77 +3,78 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<title>Document</title>
-<link rel="stylesheet" type="text/css" href="tpl/backstage/photo/style/backAlbum.css" />
+<link rel="stylesheet" type="text/css" href="tpl/backstage/photo/style/backAlbum.css?var=2" />
 <link rel="stylesheet" type="text/css" href="tpl/backstage/css/gather.css" />
 </head>
 <body>
-	<a href="admin.php?controller=back&method=showAlbumCreate">相册添加</a>
+
+
+
+	<div class="add-common-frame">
+		<span>本站一共有 {$count} 个相册</span>
+		<div class="album-create-box">
+			<i>+</i>
+			<a href="admin.php?controller=back&method=showAlbumCreate" class="common-add-btn album-create">
+			添加相册
+			</a>
+		</div>
+		
+	</div>
+
+	
 	
 	<ul class="photo-list">
-		{foreach from=$albumList item=item key=key}
-			<li>
-				<ul class="photo-box">
-					<li class="cover-box"><img src="{$albumList.$key.path}" width="295" height="210"></li>
-					<table cellspacing="0">
-						<tr>
-							<th>相册标题:</th>
-							<td>{$albumList.$key.title}</td>
-						</tr>
+		{if $albumList neq ''}
+			{foreach from=$albumList item=item key=key}
+				<li class="album-box">
+					<ul class="photo-box">
 
-						<tr>
-							<th>上传作者:</th>
-							<td>{$albumList.$key.username}</td>
-						</tr>
+						<li class="album-title">{$albumList.$key.title}</li>
+						<a href="admin.php?controller=back&method=photoList&id={$albumList.$key.id}" class="goto-photo">
+							<li class="album-cover">
+								<img src="{$albumList.$key.path}" alt />
+							</li>
+						</a>
+						<li class="album-op">
 
-						<tr>
-							<th>创建时间:</th>
-							<td>{$albumList.$key.time}</td>
-						</tr>
+							<ol class="browser">
+								<i class="icon"></i>
+								<span>浏览({$albumList.$key.browseNum})<!-- 浏览数 --></span>
+							</ol>
+								
+							<ol class="comment">
+								<i class="icon"></i>
+								<span>评论({$albumList.$key.commentNum})<!-- 评论数 --></span>
+							</ol>
+							
+							<ol class="edit">
+								<a href="admin.php?controller=back&method=albumEditShow&id={$albumList.$key.id}"></a>
+							</ol>
+							<ol class="del"> 
+							   <a href="admin.php?controller=back&method=albumDel&id={$albumList.$key.id}" 
+							   onclick="return confirm('删除相册将清空该相册里的所有照片！');"></a>
+							</ol>
 
-						<tr>
-							<th> 浏览次数:</th>
-							<td>{$albumList.$key.browseNum}</td>
-						</tr>
-
-						<tr>
-							<th>评论次数:</th>
-							<td>{$albumList.$key.commentNum}</td>
-						</tr>
-
-
-						<tr>
-							<th>权限:</th>
-							<td>		
-								{if $albumList.$key.power eq 1}
-									<span>全部人都可以观看</span>
-								{else if $albumList.$key.power eq 2}
-									<span>仅登录后的用户可观看</span>
-								{else if $albumList.$key.power eq 3}
-									<span>仅管理员可观看</span>
-								{/if}
-							</td>
-						</tr>
-
-						<tr>
-							<td>
-								<a href="admin.php?controller=back&method=albumEditShow&id={$albumList.$key.id}">编辑</a>
-								&nbsp;&nbsp;&nbsp;&nbsp;
-								<a href="admin.php?controller=back&method=albumDel&id={$albumList.$key.id}" 
-								onclick="return confirm('是否删除！(删除里面照片)');">删除</a>
-							</td>
-							<td>
-								<a href="admin.php?controller=back&method=photoList&id={$albumList.$key.id}">
-									进入相册
-								</a>
-							</td>
-
-						</tr>
-
-					</table>
-				</ul>
-			</li>
-		{/foreach}
-
+						</li>
+						<li class="album-author">
+							<ol class="author">上传作者</ol>
+							<ol class="author-info">{$albumList.$key.username}</ol>
+						</li>
+						<li class="album-time">
+							<ol class="time">上传时间</ol>
+							<ol class="time-info">{$albumList.$key.time}</ol>
+						</li>
+						<li class="album-power">
+							<ol class="power">上传权限</ol>
+							<ol class="power-info">{$albumList.$key.power}</ol>
+						</li>
+				
+					</ul>
+				</li>
+			{/foreach}
+		{else}
+			<span>暂无相册,请添加</span>
+		{/if}
 
 	</ul>
 

@@ -1,38 +1,252 @@
-.photo-list li{
-	width:295px;height: 400px;
-	border:1px solid #969696;
+ 
+
+ .album-box{
+	width:295px;height:315px; 
+	border:1px solid #e7e7e7;
+	float: left;
+	position: relative;
+	margin:30px;
+ }
+
+ .album-title{  /* 相册标题 */
+	
+	width: 295px;height: 30px;
+	background: #404d55;
+	text-align: center;
+	line-height: 30px;
+	font-size: 15px;
+	color: #fff;
+
+}
+
+/* 添加相册 */
+.album-create{
+	color:#fff;
+	display: block;
+}
+
+.album-create-box{
+	width: 120px;height: 30px;
+	background: #25bfeb;
+	border-radius: 5px;
+	text-align: center;
+	line-height: 24px;
+	position: absolute;
+	right: 30px;top: 3px;
+}
+
+.album-create-box:hover{
+	background: #000;
+}
+
+
+.album-create-box i{
+	display: block;
+	width: 14px;height: 14px;
+	line-height: 12px;
+	color:#fff;
+	font-size:8px;
+	border:1px solid #fff;
+	border-radius: 7px;
+	position: absolute;
+	top: 8px;left: 15px;
+}
+
+.album-create-box a{
+	text-indent: 35px;
+}
+
+
+/* 页面横杠 */
+
+.add-common-frame{
+	width: 96%;height: 36px;
+	margin:10px auto;
+	display: block;
+	border-radius: 5px;
+	background: #404d55;
+	position: relative;
+
+}
+
+.add-common-frame span{
+	color: #fff;
+	display:inline-block;
+	line-height: 36px;
+	padding-left:20px;
+	
+}
+ 
+.add-common-frame .common-add-btn{  /* 添加文章按钮样式 */
+	display: block;
+	width: 120px;height: 30px;
+	float: right;
+	margin-top:3px;
+	margin-right:5px; 
+	cursor: pointer;
+	
+}
+
+.add-common-frame .resource-add-btn{ /* 添加链接按钮样式 */
+	display: block;
+	width: 120px;height: 30px;
+	float: right;
+	margin-top:3px;
+	margin-right:5px; 
+	cursor: pointer;
+	background: #fff;
+	color: #fff;
+	text-align: center;
+	line-height: 30px;
+	border-radius: 3px;
+}
+
+
+
+.album-cover{ /* 相册封面图 */
+	width: 295px;height: 210px;
+	background: #EE7600;
+}
+
+.goto-photo{
+	display: block;
+	width: 295px;height: 180px
+}
+
+
+.album-op{  /* 相册操作 */
+	width: 295px;height: 35px;
+	background: rgba(0,0,0,0.5);
+	position: absolute;
+	top: 205px;
+}
+
+
+/* 相册 浏览块 开始 */
+
+.album-op .browser{
+	display: block;
+	width: 80px;height:35px;
+	float: left;
+	position: relative;
+}
+
+.album-op .browser .icon{
+	width: 30px;height: 15px;
+	display: block;
+	background: url(../../../backstage/images/album/album-browse.png);
+	position: absolute;
+	top:10px;left: 2px;
+
+}
+
+.album-op .browser span{
+	display: block;
+	text-indent: 33px;
+	line-height: 33px;
+	font-size: 13px;
+	cursor: default;
+}
+
+.album-op .browser span:hover{
+	color:#fff;
+}
+
+/* 相册 浏览块结束 */
+
+
+
+/* 相册 评论块开始 */
+
+.album-op .comment{
+	display: block;
+	width: 80px;height:35px;
+	float: left;
+	position: relative;
+}
+
+.album-op .comment .icon{
+	width: 30px;height: 15px;
+	display: block;
+	background: url(../../../backstage/images/album/album-comment.png);
+	position: absolute;
+	top:10px;left: 2px;
+
+}
+
+.album-op .comment span{
+	display: block;
+	text-indent: 33px;
+	line-height: 33px;
+	font-size: 13px;
+	cursor: default;
+}
+
+
+.album-op .comment span:hover{
+	color:#fff;
+}
+
+/* 相册 评论块结束 */
+
+
+/* 相册编辑 */
+.album-op .edit{
+	display: block;
+	width: 21px;height: 21px;
+	background: url(../../../backstage/images/album/album-edit.png);
+	position: absolute;
+	right: 40px;top: 7px;
+}
+.album-op .edit:hover{ background: url(../../../backstage/images/album/album-edit-hover.png); }
+.album-op .edit a{
+	width: 21px;height: 21px;display: block;
+}
+
+/* 相册删除 */
+.album-op .del{
+	display: block;
+	width: 21px;height: 21px;
+	background: url(../../../backstage/images/album/album-del.png);
+	position: absolute;
+	right: 10px;top: 7px;
+}
+.album-op .del:hover{ background: url(../../../backstage/images/album/album-del-hover.png); }
+.album-op .del a{
+	width: 21px;height: 21px;display: block;
+}
+
+
+
+.album-author,    /* 相册信息 */
+.album-time,
+.album-power{
+	width: 295px;height: 24px;
+	line-height: 24px;
+	font-size:15px;
+	border-bottom: 1px solid #d0d0d0;
+}
+
+
+.album-author .author,
+.album-time .time,
+.album-power .power{
 	display: block;
 	float: left;
-	margin-left:50px;
-	margin-bottom:50px;
-}
-
-
-.photo-box{
-	padding: 0px;
-}
-
-.photo-box .cover-box{
-	width:295px;height: 210px;
-	margin:0;
-}
-
-
-.photo-box table tr th{
-
+	color: #fff;
 	text-align: center;
-	width: 10px;
-	border: 1px solid #000;
-	line-height: 25px;
-
+	width: 114px;height: 24px;
+	background: #ff2200;
+	border-right: 1px solid #d0d0d0;
 }
 
-
-.photo-box table tr td{
-	padding:0;
-	margin:0;
+.album-author .author-info,
+.album-time .time-info,
+.album-power .power-info{
+	display: block;
+	float: right;
 	text-align: center;
-	width: 315px;
-	border: 1px solid #000;
+	width: 180px;height: 24px;
+	color:#000;
 
 }

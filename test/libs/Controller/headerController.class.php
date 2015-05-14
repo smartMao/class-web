@@ -12,6 +12,8 @@ class headerController{
 		VIEW::assign( $articleData ); // 文章数据
 
 		$resourceData['resourceData'] = M('frontResource','front')->resourceList();
+		$count['count'] = count( $resourceData['resourceData'] );
+		VIEW::assign( $count );
 		VIEW::assign( $resourceData ); // 资源链接数据
 
 

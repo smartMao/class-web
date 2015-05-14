@@ -285,6 +285,7 @@ class albumModel{
 
 		$this->albumID = $_GET['id'];
 
+
 		//  如果相册名为空
 		if(empty($_POST['albumName'])){ return 2; }
 	
@@ -311,9 +312,9 @@ class albumModel{
 */
 	public function updateAlbumDataAndPhoto(){
 		
-			$sql = "SELECT `path` FROM $this->_tableName3 WHERE $this->albumID";
+			$sql = "SELECT `path` FROM $this->_tableName3 WHERE id=$this->albumID";
 			$res = DB::findOne($sql);
-
+			
 			$OPImgRes = $this->OPImgSize( $_FILES['myFile']['tmp_name']); // 返回 t / f
 
 			if($OPImgRes){

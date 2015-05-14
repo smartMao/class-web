@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-12 16:41:58
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-14 14:14:01
          compiled from "tpl\class web\index\info.html" */ ?>
 <?php /*%%SmartyHeaderCode:146665552113684c845-64391172%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c1427dd156988011c28418bdd5378a24033af497' => 
     array (
       0 => 'tpl\\class web\\index\\info.html',
-      1 => 1431441584,
+      1 => 1431605621,
       2 => 'file',
     ),
   ),
@@ -15,15 +15,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.21-dev',
+  'unifunc' => 'content_555211368871d9_54263437',
   'variables' => 
   array (
     'articleData' => 0,
     'key' => 0,
     'resourceData' => 0,
+    'count' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_555211368871d9_54263437',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_555211368871d9_54263437')) {function content_555211368871d9_54263437($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_truncate')) include 'E:\\XAMPP\\htdocs\\class-web\\test\\framework\\libs\\view\\Smarty\\plugins\\modifier.truncate.php';
 ?><!DOCTYPE html>
@@ -102,43 +103,43 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 					<ul>
 						<li>
 							<i>1</i>
-							<span>班级社区热门帖ss</span>
+							<span></span>
 						</li>
 						<li>
 							<i>2</i>
-							<span>手asdsadasd</span>
+							<span></span>
 						</li>
 						<li>
 							<i>3</i>
-							<span>scccs</span>
+							<span></span>
 						</li>
 						<li>
 							<i class="bottom">4</i>
-							<span>ss</span>
+							<span></span>
 						</li>
 						<li>
 							<i class="bottom">5</i>
-							<span>ss</span>
+							<span></span>
 						</li>
 						<li>
 							<i class="bottom">6</i>
-							<span>sa5151sdass</span>
+							<span></span>
 						</li>
 						<li>
 							<i class="bottom">7</i>
-							<span>ss2515</span>
+							<span></span>
 						</li>
 						<li>
 							<i class="bottom">8</i>
-							<span>sasdasdasds</span>
+							<span></span>
 						</li>
 						<li>
 							<i class="bottom">9</i>
-							<span>ss</span>
+							<span></span>
 						</li>
 						<li>
 							<i class="bottom">10</i>
-							<span>ss</span>
+							<span></span>
 						</li>
 
 					</ul>								
@@ -182,24 +183,29 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 			</div>
 			<div class="resources-ul">
 				<ul>
-					
-					<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
+					<?php if ($_smarty_tpl->tpl_vars['resourceData']->value!='') {?>
+						<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
  $_smarty_tpl->tpl_vars['key'] = new Smarty_Variable;
  $_from = $_smarty_tpl->tpl_vars['resourceData']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 foreach ($_from as $_smarty_tpl->tpl_vars['item']->key => $_smarty_tpl->tpl_vars['item']->value) {
 $_smarty_tpl->tpl_vars['item']->_loop = true;
  $_smarty_tpl->tpl_vars['key']->value = $_smarty_tpl->tpl_vars['item']->key;
 ?>
-						
-						<?php if ($_smarty_tpl->tpl_vars['key']->value+1<=10) {?>
-							<li><?php echo $_smarty_tpl->tpl_vars['resourceData']->value[$_smarty_tpl->tpl_vars['key']->value]['title'];?>
+							
+							<?php if ($_smarty_tpl->tpl_vars['key']->value+1<=10) {?>
+								<li><?php echo $_smarty_tpl->tpl_vars['resourceData']->value[$_smarty_tpl->tpl_vars['key']->value]['title'];?>
 </li>
-						<?php }?>
+							<?php }?>
 
-						<?php if ($_smarty_tpl->tpl_vars['key']->value+1>10) {?>
-							<div class="resources-more">浏览更多→</div>   
-						<?php }?>
-					<?php } ?>
+							
+						<?php } ?>
+					<?php } else { ?>
+						<span>暂无数据</span>
+					<?php }?>
+
+					<?php if ($_smarty_tpl->tpl_vars['count']->value>10) {?>
+						<div class="resources-more">浏览更多→</div>  
+					<?php }?>
 		
 				</ul>
 			</div>

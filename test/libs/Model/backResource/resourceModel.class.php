@@ -12,12 +12,24 @@ class resourceModel{
 
 		$userInfo = M('auth')->getauth();
 
-		$resourceArr['username']   = $userInfo['userName'];
-		$resourceArr['title'] = $_POST['resourceTitle'];
-		$resourceArr['link']  = $_POST['resourceLink'];
+		// 需要检测POST的上传来的 Link 有没有加 http
+		$link = $_POST['resourceLink'];
+		
+		$checkRes = strchr( $link , 'http://' ) || strchr( $link , 'https://' );
+		
+		if( $checkRes ){
+			// 已有 http
+			
+		}else{
+			// 没有http
+			$link = "http://".$link;
+		}
+
+		$resourceArr['username'] = $userInfo['userName'];
+		$resourceArr['title']    = $_POST['resourceTitle'];
+		$resourceArr['link']     = $link;
 
 		$res = DB::insert(  $this->_tableName5 ,$resourceArr);
-
 		return $res;
 	}
 

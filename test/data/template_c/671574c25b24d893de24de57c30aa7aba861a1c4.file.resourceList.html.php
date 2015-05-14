@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-12 16:42:47
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-14 13:55:15
          compiled from "tpl\backstage\resource\resourceList.html" */ ?>
 <?php /*%%SmartyHeaderCode:821455521167511da1-49371770%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '671574c25b24d893de24de57c30aa7aba861a1c4' => 
     array (
       0 => 'tpl\\backstage\\resource\\resourceList.html',
-      1 => 1431439741,
+      1 => 1431604505,
       2 => 'file',
     ),
   ),
@@ -15,14 +15,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.21-dev',
+  'unifunc' => 'content_555211675582b3_11478397',
   'variables' => 
   array (
+    'count' => 0,
     'resourceData' => 0,
     'key' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_555211675582b3_11478397',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_555211675582b3_11478397')) {function content_555211675582b3_11478397($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_truncate')) include 'E:\\XAMPP\\htdocs\\class-web\\test\\framework\\libs\\view\\Smarty\\plugins\\modifier.truncate.php';
 ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -39,7 +40,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	<div class="add-common-frame">
 		<span>
 		本站一共有
-			0
+			<?php echo $_smarty_tpl->tpl_vars['count']->value;?>
+
 		个外链
 
 		</span>
