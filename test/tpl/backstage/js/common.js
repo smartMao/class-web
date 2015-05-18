@@ -144,17 +144,18 @@ function birthdayValue(){
  	作用: 为了解决按钮点击后有延时,因为服务器要时间做出反应, 所以在这段延时的时候里,是可以点击两次甚至多次的,
  		  这个函数就是在用户点击一次按钮后,就把按钮display none 掉, 避免点击两次
 */
-	function stopRepeatSubmit(){
 
+	function stopRepeatSubmit(){
+		
 		var submit = document.getElementById('submit');
 		var message = document.getElementById('message');
 		
 		submit.style.display = 'none';
 		message.innerText = '操作中........';
 		
-		
 	}
-/* asddddddddddddddddddddddddddddasddddddddddddddddddddddddddddddddddddddddddddddasddddddddddddddddddddddddddddddddddddddddddddddasddddddddddddddddddddddddddddddddddddddddddddddasddddddddddddddddddddddddddddddddddddddddddddddasddddddddddddddddddddddddddddddddddddddddddddddasddddddddddddddddddddddddddddddddddddddddddddddasddddddddddddddddddddddddddddddddddddddddddddddasddddddddddddddddddddddddddddddddddddddddddddddasddddddddddddddddddddddddddddddddddddddddddddddasddddddddddddddddddddddddddddddddddddddddddddddasddddddddddddddddddddddddddddddddddddddddddddddasddddddddddddddddddddddddddddddddddddddddddddddasddddddddddddddddddddddddddddddddddddddddddddddasddddddddddddddddddddddddddddddddddddddddddddddasddddddddddddddddddddddddddddddddddddddddddddddasddddddddddddddddddddddddddddddddddddddddddddddasddddddddddddddddddddddddddddddddddddddddddddddasddddddddddddddddddddddddddddddddddddddddddddddasddddddddddddddddddddddddddddddddddddddddddddddasddddddddddddddddddddddddddddddddddddddddddddddasddddddddddddddddddddddddddddddddddddddddddddddasdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd */
+
+
 //  阻止重复点击后台照片删除按钮 (与上面的函数类似)
 //  调用处: backstage/photo/photo/photoList.html
 	function stopRepeatDelBtn(){

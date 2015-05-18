@@ -24,7 +24,8 @@ class resourceModel{
 			// 没有http
 			$link = "http://".$link;
 		}
-
+	
+		$resourceArr['uid']      = $userInfo['id'];
 		$resourceArr['username'] = $userInfo['userName'];
 		$resourceArr['title']    = $_POST['resourceTitle'];
 		$resourceArr['link']     = $link;

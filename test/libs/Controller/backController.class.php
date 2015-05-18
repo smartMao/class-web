@@ -142,12 +142,21 @@ class backController{
 		
 		$backobj = M('user','backUser');
 		$res = $backobj -> userList();
-		$count = count($res);
-		$count2['count'] = $count;
-		$res2['userList'] = $res;
+		//$count = count($res);
+		//$count2['count'] = $count;
+		//$res2['userList'] = $res;
+			
+		if( empty($res) ){
+			$userInfo['userList'] = '';
+			$count['count'] = 0;
+		}else{
+			$userInfo['userList'] = $res;
+			$count['count'] = count($res);
+		}
 
-		VIEW::assign($count2);
-		VIEW::assign($res2);
+
+		VIEW::assign($count);
+		VIEW::assign($userInfo);
 		VIEW::display('tpl/backstage/user/user.html');
 
 
@@ -328,7 +337,8 @@ class backController{
 
 //  相册删除操作 (不仅删除数据库数据,还删除项目文件夹内的对应文件夹 )
 	public function albumDel(){
-		$delRes = M('album','backPhoto') -> albumDel();
+
+		$delRes = M('album','backPhoto') -> albumDel( $_GET['id'] );
 
 		switch( $delRes ){
 			case '1':

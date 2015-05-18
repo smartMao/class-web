@@ -366,9 +366,9 @@ class albumModel{
 
 
 //  相册删除操作 
-	public function albumDel(){
+	public function albumDel( $id ){
 
-		$this->albumID = $_GET['id'];
+		$this->albumID = intval($id);
 		
 		if( $this->albumFolderDel() ){ // 删除相册文件夹
 			

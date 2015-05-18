@@ -288,6 +288,12 @@
 		border-bottom: 2px dashed #c0c0c0;
 }
 
+.resources-ul ul li a{color: #000;}
+
+.resources-ul ul li a:hover{
+	color: #0089ff;
+}	
+
 .resources-ul ul li:hover{color:#0089ff;cursor: pointer;}
 
 .resources-more{

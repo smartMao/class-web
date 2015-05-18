@@ -50,7 +50,11 @@ class headerController{
 		if( empty($userInfo['username']) ){   	  
 
 			//   未登录  
+
 			$this->albumData();
+			//var_dump($$userInfo['username']);
+			//var_dump()
+			//$userInfo['username'] = '';
 			VIEW::assign( $userInfo );	
 		}
 

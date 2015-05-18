@@ -29,7 +29,7 @@
 				<th>registerTime</th>
 				<th>操作</th>
 			</tr>
-
+		{if $userList neq ''}
 			{foreach from=$userList item=item key=key}
 				<tr>
 					<td>{$userList.$key.id}</td>
@@ -40,10 +40,13 @@
 					<td class="common-option">
 						<a href="admin.php?controller=back&method=userDetails&id={$userList.$key.id}">详细资料</a><br/>	
 						<a href="admin.php?controller=back&method=userDel&id={$userList.$key.id}" 
-							onclick="return confirm('是否删除!');">删除</a>
+							onclick="return confirm('请谨慎删除，删除该用户，会一同删除该用户上传的文章、相册、资源!');">删除</a>
 					</td>
 				</tr>
 			{/foreach}
+		{else}
+			<span>暂无用户, 你竟然把自己的账号也删除了。。。</span>
+		{/if}
 		
 	</table>
 
