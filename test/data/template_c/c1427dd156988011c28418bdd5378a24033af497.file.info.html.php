@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-14 14:14:01
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-15 08:42:46
          compiled from "tpl\class web\index\info.html" */ ?>
 <?php /*%%SmartyHeaderCode:146665552113684c845-64391172%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c1427dd156988011c28418bdd5378a24033af497' => 
     array (
       0 => 'tpl\\class web\\index\\info.html',
-      1 => 1431605621,
+      1 => 1431672165,
       2 => 'file',
     ),
   ),
@@ -193,8 +193,9 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 ?>
 							
 							<?php if ($_smarty_tpl->tpl_vars['key']->value+1<=10) {?>
-								<li><?php echo $_smarty_tpl->tpl_vars['resourceData']->value[$_smarty_tpl->tpl_vars['key']->value]['title'];?>
-</li>
+								<li><a href="<?php echo $_smarty_tpl->tpl_vars['resourceData']->value[$_smarty_tpl->tpl_vars['key']->value]['link'];?>
+" target="_blank"><?php echo $_smarty_tpl->tpl_vars['resourceData']->value[$_smarty_tpl->tpl_vars['key']->value]['title'];?>
+</a></li>
 							<?php }?>
 
 							

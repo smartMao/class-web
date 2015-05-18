@@ -9,10 +9,10 @@
 		
 		//2.视图引擎配置信息
 		'viewconfig' => array(
-			'left_delimiter' => '{',
+			'left_delimiter'  => '{',
 			'right_delimiter' => '}',
-			'template_dir' => 'tpl',
-			'compile_dir' => 'data/template_c',
+			'template_dir'    => 'tpl',
+			'compile_dir'     => 'data/template_c',
 			'compile_locking' => 'false' // 该选项用于禁止同一时间内对同一模版进行多次编译，默认为true，如果要禁用次功能，设置值为false。
 		),
 
@@ -20,7 +20,7 @@
 		'dbconfig' => array(
 			'dbhost' => 'localhost',
 			'dbuser' => 'root',
-			'dbpsw' => '',
+			'dbpsw'  => '',
 			'dbname' => 'webclass',
 			'dbcharset' => 'utf8'
 		)

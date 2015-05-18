@@ -146,7 +146,7 @@
 						{foreach from=$resourceData item=item key=key}
 							
 							{if $key +1 lte 10}
-								<li>{$resourceData.$key.title}</li>
+								<li><a href="{$resourceData.$key.link}" target="_blank">{$resourceData.$key.title}</a></li>
 							{/if}
 
 							

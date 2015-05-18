@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-14 13:18:12
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-15 10:22:43
          compiled from "tpl\backstage\photo\album\album.html" */ ?>
 <?php /*%%SmartyHeaderCode:194405552128a7f5a29-66272180%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '61a0942d79b45ed024496f5aab7c5da5aad2156a' => 
     array (
       0 => 'tpl\\backstage\\photo\\album\\album.html',
-      1 => 1431602283,
+      1 => 1431678139,
       2 => 'file',
     ),
   ),
@@ -30,7 +30,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<title>Document</title>
-<link rel="stylesheet" type="text/css" href="tpl/backstage/photo/style/backAlbum.css?var=2" />
+<link rel="stylesheet" type="text/css" href="tpl/backstage/photo/style/backAlbum.css?v=1" />
 <link rel="stylesheet" type="text/css" href="tpl/backstage/css/gather.css" />
 </head>
 <body>

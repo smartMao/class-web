@@ -7,7 +7,7 @@ class frontResourceModel{
 	private $_tableName5 = 'resource_info';
 
 	public function resourceList(){
-		$sql = "SELECT title FROM $this->_tableName5";
+		$sql = "SELECT title,link FROM $this->_tableName5";
 		$res = DB::findAll( $sql );
 		
 		if( $res ){

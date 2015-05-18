@@ -15,7 +15,7 @@ class headerController{
 		$count['count'] = count( $resourceData['resourceData'] );
 		VIEW::assign( $count );
 		VIEW::assign( $resourceData ); // 资源链接数据
-
+		
 
 		// 是否已经登录的判断
 		$userInfo = C('index','checkLoginState');

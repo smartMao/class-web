@@ -1,6 +1,7 @@
 <?php
 	
 
+
 	function C($name,$method){
 		/*
 			这个函数完成以下三个功能:
@@ -8,7 +9,10 @@
 				2. 对控制器进行实例化.
 				3. 执行控制器里边的方法
 		*/
-		require_once('/libs/Controller/'.$name.'Controller.class.php');
+		$path = dirname(dirname(dirname(__FILE__)));
+		//require_once('/libs/Controller/'.$name.'Controller.class.php');
+
+		require_once($path.'/libs/Controller/'.$name.'Controller.class.php');
 		
 		// eval()   把字符串 code 作为PHP代码执行.
 		eval('$obj = new '.$name.'Controller(); $res = $obj->'.$method.'();');	
@@ -27,16 +31,17 @@
 	function M($name,$folderName=null){
 
 		//  默认$folderName=null,表示不存在. 如果外面调用M()时,传上了这个文件夹名,那就会重新赋值
-		
+		$path = dirname(dirname(dirname(__FILE__)));
+
 		if(isset($folderName)){
 
-			require_once('/libs/Model/'.$folderName.'/'.$name.'Model.class.php');
+			require_once($path.'/libs/Model/'.$folderName.'/'.$name.'Model.class.php');
 			eval('$obj = new '.$name.'Model(); '); 
 			return $obj;  
 
 		}else{
 
-			require_once('/libs/Model/'.$name.'Model.class.php');
+			require_once($path.'/libs/Model/'.$name.'Model.class.php');
 			eval('$obj = new '.$name.'Model(); ');  
 			return $obj;  
 		}
@@ -44,7 +49,9 @@
 
 
 	function V($name){
-		require_once('/libs/View/'.$name.'View.class.php');
+		$path = dirname(dirname(dirname(__FILE__)));
+
+		require_once($path.'/libs/View/'.$name.'View.class.php');
 		eval('$obj = new '.$name.'View(); ');  
 		return $obj;
 	}
@@ -58,8 +65,9 @@
 	function ORG($path,$name,$params=array()){ 
 		// $path是路径 $name是第三方类名 
 		// $params是该类初始化的时候需要指定、赋值的属性，array('属性名'=>'属性值' , '属性名2'=>'属性值2', ....)
-	
-		require_once('libs/ORG/'.$path.$name.'.class.php');
+		$path = dirname(dirname(dirname(__FILE__)));
+
+		require_once($path.'libs/ORG/'.$path.$name.'.class.php');
 		$obj = new $name();
 		if(!empty($params)){ 
 			foreach($params as $key => $value){ 

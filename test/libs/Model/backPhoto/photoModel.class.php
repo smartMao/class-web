@@ -64,7 +64,7 @@ class photoModel{
 	
 		$count = count($_FILES['files']['name']); // 上传图片的数量
 
-		if( $count > 21 ){ 
+		if( $count > 20 ){ 
 			echo "<script>
 					alert('只允许 20 张图片同时上传,请减少后重试');
 					window.location.href='index.php?controller=back&method=photoAddShow&id=$this->albumID';

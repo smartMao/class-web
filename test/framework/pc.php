@@ -25,11 +25,13 @@ class PC{
 
 	private static function init_controller(){
 		self::$controller = isset($_GET['controller'])?addslashes($_GET['controller']):"header";
+
 		// 如果有url设置了controller,那么就使用url上面的,如果没有,那就使用默认的.
 	}
 
 	private static function init_method(){
 		self::$method = isset($_GET['method'])?addslashes($_GET['method']):"index";
+
 	}
 
 	public static function run($config){
@@ -38,7 +40,9 @@ class PC{
 		self::init_view();
 		self::init_controller();
 		self::init_method();
+		
 		C(self::$controller,self::$method);
+
 		/* 这就是启动引擎.
 				他的作用是
 					1.init(); 完成数据库的配置
