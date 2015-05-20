@@ -8,9 +8,10 @@
 
 
 		var main = document.getElementById(parent);
-
+		if( main == null ){
+			return false;
+		}
 		var list = main.getElementsByTagName('li');
-
 
 		var listHeight = []; //  存放所有 list 的高度
 
@@ -23,7 +24,7 @@
 		var cols      = countCols( listWidth , clientWidthNum ); // 列数 // 返回 5 列
 		var mainWidth = cols * listWidth; // 5 * 159 = 795
 
-		console.log(cols);
+		//console.log(cols);
 
 		main.style.cssText = 'width:'+ mainWidth +'px;margin:0px auto;';
 

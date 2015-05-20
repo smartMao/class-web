@@ -12,7 +12,7 @@
 <link href="tpl/class web/css/index/footer.css"     rel="stylesheet" type="text/css" /><!-- 页脚器css文件 -->
 <link href="tpl/class web/css/photo/pager.css"      rel="stylesheet" type="text/css" /><!-- 相册页面页码css文件 -->
 
-
+<script src="tpl/class web/js/jquery-1.8.2-min.js"></script> <!-- 用于 header 的点击后标记 -->
 
 
 </head>
@@ -22,8 +22,8 @@
 
 	{include file='class web/index/header.html'}           <!--  header -->
 	{include file='class web/index/login.html'}            <!--  login -->
-	{include file='class web/index/banner.html'}
-	           <!--  banner -->
+	{include file='class web/index/banner.html'}           <!--  banner -->
+	          
 	{if $albumState eq 'normal'}
 		{include file='class web/classPhoto/albumContent.html'}<!--  photoContent -->
 	{/if}

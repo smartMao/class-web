@@ -1,0 +1,6 @@
+1. 修复进入前端相册页时的 调式面板报错，“找不到elemetnByTabName”
+2. 发现BUG， 在后台相册进入照片页时，当这个照片页面没有相册的时候，
+    瀑布流布局的 waterfallBackstage.js 里面又有个getElementsByTagName('li')
+    那这时后, 没有 li , 但是 getElementsByTagName 获取不到 ，那就报错了
+（完成）   
+做个判断 如果 Li 的父对象是 null, 那就不执行getElementsByTagName

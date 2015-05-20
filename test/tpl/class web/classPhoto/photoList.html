@@ -9,12 +9,11 @@
 <link href="tpl/class web/css/index/login.css"      rel="stylesheet" type="text/css" /><!-- 登录注册css文件 -->
 <link href="tpl/class web/css/index/footer.css"     rel="stylesheet" type="text/css" />
 
-<script type="text/javascript" src="tpl/class web/classPhoto/layer-v1.9.1/js/jquery-1.11.3.js"></script>
-<script type="text/javascript" src="tpl/class web/classPhoto/layer-v1.9.1/layer/layer.js"></script>
-
+<script src="tpl/class web/js/jquery-1.8.2-min.js"></script>
+<script src="tpl/class web/classPhoto/layer/layer.min.js"></script>
 
 </head>
-<body onload=" waterfall( 'photoBox' , 2 ) "> <!-- 调用瀑布流函数 -->
+<body onload=" waterfall( 'photoBox' , 2 ) "><!-- 调用瀑布流函数 -->
 
 {include file='class web/index/header.html'}         
 {include file='class web/index/login.html'}
@@ -37,7 +36,7 @@
 				<li id="li">
 					<div class="pic" id="photoBox">
 					{foreach from=$photoData item=item key=key}
-						<img src="{$photoData.$key.path}" layer-src="{$photoData.$key.path}">
+						<img src="{$photoData.$key.path}" layer-src="{$photoData.$key.path}" >
 					{/foreach}
 					</div>
 				</li>
@@ -46,6 +45,9 @@
 	</ul>
 </div>
 
+<div id="comment">
+	<li>aa</li>
+</div>
 
 {include file='class web/index/footer.html'} 	
 
@@ -55,7 +57,6 @@
 	<script type="text/javascript">
 		var loginModel    = document.getElementById('loginModel');
 		var userUserName  = document.getElementById('userUserName');
-
 		loginModel.style.display = "none";
 		userUserName.style.display = "block";
 	</script>
@@ -63,7 +64,6 @@
 	<script type="text/javascript">
 		var loginModel    = document.getElementById('loginModel');
 		var userUserName  = document.getElementById('userUserName');
-
 		loginModel.style.display = "block";
 		userUserName.style.display = "none";
 	</script>
@@ -76,4 +76,4 @@
 <script type="text/javascript" src="tpl/class web/js/nav.js"></script><!-- 导航点击焦点 -->
 <script type="text/javascript" src="tpl/class web/js/js.js"></script><!-- 登录层 -->
 <script type="text/javascript" src="tpl/class web/js/userPhoto.js"></script><!-- move到用户头像上出来的选项卡 -->
-<script type="text/javascript" src="tpl/class web/js/frontPhotoShow.js"></script> <!-- 照片展出层 -->
+<script type="text/javascript" src="tpl/class web/js/frontPhotoShow.js?var=1"></script> <!-- 照片展出层 -->

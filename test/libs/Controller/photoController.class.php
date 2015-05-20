@@ -10,6 +10,9 @@ class photoController{
 
 		// 返回当前的登录状态,( cookie \ session \ 未登录 ) (如果登录了就返回用户名和头像)
 		$userInfo = C('index','checkLoginState');
+		if( !empty($userInfo['username']) ){
+			$userInfo['photo'] = './'.$userInfo['photo'];
+		}
 		VIEW::assign( $userInfo );
 
 		$res = M('frontPhoto','front')->photoList( $_GET['albumID'] );

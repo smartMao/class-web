@@ -3,6 +3,8 @@
 	var url_arr = now_url.split("="); //字符分割，获取到URL以=分割的数组 
 	var url_s   = url_arr[url_arr.length-1];
 
+	var photoListUrl = 'http://localhost/class-web/test/admin.php?controller=photo&method=photoList&albumID=1';
+
 
 	$('#headerNav li a').each(function(i,n){ 
 	
@@ -15,6 +17,12 @@
 			$(this).addClass('on');  
 		}
 
-	 })
+
+	 });
+
+	if( window.location == photoListUrl ){ // 如果当前页面在照片列表, nav 的标记在 '班级相册上'
+		$('#headerNav li a').removeClass('on');
+		$('#headerNav li a:eq(2)').addClass('on');  
+	}
 
 	

@@ -7,7 +7,7 @@
 <link rel="stylesheet" type="text/css" href="tpl/backstage/photo/style/photo-list.css">
 </head>
 <body onload=" waterfall( 'main' , 1 ) ">
-	<button onclick="goBack()" class="goBack">返回相册列表</button>
+	<button onclick="javascript:window.location='admin.php?controller=back&method=albumList';" class="goBack">返回相册列表</button>
 	<a href="admin.php?controller=back&method=photoAddShow&id={$id}">添加照片</a>
 	
 	<ul class="photo-list">
