@@ -1,20 +1,22 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-20 09:17:27
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-21 13:32:43
          compiled from "tpl\class web\userInfo\userInfoShow.html" */ ?>
-<?php /*%%SmartyHeaderCode:5762555c350768fd72-31977714%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:18861555c7d7ebdc925-25933468%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'f081134be8356e2a6182086a1dafa28fdbc0f735' => 
     array (
       0 => 'tpl\\class web\\userInfo\\userInfoShow.html',
-      1 => 1430747242,
+      1 => 1432206756,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '5762555c350768fd72-31977714',
+  'nocache_hash' => '18861555c7d7ebdc925-25933468',
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.21-dev',
+  'unifunc' => 'content_555c7d7ecc6f58_72450086',
   'variables' => 
   array (
     'photo' => 0,
@@ -35,10 +37,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'userName' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_555c3507757128_75488412',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_555c3507757128_75488412')) {function content_555c3507757128_75488412($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if ($_valid && !is_callable('content_555c7d7ecc6f58_72450086')) {function content_555c7d7ecc6f58_72450086($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
@@ -49,6 +49,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <link href="tpl/class web/css/index/login.css"  rel="stylesheet" type="text/css" /> 
 <link href="tpl/class web/css/index/footer.css" rel="stylesheet" type="text/css" />
 <link href="tpl/class web/css/userInfo/userInfo.css" rel="stylesheet" type="text/css" />
+
+<?php echo '<script'; ?>
+ src="tpl/class web/js/jquery-1.8.2-min.js"><?php echo '</script'; ?>
+><!-- 用于 header 的点击后标记 -->
 
 </head>
 <body>

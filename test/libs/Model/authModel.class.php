@@ -84,9 +84,35 @@ class authModel{
 
 	public function logout(){
 		unset($_SESSION['auth']);
-		setcookie("username", "", time() - 3600 * 24 * 7);
-		setcookie("password", "", time() - 3600 * 24 * 7);
+		@setcookie("username", "", time() - 3600 * 24 * 7);
+		@setcookie("password", "", time() - 3600 * 24 * 7);
 		$this->auth = '';
+	}
+
+//  点击了退出登录后的 页面跳转
+	public function logoutAfter(){
+	
+		$url    = $_SERVER['HTTP_REFERER'];
+
+		$urlArr = explode( '/' , $url );
+		$nowUrl = $urlArr[count($urlArr)-1]; // 获取到当前的Url
+
+		$indexUrl       = 'index.php?controller=header&method=index';
+		$userInfoShow   = 'index.php?controller=admin&method=UserInfoList';
+		$userInfoChange = 'index.php?controller=admin&method=userInfoChange';
+		//echo "<script>alert(11);</script>";
+	//  点击了 '退出按钮' 时,当前的 url 是在用户资料展示页面上, 那就要跳转到主页
+		if( $nowUrl == $userInfoShow || $nowUrl == $userInfoShow.'#' ){
+			echo "<script>window.location = '$indexUrl';</script>";
+		}
+
+	//  点击了 '退出按钮' 时,当前的 url 是在用户资料修改页面上, 那就要跳转到主页
+		if( $nowUrl == $userInfoChange || $nowUrl == $userInfoChange.'#' ){
+			echo "<script>window.location = '$indexUrl';</script>";
+		}
+
+	//  如果 不在 '用户资料展示页' 也不在 '用户资料修改页' 那就在哪 退出 就跳转到哪( 也就是不用跳转 )
+		echo "<script>window.location = '$url';</script>";
 	}
 
 

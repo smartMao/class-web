@@ -291,6 +291,9 @@ class backController{
 			case 12:
 				$this -> showmessage('相册文件夹创建失败,请联系管理员',$jumpUrl);
 				break;
+			case 13:
+				$this -> showmessage('相册名称长度超过25个中文字符,请修改',$jumpUrl);
+				break;
 
 
 		}
@@ -300,6 +303,7 @@ class backController{
 
 //  相册编辑页展示
 	public function albumEditShow(){
+
 		$albumInfo = M('album','backPhoto')->albumEditShow();
 		$albuminfo['albumInfo'] = $albumInfo;
 		VIEW::assign($albuminfo);
@@ -308,27 +312,37 @@ class backController{
 
 //  相册编辑页操作
 	public function albumEditOP(){
+
+		$albumID = intval($_GET['id']);
+
 		$res = M('album','backPhoto') -> albumEditOP();
-		$jumpUrl = "admin.php?controller=back&method=albumList";
+
+		$successUrl = "admin.php?controller=back&method=albumList";// 相册操作成功后跳转的地址
+		$failureUrl = "admin.php?controller=back&method=albumEditShow&id=$albumID"; // 相册操作失败后跳转的地址
+
 		switch($res){
 			case 1:
-				$this->showmessage('更新成功','admin.php?controller=back&method=albumList');
+				$this->showmessage('更新成功', $successUrl );
 				break;
 
 			case 2:
-				$this->showmessage('相册标题不能为空',$jumpUrl);
+				$this->showmessage('相册标题不能为空',$failureUrl);
 				break;
 
 			case 3:
-				$this->showmessage('上传的相册封面 width height 小于 295px 210px 无法修改',$jumpUrl);
+				$this->showmessage('上传的相册封面 width height 小于 295px 210px 无法修改',$failureUrl);
 				break;
 
 			case 4:
-				$this->showmessage('现有的相册封面图片删除失败,请检查后重试',$jumpUrl);
+				$this->showmessage('现有的相册封面图片删除失败,请检查后重试',$failureUrl);
 				break;
 
 			case 5:
-				$this->showmessage('更新失败',$jumpUrl);
+				$this->showmessage('更新失败',$failureUrl);
+				break;
+
+			case 6:
+				$this->showmessage('相册名称长度超过25个中文字符',$failureUrl);
 				break;
 
 		}

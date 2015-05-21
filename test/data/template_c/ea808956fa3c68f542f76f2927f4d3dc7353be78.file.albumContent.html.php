@@ -1,20 +1,22 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-19 16:23:43
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-21 13:33:41
          compiled from "tpl\class web\classPhoto\albumContent.html" */ ?>
-<?php /*%%SmartyHeaderCode:3533555b476f9b3d17-34055211%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:16632555c7cff16b837-17755181%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'ea808956fa3c68f542f76f2927f4d3dc7353be78' => 
     array (
       0 => 'tpl\\class web\\classPhoto\\albumContent.html',
-      1 => 1431311482,
+      1 => 1432208002,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '3533555b476f9b3d17-34055211',
+  'nocache_hash' => '16632555c7cff16b837-17755181',
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.21-dev',
+  'unifunc' => 'content_555c7cff1fc0d1_34531036',
   'variables' => 
   array (
     'albumDynamic' => 0,
@@ -23,10 +25,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'pageStr' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_555b476fa733c1_66004394',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_555b476fa733c1_66004394')) {function content_555b476fa733c1_66004394($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if ($_valid && !is_callable('content_555c7cff1fc0d1_34531036')) {function content_555c7cff1fc0d1_34531036($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
@@ -93,7 +93,7 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 							<!-- 放封面图片 295*210 -->
 							<img src="<?php echo $_smarty_tpl->tpl_vars['albumData']->value[$_smarty_tpl->tpl_vars['key']->value]['path'];?>
 " />
-							<a class="photo-list-more" href="admin.php?controller=photo&method=photoList&albumID=<?php echo $_smarty_tpl->tpl_vars['albumData']->value[$_smarty_tpl->tpl_vars['key']->value]['id'];?>
+							<a class="photo-list-more" href="index.php?controller=photo&method=photoList&albumID=<?php echo $_smarty_tpl->tpl_vars['albumData']->value[$_smarty_tpl->tpl_vars['key']->value]['id'];?>
 ">
 								MORE＞
 							</a>

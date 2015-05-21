@@ -179,6 +179,20 @@ class frontAlbumModel{
 		return $res2;	
 	} 
 
+
+
+/* 
+	调用处: photoController 中的 photoList()
+	作用: 打开照片页面时 会有相册的信息, 这里取当前被打开的相册的标题
+*/
+	public function findAlbumTitle( $albumID ){
+		
+		$albumID = intval($albumID);
+		$sql = "SELECT `title` FROM $this->_tableName3 WHERE id=$albumID";
+		$albumData = DB::findOne($sql);
+		return $albumData;
+	}
+
 }
 
 

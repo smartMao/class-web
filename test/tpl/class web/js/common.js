@@ -1,16 +1,27 @@
-function changeUserInfoBtn(){
-	// if判断避免重复点击
-	var url1 = 'http://localhost/class-web/test/admin.php?controller=admin&method=UserInfoList';
-	var url2 = 'http://localhost/class-web/test/admin.php?controller=admin&method=UserInfoList#';
+/*
+	调用处: 前端用户资料展示页当中的 ‘ 修改个人资料按钮 ’
+	作用: 当点击 ‘ 修改个人资料按钮 ’ 这个按钮的时候, 根据当前的Url 来判断该跳转到哪一个页面
+*/
+	function changeUserInfoBtn(){
+		// if判断避免重复点击
+		var now_url = window.location.href;  
+		var urlArr = now_url.split("/"); 
+		var url   = urlArr[urlArr.length-1]; //  获取当前Url 
 
-	if(window.location.href == url1 || window.location.href == url2){
-		window.location.href='admin.php?controller=admin&method=userInfoChange';
-	}else if(window.location.href == 'http://localhost/class-web/test/admin.php?controller=admin&method=UserInfoChange'){
-		return;
+		var showUserInfoUrl   = 'index.php?controller=admin&method=UserInfoList';
+		var changeUserInfoUrl = 'index.php?controller=admin&method=userInfoChange';
+
+		//  如果点击了 ‘修改个人资料按钮’  如果当前的url是在 用户资料展示页面  , 那就跳转到 用户资料修改页面
+		if( url == showUserInfoUrl || url == showUserInfoUrl+'#' ){
+			window.location = changeUserInfoUrl;
+		}
+
+		//  如果点击了 ‘修改个人资料按钮’  如果当前的url是在 用户资料修改页面  , 那就 return false
+		if( url == changeUserInfoUrl || url == changeUserInfoUrl+'#' ){
+			return false;
+		}
+
 	}
-}
-
-
 
 
 //  返回上一层

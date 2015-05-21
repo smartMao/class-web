@@ -77,21 +77,9 @@ class adminController{
 	//  登录产生的$_SESSION['auth']; 在auth模型的 logout()方法里清除
 		
 		$authobj = M('auth');
-		$authobj -> logout();
 
-		$url = $_SERVER['HTTP_REFERER'];
-
-		$indexUrl = 'http://localhost/class-web/test/admin.php?controller=header&method=index';	// 首页url
-		$stopUrl  = 'http://localhost/class-web/test/admin.php?controller=admin&method=UserInfoList'; // 用户资料页Url
-		$stopUrl2 = 'http://localhost/class-web/test/admin.php?controller=admin&method=userInfoChange'; // 用户资料修改页Url
-
-		if( $url == $stopUrl ){ // 如果用户是在资料修改页点击 退出登录的 那就跳回到index
-  			$url = $indexUrl;
-		}else if( $url == $stopUrl2 ){
-			$url = $indexUrl;
-		}
-
-		$this->showmessage('退出成功！', $url );
+		$authobj -> logout();      // 退出登录 之 SESSION COOKIE 操作
+		$authobj -> logoutAfter(); // 退出登录 之 跳转页面操作
 
 	}
 
@@ -147,9 +135,9 @@ class adminController{
 		$res = $authobj -> userInfoChangeWork($_POST);
 
 		if($res){
-			$this->showmessage('更新成功！','admin.php?controller=admin&method=UserInfoList');
+			$this->showmessage('更新成功！','index.php?controller=admin&method=UserInfoList');
 		}else{
-			$this->showmessage('更新失败！','admin.php?controller=admin&method=userInfoChange');
+			$this->showmessage('更新失败！','index.php?controller=admin&method=userInfoChange');
 		}
 
 	}
@@ -162,7 +150,7 @@ class adminController{
 
 		$userPhotoPath=M('common')->imgHandle($_FILES['userPhotoFiles'],120 ,120 ,120 ,120,$userPhotoFolder);
 
-		$jumpUrl = 'admin.php?controller=admin&method=UserInfoList';
+		$jumpUrl = 'index.php?controller=admin&method=UserInfoList';
 
 		switch( $userPhotoPath ){
 			case false:
@@ -197,9 +185,9 @@ class adminController{
 		$res = M('auth')->changeUserPhoto( $userPhotoPath );
 
 		if( $res ){
-			$this->showmessage('头像修改成功！','admin.php?controller=admin&method=UserInfoList');
+			$this->showmessage('头像修改成功！','index.php?controller=admin&method=UserInfoList');
 		}else{
-			$this->showmessage('头像修改失败！','admin.php?controller=admin&method=UserInfoList');
+			$this->showmessage('头像修改失败！','index.php?controller=admin&method=UserInfoList');
 		}
 
 	}

@@ -28,9 +28,10 @@ class albumModel{
 	public function albumCreateOp($POST,$FILES){
 
 		// 检查相册名是否为空
-		if(!$this -> checkPostEmpty($POST)){
-			return 8;
-		}
+		if( !$this -> checkPostEmpty($POST) ){ return 8; }
+
+		 // 检查上传相册的相册名长度是否大于25个中文字符
+		if( !$this->checkPostAlbumName($POST['albumName']) ){ return 13; }
 
 		$fileInfo = $FILES['albumCover'];
 
@@ -39,6 +40,7 @@ class albumModel{
 		$fileTemp  = $fileInfo['tmp_name'];
 		$fileError = $fileInfo['error'];
 		$fileSize  = $fileInfo['size'];
+
 
 		//$movePath = 'E:/XAMPP/htdocs/test/testImg/'.$fileName;
 		//  检查文件上传的错误号
@@ -285,9 +287,11 @@ class albumModel{
 
 		$this->albumID = $_GET['id'];
 
-
 		//  如果相册名为空
-		if(empty($_POST['albumName'])){ return 2; }
+		if( empty($_POST['albumName']) ){ return 2; }
+
+		//  如果相册名称长度超过 25 个中文字符
+		if( strlen($_POST['albumName']) > 76){ return 6; }
 	
 		$albumID = 'id='.$this->albumID;
 
@@ -439,6 +443,21 @@ class albumModel{
 			
 
 		}
+
+/*  
+	调用处:  本类中的  albumCreateOp()
+	作用: 检查当前上传的相册的相册名 长度是否大于25个中文字符 
+*/
+	public function checkPostAlbumName( $albumName ){
+		$albumLen = strlen( $albumName );
+		if($albumLen < 76){ 
+			// 符合
+			return true;
+		}else{
+			// 不符合
+			return false;
+		}
+	}
 
 
 }

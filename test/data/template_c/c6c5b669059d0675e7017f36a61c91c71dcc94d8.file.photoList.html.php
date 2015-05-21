@@ -1,31 +1,32 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-20 09:17:25
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-21 13:32:48
          compiled from "tpl\class web\classPhoto\photoList.html" */ ?>
-<?php /*%%SmartyHeaderCode:25617555b44a7055109-20585216%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:21470555c7da468dcb6-11151412%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'c6c5b669059d0675e7017f36a61c91c71dcc94d8' => 
     array (
       0 => 'tpl\\class web\\classPhoto\\photoList.html',
-      1 => 1432106206,
+      1 => 1432207904,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '25617555b44a7055109-20585216',
+  'nocache_hash' => '21470555c7da468dcb6-11151412',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_555b44a70b2d12_10507620',
+  'unifunc' => 'content_555c7da46cc4c6_75559784',
   'variables' => 
   array (
+    'albumData' => 0,
     'photoData' => 0,
     'key' => 0,
     'username' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_555b44a70b2d12_10507620')) {function content_555b44a70b2d12_10507620($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if ($_valid && !is_callable('content_555c7da46cc4c6_75559784')) {function content_555c7da46cc4c6_75559784($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
@@ -43,6 +44,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
  src="tpl/class web/classPhoto/layer/layer.min.js"><?php echo '</script'; ?>
 >
 
+
 </head>
 <body onload=" waterfall( 'photoBox' , 2 ) "><!-- 调用瀑布流函数 -->
 
@@ -53,7 +55,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 <div class="theme">
 	<div class="info-box">
-		<span class="title">死死死死死死<!-- title --></span>
+		<span class="title"><?php echo $_smarty_tpl->tpl_vars['albumData']->value['title'];?>
+<!-- title --></span>
 		<div class="author-photo">
 			<img src="./tpl/class web/images/banner/01.jpg" /><!-- src -->
 		</div>

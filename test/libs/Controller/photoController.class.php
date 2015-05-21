@@ -13,12 +13,20 @@ class photoController{
 		if( !empty($userInfo['username']) ){
 			$userInfo['photo'] = './'.$userInfo['photo'];
 		}
+
 		VIEW::assign( $userInfo );
+
+		$albumData['albumData'] = M('frontAlbum','front')->findAlbumTitle( $_GET['albumID'] );
+		VIEW::assign( $albumData );
+		
+
+
 
 		$res = M('frontPhoto','front')->photoList( $_GET['albumID'] );
 		if( !$res ){ $this->showmessage( '打开相册失败!请重试' , $_SERVER['HTTP_REFERER'] ); }
 		$photoData['photoData'] = $res;
-
+		//echo "<pre>";
+		//var_dump($photoData);
 		VIEW::assign($photoData);
 		VIEW::display('tpl/class web/classPhoto/photoList.html');
 
