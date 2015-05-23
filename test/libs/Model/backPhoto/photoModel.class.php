@@ -32,19 +32,22 @@ class photoModel{
 
 
 
+/* ############################################################################################ */
+
 
 //  照片批量上传操作
 	public function photoBatchUpload(){
 
+		
 
 	
-		$this->albumID  = $_POST['albumID'];
+		$this->albumID  = intval($_REQUEST['uid']);
 		$this -> queryFolderPath(); // 从数据库取出相册文件夹路径 保存在 $this->photoDir
 
 		// 如果等于0,代表上传文件错误,上传文件过大 8M
 		if( count($_FILES) == 0 ){ exit('上传文件大于2M,请检查'); }
 		
-		$fileInfo = $_FILES['files'];
+		$fileInfo = $_FILES['file'];
 		//echo "<pre>";
 		//var_dump($fileInfo);exit;
 		$fileName = $fileInfo['name']; // 在同时传多文件的时候,$fileName 是一个索引数组
@@ -52,6 +55,8 @@ class photoModel{
 		$fileTmp  = $fileInfo['tmp_name'];
 		$fileErr  = $fileInfo['error'];
 		$fileSize = $fileInfo['size'];
+
+		var_dump($fileErr);
 
 		$allowType = array( 'image/jpg' , 'image/jpeg' , 'image/png' , 'image/gif' );
 
@@ -62,35 +67,29 @@ class photoModel{
 		$this->fileSize  = $fileSize;
 		$this->allowType = $allowType;
 	
-		$count = count($_FILES['files']['name']); // 上传图片的数量
+		$count = count($_FILES['file']['name']); // 上传图片的数量
 
-		if( $count > 20 ){ 
-			echo "<script>
-					alert('只允许 20 张图片同时上传,请减少后重试');
-					window.location.href='index.php?controller=back&method=photoAddShow&id=$this->albumID';
-				  </script>";
+	//var_dump($_FILES);		
 
-			exit;  
-		}
-
-		$i = 0;
+	
 		
-	 	while( $i < $count ){
+	 
 			
-			if( $fileErr[$i] == 0 ){
+			if( $fileErr == 0 ){
 				
 				// 四项上传判断,最后移动文件 和 插入数据库
-				$this->imgUploadJudge( $i , $this->albumID );
+				$this->imgUploadJudge(  $this->albumID );
 					
 			}else{
 				// 根据文件上传的错误号, switch匹配
-				$this->fileErrorSwitch($i);	
+				$this->fileErrorSwitch();	
 			}
 
-			$i++;
-		}
+			
+		
 	}
 
+/* ############################################################################################ */
 
 /*
 	拆分于: 本类中的 photoBatchUpload()
@@ -98,40 +97,40 @@ class photoModel{
 	参数: $i: 当前的循环次数 ,
 		  $albumID: 当前相册的ID
 */
-	public function imgUploadJudge( $i , $albumID ){
-
+	public function imgUploadJudge(  $albumID ){
+		
 		// 1
 			// 判断上传类型
-			if( !in_array( $this->fileType[$i] , $this->allowType ) ){ // 如果上传的文件类型错误
+			if( !in_array( $this->fileType , $this->allowType ) ){ // 如果上传的文件类型错误
 				exit('上传文件的类型错误');
 			}
 
 		// 2
 			// 判断上传方式是否为 HTTP POST
-			if( !is_uploaded_file($this->fileTmp[$i]) ){ // 根据临时路径查到上传的文件不是POST方式上传的
+			if( !is_uploaded_file($this->fileTmp) ){ // 根据临时路径查到上传的文件不是POST方式上传的
 				exit('文件不是通过HTTP POST方式上传的!!!');
 			}
 
 		// 3
 			// 判断是否为真实的图片类型 (以防用户直接重命名文件成jpg的)
-			if( @!getimagesize($this->fileTmp[$i]) ){
-				exit('<span style="color:red;">'.$this->fileName[$i].'</span> 不是真实的图片类型,请换张图片');
+			if( @!getimagesize($this->fileTmp) ){
+				exit('<span style="color:red;">'.$this->fileName.'</span> 不是真实的图片类型,请换张图片');
 			}
 			
 		//  4
 			// 判断上传的图片是否超过10M
-			if( $this->fileSize[$i] > 10485760 ){ 
-				exit('<span style="color:red;">'.$this->fileName[$i].'</span> 大于10M,无法上传,请处理后重试');
+			if( $this->fileSize > 10485760 ){ 
+				exit('<span style="color:red;">'.$this->fileName.'</span> 大于10M,无法上传,请处理后重试');
 			}
 			
 
 		// 4
 			$photoMd5    = $albumID .'_'. md5(uniqid(mt_rand(1,1000))); // 这里的'id'替换为数据库对应相册的id
-			$photoSuffix = '.'.pathinfo( $this->fileName[$i] , PATHINFO_EXTENSION ); //取出文件后缀,大概输出:.jpg
+			$photoSuffix = '.'.pathinfo( $this->fileName , PATHINFO_EXTENSION ); //取出文件后缀,大概输出:.jpg
 			
 			$path = $this->photoDir . $photoMd5 . $photoSuffix;
 
-			$res = $this->photoHandle( $this->fileTmp[$i] , $i , $path); // 对上传的照片进行缩放处理
+			$res = $this->photoHandle( $this->fileTmp , $path); // 对上传的照片进行缩放处理
 			
 			if( $res == 1 ){
 				echo "<script>alert('图片宽度或高度大于8000px,请选择其他图片上传');</script>";return;
@@ -139,9 +138,9 @@ class photoModel{
 				echo "<script>alert('未知错误,请联系管理员');</script>";return;
 			}
 
-			echo $this->fileName[$i]."上传成功<br/>";
+			echo $this->fileName."上传成功<br/>";
 			
-			$res2 = $this->photoInsertDB( $i , $this->fileSize , $path);			
+			$res2 = $this->photoInsertDB(  $this->fileSize , $path);			
 	}
 
 
@@ -150,7 +149,7 @@ class photoModel{
 	作用：根据上传图片的宽高自动计算等比例缩小的百分比，并进行保存处理后的图片
 	参数: $file_tmp : 上传图片的临时路径
 */
-	public function photoHandle( $file_tmp , $i , $path){
+	public function photoHandle( $file_tmp , $path){
 
 		$imgInfo = getimagesize( $file_tmp );
 
@@ -225,13 +224,13 @@ class photoModel{
 	拆分于: 本类中 photoBatchUpload()
 	作用: 将每张照片的数据库插入数据库
 */
-	public function photoInsertDB($i , $fileSize , $path){
+	public function photoInsertDB( $fileSize , $path){
 
 		date_default_timezone_set('PRC');
 		$date = date('Y-m-d');
 
 		$photoArr['cid']  = $this->albumID;
-		$photoArr['size'] = $this->transformBytes( $fileSize[$i] ); // 字节数转换
+		$photoArr['size'] = $this->transformBytes( $fileSize ); // 字节数转换
 		$photoArr['path'] = $path;
 		$photoArr['date'] = $date;
 

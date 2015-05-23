@@ -265,8 +265,8 @@ class albumModel{
 		$updateWhere = 'id='.$id;
 		DB::update( $this->_tableName3 , $updateArr , $updateWhere ); // 更新相册数据库中的 folderPath 字段
 
-		$newFolder = mkdir( $folderName , 0777 , true );
-		chmod( $folderName , 0777 );
+		$newFolder = mkdir( $folderName , 0755 , true );
+		//chmod( $folderName , 0755 );
 
 		return $newFolder;  // 把文件夹创建的结果返回出去, t / f
 	}

@@ -176,14 +176,16 @@ class backController{
 
 //  用户详细资料操作更新完成
 	public function userDetailsOk(){
-		/*echo "<pre>";
-		var_dump($_GET);
-		var_dump($_POST);*/
+		
+		$userID = intval($_GET['id']);
 
 		$backobj = M('user','backUser');
-		$res = $backobj -> userInfoChangeWork($_POST,$_GET['id']);
-		if(!$res){
-			$this -> showmessage('更新成功！','admin.php?controller=back&method=userList');
+		$res = $backobj -> userInfoChangeWork( $_POST , $userID );
+		
+		if($res){
+			$this->showmessage('更新成功！','admin.php?controller=back&method=userList');
+		}else{
+			$this->showmessage('更新失败！','admin.php?controller=back&method=userDetails&id='.$userID );
 		}
 
 	}
@@ -248,10 +250,7 @@ class backController{
 
 // 	创建相册操作
 	public function albumCreateOp(){	
-		/*var_dump($_POST);
-		echo "<br/>";
-		var_dump($_FILES);	
-		exit;*/
+	
 		$res = M('album','backPhoto')->albumCreateOp($_POST,$_FILES);
 
 		$jumpUrl = 'admin.php?controller=back&method=showAlbumCreate';
@@ -386,11 +385,22 @@ class backController{
 //  展示照片添加页面
 	public function photoAddShow(){
 		$id['id'] = $_GET['id'];
+
 		VIEW::assign($id);
 		VIEW::display('tpl/backstage/photo/photo/photoAdd.html');
 	} 
 
 
+	//  照片添加操作
+	public function photoBatchUpload(){
+		//echo "<pre>";
+		//var_dump($_REQUEST['uid']);
+		//var_dump($_FILES);
+		//var_dump($_POST);
+		$res = M('photo','backPhoto') -> photoBatchUpload();
+	}
+
+/*
 //  照片添加操作
 	public function photoBatchUpload(){
 		$album['album'] = $_POST['albumID'];
@@ -398,8 +408,9 @@ class backController{
 		VIEW::display('tpl/backstage/photo/photo/photoUploadRes.html');
 		
 		$res = M('photo','backPhoto') -> photoBatchUpload();
-	
+
 	}
+*/
 
 //  照片批量删除
 	public function photoBatchDel(){
