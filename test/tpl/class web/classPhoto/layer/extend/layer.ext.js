@@ -253,11 +253,17 @@ layer.photos = function(options){
             if(log.imgIndex > log.imgLen){
                 log.imgIndex = 1;
             }
-            log.tabimg()
+            log.tabimg(); 
+            
+            var photoInfo = $('#key-'+ log.imgIndex ).text();
+            return photoInfo;
         };
         log.bigimg.find('.xubox_next').on('click', function(event){         
             event.preventDefault();
-            conf.imgnext();
+            var photoInfo = conf.imgnext();
+
+           
+            
         });
         
         //方向键
@@ -351,9 +357,10 @@ layer.photos = function(options){
 //获取页面元素包含的所有图片，快捷调用
 layer.photosPage = function(options){
     var log = {};
+
     log.run = function(index){
         layer.photos({
-            html: options.html,
+            html: photoInfo,
             success: options.success,
             page: {
                 title: options.title,

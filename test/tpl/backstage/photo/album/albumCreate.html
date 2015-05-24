@@ -4,53 +4,59 @@
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<title>Document</title>
 
-<link rel="stylesheet" type="text/css" href="tpl/backstage/css/photo.css" />
+<link rel="stylesheet" type="text/css" href="tpl/backstage/photo/style/album-create.css" />
+<link rel="stylesheet" type="text/css" href="tpl/backstage/css/gather.css" />
 
 </head>
 <body>
-	<h1>我是相册添加页</h1>
-	<br/>
+
+
+	<div class="add-common-frame">添加相册</div>
+
+	
 	<form method="post" action="admin.php?controller=back&method=albumCreateOp"  enctype="multipart/form-data">
-		<table>
+		<div class="album-create-box">
+			<table>
 
-			<tr>
-				<td><span>相册名称</span></td>
-				<td><input type="text" name="albumName" /></td>
-			</tr>
-			
-			<tr>
-				<td><span>封面图片</span></td>
-				<!-- <input type="hidden" name="MAX_FILE_SIZE" value="5000" /> -->
-				<input type="file" name="albumCover" accept="image/jpeg,image/jpg,image/gif,image/png,image/bmp" />
-			</tr>
+				<tr class="album-cover">
+					<td><span>封面图片</span></td>
+					<!-- <input type="hidden" name="MAX_FILE_SIZE" value="5000" /> -->
+					<input type="file" class="upload" name="albumCover" accept="image/jpeg,image/jpg,image/gif,image/png,image/bmp" />
+				</tr>
 
-			<tr>
-				<td><span>相册权限</span></td>
-				<td>
-					<select name="albumPower">
-							<option value="1">全部人都可观看</option>
-							<option value="2">仅登录后的用户可观看</option>
-							<option value="3">仅管理员可观看</option>
-					</select>
-				</td>
-			</tr>
+				<tr class="album-name">
+					<td><span>相册名称</span></td>
+					<td><input type="text" name="albumName" /></td>
+				</tr>
 
-			<tr>
-				<td>相册描述(可略)</td>
-				<td><textarea rows="10" cols="21" name="albumDescription"></textarea></td>
-			</tr>
+				<tr class="album-power">
+					<td><span>相册权限</span></td>
+					<td>
+						<select name="albumPower">
+								<option value="1">全部人都可观看</option>
+								<option value="2">仅登录后的用户可观看</option>
+								<option value="3">仅管理员可观看</option>
+						</select>
+					</td>
+				</tr>
 
-			<tr>
-				<td>
-					<input type="submit" id="submit" name="createSubmit" value="创建" onclick="stopRepeatSubmit()">
-					<span id="message"></span>
-				</td>
-				
-			</tr>
+				<tr class="album-description">
+					<td><span>相册描述(可略)</span></td>
+					<td><textarea rows="10" cols="21" name="albumDescription"></textarea></td>
+				</tr>
 
-		</table>
+				<tr class="album-submit">
+					<td>
+					 	<input type="submit" id="submit" name="createSubmit" value="创建" onclick="stopRepeatSubmit()">
+						<span id="message"></span>
+					</td>
+					
+				</tr>
+
+			</table>
+		</div>
 	</form>
-	<button onclick="javascript:window.location='admin.php?controller=back&method=albumList';" >返回</button>
+	<button onclick="javascript:window.location='admin.php?controller=back&method=albumList';" class="album-goback" >返回</button>
 </body>
 </html>
 

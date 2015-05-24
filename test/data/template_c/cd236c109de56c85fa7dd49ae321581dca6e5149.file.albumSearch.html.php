@@ -1,36 +1,41 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-24 03:39:38
-         compiled from "tpl\class web\classPhoto\albumContent.html" */ ?>
-<?php /*%%SmartyHeaderCode:1934855612bda53b134-58486582%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-24 11:45:22
+         compiled from "tpl\class web\classPhoto\albumSearch.html" */ ?>
+<?php /*%%SmartyHeaderCode:1075555619db29ab007-75775910%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    'ea808956fa3c68f542f76f2927f4d3dc7353be78' => 
+    'cd236c109de56c85fa7dd49ae321581dca6e5149' => 
     array (
-      0 => 'tpl\\class web\\classPhoto\\albumContent.html',
-      1 => 1432208002,
+      0 => 'tpl\\class web\\classPhoto\\albumSearch.html',
+      1 => 1432208011,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '1934855612bda53b134-58486582',
+  'nocache_hash' => '1075555619db29ab007-75775910',
   'function' => 
   array (
   ),
   'variables' => 
   array (
-    'albumDynamic' => 0,
+    'albumCount' => 0,
     'albumData' => 0,
     'key' => 0,
     'pageStr' => 0,
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_55612bda57d7c5_03660829',
+  'unifunc' => 'content_55619db2e33399_64366075',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_55612bda57d7c5_03660829')) {function content_55612bda57d7c5_03660829($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if ($_valid && !is_callable('content_55619db2e33399_64366075')) {function content_55619db2e33399_64366075($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<title>Document</title>
+
+<?php echo '<script'; ?>
+ src="tpl/class web/js/jquery-1.8.2-min.js"><?php echo '</script'; ?>
+><!-- 用于 header 的点击后标记 -->
+
 </head>
 <body>
 	
@@ -38,7 +43,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		
 		<!-- 相册搜索 -->
 		<div class="photo-search">
-			<form method="post" action="index.php?controller=album&method=search">
+			<form method="post" action="index.php?controller=album&method=search&">
 				<input type="text" name="search" placeholder="发布人/标题"/>
 				<input type="submit" value="" />
 			</form>
@@ -46,22 +51,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 		<!-- 相册公告与排序 -->
 		<div class="photo-public">
-			
-			<!-- 公告 -->
-			<?php if ($_smarty_tpl->tpl_vars['albumDynamic']->value=='') {?>
-				<span><!-- 现在相册数据库没有数据, 所以没有相册动态 --></span>
-			<?php } else { ?>
-				<span class="photo-public-icon"></span>
-				<span class="photo-public-span">相册动态: 
-					<span class="photo-public-name"><?php echo $_smarty_tpl->tpl_vars['albumDynamic']->value['username'];?>
-<!-- 上传作者 --></span>
-					 在 
-					<span class="photo-public-time"><?php echo $_smarty_tpl->tpl_vars['albumDynamic']->value['time'];?>
-<!-- 上传时间 --></span>
-					 上传《<span class="photo-public-photoname"><?php echo $_smarty_tpl->tpl_vars['albumDynamic']->value['title'];?>
-<!-- 相册标题 --></span>》组图 
-				</span>
-			<?php }?>
+
+			<span class="search-res">搜索结果 : 共搜索到 
+				<span class="nums" style="color:red;"><?php echo $_smarty_tpl->tpl_vars['albumCount']->value;?>
+</span> 个相册
+			</span>
+
+			<span class="return-album-list" 
+			onclick="window.location.href='index.php?controller=header&method=albumIndex'">返回相册列表</span>
 
 			<!-- 排序 -->
 			<div class="photo-public-sort">
@@ -93,7 +90,7 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 							<!-- 放封面图片 295*210 -->
 							<img src="<?php echo $_smarty_tpl->tpl_vars['albumData']->value[$_smarty_tpl->tpl_vars['key']->value]['path'];?>
 " />
-							<a class="photo-list-more" href="index.php?controller=photo&method=photoList&albumID=<?php echo $_smarty_tpl->tpl_vars['albumData']->value[$_smarty_tpl->tpl_vars['key']->value]['id'];?>
+							<a class="photo-list-more" href="admin.php?controller=photo&method=photoList&albumID=<?php echo $_smarty_tpl->tpl_vars['albumData']->value[$_smarty_tpl->tpl_vars['key']->value]['id'];?>
 ">
 								MORE＞
 							</a>
@@ -107,7 +104,6 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 								<?php echo $_smarty_tpl->tpl_vars['albumData']->value[$_smarty_tpl->tpl_vars['key']->value]['title'];?>
 
 							<?php }?>
-							
 						</h3>
 						<div class="photo-list-user-photo">
 							<div class="photo-list-user-format">

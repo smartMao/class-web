@@ -149,10 +149,12 @@
             formData: {
                 uid: albumID
             },
-            compress: {
-                width: 1200,
-                height: 700
-            },
+            /*compress: {
+                width: 1600,
+                height: 1600,
+                
+            },*/
+            compress:false,
 
             dnd: '#dndArea',
             paste: '#uploader',

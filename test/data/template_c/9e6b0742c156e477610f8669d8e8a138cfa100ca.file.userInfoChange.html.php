@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-24 03:39:37
-         compiled from "tpl\class web\userInfo\userInfoShow.html" */ ?>
-<?php /*%%SmartyHeaderCode:1987855612bd985f967-17730650%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-24 03:47:52
+         compiled from "tpl\class web\userInfo\userInfoChange.html" */ ?>
+<?php /*%%SmartyHeaderCode:1832655612dc8a220d1-86715342%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    'f081134be8356e2a6182086a1dafa28fdbc0f735' => 
+    '9e6b0742c156e477610f8669d8e8a138cfa100ca' => 
     array (
-      0 => 'tpl\\class web\\userInfo\\userInfoShow.html',
-      1 => 1432206756,
+      0 => 'tpl\\class web\\userInfo\\userInfoChange.html',
+      1 => 1432206747,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '1987855612bd985f967-17730650',
+  'nocache_hash' => '1832655612dc8a220d1-86715342',
   'function' => 
   array (
   ),
@@ -29,16 +29,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'height' => 0,
     'heightDef' => 0,
     'registerTime' => 0,
-    'schoolLength' => 0,
     'school' => 0,
     'power' => 0,
     'userName' => 0,
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_55612bd98e8504_34995760',
+  'unifunc' => 'content_55612dc8ae9482_54147381',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_55612bd98e8504_34995760')) {function content_55612bd98e8504_34995760($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if ($_valid && !is_callable('content_55612dc8ae9482_54147381')) {function content_55612dc8ae9482_54147381($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
@@ -71,17 +70,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		
 		<div class="show-photo-and-introduction">
 			<div class="show-photo"><!-- 头像 -->
-				<a href="javascript:void(0)" class="show-photo-a" title="修改头像">
-					<img src="./<?php echo $_smarty_tpl->tpl_vars['photo']->value;?>
+				<img src="./<?php echo $_smarty_tpl->tpl_vars['photo']->value;?>
 " width="120" height="120" />
-					<form method="post" action="admin.php?controller=admin&method=changeUserPhoto" enctype="multipart/form-data">
+				<form method="post" action="admin.php?controller=admin&method=changeUserPhoto" enctype="multipart/form-data">
 						<input type="hidden" name="MAX_FILE_SIZE" value="2097152">
 						<input type="file" name="userPhotoFiles" accept="image/*"
 						class="show-photo-input-file" onchange="triggerSubmit()">
 						
 						<input type="submit" id="submit">
-					</form>
-				</a>
+				</form>
 			</div>
 			<div class="show-introduction"><i></i><span><!-- 个人简介 --><?php echo (($tmp = @$_smarty_tpl->tpl_vars['introduction']->value)===null||$tmp==='' ? "暂无" : $tmp);?>
 </span></div>
@@ -141,7 +138,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 								<?php echo $_smarty_tpl->tpl_vars['height']->value;?>
 
 						<?php }?>
-
 					</span>
 				</li>
 				<li class="show-info-registertime" title="注册时间"><i></i>
@@ -149,89 +145,106 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 </span>
 				</li>
 				<li class="show-info-school" title="学校"><i></i>
-					<span>
-					
-						<?php if ($_smarty_tpl->tpl_vars['schoolLength']->value<25) {?>
-							<?php echo $_smarty_tpl->tpl_vars['school']->value;?>
-				
-						<?php }?>
-						
-						<?php if ($_smarty_tpl->tpl_vars['schoolLength']->value>24) {?>
-							<?php echo (substr($_smarty_tpl->tpl_vars['school']->value,"0","24")).("...");?>
-		
-						<?php }?>
-
-						<?php if (!$_smarty_tpl->tpl_vars['school']->value) {?>
-							<?php echo (($tmp = @$_smarty_tpl->tpl_vars['school']->value)===null||$tmp==='' ? "暂无" : $tmp);?>
-			
-						<?php }?>
-					</span>
+					<span><?php echo (($tmp = @$_smarty_tpl->tpl_vars['school']->value)===null||$tmp==='' ? "暂无" : $tmp);?>
+</span>
 				</li>
 			</ul>
 		</div>
 
-		<div class="show-change-info-frame">
-			<div class="change-btn" onclick="changeUserInfoBtn();"></div>
-		</div>
+		
 	</div>
 
 
 <!-- 用户信息修改 -->
 	<div class="user-info-change">
-		<form>	
+		<form method="post" action="admin.php?controller=admin&method=userInfoChangeWork">
+
+			<div class="show-change-info-frame2">
+				<div class="change-btn" onclick="changeUserInfoBtn();"></div>
+				<input type="submit" value="修改" onclick="checkUserInfoChange();" class="changeBtn"/>
+				<div class="goback" onclick="goBack();">返回</div>
+			</div>
+
 			<ul class="userInfo-change">			
 				<li>
 					<span>真实姓名:</span>
-					<input type="text" name="" value=""  disabled="disabled"/>
+					<input type="text" name="trueName" id="trueName" value="<?php echo $_smarty_tpl->tpl_vars['trueName']->value;?>
+" />
 				</li>
 
 				<li>
 					<span>手机号码:</span>
-					<input type="text" name="" value=""  disabled="disabled"/>
+					<input type="text" name="phone" id="phone" value="<?php echo $_smarty_tpl->tpl_vars['phone']->value;?>
+"/>
 				</li>
 
 				<li>
 					<span>出生年月:</span>
 
-					<select disabled="disabled"></select>
-					<select disabled="disabled"></select>
-					<select disabled="disabled"></select>
+					<!-- 生日隐藏域 -->
+				
+					<input type="hidden"  id="yearHidd"  value="<?php echo substr($_smarty_tpl->tpl_vars['birthday']->value,0,4);?>
+" />
+					<input type="hidden"  id="monthHidd" value="<?php echo substr($_smarty_tpl->tpl_vars['birthday']->value,5,2);?>
+" />
+					<input type="hidden"  id="dayHidd"   value="<?php echo substr($_smarty_tpl->tpl_vars['birthday']->value,8,2);?>
+" />
+
+					<select id="year" name="year" style="background:#fff;"></select>
+					<select id="month"  name="month" style="background:#fff;"></select>
+					<select id="day" name="day"  style="background:#fff;"></select>
+				
+
+					
 
 				</li>
 
 				<li>
 					<span class="sex-span">性别:</span>
 					
-	
-					<input type="radio" name="sex" disabled="disabled" class="sex-man" />
-					<span class="span-man">男</span>
-					<input type="radio" name="sex" disabled="disabled" class="sex-woman" />
-					<span class="span-woman">女</span>
-					<input type="radio" name="sex" disabled="disabled"/>
-					<span class="span-secrecy">保密</span>
+				
+					
+					<input type="hidden" id="sexHidd" value="<?php echo $_smarty_tpl->tpl_vars['sex']->value;?>
+" />
+
+					<input type="radio" id="man" name="sex"  value="3" class="sex-man" /><span>男</span>
+					<input type="radio" id="woman" name="sex" value="2" class="sex-woman" /><span>女</span>
+					<input type="radio" id="secrecy" name="sex" value="1" /><span>保密</span>
+				
+					
 				</li>
 
 				<li>
 					<span class="height-span">身高:</span>
-					<input type="text" name="" value=""  class="height" disabled="disabled"/>
+					<input type="text" name="height" value="<?php echo $_smarty_tpl->tpl_vars['height']->value;?>
+" id="height"  class="height" />
 				</li>
 
 				<li>
 					<span class="school-span">学校:</span>
-					<input type="text" name="" value=""  class="school" disabled="disabled"/>
+					<input type="text" name="school" value="<?php echo $_smarty_tpl->tpl_vars['school']->value;?>
+" id="school" class="school"/>
 				</li>
 
 				<li>
 					<span  class="address-span">地址:</span>
-					<input type="text" name="" value="" class="address"  disabled="disabled"/>
+					<input type="text" name="address" value="<?php echo $_smarty_tpl->tpl_vars['address']->value;?>
+" id="address" class="address" />
 				</li>
 
 				<li>
 					<span class="introduction-span">个人简介:</span>
-					<textarea rows="10" cols="60" class="introduction" disabled="disabled"></textarea>
+					
+					<textarea rows="10" cols="60" class="introduction" id="introduction" name="introduction"><?php echo $_smarty_tpl->tpl_vars['introduction']->value;?>
+</textarea>
 				</li>
 				
-				
+				<li>
+					
+					
+
+				</li>
+
 
 			</ul>
 		</form>
@@ -284,5 +297,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 >
 <?php echo '<script'; ?>
  type="text/javascript" src="tpl/class web/js/userInfo.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ type="text/javascript">
+	createOption();
+	birthdayValue();
+	sexValue();
+	
+<?php echo '</script'; ?>
 >
 <?php }} ?>

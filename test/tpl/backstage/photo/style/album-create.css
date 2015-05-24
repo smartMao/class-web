@@ -1,0 +1,134 @@
+.album-create-box{
+	width: 340px;height: 320px;
+	
+	margin:20px auto;
+	position: relative;
+}
+
+.add-common-frame{
+	width: 96%;height: 36px;
+	margin:10px auto;
+	display: block;
+	border-radius: 5px;
+	background: #404d55;
+	text-indent: 10px;
+	font-size: 18px;
+	color:#fff;
+	line-height: 36px;
+
+}
+
+
+
+/* 相册封面 */
+.album-cover span{
+	width: 230px;height: 30px;
+	background: #24bfeb;
+	display: block;
+	color:#fff;
+	text-align: center;
+	line-height: 30px;
+	font-size:18px;
+	position: absolute;
+	top:10px;right: 0px;
+
+}
+
+
+/* 上传框 */
+.upload{
+	display: block;
+	width: 230px;height: 30px;
+	position: absolute;
+	top:10px;right:0px;
+	z-index: 999;
+	filter:alpha(opacity=0);       /* IE */
+  	-moz-opacity:0;              /* 老版Mozilla */
+  	-khtml-opacity:0;              /* 老版Safari */
+  	opacity: 0;
+  	cursor: pointer;
+}
+
+/*  相册名称  */
+.album-name span{
+	display: block;
+	position: absolute; 
+	top: 55px;left: 40px;
+
+}
+
+.album-name input{
+	width: 218px;height: 28px;
+	border:1px solid #bbbcbc;
+	position: absolute; 
+	top: 50px;right: 0px;
+	padding-left:10px;
+}
+
+
+/* 相册权限 */
+.album-power select{
+	width: 230px;height: 30px;
+	position: absolute; 
+	top: 90px;right: 0px; 
+}
+
+.album-power span{
+	display: block;
+	position: absolute; 
+	top: 95px;left: 40px;
+}
+
+
+/*  相册描述  */
+.album-description textarea{
+	resize: none;
+	padding: 5px;
+	width: 218px;height: 90px;
+	position: absolute;
+	top: 130px; right: 0px;
+}
+
+.album-description span{
+	display: block;
+	position: absolute; 
+	top: 130px;left: 0px;
+}
+
+/* 创建相册按钮 */
+.album-submit #submit{
+	width: 230px;height: 30px;
+	text-align: center;
+	line-height: 30px;
+	color: #fff;
+	background: #ef0c0c;
+	position: absolute;
+	bottom: 50px;right: 0;
+	border: none;
+	font-size:16px;
+	cursor: pointer;
+}
+
+.album-submit #submit:hover{
+	background: #FF3030;
+}
+
+/* 返回相册列表按钮 */
+.album-goback{
+	width: 230px;height: 30px;
+	text-align: center;
+	line-height: 30px;
+	color: #fff;
+	background: #24bfeb;
+	border: none;
+	font-size:16px;
+	cursor: pointer;
+	position: relative;
+	margin-top: -60px;
+	margin-left:542px;	
+	z-index: 999;														
+}
+
+.album-goback:hover{
+	background: #0daad6;
+}

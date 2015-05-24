@@ -25,8 +25,8 @@
 			'dbcharset' => 'utf8'
 		)
 
-		/*//1.数据库配置信息
-		'dbconfig' => array(
+		//1.数据库配置信息
+		/*'dbconfig' => array(
 			'dbhost' => 'qdm163237324.my3w.com',
 			'dbuser' => 'qdm163237324',
 			'dbpsw'  => 'dsiellbimysql',

@@ -56,7 +56,7 @@ class photoModel{
 		$fileErr  = $fileInfo['error'];
 		$fileSize = $fileInfo['size'];
 
-		var_dump($fileErr);
+		var_dump($fileInfo);
 
 		$allowType = array( 'image/jpg' , 'image/jpeg' , 'image/png' , 'image/gif' );
 
@@ -130,53 +130,25 @@ class photoModel{
 			
 			$path = $this->photoDir . $photoMd5 . $photoSuffix;
 
-			$res = $this->photoHandle( $this->fileTmp , $path); // 对上传的照片进行缩放处理
-			
+			//$res = $this->photoHandle( $this->fileTmp , $path); // 对上传的照片进行缩放处理
+			/*
+			$res = 0;
 			if( $res == 1 ){
 				echo "<script>alert('图片宽度或高度大于8000px,请选择其他图片上传');</script>";return;
 			}else if( $res == 2 ){
 				echo "<script>alert('未知错误,请联系管理员');</script>";return;
+			}*/
+	
+			// 将文件从临时文件夹copy到指定的文件夹
+			if( copy( $this->fileTmp , $path ) ){
+				// copy成功后删除临时文件
+				unlink(  $this->fileTmp ); 
+			}else{
+				exit('文件copy失败');
 			}
-
-			echo $this->fileName."上传成功<br/>";
+			
 			
 			$res2 = $this->photoInsertDB(  $this->fileSize , $path);			
-	}
-
-
-/*
-	调用于:本类 imgUploadJudge()
-	作用：根据上传图片的宽高自动计算等比例缩小的百分比，并进行保存处理后的图片
-	参数: $file_tmp : 上传图片的临时路径
-*/
-	public function photoHandle( $file_tmp , $path){
-
-		$imgInfo = getimagesize( $file_tmp );
-
-		$imgWidth   = $imgInfo[0];
-		$imgHeight  = $imgInfo[1];
-
-		$commonobj = M('common');
-
-		if( ($imgHeight <= $this->fixHeight) && ($imgWidth <= $this->fixWidth) ){ // 如果小于或等于我们要缩小的宽高
-
-			$commonobj -> photoHandle( $file_tmp , 1 , $path); // 表示不用缩放, 按原比例1
-
-		}else if( $imgHeight >= 8000 || $imgWidth >= 8000 ){
-			return 1;
-		}else if( $imgHeight > 630 ){
-
-			$scale = $this->fixHeight / $imgHeight; 
-			$commonobj -> photoHandle( $file_tmp , $scale , $path);
-
-		}else if( $imgWidth > 1200 ){
-
-			$scale = $this->fixWidth / $imgWidth; 
-			$commonobj -> photoHandle( $file_tmp , $scale , $path);
-
-		}else{
-			return 2;
-		}
 	}
 
 

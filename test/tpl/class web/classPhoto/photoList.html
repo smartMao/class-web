@@ -37,7 +37,8 @@
 				<li id="li">
 					<div class="pic" id="photoBox">
 					{foreach from=$photoData item=item key=key}
-						<img src="{$photoData.$key.path}" layer-src="{$photoData.$key.path}" >
+						<img src="{$photoData.$key.path}" layer-src="{$photoData.$key.path}" id="image-show">
+						<div id="key-{$key}" style="display:none;">评论块{$key}</div>
 					{/foreach}
 					</div>
 				</li>
