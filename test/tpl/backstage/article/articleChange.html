@@ -3,12 +3,17 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<title>Document</title>
+
+
+<link rel="stylesheet" type="text/css" href="tpl/backstage/article/style/article.css" />
+<link rel="stylesheet" type="text/css" href="tpl/backstage/css/gather.css" />
 <link rel="stylesheet" type="text/css" href="ueditor1_4_3-utf8-php/themes/default/dialogbase.css" />
-<script type="text/javascript" src="js/common.js"></script>
+
 </head>
 <body>
+
 <form method="post" action="admin.php?controller=back&method=changeArticleOk&id={$changeInfo.id}">
-	<span>文章id:</span>
+	<!--<span>文章id:</span>
 	<span>{$changeInfo.id}</span>
 	<br/>
 
@@ -26,18 +31,19 @@
 	<br/>
 
 	<span>标题:</span>
-	<input type="text" name="artTitle" value="{$changeInfo.title}">
+	
 	<br/>
 
-	<span>文章内容:</span>
- 	
+	<span>文章内容:</span>-->
+ 	<input type="text" name="artTitle" class="artTitle" value="{$changeInfo.title}">
 
 	{include file='tpl/backstage/article/ueditor1_4_3-utf8-php/editor.html'}	
-	<script id="container" name="content" type="text/plain" style="width:1024px;height:500px;">
+	<script id="container" name="content" type="text/plain"  style="width:95%;height: 500px;margin:0 auto;">
     	 {$changeInfo.content}
     </script>
-	<input type="submit" name="artChangeSubmit" value="修改">
-	<input type="button" onclick="goBack()" value="返回">
+	<input type="submit" class="artAddsubmit" name="artChangeSubmit" value="修改">
+	<input type="button" class="artAddGoBack"  onclick="javascript:window.location='admin.php?controller=back&method=artList';" value="返回" />
+	
 
 
 </form>

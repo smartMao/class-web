@@ -37,8 +37,14 @@
 				<li id="li">
 					<div class="pic" id="photoBox">
 					{foreach from=$photoData item=item key=key}
-						<img src="{$photoData.$key.path}" layer-src="{$photoData.$key.path}" id="image-show">
-						<div id="key-{$key}" style="display:none;">评论块{$key}</div>
+						<img src="{$photoData.$key.path}" layer-src="{$photoData.$key.path}" id="image-show"
+						alt="">
+						<input type="hidden" value="{$photoData.$key.id}" /><!-- photo ID -->
+	<!--  相册评论快  --><div id="photoComment-{$key}" style="display:none;">
+							<span class="photo">11</span><!-- 调试 -->
+							<br/>
+							评论块{$key}
+						</div>
 					{/foreach}
 					</div>
 				</li>
@@ -47,9 +53,7 @@
 	</ul>
 </div>
 
-<div id="comment">
-	<li>aa</li>
-</div>
+
 
 {include file='class web/index/footer.html'} 	
 

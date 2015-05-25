@@ -3,17 +3,27 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<title>Document</title>
+
+<link rel="stylesheet" type="text/css" href="tpl/backstage/css/gather.css" />
+<link rel="stylesheet" type="text/css" href="tpl/backstage/css/resourceAdd.css" />
+
 </head>
 <body>
-	<form method="post" action="index.php?controller=back&method=addResourceOP">
-		链接资源标题:<input type="text" name="resourceTitle" id="resourceTitle" /><br/>
-		链接URL:<textarea name="resourceLink" cols="100" rows="5" id="resourceURL"></textarea><br/>
-		<input type="submit" value="添加" id="submit"  />
+	
+<div class="add-common-frame">添加资源链接</div>
 
+<div class="resourceBox">
+	<form method="post" action="index.php?controller=back&method=addResourceOP">
+		<input type="text" name="resourceTitle" class="resourceTitle" id="resourceTitle" placeholder="资源标题" /><br/>
+		<textarea name="resourceLink" class="resourceLink"  id="resourceURL" placeholder="链接URL" ></textarea><br/>
+		<input type="submit" value="添加" class="artAddsubmit" id="submit"  />
+		
 	</form>
+</div>
+
 	<span id="message"></span>
 	<br/>
-	<button onclick="javascript:window.location='admin.php?controller=back&method=resourceList';" id="photoBatchDelCancel">返回</button>
+	<button onclick="javascript:window.location='admin.php?controller=back&method=resourceList';" id="photoBatchDelCancel" class="artAddGoBack">返回</button>
 </body>
 </html>
 

@@ -92,3 +92,9 @@
 #photoBox img:hover{
 	box-shadow: 0px 0px 10px #EEC900;	
 }
+
+.photo{
+	display: block;
+	width: 100px;height: 100px;
+	background: #000
+}

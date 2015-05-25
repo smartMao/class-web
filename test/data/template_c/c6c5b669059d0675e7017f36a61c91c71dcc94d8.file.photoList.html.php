@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-24 13:52:47
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-25 15:17:05
          compiled from "tpl\class web\classPhoto\photoList.html" */ ?>
 <?php /*%%SmartyHeaderCode:3026955612bdbe38364-45066563%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c6c5b669059d0675e7017f36a61c91c71dcc94d8' => 
     array (
       0 => 'tpl\\class web\\classPhoto\\photoList.html',
-      1 => 1432468354,
+      1 => 1432559816,
       2 => 'file',
     ),
   ),
@@ -80,10 +80,17 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 ?>
 						<img src="<?php echo $_smarty_tpl->tpl_vars['photoData']->value[$_smarty_tpl->tpl_vars['key']->value]['path'];?>
 " layer-src="<?php echo $_smarty_tpl->tpl_vars['photoData']->value[$_smarty_tpl->tpl_vars['key']->value]['path'];?>
-" id="image-show">
-						<div id="key-<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
-" style="display:none;">评论块<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
-</div>
+" id="image-show"
+						alt="<?php echo $_smarty_tpl->tpl_vars['photoData']->value[$_smarty_tpl->tpl_vars['key']->value]['id'];?>
+">
+
+	<!--  相册评论快  --><div id="photoComment-<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+" style="display:none;">
+							<span class="photo">11</span><!-- 调试 -->
+							<br/>
+							评论块<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+
+						</div>
 					<?php } ?>
 					</div>
 				</li>
@@ -92,9 +99,7 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 	</ul>
 </div>
 
-<div id="comment">
-	<li>aa</li>
-</div>
+
 
 <?php echo $_smarty_tpl->getSubTemplate ('class web/index/footer.html', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
  	

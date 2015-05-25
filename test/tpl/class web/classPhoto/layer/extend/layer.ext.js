@@ -204,6 +204,7 @@ layer.photos = function(options){
             log.imgbar = log.imgsee.find('.xubox_imgbar');
             log.imgtit = log.imgbar.find('.xubox_imgtit');
             log.layero = layero;
+            log.imghtml=log.layero.find('.xubox_intro');
             
             var img = log.imgs = log.bigimg.find('img');
             
@@ -246,7 +247,7 @@ layer.photos = function(options){
             event.preventDefault();
             conf.imgprev();
         });
-        
+// **************************************************************************************************************      
         //下一张
         conf.imgnext = function(){
             log.imgIndex++;
@@ -254,14 +255,19 @@ layer.photos = function(options){
                 log.imgIndex = 1;
             }
             log.tabimg(); 
-            
-            var photoInfo = $('#key-'+ log.imgIndex ).text();
+
+            //console.log(log.imgIndex);
+            var photoInfo = $('#key-'+log.imgIndex).attr('id');
+
             return photoInfo;
+
+           
         };
         log.bigimg.find('.xubox_next').on('click', function(event){         
             event.preventDefault();
             var photoInfo = conf.imgnext();
-
+           //console.log(photoInfo);
+           
            
             
         });
@@ -291,15 +297,24 @@ layer.photos = function(options){
                 pid = nowdata.pid;
                 name = nowdata.name;
             } else {
+
+// #############################################################################################################               
+                var index = log.imgIndex-1;
+                var photoComment = $('#photoComment-'+index).html(); // 获取相册评论快位置
+            
+
                 var thisimg = imgs.eq(log.imgIndex - 1);
                 src = thisimg.attr('layer-img') || thisimg.attr('src');
                 pid = thisimg.attr('layer-pid') || '';
                 name = thisimg.attr('layer-pname') || '';
+                
+
             }
+            log.imghtml.html(photoComment);
             log.imgs.attr({
                 src: src,
                 'layer-pid': pid,
-                alt: name
+               
             });
             log.imgtit.find('em').text(log.imgIndex + '/' + log.imgLen);
             log.imgsee.show();
@@ -359,8 +374,12 @@ layer.photosPage = function(options){
     var log = {};
 
     log.run = function(index){
+
+        //console.log(photoInfo);
+        var photoComment = $('#photoComment-'+index).html(); // 当第一次放大时显示
+
         layer.photos({
-            html: photoInfo,
+            html: photoComment,
             success: options.success,
             page: {
                 title: options.title,
@@ -371,9 +390,10 @@ layer.photosPage = function(options){
         });
     };
     options = options || {};
+
     $(options.parent).find('img').each(function(index){
         $(this).on('click', function(){
-            log.run(index);
+           log.run(index);
         });
     });
 };

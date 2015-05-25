@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-24 13:09:35
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-25 02:33:33
          compiled from "tpl\backstage\article\articleAdd.html" */ ?>
 <?php /*%%SmartyHeaderCode:3212855619dcb9a4de0-77359511%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '1d5f1d93bcea50cc344485e5cfccfb47f22c114d' => 
     array (
       0 => 'tpl\\backstage\\article\\articleAdd.html',
-      1 => 1432465773,
+      1 => 1432514011,
       2 => 'file',
     ),
   ),
@@ -29,8 +29,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<title>添加文章</title>
 
-<link rel="stylesheet" type="text/css" href="tpl/backstage/article/style/article.css" />
-
+<link rel="stylesheet" type="text/css" href="tpl/backstage/article/style/article.css" />=
 <link rel="stylesheet" type="text/css" href="tpl/backstage/css/gather.css" />
 
 </head>
@@ -55,7 +54,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		<br/>
 	
 		<input type="submit" id="artAddsubmit" class="artAddsubmit" name="addSubmit" value="提交">
-		<input type="button" class="artAddGoBack" onclick="goBack()" value="返回">
+		<input type="button" class="artAddGoBack" onclick="javascript:window.location='admin.php?controller=back&method=artList';" value="返回">
 
 
 	</form>
