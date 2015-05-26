@@ -1,0 +1,86 @@
+
+
+
+/* 文章信息盒子 用于居中所有的文章信息 */
+.article-info-box{
+	width: 950px;height: 100%;
+	background: #fff;
+	margin:0 auto;
+	
+}
+
+/* 面包屑 */
+.bread-nav{
+	width: 950px;height: 50px;
+	background: #3f4b53;
+	margin: 0 auto;
+}
+
+/* 左侧头像区 */
+.left-photo{
+	width:99px;height: 100%;
+	border-right: 1px solid #d0d0d0;
+	float: left;
+	position: relative;
+}
+
+/* 头像区域 */
+.photo-area{
+	width: 65px;height: 65px;
+	margin-top:7px;
+	margin-left:16px; 
+}
+
+/* 右侧文章内容区 */
+.right-content{
+	width:850px;height: 100%;
+	float: right;
+}
+
+/* 文章信息区 */
+.article-info{
+	width:850px;height:60px;
+}
+
+/* 文章标题 */
+.article-title h1{
+	text-indent: 10px;
+	font-weight: 200;
+}
+
+/* 文章 作者 和 时间 */
+.article-author-and-time{
+	height: 20px;width:850px;
+	display: block;
+}
+
+/* 文章作者 */
+.article-author{
+	text-indent: 10px;
+	float: left;
+	color: #ababab;
+	font-size:14px;
+}
+
+/* 发布时间 */
+.article-time{
+	color: #ababab;
+	float: left;
+	font-size:14px;
+}
+
+/* 文章内容 */
+.article-content{
+	width: 810px;height: 100%;
+	padding: 20px;
+	padding-bottom:40px; 
+	overflow: hidden;
+	display: block;	
+}
+
+
+
+
+
+
+

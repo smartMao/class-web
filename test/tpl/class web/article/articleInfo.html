@@ -3,12 +3,104 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<title>Document</title>
+
+<link href="tpl/class web/css/gather.css" rel="stylesheet" type="text/css" />
+<link href="tpl/class web/css/index/header.css" rel="stylesheet" type="text/css" />
+<link href="tpl/class web/css/index/login.css"  rel="stylesheet" type="text/css" /> 
+<link href="tpl/class web/css/index/footer.css" rel="stylesheet" type="text/css" />
+
+<link href="tpl/class web/css/breadNav.css" rel="stylesheet" type="text/css" /><!-- 面包屑导航 -->
+
+<link href="tpl/class web/css/article/articleInfo.css" rel="stylesheet" type="text/css" />
+
+
+<script src="tpl/class web/js/jquery-1.8.2-min.js"></script><!-- 用于 header 的点击后标记 -->
+
+
 </head>
-<body>
-标题:{$articleData.title}<br/>
-作者:{$articleData.author}<br/>
-发布时间:{$articleData.time}<br/>
-内容:{$articleData.content}<br/>
+<body  onselectstart=""> <!-- 设置为空是为了允许文本选中 -->
+
+{include file="class web/index/header.html"}
+{include file="class web/index/login.html"}
+
+<div class="article-info-box">
+
+<!-- 面包屑导航 -->
+	<div class="bread-nav">
+		<a href="index.php?controller=header&method=index">首页</a>&nbsp;>
+		<a href="index.php?controller=frontInfo&method=articleList">活跃文章</a>&nbsp;>
+		<span>正文</span>
+	</div>
+	<br/>
+
+<!-- 左侧头像区 -->
+	<div class="left-photo"> 
+		<div class="photo-area">
+			<img src="{$userPhoto}" width="65" height="65">
+		</div>
+	</div>
+
+
+<!-- 右侧内容区 -->
+	<div class="right-content">
+		<div class="article-info">
+			<div class="article-title">
+				<h1>{$articleData.title}<!-- 文章标题 --></h1>
+			</div>
+
+			<div class="article-author-and-time">
+				<div class="article-author">
+					<span class="author">
+						发布人:<span>{$articleData.author}<!-- 文章作者 --></span>&nbsp;|&nbsp;
+					</span>
+				</div>
+				<div class="article-time">
+					<span>{$articleData.time}<!-- 时间 --></span>
+				</div>
+			</div>
+		</div>
+
+		<div class="article-content">
+				<!-- 文章内容 -->
+				{$articleData.content}
+		</div>
+
+		
+	</div>
+
+	<div style="clear:both;"></div><!-- 清除浮动 -->
+
+
+</div>
+
+
+
+{if $username}
+	<script type="text/javascript">
+		var loginModel    = document.getElementById('loginModel');
+		var userUserName  = document.getElementById('userUserName');
+
+		loginModel.style.display = "none";
+		userUserName.style.display = "block";
+	</script>
+{else}
+	<script type="text/javascript">
+		var loginModel    = document.getElementById('loginModel');
+		var userUserName  = document.getElementById('userUserName');
+
+		loginModel.style.display = "block";
+		userUserName.style.display = "none";
+	</script>
+{/if}
+
+
+{include file="class web/index/footer.html"}
 
 </body>
 </html>
+
+<script src="tpl/class web/js/articleInfo.js"></script><!-- 文章信息 -->
+<script type="text/javascript" src="tpl/class web/js/registerCheck.js"></script><!-- 注册验证 -->
+
+<script type="text/javascript" src="tpl/class web/js/js.js"></script><!-- 登录、注册框弹出 -->
+<script type="text/javascript" src="tpl/class web/js/userPhoto.js"></script><!-- 移动到用户头像 -->

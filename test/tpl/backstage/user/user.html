@@ -22,17 +22,16 @@
 		
 
 			<tr>
-				<th>id</th>
-				<th>userName</th>
-				<th>trueName</th>
-				<th>power</th>
-				<th>registerTime</th>
+				<th>用户名</th>
+				<th>真实姓名</th>
+				<th>权限</th>
+				<th>注册时间</th>
 				<th>操作</th>
 			</tr>
 		{if $userList neq ''}
 			{foreach from=$userList item=item key=key}
 				<tr>
-					<td>{$userList.$key.id}</td>
+					
 					<td>{$userList.$key.userName}</td>
 					<td>{$userList.$key.trueName}</td>
 					<td>{$userList.$key.power}</td>

@@ -1,0 +1,16 @@
+.bread-nav{
+	width: 950px;height: 50px;
+	background: #3f4b53;
+	margin: 0 auto;
+	color:#fff;
+	font-size:22px;
+	text-indent: 15px;
+	line-height: 50px
+}
+
+.bread-nav a{
+	color: #fff;
+}
+.bread-nav a:hover{
+	text-decoration: underline;
+}

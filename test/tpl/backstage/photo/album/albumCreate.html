@@ -49,14 +49,18 @@
 					<td>
 					 	<input type="submit" id="submit" name="createSubmit" value="创建" onclick="stopRepeatSubmit()">
 						<span id="message"></span>
+					</td>	
+				</tr>
+				<tr class="album-goback">
+					<td><input type="button" onclick="javascript:window.location='admin.php?controller=back&method=albumList';" id="goback" value="返回">
 					</td>
-					
 				</tr>
 
 			</table>
 		</div>
 	</form>
-	<button onclick="javascript:window.location='admin.php?controller=back&method=albumList';" class="album-goback" >返回</button>
+	
+
 </body>
 </html>
 

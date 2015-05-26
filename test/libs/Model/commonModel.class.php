@@ -5,6 +5,8 @@ class commonModel{
 	// 此 Model 为公共模块 , 放置可复用的方法
 
 
+	private $_tableName2 = 'user_info';
+
 
 
 /*
@@ -167,6 +169,18 @@ class commonModel{
 		$imgOutput = "image{$imgType}";
 		$imgOutput($newImg , $path );
 		imagedestroy( $newImg );
+	}
+
+
+/*  
+	根据用户 ID 查询出他的 photo 头像地址
+*/
+	public function findUserPhoto( $uid ){
+
+		$sql = "SELECT `photo` FROM $this->_tableName2 WHERE id=$uid";
+		$res = DB::findOne( $sql );
+		return $res['photo'];
+
 	}
 
 

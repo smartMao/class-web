@@ -24,10 +24,6 @@ class headerController{
 		if( count( $userInfo ) > 3 ){          VIEW::assign( $userInfo ); }	// COOKIE SESSION 登录
 
 
-
-
-
-
 		VIEW::display('tpl/class web/index.html'); 
 	}
 

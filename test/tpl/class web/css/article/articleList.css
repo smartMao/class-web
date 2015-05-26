@@ -1,0 +1,95 @@
+
+/* 文章页面的大盒子 */
+.article-page-box{
+	width: 950px;height: 1000px;
+	margin:0 auto;
+}
+
+/* 文章板块 */
+.left-article{
+	float: left;
+}
+
+.left-article{
+	width: 560px;height: 1000px;
+}
+.article-list-theme{
+	width: 560px;height: 35px;
+	background: #f3f3f3;
+	border-left:13px solid #D3D3D3;
+	line-height: 35px;
+	text-indent: 10px;
+}
+
+/* 文章列表 */
+.article-list-content{
+	width: 560px;height: 800px;
+	background: #fff;
+}
+
+.article-list-content ul li{
+	width: 500px;height: 50px;
+	border-bottom: 1px solid #d0d0d0;
+	margin:0 auto;
+	position: relative;
+}
+
+.article-list-content ul li a{
+	display: block;
+	line-height: 50px;
+	text-indent: 5px;
+	font-size: 18px;
+	color: #0099ff;
+}
+
+.article-list-content ul li a:hover{
+	text-decoration: underline;
+	color:#000;
+}
+
+.article-list-content ul li span{
+	position: absolute;
+	right: 0px;bottom: 0px;
+	color:#ababab;
+	font-size:12px;
+}
+
+
+
+
+
+
+
+.right-box{
+	width: 390px;
+	height: 1000px;
+	float: right;
+}
+
+/* 右侧最新相册板块 */
+.album-new{
+	width: 390px;
+	height: 370px;
+	background: #98FB98;
+
+}
+.album-list-theme{
+	width: 377px;height: 35px;
+	background: #f3f3f3;
+	border-left:13px solid #D3D3D3;
+	line-height: 35px;
+	text-indent: 10px;
+}
+
+/* 右侧资源下载板块 */
+.resource-new{
+	width: 390px;height: 300px;
+	background:#9BCD9B;
+}
+.resource-list-theme{
+	width: 377px;height: 35px;
+	background: #f3f3f3;
+	border-left:13px solid #D3D3D3;
+	line-height: 35px;
+	text-indent: 10px;
+}

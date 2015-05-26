@@ -3,45 +3,56 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<title>Document</title>
+
+<link rel="stylesheet" type="text/css" href="tpl/backstage/photo/style/album-create.css" />
 <link rel="stylesheet" type="text/css" href="tpl/backstage/css/gather.css" />
+
 </head>
 <body>
+
+<div class="add-common-frame">修改相册信息e</div>
+
+<img src="{$albumInfo.path}" id="photoCoverImage" class="album-cover-img" width="295" height="210" />
 <form method="post" action="admin.php?controller=back&method=albumEditOP&id={$albumInfo.id}" enctype="multipart/form-data">
-	<img src="{$albumInfo.path}" id="photoCoverImage" width="295" height="210" />
+	<div class="album-create-box">
+		<table>
 
-	<ul>
-		<li>
-			<span>修改封面:</span>
-			<input type="file" name="myFile" id="photoCoverChange" accept="image/jpeg" />
-		</li>
+			
+			<tr class="album-cover">
+				<td><span>修改封面:</span></td>
+				<td><input type="file" name="myFile" class="upload" id="photoCoverChange" accept="image/jpeg,image/jpg,image/gif,image/png,image/bmp" /></td>
+			</tr>
+			<tr class="album-name">
+				<td><span>相册标题:</span></td>
+				<td><input type="text" value="{$albumInfo.title}" name="albumName" /></td>
+			</tr>
+			<tr class="album-power">
+				<td><span>相册权限:</span></td>
+				<input type="hidden" id="photoPowerHide" value="{$albumInfo.power}">
+				<td>
+					<select name="albumPower">
+						<option value="1">全部人都可以观看</option>
+						<option value="2">仅登录后的用户可观看</option>
+						<option value="3">仅管理员可观看</option>
+					</select>
+				</td>
+			</tr>
+			<tr class="album-description">
+				<td><span>相册描述</span></td>
+				<td><textarea rows="10" cols="50" name="description">{$albumInfo.description}</textarea></td>
+			</tr>
+			<tr class="album-submit">
+				<td><input type="submit" name="albumEditSubmit" id="submit" value="更新"></td>
+			</tr>
+			<tr class="album-goback">
+				<td><input type="button" onclick="javascript:window.location='admin.php?controller=back&method=albumList';" id="goback" value="返回">
+				</td>
+			</tr>
 
-		<li>
-			<span>相册标题:</span>
-			<input type="text" value="{$albumInfo.title}" name="albumName" />
-		</li>
-
-		<li>
-			<span>相册权限:</span>
-			<input type="hidden" id="photoPowerHide" value="{$albumInfo.power}">
-			<select name="albumPower">
-				<option value="1">全部人都可以观看</option>
-				<option value="2">仅登录后的用户可观看</option>
-				<option value="3">仅管理员可观看</option>
-			</select>
-		</li>
-
-		<li>
-			<span>相册描述</span>
-			<textarea rows="10" cols="50" name="description">{$albumInfo.description}</textarea>
-		</li>
-
-		<li>
-			<input type="submit" name="albumEditSubmit" value="更新">
-		</li>
-
-	</ul>
+		</table>
+	</div>
 </form>
-	<button onclick="javascript:window.location='admin.php?controller=back&method=albumList';">返回</button>
+	
 </body>
 </html>
 

@@ -117,24 +117,17 @@ function birthdayValue(){
 	function sexValue(){
 
 	//  从数据获取来的int
-		//var sexValue = document.getElementById('sexHidd').value;
-
+		var sexValue = document.getElementById('sexHidd').value;
+	
 	//  获取数值int  3代表男,2代表女,1代表保密,
 		var sexMan = document.getElementById('man');
 		var sexWoman = document.getElementById('woman');
 		var sexSecrecy = document.getElementById('secrecy');
 	//  判断从数据库出来的代表性别的int 和 本地代表性别的int 相比较
-		if(sexValue == sexMan.value){
-			sexMan.setAttribute('checked','checked');
-		}
 
-		if(sexValue == sexWoman.value){
-			sexWoman.setAttribute('checked','checked');
-		}
-
-		if(sexValue == sexSecrecy.value){
-			sexSecrecy.setAttribute('checked','checked');
-		}
+		if(sexValue == sexMan.value)    sexMan.setAttribute('checked','checked');
+		if(sexValue == sexWoman.value)  sexWoman.setAttribute('checked','checked');
+		if(sexValue == sexSecrecy.value)sexSecrecy.setAttribute('checked','checked');
 	}
 
 

@@ -3,76 +3,101 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<title>Document</title>
+
+<link rel="stylesheet" type="text/css" href="tpl/backstage/user/style/userInfoChange.css">
+<link rel="stylesheet" type="text/css" href="tpl/backstage/css/gather.css">
+
 </head>
 <body>
+
+<div class="add-common-frame">用户资料修改</div>	
+
+<div class="userInfoBox">
 	<form method="post" action="admin.php?controller=back&method=userDetailsOk&id={$userInfo.id}">
-		<span>用户名:</span>
-	<span>{$userInfo.userName}</span>
-	<br/>
+	<table class="userInfoTable"  cellspacing="0">
+		<tr><!-- 用户名 -->
+			<td><span>用户名</span></td>
+			<td><span>{$userInfo.userName}</span></td>
+		</tr>
+		<tr><!-- 姓名 -->
+			<td><span>真实姓名</span></td>
+			<td><span>{$userInfo.trueName}</span></td>	
+		</tr>
 
-	<span>真实姓名:</span>
-	<span>{$userInfo.trueName}</span>	
-	<br/>
+		<tr><!-- 生日 -->
+			<td><span>生日</span></td>
+			
+				<input type="hidden"  id="yearHidd"  value="{$userInfo.birthday|substr:0:4}" />
+				<input type="hidden"  id="monthHidd" value="{$userInfo.birthday|substr:5:2}" />
+				<input type="hidden"  id="dayHidd"   value="{$userInfo.birthday|substr:8:2}" />
+			
 
-	<span>生日:</span>
+			<td>
+				<select id="year" name="year">
+					<option>请选择</option>
+				</select>
 
-	<input type="hidden"  id="yearHidd"  value="{$userInfo.birthday|substr:0:4}" />
-	<input type="hidden"  id="monthHidd" value="{$userInfo.birthday|substr:5:2}" />
-	<input type="hidden"  id="dayHidd"   value="{$userInfo.birthday|substr:8:2}" />
+				<select id="month" name="month">
+					<option>请选择</option>
+				</select>
 
-	<select id="year" name="year">
-		<option>请选择</option>
-	</select>
+				<select id="day" name="day">
+					<option>请选择</option>
+				</select>
+			</td>
+				
+				<input type="hidden" name="birthday" id="postBirthday" value="" />
+		</tr>
 
-	<select id="month" name="month">
-		<option>请选择</option>
-	</select>
+ 		<tr><!-- 手机号码 -->
+			<td><span>手机号码</span></td>
+			<td><input type="text" name="phone" value="{$userInfo.phone}" /></td>
+		</tr>
 
-	<select id="day" name="day">
-		<option>请选择</option>
-	</select>
-	
-	<input type="hidden" name="birthday" id="postBirthday" value="" />
+		<tr><!-- 性别 -->
+			<td><span>性别</span></td>
+				<input type="hidden" id="sexHidd"   value="{$userInfo.sex}" />
+			<td>				
+				男<input type="radio" name="sex" id="man" value="3" />&nbsp;
+				女<input type="radio" name="sex" id="woman" value="2" />&nbsp;
+				保密<input type="radio" name="sex" id="secrecy" value="1" />&nbsp;
+			</td>	
+		</tr>
+			
+		<tr><!-- 地址 -->
+			<td><span>地址</span></td>
+			<td><input type="text" name="address" value="{$userInfo.address}" /></td>
+		</tr>
 
-	<br/>
+		<tr><!-- 身高 -->
+			<td><span>身高</span></td>
+			<td><input type="text" name="height" value="{$userInfo.height}"  /></td>
+		</tr>
+		<tr><!-- 个人简介 -->
+			<td><span>个人简介</span></td>
+			<td><textarea rows='10' cols="50" class="userIntroduction" name="introduction">{$userInfo.introduction}</textarea></td>
+		</tr>
+		<tr><!-- 注册时间 -->
+			<td><span>注册时间</span></td>
+			<td><span>{$userInfo.registerTime}</span></td>
+		</tr>
+		
+		<tr><!-- 操作按钮 -->
+			<td><input type="submit" name="userInfoChange" class="artAddsubmit" value="修改" /></td>
+			<td>
+				<input type="button" class="artAddGoBack"
+				onclick="javascript:window.location='admin.php?controller=back&method=userList';" value="返回" />
+			</td>
+		</tr>
 
-
-	<span>手机号码:</span>
-	<input type="text" name="phone" value="{$userInfo.phone}" />
-	<br/>
-
-	<span>性别:</span>		
-	<input type="hidden" id="sexHidd"   value="{$userInfo.sex}" />
-	男<input type="radio" name="sex" id="man" value="3" />
-	女<input type="radio" name="sex" id="woman" value="2" />
-	保密<input type="radio" name="sex" id="secrecy" value="1" />
-	<br/>
-
-	<span>地址:</span>	
-	<input type="text" name="address" value="{$userInfo.address}" />
-	<br/>
-
-	<span>身高:</span>	
-	<input type="text" name="height" value="{$userInfo.height}"  />
-	<br/>
-
-	<span>个人简介:</span>
-	<textarea rows='10' cols="50" name="introduction">{$userInfo.introduction}</textarea>
-	<br/>
-
-	<span>注册时间:</span>
-	<span>{$userInfo.registerTime}</span>	
-	<br/>
-
-	<input type="submit" name="userInfoChange" value="修改" /> 
-	
-
+		</table>
 	</form>
-	<button onclick="goBack()">返回</button>
+</div>
+
 </body>
 </html>
 
-<script type="text/javascript" src="tpl/backstage/js/common.js"></script>
+<script type="text/javascript" src="tpl/backstage/js/common.js?ver=1"></script>
 <script type="text/javascript">
 
 //  创建下拉框

@@ -3,8 +3,16 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<title>Document</title>
+
+<link rel="stylesheet" type="text/css" href="tpl/backstage/css/gather.css" />
+<link rel="stylesheet" type="text/css" href="tpl/backstage/css/resourceAdd.css?ver=1" />
+
 </head>
 <body>
+
+<div class="add-common-frame">修改资源链接</div>
+
+<div class="resourceBox">
 	<form method="post" action="admin.php?controller=back&method=resourceModifyOP"><br/>
 												   
 		<input type="hidden" name="resourceID" id="resourceID" value="{$resourceData.id}">
@@ -13,7 +21,9 @@
 		<input type="submit" id="submit" class="artAddsubmit" value="修改" />
 
 	</form>
-	<button onclick="javascript:window.location='admin.php?controller=back&method=resourceList';" class="artAddGoBack">返回</button>
+</div>
+	<button onclick="javascript:window.location='admin.php?controller=back&method=resourceList';" 
+	class="artAddGoBack">返回</button>
 </body>
 </html>
 

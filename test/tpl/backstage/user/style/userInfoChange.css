@@ -1,0 +1,63 @@
+
+.add-common-frame{
+	width: 96%;height: 36px;
+	margin:10px auto;
+	display: block;
+	border-radius: 5px;
+	background: #404d55;
+	text-indent: 10px;
+	line-height: 36px;
+	color:#fff;
+}
+
+.userInfoBox{
+	width: 650px;height: 500px;
+	margin:20px auto;
+}
+
+.userInfoTable tr{
+
+	width: 500px;height: 30px;
+	
+}
+
+
+.userInfoTable tr td{
+	width: 250px;height: 30px;
+	border:1px solid #ccc;
+	line-height: 30px;text-align: center;
+}
+.userIntroduction{
+	resize: none;
+}
+
+input,textarea{
+	padding: 5px;
+}
+
+
+.artAddsubmit, .artAddGoBack{
+	width: 100px;height: 30px;
+	
+	line-height: 30px;text-align: center;
+	border:none;
+	background: #eb2525;
+	font-size:16px;
+	color: #fff;
+	padding: 0px;
+	
+}
+
+
+
+.artAddGoBack{
+	background: #3cc6ed;
+}
+
+.artAddsubmit:hover{
+	background: #000;
+}
+
+.artAddGoBack:hover{
+	background:#000
+}
