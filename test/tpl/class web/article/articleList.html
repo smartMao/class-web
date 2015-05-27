@@ -9,7 +9,11 @@
 <link href="tpl/class web/css/index/login.css"  rel="stylesheet" type="text/css" /> 
 <link href="tpl/class web/css/index/footer.css" rel="stylesheet" type="text/css" />
 
-<link href="tpl/class web/css/article/articleList.css" rel="stylesheet" type="text/css" />
+<link href="tpl/class web/css/article/articleList.css" rel="stylesheet" type="text/css?ver=1" />
+<link href="tpl/class web/css/photo/pager.css"      rel="stylesheet" type="text/css" /><!-- 相册页面页码css文件 -->
+
+<script src="tpl/class web/js/jquery-1.8.2-min.js"></script><!-- 用于 header 的点击后标记 -->
+
 
 </head>
 <body>
@@ -24,8 +28,7 @@
 		<div class="article-list-theme"><span>活跃文章</span></div>
 		<div class="article-list-content">
 			<ul>
-
-				
+	
 				{foreach from=$articleData item=item key=key}
 					
 					<li>
@@ -33,33 +36,137 @@
 							{$articleData.$key.title}
 						</a>
 						<span class="article-author-and-time">
-							发布人: {$articleData.$key.author}<!--发布人--> | {$articleData.$key.time}<!--发布时间 -->
+							 {$articleData.$key.time}<!--发布时间 -->
 						</span>
 					</li>
 				{/foreach}
 
 			</ul>
+	 	</div>
+		
+		<div class="photo-page"> <!-- 分页模块 -->
+			{$pageStr}
 		</div>
+
 	</div>
 
 	<div class="right-box">
 
 		<div class="album-new">
 			<div class="album-list-theme"><span>最新相册</span></div>
+			{if $albumData}
+				{foreach from=$albumData item=item key=key}
+					<a href="#" class="new-album-list-a"><!-- 循环此块 -->
+						<div class="new-album-list">
+							 <img src="{$albumData.$key.path}" width="335" height="210">
+							 <div class="new-album-info"><!-- 最新相册信息块 -->
+								<span class="new-album-title">{$albumData.$key.title}<!-- 相册标题 --></span>
+								<div class="new-album-date-and-author">
+									<span>{$albumData.$key.username} | 分享: {$albumData.$key.time}</span>
+
+								</div>
+							 </div>
+						</div>
+					</a>
+				{/foreach}
+			{else}
+				<span>暂无相册数据</span>
+			{/if}
+
 
 		</div>
 
 		<div class="resource-new">
 			<div class="resource-list-theme"><span>资源下载</span></div>
+			<div class="resource-new-content">
+				
+				<div class="resource-tab-list"><!-- tab -->
+					<ul>
+
+						<li class="resource-tab-new" id="onResource">
+							<i class="on-new-icon">new</i>最新资源
+						</li>
+						<li class="resource-tab-see">
+							<i class="tab-see-normal-icon" style="display:none;"></i>
+							<i class="tab-see-on-icon"></i>
+							访问最多
+						</li>
+						<li class="resource-tab-dowload">
+							<i class="tab-dowload-normal-icon"></i>
+							<i class="tab-dowload-on-icon"></i>
+							下载最多
+						</li>
+
+					</ul>
+				</div>
+
+				<div class="resource-content-list">
+
+					<!-- 最新资源 -->
+					<div class="resource-new-list" style="display:block;">
+						<ul>
+							{if $resourceData}
+								{foreach from=$resourceData item=item key=key}
+									<li>
+										<i>1</i> 
+										<a href="{$resourceData.$key.link}" target="__blank" >
+											{$resourceData.$key.title}
+										</a>
+									</li>
+								{/foreach}
+							{else}
+								<span>暂无数据</span>
+							{/if}
+							
+						</ul>
+					</div>
+
+					<!-- 访问最多标签 -->
+					<div class="resource-see-list" style="display:none;">
+						<ul>
+							<li><i>1</i> <a href="#" >67k76k76</a></li>
+							<li><i>2</i> <a href="#" >6kkkjfdf</a></li>
+							<li><i>3</i> <a href="#" >fghfghf</a></li>
+							<li><i>4</i> <a href="#" >dasdassdvsdvf</a></li>
+							<li><i>5</i> <a href="#" >hg</a></li>
+							<li><i>6</i> <a href="#" >fddf</a></li>
+							<li><i>7</i> <a href="#" >qwevvsdvsdasdsa</a></li>
+							<li><i>8</i> <a href="#" >dfbbbn</a></li>
+							<li><i>9</i> <a href="#" >asdasgbbbdvffggsdasdsa</a></li>
+							<li><i>10</i><a href="#" >888dasdvsdasdsa</a></li>
+						</ul>
+					</div>
+
+					<!-- 下载最多标签 -->
+					<div class="resource-dowload-list" style="display:none;">
+						<ul>
+							<li><i>1</i> <a href="#" >56756756</a></li>
+							<li><i>2</i> <a href="#" >567567</a></li>
+							<li><i>3</i> <a href="#" >asd56752334asdrasdsa</a></li>
+							<li><i>4</i> <a href="#" >53453</a></li>
+							<li><i>5</i> <a href="#" >hg</a></li>
+							<li><i>6</i> <a href="#" >44444</a></li>
+							<li><i>7</i> <a href="#" >111</a></li>
+							<li><i>8</i> <a href="#" >34</a></li>
+							<li><i>9</i> <a href="#" >77888</a></li>
+							<li><i>10</i><a href="#" >345345</a></li>
+						</ul>
+					</div>
+				</div>
+
+
+
+
+			</div>
 
 		</div>
+	
+
 	</div>
 
+	
 
 </div>
-
-
-
 
 
 
@@ -95,3 +202,4 @@
 <script type="text/javascript" src="tpl/class web/js/registerCheck.js"></script><!-- 注册验证 -->
 <script type="text/javascript" src="tpl/class web/js/js.js"></script><!-- 登录、注册框弹出 -->
 <script type="text/javascript" src="tpl/class web/js/userPhoto.js"></script><!-- 移动到用户头像 -->
+<script type="text/javascript" src="tpl/class web/js/articleListTab.js"></script><!-- 资源下载部分的tab切换 -->

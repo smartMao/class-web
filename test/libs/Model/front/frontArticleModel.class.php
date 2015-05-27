@@ -4,20 +4,24 @@ class frontArticleModel{
 
  	// 前端文章模块
 
-
 	private $_tableName1 = 'article_info';
 
 
 /*
 	调用处: headerController 的 index()
 	作用: 取出文章数据
+	参数: page 页数
 */
-	public function getArtData(){
-		$sql = "SELECT * FROM $this->_tableName1";
-		$res = DB::findAll( $sql );
-		return $res;
-	}
+	public function getArtData( $page ){	
 
+		$action = $page * 15 - 15; // 根据当前的 $page 计算出从哪里开始取数据
+
+		$sql = "SELECT `id`,`uid`,`title`,`author`,`time`,`content` FROM $this->_tableName1 
+		 ORDER BY id DESC limit $action,15";
+		$res = DB::findAll( $sql );
+
+		return $res;	
+	}
 
 
 /*
@@ -32,6 +36,16 @@ class frontArticleModel{
 	}
 
 
+/*
+	调用处 ：本类的 pager()
+	作用: 取文章的总条数
+*/
+	public function articleDataNum(){
+		$sql = "SELECT count(id) FROM $this->_tableName1";
+		$res = DB::findOne($sql);							
+		$count = intval($res['count(id)']);
+		return $count;
+	}
 
 
 }

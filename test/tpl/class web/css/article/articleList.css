@@ -56,10 +56,6 @@
 
 
 
-
-
-
-
 .right-box{
 	width: 390px;
 	height: 1000px;
@@ -69,10 +65,18 @@
 /* 右侧最新相册板块 */
 .album-new{
 	width: 390px;
-	height: 370px;
-	background: #98FB98;
+	height: 500px;
+	background: #fff;
 
 }
+
+.new-album-list-a{
+	display: block;
+	width: 335px;height: 210px;
+	margin: 8px auto;
+}
+
+
 .album-list-theme{
 	width: 377px;height: 35px;
 	background: #f3f3f3;
@@ -81,10 +85,57 @@
 	text-indent: 10px;
 }
 
+.new-album-list{
+	width: 335px;height: 210px;
+	background: #ccc;
+	margin: 8px auto;
+	position: relative;
+	cursor: pointer;
+}
+.new-album-list img{
+	display: block;
+	margin: 0 auto;
+}
+
+/* 最新相册的黑色信息栏 */
+.new-album-info{
+	width: 100%;height:35px;
+	background:#000;
+	filter:alpha(opacity=70);      
+ 	-moz-opacity:0.7;              
+  	-khtml-opacity:0.7;             
+	opacity: 0.7; 
+	position: absolute;
+	bottom: 0px;        
+
+}
+
+/* 最新相册的相册标题 */
+.new-album-title{
+	display: block;
+	color: #fff;
+	line-height: 35px;
+	text-indent: 5px;
+}
+
+
+.new-album-date-and-author{
+	position: absolute;
+	right: 2px;bottom: 0px;
+}
+.new-album-date-and-author span{
+	color: #fff;
+	font-size:12px;
+
+}
+
+
+
+
 /* 右侧资源下载板块 */
 .resource-new{
-	width: 390px;height: 300px;
-	background:#9BCD9B;
+	width: 390px;height: 385px;
+	background:#fff;
 }
 .resource-list-theme{
 	width: 377px;height: 35px;
@@ -92,4 +143,153 @@
 	border-left:13px solid #D3D3D3;
 	line-height: 35px;
 	text-indent: 10px;
+}
+
+.resource-new-content{
+	width: 295px;height: 340px;
+	margin:10px auto;
+}
+
+/* 资源下载板块的tab标签 */
+.resource-tab-list{
+	width: 295px;height: 35px;
+
+}
+
+
+/* 点击到tab上标记 */
+#onResource{
+	background: #fe4800;
+	color: #fff;
+}
+
+.resource-tab-list ul li{
+	width: 98px;height: 35px;
+	display: block;
+	background: #e9e9e9;
+	float: left;
+	line-height: 35px;
+	text-align: center;
+	cursor: pointer;
+	text-indent: 25px;
+}
+
+.resource-tab-new{ position: relative; }
+.resource-tab-see{ position: relative; }
+.resource-tab-dowload{ position: relative; }
+
+/* 最新资源 tab 的 icon  */
+
+.resource-tab-new i{
+	width: 24px;height: 12px;
+	display: block;
+	border-radius: 2px;
+	background: #c2c2c2;
+	text-indent: 0px;
+	color: #000;
+	line-height: 9px;
+	font-size:2px;
+	position: absolute;
+	top: 13px;left: 5px;
+}
+
+.resource-tab-new .on-new-icon{
+	background: #fff;
+	color: #fe4800;
+}
+
+
+/* 访问最多 tab 的 icon  */
+
+.tab-see-normal-icon{
+	display: block;
+	width: 21px;height: 14px;
+	background: url(../../images/article/browse.png) no-repeat;
+	position: absolute;
+	top: 13px;left: 5px;
+}
+
+.tab-see-on-icon{
+	display: block;
+	width: 21px;height: 14px;
+	background: url(../../images/article/browse-on.png) no-repeat;
+	position: absolute;
+	top: 13px;left: 5px;
+}
+
+/* 资源下载 tab 的 icon  */
+
+.tab-dowload-normal-icon{
+	display: block;
+	width: 21px;height: 14px;
+	background: url(../../images/article/dowload.png) no-repeat;
+	position: absolute;
+	top: 13px;left: 5px;
+}
+
+.tab-dowload-on-icon{
+	display: block;
+	width: 21px;height: 14px;
+	background: url(../../images/article/dowload-on.png) no-repeat;
+	position: absolute;
+	top: 13px;left: 5px;
+}
+
+
+
+/* 资源下载的内容列表 */
+.resource-content-list{
+	margin-top:5px;
+	width: 295px;height: 260px;
+}
+
+.resource-content-list ul li{
+	width: 295px;height: 28px;
+	line-height: 26px;
+	position: relative;
+}
+
+
+.resource-content-list ul li a{
+	display: block;
+	color: #000;
+	text-indent: 20px;
+	color: #0099ff;
+}
+
+.resource-content-list ul li a:hover{
+	color: #000;
+}
+
+.resource-content-list ul li i{
+	width: 12px;height: 12px;
+	font-size:10px;
+	color: #fff;
+	line-height: 12px;
+	text-align: center;
+	display:block;
+	background: #fe4800;
+	position: absolute;top:8px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.photo-page{
+	padding: 5px;
+	background: #fff;
 }

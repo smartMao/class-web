@@ -73,11 +73,13 @@ class headerController{
 */ 	
 	public function albumData(){
 
-		
-		$pageStr = M('frontAlbum','front')->pager();
 
+		$albumCount = M('frontAlbum','front')->albumDataNum(); // 相册总数
+		$CurrentPage = isset( $_GET['page'] ) ? $_GET['page'] : 1 ;   // 当前的页数
+		
+		$pageStr = M('common')->pager( $CurrentPage , $albumCount , 6 );
+		
   		// 相册数据
-  		$CurrentPage = isset( $_GET['page'] ) ? $_GET['page'] : 1 ;  
 		$albumData['albumData'] = M('frontAlbum','front')->findAllAlbumData( $CurrentPage ); // 相册数据 参数1: 页数
 
 		if( !$albumData['albumData']){ $albumData['albumData'] = ''; } // 当无相册数据时 让smarty判断

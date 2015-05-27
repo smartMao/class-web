@@ -193,6 +193,22 @@ class frontAlbumModel{
 		return $albumData;
 	}
 
+
+
+/*  
+	调用处: frontInfoController 中的 articleList()
+	作用：显示在文章列表页面 右侧的的最新的两个相册
+*/
+	public function getNewTwoAlbum(){
+		$sql = "SELECT `id`,`username`,`title`,`time`,`path` FROM $this->_tableName3 ORDER BY id DESC LIMIT 0,2";
+		$res = DB::findAll( $sql );
+		//if(!$res){ return ''; }
+		return $res;
+	}
+
+
+
+
 }
 
 

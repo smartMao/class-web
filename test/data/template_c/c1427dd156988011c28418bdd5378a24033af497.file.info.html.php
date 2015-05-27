@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-26 16:10:02
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-27 13:56:16
          compiled from "tpl\class web\index\info.html" */ ?>
-<?php /*%%SmartyHeaderCode:1804755647eba8e9332-52848440%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:183945565b0e095c6e3-49823731%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'c1427dd156988011c28418bdd5378a24033af497' => 
     array (
       0 => 'tpl\\class web\\index\\info.html',
-      1 => 1432030227,
+      1 => 1373653190,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '1804755647eba8e9332-52848440',
+  'nocache_hash' => '183945565b0e095c6e3-49823731',
   'function' => 
   array (
   ),
@@ -24,9 +24,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_55647eba92f848_00666614',
+  'unifunc' => 'content_5565b0e099ed70_48124561',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_55647eba92f848_00666614')) {function content_55647eba92f848_00666614($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_truncate')) include 'E:\\XAMPP\\htdocs\\class-web\\test\\framework\\libs\\view\\Smarty\\plugins\\modifier.truncate.php';
+<?php if ($_valid && !is_callable('content_5565b0e099ed70_48124561')) {function content_5565b0e099ed70_48124561($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_truncate')) include 'E:\\XAMPP\\htdocs\\class-web\\test\\framework\\libs\\view\\Smarty\\plugins\\modifier.truncate.php';
 ?><!DOCTYPE html>
 <html>
 <head>
@@ -85,7 +85,7 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 								<?php }?>
 
 								<?php if ($_smarty_tpl->tpl_vars['key']->value+1==10) {?> <!-- 如果有10篇文章以上,显示 “查看更多” 按钮 -->
-									<a href="index.php?controller=frontInfo&method=articleList" class="see-more">		查看更多→
+									<a href="index.php?controller=frontInfo&method=articleList&page=1" class="see-more">		查看更多→
 									</a>
 								<?php }?>
 

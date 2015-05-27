@@ -12,9 +12,23 @@ class frontInfoController{
 		if( empty( $userInfo['username']) ){   VIEW::assign( $userInfo ); } // 未登录
 		if( count( $userInfo ) > 3 ){          VIEW::assign( $userInfo ); }	// COOKIE SESSION 登录
 
+		// 页码数据
+		$page = isset( $_GET['page'] ) ? $_GET['page'] : 1 ;  // 当前页数
+		$articleCount = M('frontArticle','front')->articleDataNum(); // 文章总条数
+		$pageStr = M('common')->pager( $page , $articleCount , 15 ); // 页码
 
+		// 文章数据
+		$articleData['articleData'] = M('frontArticle','front')->getArtData( $page );
 
-		$articleData['articleData'] = M('frontArticle','front')->getArtData();
+		// 相册数据
+		$albumData['albumData'] = M('frontAlbum','front')->getNewTwoAlbum();
+	
+		// 资源数据
+		$resourceData['resourceData'] = M('frontResource','front')->getResourceData();
+
+		VIEW::assign( $resourceData );
+		VIEW::assign( $albumData );
+		VIEW::assign( $pageStr );
 		VIEW::assign( $articleData );
 		VIEW::display('tpl/class web/article/articleList.html');
 

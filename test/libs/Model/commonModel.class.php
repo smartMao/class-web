@@ -183,6 +183,22 @@ class commonModel{
 
 	}
 
+/*
+	作用：传入数据的总条数, 每一页显示数据的数量
+	参数: $page : 当前的页数
+		  $dataCount : 总的数据条数
+		  $pageShowCount : 每一页显示的数据条数
+*/
+	public function pager( $page , $dataCount ,  $pageShowCount ){
+		//var_dump($page);exit;
+		include_once 'libs/Model/pager.class.php';  
+		$CurrentPage = isset( $page ) ? $page : 1 ;   
+
+ 		$myPage = new pager( $dataCount ,intval($CurrentPage) , $pageShowCount );    
+  		$pageStr['pageStr'] = $myPage->GetPagerContent();  //  直接  echo $pageStr['pageStr'] 就是分页
+  		return $pageStr;
+	}
+
 
   
 
