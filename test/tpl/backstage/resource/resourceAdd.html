@@ -5,7 +5,7 @@
 	<title>Document</title>
 
 <link rel="stylesheet" type="text/css" href="tpl/backstage/css/gather.css" />
-<link rel="stylesheet" type="text/css" href="tpl/backstage/css/resourceAdd.css" />
+<link rel="stylesheet" type="text/css" href="tpl/backstage/css/resourceAdd.css?ver=1" />
 
 </head>
 <body>
@@ -17,13 +17,13 @@
 		<input type="text" name="resourceTitle" class="resourceTitle" id="resourceTitle" placeholder="资源标题" /><br/>
 		<textarea name="resourceLink" class="resourceLink"  id="resourceURL" placeholder="链接URL" ></textarea><br/>
 		<input type="submit" value="添加" class="artAddsubmit" id="submit"  />
-		
+		<input type="button" onclick="javascript:window.location='admin.php?controller=back&method=resourceList';" class="artAddGoBack" value="返回">
 	</form>
 </div>
 
 	<span id="message"></span>
 	<br/>
-	<button onclick="javascript:window.location='admin.php?controller=back&method=resourceList';" id="photoBatchDelCancel" class="artAddGoBack">返回</button>
+	
 </body>
 </html>
 

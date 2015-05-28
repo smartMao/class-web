@@ -6,8 +6,37 @@
 function showPhotoCover(){
 	var myFile = document.getElementById('photoCoverChange');
 	var myPhoto = document.getElementById('photoCoverImage');
-	myFile.onchange = function(){
+	var myPhotoUrl = myPhoto.src;
+	//console.log(myPhotoUrl);
+
+	myFile.onchange = function(){		
 		
+		function preView(file,img) {
+			var fileUrl = file.files[0];
+
+			if( fileUrl ==  undefined){ // 如果没有选择图片,就用回原来的img
+				img.src = myPhotoUrl;
+			}else{
+				img.src = window.URL.createObjectURL(file.files[0]);
+			}
+			 
+		}
+		preView(myFile,myPhoto);
+	}
+}
+
+
+function addPhotoCover(){
+	var myFile  = document.getElementById('photoCoverChange');
+	var myPhoto = document.getElementById('photoCoverImage');
+
+	myFile.onchange = function(){ 
+		
+		if( myFile.files[0] == undefined ){
+			myPhoto.style.display = 'none';
+		}else{
+			myPhoto.style.display = 'block';
+		}
 		function preView(file,img) {
 			img.src = window.URL.createObjectURL(file.files[0]); 
 		}

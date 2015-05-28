@@ -17,10 +17,12 @@
 */
 	var albumID    = getNum(url);
 	var albumPager = getNum(url);
+	var articlePager = getNum(url);
 
 	var albumPagerUrl  = 'index.php?controller=header&method=albumIndex&page='+albumPager;
 	var albumUrl       = 'index.php?controller=photo&method=photoList&albumID='+albumID;
 	var searchAlbumUrl = 'index.php?controller=album&method=search';
+	var articlePagerUrl= 'index.php?controller=frontInfo&method=articleList&page='+articlePager;
 
 
 //  当进入相册,在照片列表页面时,标记在 ‘班级相册’
@@ -42,6 +44,13 @@
 		$('#headerNav li a').removeClass('on');
 		$('#headerNav li a:eq(2)').addClass('on');  
 	}
+
+//  当文章列表翻页时, 标记在 ‘活跃文章’
+	if( url == articlePagerUrl || url == articlePagerUrl+'#' ){
+		$('#headerNav li a').removeClass('on');
+		$('#headerNav li a:eq(1)').addClass('on');  
+	}
+
 
 //  这个只能单纯的在 首页 和 班级相册 中标记
 	$('#headerNav li a').each(function(i,n){ 

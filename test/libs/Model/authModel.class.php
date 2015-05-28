@@ -6,12 +6,13 @@ class authModel{
 	private $defaultPhotoPath = 'pictureGroup/userPhotoFolder/defaultPhoto.jpg'; // 用户注册时,默认头像的路径
 
 	public function __construct(){
-	
+
 		// 如果$_SESSION['auth']是存在的,并且$_SESSION['auth']不为空.
 		if(isset($_SESSION['auth']) && (!empty($_SESSION['auth']))){
 			
 			//  通过正常登录后把信息存进$auth
 			$this->auth = $_SESSION['auth'];
+
 
 		}else if(isset($_COOKIE['username'])){
 			
@@ -25,14 +26,12 @@ class authModel{
 	public function loginsubmit(){   // 进行登录验证的一系列业务逻辑. 
 
 		if(empty($_POST['username']) || empty($_POST['password'])){
-			// 如果 用户名 或 密码 其中一个为空 返回 false
 			return false;
 		}
-		// 如果上面的if语句过了,证明用户名和密码是有值的.那进行下面的操作.
-		// addslashes() 函数在指定的预定义字符前添加反斜杠.
-		
+
 		$username = addslashes($_POST['username']);
-		$password = addslashes($_POST['password']);
+		$password = md5(md5(addslashes($_POST['password'])));
+
 
 		// 用户的验证操作 -> 拆分到另外一个方法里面写,减少这个方法的代码量.
 		
@@ -132,7 +131,7 @@ class authModel{
 			// 如果不存在,证明可以注册
 			
 			$registerInfo['userName']     = $_POST['r_username'];
-			$registerInfo['password']     = $_POST['r_password'];
+			$registerInfo['password']     = md5(md5($_POST['r_password']));
 			$registerInfo['trueName']     = $_POST['r_truename'];
 			$registerInfo['photo']        = $this->defaultPhotoPath;
 			$registerInfo['registerTime'] = $regTime;

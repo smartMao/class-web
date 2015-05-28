@@ -24,6 +24,30 @@
 }
 
 
+.album-cover-box{
+	width: 310px;height: 220px;
+	border-radius: 20px;
+	border:2px dashed #ccc;
+	margin: 0 auto;
+	position: relative;
+}
+
+.album-cover-box img{
+	border-radius: 10px;
+	position: absolute;
+	top: 5px;left: 8px;
+}
+
+.album-cover-box span{
+	display: block;
+	color: #ccc;
+	font-size: 22px;
+	line-height: 220px;
+	text-align: center;
+}
+
+
+
 /* 相册封面 */
 .album-cover span{
 	width: 230px;height: 30px;
@@ -34,7 +58,8 @@
 	line-height: 30px;
 	font-size:18px;
 	position: absolute;
-	top:10px;right: 0px;
+	top:0px;right: 0px;
+
 
 }
 
@@ -44,7 +69,7 @@
 	display: block;
 	width: 230px;height: 30px;
 	position: absolute;
-	top:10px;right:0px;
+	top:0;right:0px;
 	z-index: 999;
 	filter:alpha(opacity=0);       /* IE */
   	-moz-opacity:0;              /* 老版Mozilla */

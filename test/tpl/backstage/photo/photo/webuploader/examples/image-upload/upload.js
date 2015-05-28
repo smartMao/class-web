@@ -144,7 +144,8 @@
         uploader = WebUploader.create({
             pick: {
                 id: '#filePicker',
-                label: '点击选择图片'
+                label: '点击选择图片',
+                multiple:true
             },
             formData: {
                 uid: albumID

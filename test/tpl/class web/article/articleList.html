@@ -56,7 +56,7 @@
 			<div class="album-list-theme"><span>最新相册</span></div>
 			{if $albumData}
 				{foreach from=$albumData item=item key=key}
-					<a href="#" class="new-album-list-a"><!-- 循环此块 -->
+					<a href="index.php?controller=photo&method=photoList&albumID={$albumData.$key.id}" class="new-album-list-a"><!-- 循环此块 -->
 						<div class="new-album-list">
 							 <img src="{$albumData.$key.path}" width="335" height="210">
 							 <div class="new-album-info"><!-- 最新相册信息块 -->
@@ -107,12 +107,21 @@
 						<ul>
 							{if $resourceData}
 								{foreach from=$resourceData item=item key=key}
-									<li>
-										<i>1</i> 
-										<a href="{$resourceData.$key.link}" target="__blank" >
-											{$resourceData.$key.title}
-										</a>
-									</li>
+									{if $key+1 lt 4}
+										<li><!-- 1 - 3 -->
+											<i>{$key+1}</i> 
+											<a href="{$resourceData.$key.link}" target="__blank" >
+												{$resourceData.$key.title}
+											</a>
+										</li> 
+									{else}
+										<li><!-- 4 - 10 -->
+											<span>{$key+1}</span> 
+											<a href="{$resourceData.$key.link}" target="__blank" >
+												{$resourceData.$key.title}
+											</a>
+										</li> 
+									{/if}
 								{/foreach}
 							{else}
 								<span>暂无数据</span>

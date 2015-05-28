@@ -1,22 +1,20 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-27 16:16:25
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-28 10:46:37
          compiled from "tpl\class web\article\articleList.html" */ ?>
-<?php /*%%SmartyHeaderCode:60855565b0e9cda941-30729095%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:112455566d5ed6ea3b7-61311841%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '5cfabb7801fa6a165d095bc4aa9586e529c918b6' => 
     array (
       0 => 'tpl\\class web\\article\\articleList.html',
-      1 => 1432735825,
+      1 => 1432777251,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '60855565b0e9cda941-30729095',
+  'nocache_hash' => '112455566d5ed6ea3b7-61311841',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_5565b0e9d1cfd0_15267514',
   'variables' => 
   array (
     'articleData' => 0,
@@ -27,8 +25,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'username' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.21-dev',
+  'unifunc' => 'content_5566d5ed763552_18007651',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5565b0e9d1cfd0_15267514')) {function content_5565b0e9d1cfd0_15267514($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if ($_valid && !is_callable('content_5566d5ed763552_18007651')) {function content_5566d5ed763552_18007651($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
@@ -106,7 +106,8 @@ foreach ($_from as $_smarty_tpl->tpl_vars['item']->key => $_smarty_tpl->tpl_vars
 $_smarty_tpl->tpl_vars['item']->_loop = true;
  $_smarty_tpl->tpl_vars['key']->value = $_smarty_tpl->tpl_vars['item']->key;
 ?>
-					<a href="#" class="new-album-list-a"><!-- 循环此块 -->
+					<a href="index.php?controller=photo&method=photoList&albumID=<?php echo $_smarty_tpl->tpl_vars['albumData']->value[$_smarty_tpl->tpl_vars['key']->value]['id'];?>
+" class="new-album-list-a"><!-- 循环此块 -->
 						<div class="new-album-list">
 							 <img src="<?php echo $_smarty_tpl->tpl_vars['albumData']->value[$_smarty_tpl->tpl_vars['key']->value]['path'];?>
 " width="335" height="210">
@@ -167,14 +168,27 @@ foreach ($_from as $_smarty_tpl->tpl_vars['item']->key => $_smarty_tpl->tpl_vars
 $_smarty_tpl->tpl_vars['item']->_loop = true;
  $_smarty_tpl->tpl_vars['key']->value = $_smarty_tpl->tpl_vars['item']->key;
 ?>
-									<li>
-										<i>1</i> 
-										<a href="<?php echo $_smarty_tpl->tpl_vars['resourceData']->value[$_smarty_tpl->tpl_vars['key']->value]['link'];?>
+									<?php if ($_smarty_tpl->tpl_vars['key']->value+1<4) {?>
+										<li><!-- 1 - 3 -->
+											<i><?php echo $_smarty_tpl->tpl_vars['key']->value+1;?>
+</i> 
+											<a href="<?php echo $_smarty_tpl->tpl_vars['resourceData']->value[$_smarty_tpl->tpl_vars['key']->value]['link'];?>
 " target="__blank" >
-											<?php echo $_smarty_tpl->tpl_vars['resourceData']->value[$_smarty_tpl->tpl_vars['key']->value]['title'];?>
+												<?php echo $_smarty_tpl->tpl_vars['resourceData']->value[$_smarty_tpl->tpl_vars['key']->value]['title'];?>
 
-										</a>
-									</li>
+											</a>
+										</li> 
+									<?php } else { ?>
+										<li><!-- 4 - 10 -->
+											<span><?php echo $_smarty_tpl->tpl_vars['key']->value+1;?>
+</span> 
+											<a href="<?php echo $_smarty_tpl->tpl_vars['resourceData']->value[$_smarty_tpl->tpl_vars['key']->value]['link'];?>
+" target="__blank" >
+												<?php echo $_smarty_tpl->tpl_vars['resourceData']->value[$_smarty_tpl->tpl_vars['key']->value]['title'];?>
+
+											</a>
+										</li> 
+									<?php }?>
 								<?php } ?>
 							<?php } else { ?>
 								<span>暂无数据</span>

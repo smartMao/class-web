@@ -19,11 +19,10 @@
 		<input type="text" name="resourceTitle" id="resourceTitle"class="resourceTitle"  value="{$resourceData.title}" /><br/>
 		<textarea name="resourceURL" id="resourceURL" class="resourceLink">{$resourceData.link}</textarea><br/>
 		<input type="submit" id="submit" class="artAddsubmit" value="修改" />
-
+		<input type="button" onclick="javascript:window.location='admin.php?controller=back&method=resourceList';" class="artAddGoBack" value="返回">
 	</form>
 </div>
-	<button onclick="javascript:window.location='admin.php?controller=back&method=resourceList';" 
-	class="artAddGoBack">返回</button>
+	
 </body>
 </html>
 

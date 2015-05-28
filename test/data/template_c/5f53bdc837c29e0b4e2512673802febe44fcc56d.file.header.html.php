@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-27 13:56:16
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-28 10:29:02
          compiled from "tpl\class web\index\header.html" */ ?>
-<?php /*%%SmartyHeaderCode:114705565b0e0921d59-18865987%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:6255566d1ceb2acc6-22586508%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '5f53bdc837c29e0b4e2512673802febe44fcc56d' => 
     array (
       0 => 'tpl\\class web\\index\\header.html',
-      1 => 1432210373,
+      1 => 1432775043,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '114705565b0e0921d59-18865987',
+  'nocache_hash' => '6255566d1ceb2acc6-22586508',
   'function' => 
   array (
   ),
@@ -22,9 +22,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_5565b0e092d8e0_15447129',
+  'unifunc' => 'content_5566d1ceb3a6c6_11160969',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5565b0e092d8e0_15447129')) {function content_5565b0e092d8e0_15447129($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if ($_valid && !is_callable('content_5566d1ceb3a6c6_11160969')) {function content_5566d1ceb3a6c6_11160969($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -39,7 +39,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       <div class="nav" >
       	<ul id="headerNav">
           	<li><a href="index.php?controller=header&method=index"  class="on">首页</a></li>
-          	<li><a href="#">班级社区</a></li>
+          	<li><a href="index.php?controller=frontInfo&method=articleList&page=1#">活跃文章</a></li>
           	<li><a href="index.php?controller=header&method=albumIndex">班级相册</a></li>
           	<li><a href="#" >站务留言</a></li>
           	<li><a href="http://www.gzittc.com/" target="__blank">学校主页</a></li>

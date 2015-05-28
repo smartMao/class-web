@@ -1,20 +1,22 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-27 15:12:26
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-28 13:32:46
          compiled from "tpl\class web\article\articleInfo.html" */ ?>
-<?php /*%%SmartyHeaderCode:274575565c2baef72c5-23946889%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:281535566fad918bfc5-93747024%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '2f98650cb75267a094f6032dbf0cc94e2238538c' => 
     array (
       0 => 'tpl\\class web\\article\\articleInfo.html',
-      1 => 1432644352,
+      1 => 1432812706,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '274575565c2baef72c5-23946889',
+  'nocache_hash' => '281535566fad918bfc5-93747024',
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.21-dev',
+  'unifunc' => 'content_5566fad9299886_24930845',
   'variables' => 
   array (
     'userPhoto' => 0,
@@ -22,10 +24,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'username' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_5565c2baf31c59_16442240',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5565c2baf31c59_16442240')) {function content_5565c2baf31c59_16442240($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if ($_valid && !is_callable('content_5566fad9299886_24930845')) {function content_5566fad9299886_24930845($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
@@ -141,12 +141,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 </html>
 
 <?php echo '<script'; ?>
- src="tpl/class web/js/articleInfo.js"><?php echo '</script'; ?>
+ type="text/javascript" src="tpl/class web/js/articleInfo.js"><?php echo '</script'; ?>
 ><!-- 文章信息 -->
 <?php echo '<script'; ?>
  type="text/javascript" src="tpl/class web/js/registerCheck.js"><?php echo '</script'; ?>
 ><!-- 注册验证 -->
-
 <?php echo '<script'; ?>
  type="text/javascript" src="tpl/class web/js/js.js"><?php echo '</script'; ?>
 ><!-- 登录、注册框弹出 -->

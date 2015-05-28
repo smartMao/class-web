@@ -261,6 +261,8 @@
 	color: #000;
 }
 
+
+/* 1-3 的 icon */
 .resource-content-list ul li i{
 	width: 12px;height: 12px;
 	font-size:10px;
@@ -269,6 +271,19 @@
 	text-align: center;
 	display:block;
 	background: #fe4800;
+	position: absolute;top:8px;
+}
+
+
+/* 4-10 的 icon */
+.resource-content-list ul li span{
+	width: 12px;height: 12px;
+	font-size:10px;
+	color: #fff;
+	line-height: 12px;
+	text-align: center;
+	display:block;
+	background: #ccc;
 	position: absolute;top:8px;
 }
 

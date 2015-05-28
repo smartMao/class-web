@@ -93,6 +93,10 @@ class backController{
 		$backobj = M('article','backArticle');
 		$res = $backobj -> artList();
 
+			//var_dump($_SESSION);
+		//var_dump($_COOKIE);
+		
+
 		if( !empty($res) ){ //  有文章数据
 
 			$count = count($res);  // 统计有多少篇文章

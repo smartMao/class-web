@@ -4,24 +4,32 @@
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<title>Document</title>
 
-<link rel="stylesheet" type="text/css" href="tpl/backstage/photo/style/album-create.css" />
+<link rel="stylesheet" type="text/css" href="tpl/backstage/photo/style/album-create.css?ver=1" />
 <link rel="stylesheet" type="text/css" href="tpl/backstage/css/gather.css" />
+
+
+<link rel="stylesheet" type="text/css" href="tpl/backstage/photo/photo/webuploader/css/webuploader.css" />
+<link rel="stylesheet" type="text/css" href="tpl/backstage/photo/photo/webuploader/examples/cover-upload/style.css" />
 
 </head>
 <body>
 
 
 	<div class="add-common-frame">添加相册</div>
-
+	
+	<div class="album-cover-box">
+		<span>请上传相册封面</span>
+		<img src="" width="295px" height="210" style="display:none;" id="photoCoverImage">
+	</div>
 	
 	<form method="post" action="admin.php?controller=back&method=albumCreateOp"  enctype="multipart/form-data">
 		<div class="album-create-box">
 			<table>
 
 				<tr class="album-cover">
-					<td><span>封面图片</span></td>
+					<td><span>选择封面图片</span></td>
 					<!-- <input type="hidden" name="MAX_FILE_SIZE" value="5000" /> -->
-					<input type="file" class="upload" name="albumCover" accept="image/jpeg,image/jpg,image/gif,image/png,image/bmp" />
+					<input type="file" class="upload" id="photoCoverChange" name="albumCover" accept="image/jpeg,image/jpg,image/gif,image/png,image/bmp" />
 				</tr>
 
 				<tr class="album-name">
@@ -33,7 +41,7 @@
 					<td><span>相册权限</span></td>
 					<td>
 						<select name="albumPower">
-								<option value="1">全部人都可观看</option>
+						 		<option value="1">全部人都可观看</option>
 								<option value="2">仅登录后的用户可观看</option>
 								<option value="3">仅管理员可观看</option>
 						</select>
@@ -59,9 +67,48 @@
 			</table>
 		</div>
 	</form>
-	
 
+<!-- webuploader -->
+	<div id="wrapper">
+	        <div id="container">
+	            <!--头部，相册选择和格式选择-->
+
+	            <div id="uploader">
+	                <div class="queueList">
+	                    <div id="dndArea" class="placeholder">
+	                        <div id="filePicker"></div>
+	                    </div>
+
+					<input type="hidden" id="albumID" class="albumID" value="{$id}" />
+
+	                </div>
+	                <div class="statusBar" style="display:none;">
+	                    <div class="progress">
+	                        <span class="text">0%</span>
+	                        <span class="percentage"></span>
+	                    </div><div class="info"></div>
+	                    <div class="btns">
+	                        <div id="filePicker2"></div><div class="uploadBtn">开始上传</div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+<!-- webuploader -->
 </body>
 </html>
 
+
+<script type="text/javascript" src="tpl/backstage/photo/photo/webuploader/examples/cover-upload/jquery.js"></script>
+<script type="text/javascript" src="tpl/backstage/photo/photo/webuploader/dist/webuploader.js"></script>
+<script type="text/javascript" src="tpl/backstage/photo/photo/webuploader/examples/cover-upload/upload.js?ver=1">
+</script>
+
 <script type="text/javascript" src="tpl/backstage/js/common.js?1"></script>
+<script type="text/javascript" src="tpl/backstage/js/photoEdit.js?ver=2"></script>
+<script type="text/javascript">
+
+//  修改相册封面
+	addPhotoCover();
+
+</script>

@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-27 13:56:16
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-28 10:29:02
          compiled from "tpl\class web\index\info.html" */ ?>
-<?php /*%%SmartyHeaderCode:183945565b0e095c6e3-49823731%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:216775566d1ceb5d953-63862848%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'c1427dd156988011c28418bdd5378a24033af497' => 
     array (
       0 => 'tpl\\class web\\index\\info.html',
-      1 => 1373653190,
+      1 => 1432774929,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '183945565b0e095c6e3-49823731',
+  'nocache_hash' => '216775566d1ceb5d953-63862848',
   'function' => 
   array (
   ),
@@ -24,9 +24,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_5565b0e099ed70_48124561',
+  'unifunc' => 'content_5566d1ceba3e68_82528035',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5565b0e099ed70_48124561')) {function content_5565b0e099ed70_48124561($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_truncate')) include 'E:\\XAMPP\\htdocs\\class-web\\test\\framework\\libs\\view\\Smarty\\plugins\\modifier.truncate.php';
+<?php if ($_valid && !is_callable('content_5566d1ceba3e68_82528035')) {function content_5566d1ceba3e68_82528035($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_truncate')) include 'E:\\XAMPP\\htdocs\\class-web\\test\\framework\\libs\\view\\Smarty\\plugins\\modifier.truncate.php';
 ?><!DOCTYPE html>
 <html>
 <head>
@@ -43,7 +43,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			</div>
 			<div class="dynamic-content">
 				<div class="dynamic-content-schedule" id="dynamicContentSchedule">
-					<span>近期活动日程</span>
+					<span>近期活动文章</span>
 				</div>
 				<div class="dynamic-content-tieba" id="dynamicContentTieba">
 					<span>班级社区热门帖</span>
