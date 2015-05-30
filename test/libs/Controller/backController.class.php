@@ -254,51 +254,27 @@ class backController{
 
 // 	创建相册操作
 	public function albumCreateOp(){	
-	
-		$res = M('album','backPhoto')->albumCreateOp($_POST,$_FILES);
+
+		$res = M('album','backPhoto')->albumCreateOp();
 
 		$jumpUrl = 'admin.php?controller=back&method=showAlbumCreate';
 
-		switch ($res) {
+		switch ( $res ) {
 			case 1:
-				$this -> showmessage('上传文件超过了PHP配置文件中的upload_max_filesize选项的值',
-					$jumpUrl);
+				$this -> showmessage('上传成功', 'admin.php?controller=back&method=albumList' );
 				break;
 			case 2:
-				$this -> showmessage('超过了表单max_file_size限制的大小',$jumpUrl);
+				$this -> showmessage(' 相册名不能为空,请重试 ',$jumpUrl);
 				break;
 			case 3:
-				$this -> showmessage('文件部分被上传',$jumpUrl);
+				$this -> showmessage(' 相册名称长度超过25个中文字符,请重试 ',$jumpUrl);
 				break;
 			case 4:
-				$this -> showmessage('没有选择上传文件',$jumpUrl);
+				$this -> showmessage(' 相册文件夹创建失败,请重试 ',$jumpUrl);
 				break;
-			case 6:
-				$this -> showmessage('没有找到临时目录',$jumpUrl);
+			case 5:
+				$this -> showmessage(' 相册名相同,请重试 ',$jumpUrl);
 				break;
-			case 7:
-				$this -> showmessage('系统错误',$jumpUrl);
-				break;
-			case 8:
-				$this -> showmessage('相册名不能为空',$jumpUrl);
-				break;
-			case 9:
-				$this -> showmessage('您上传的相册封面图,宽度少于295px或者高度少于210px！',$jumpUrl);
-				break;
-			case 10:
-				$this -> showmessage('相册创建成功！','admin.php?controller=back&method=albumList');
-				break;
-			case 11:
-				$this -> showmessage('相册名相同,请修改',$jumpUrl);
-				break;
-			case 12:
-				$this -> showmessage('相册文件夹创建失败,请联系管理员',$jumpUrl);
-				break;
-			case 13:
-				$this -> showmessage('相册名称长度超过25个中文字符,请修改',$jumpUrl);
-				break;
-
-
 		}
 
 	}
@@ -309,6 +285,7 @@ class backController{
 
 		$albumInfo = M('album','backPhoto')->albumEditShow();
 		$albuminfo['albumInfo'] = $albumInfo;
+
 		VIEW::assign($albuminfo);
 		VIEW::display('tpl/backstage/photo/album/albumEdit.html');
 	}
@@ -349,6 +326,14 @@ class backController{
 				break;
 
 		}
+	}
+
+
+//  相册封面图片修改
+	public function albumCoverChange(){
+		//var_dump($_FILES);
+		//var_dump($_POST);
+		M('album','backPhoto')->albumCoverChange();
 	}
 
 

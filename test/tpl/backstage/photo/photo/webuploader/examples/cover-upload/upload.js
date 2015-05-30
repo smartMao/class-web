@@ -15,7 +15,7 @@
 
             // 上传按钮
             $upload = $wrap.find( '.uploadBtn' ),
-
+            
             // 没选择文件之前的内容。
             $placeHolder = $wrap.find( '.placeholder' ),
 
@@ -30,7 +30,7 @@
             // 优化retina, 在retina下这个值是2
             ratio = window.devicePixelRatio || 1,
 
-            // 缩略图大小
+            // 缩略图大小 
             thumbnailWidth = 295 * ratio,
             thumbnailHeight = 210 * ratio,
 
@@ -138,51 +138,55 @@
         }
 
         // 获取到 当前相册的 ID 
-        var albumID = parseInt(document.getElementById('albumID').value);
-        
+       var albumID = $('#albumID').val();
+      
+
         // 实例化
         uploader = WebUploader.create({
-            pick: {
-                id: '#filePicker',
-                label: '点击选择图片',
-                multiple:false
-            },
-            formData: {
-                uid: albumID
-            },
-            /*compress: {
-                width: 1600,
-                height: 1600,
+                pick: {
+                    id: '#filePicker',
+                    label: '修改相册封面',
+                    multiple:false
+                },
+                formData: {
+                    albumID: albumID,
+                    
+                },
+                compress: {
+                    width: 295,
+                    height: 210
+                    
+                },
                 
-            },*/
-            compress:false,
+                auto : true,
 
-            dnd: '#dndArea',
-            paste: '#uploader',
-            swf: 'tpl/backstage/photo/photo/webuploader/dist/Uploader.swf',
-            chunked: true,
-            chunkSize: 512 * 1024,
-            server: 'admin.php?controller=back&method=photoBatchUpload', 
-            accept: {
-                title: 'Images',
-                extensions: 'gif,jpg,jpeg,bmp,png',
-                mimeTypes: 'image/*'
-            },
-            /*thumb: {
-                width:  295,
-                height: 210,
-                crop: false,
-                allowMagnify: true
-            },*/
-            thumb :false,
+                dnd: '#dndArea',
+                paste: '#uploader',
+                swf: 'tpl/backstage/photo/photo/webuploader/dist/Uploader.swf',
+                chunked: false,
+               //chunkSize: 512 * 1024,
+                server: 'admin.php?controller=back&method=albumCoverChange', 
+                accept: {
+                    title: 'Images',
+                    extensions: 'gif,jpg,jpeg,bmp,png',
+                    mimeTypes: 'image/*'
+                },
+                thumb: {
+                    width:  295,
+                    height: 210,
+                    crop: false,
+                    allowMagnify: true
+                },
+             
+                // 禁掉全局的拖拽功能。这样不会出现图片拖进页面的时候，把图片打开。
+                disableGlobalDnd: true,
+                fileNumLimit: 300,
 
-            // 禁掉全局的拖拽功能。这样不会出现图片拖进页面的时候，把图片打开。
-            disableGlobalDnd: true,
-            fileNumLimit: 300,
+                fileSizeLimit: 2000 * 1024 * 1024,    // 200 M
+                fileSingleSizeLimit: 500 * 1024 * 1024    // 50 M
+            });
 
-            fileSizeLimit: 2000 * 1024 * 1024,    // 200 M
-            fileSingleSizeLimit: 500 * 1024 * 1024    // 50 M
-        });
+      
 
         uploader.on( 'uploadSuccess' , function( File , response ){
             console.log( response );
@@ -230,7 +234,7 @@
 
         // 当有文件添加进来时执行，负责view的创建
         function addFile( file ) {
-            var $li = $( '<li id="' + file.id + '">' +
+            var $li = $( '<li id="' + file.id + '" style="width:295px;height:210px;>' +
                     '<p class="title">' + file.name + '</p>' +
                     '<p class="imgWrap"></p>'+
                     '<p class="progress"><span></span></p>' +
@@ -267,6 +271,9 @@
             } else {
                 // @todo lazyload
                 $wrap.text( '预览中' );
+
+                
+
                 uploader.makeThumb( file, function( error, src ) {
                     var img;
 
@@ -429,14 +436,14 @@
                 }
 
             } else {
-                stats = uploader.getStats();
+                /*stats = uploader.getStats();
                 text = '共' + fileCount + '张（' +
                         WebUploader.formatSize( fileSize )  +
                         '），已上传' + stats.successNum + '张';
 
                 if ( stats.uploadFailNum ) {
                     text += '，失败' + stats.uploadFailNum + '张';
-                }
+                }*/
             }
 
             $info.html( text );
@@ -484,7 +491,7 @@
                     $progress.hide();
                     $( '#filePicker2' ).removeClass( 'element-invisible' );
                     $upload.text( '开始上传' );
-
+                    
                     stats = uploader.getStats();
                     if ( stats.successNum && !stats.uploadFailNum ) {
                         setState( 'finish' );
@@ -565,10 +572,10 @@
         };
 
         $upload.on('click', function() {
+            
             if ( $(this).hasClass( 'disabled' ) ) {
                 return false;
             }
-
             if ( state === 'ready' ) {
                 uploader.upload();
             } else if ( state === 'paused' ) {

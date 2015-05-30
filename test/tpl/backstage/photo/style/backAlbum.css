@@ -105,7 +105,14 @@
 
 .album-cover{ /* 相册封面图 */
 	width: 295px;height: 210px;
-	background: #EE7600;
+	background: #000;
+}
+
+.album-cover img{
+	display:inline-block;
+	margin:auto;
+	line-height: 210px;
+
 }
 
 .goto-photo{
@@ -249,4 +256,8 @@
 	width: 180px;height: 24px;
 	color:#000;
 
+}
+
+.album-cover-img{
+	position: absolute;
 }

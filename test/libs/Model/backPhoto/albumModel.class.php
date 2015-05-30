@@ -11,6 +11,7 @@ class albumModel{
 	private $albumFolderName = 'pictureGroup/albumFolder'; // 相册文件夹路径
 	private $albumFolderPath = '';
 	private $albumID     = '';
+	private $albumDefaultCover = 'pictureGroup/albumCover/albumDefault.png'; // 默认相册封面图片
 
 
 //  展示相册列表页
@@ -25,60 +26,162 @@ class albumModel{
 
 
 // 	创建相册操作
-	public function albumCreateOp($POST,$FILES){
+	public function albumCreateOp(){
+		//var_dump($POST);exit;
 
 		// 检查相册名是否为空
-		if( !$this -> checkPostEmpty($POST) ){ return 8; }
+		if( !$this -> checkPostEmpty() ){ return 2; }
 
 		 // 检查上传相册的相册名长度是否大于25个中文字符
-		if( !$this->checkPostAlbumName($POST['albumName']) ){ return 13; }
+		if( !$this->checkPostAlbumName() ){ return 3; }
 
-		$fileInfo = $FILES['albumCover'];
-
-		$fileName  = $fileInfo['name'];
-		$fileType  = $fileInfo['type'];
-		$fileTemp  = $fileInfo['tmp_name'];
-		$fileError = $fileInfo['error'];
-		$fileSize  = $fileInfo['size'];
-
-
-		//$movePath = 'E:/XAMPP/htdocs/test/testImg/'.$fileName;
-		//  检查文件上传的错误号
-		$checkrRes = $this -> checkFilesUploadError($FILES); 
+		$composeInsertArr = $this -> composeInsertArr();
 		
-		// 如果检测到 $checkrRes 有错误号返回,证明文件上传错误
-		if(is_numeric($checkrRes)){
-
-			return $checkrRes; // 把错误号返回出去
-		}
-
-		$composeInsertArr = $this -> composeInsertArr($POST,$FILES);
-		
-		$insertRes = DB::insert($this->_tableName3,$composeInsertArr);
+		$insertRes = DB::insert( $this->_tableName3 , $composeInsertArr );
 		// 返回新创建的ID号
 
-		if(is_numeric($insertRes)){
+		if( is_numeric( $insertRes ) ){ 
 
 			// 根据新相册创建返回的Id , found新的文件夹 格式为: id_2015-04-16
-			if( $this->foundAlbumFolder($insertRes) ){
-				return 10;  // 文件夹创建成功
+			if( $this->foundAlbumFolder( $insertRes ) ){
+				return 1;  // 文件夹创建成功
 			}else{
-				return 12;  // 失败
+				return 4;  // 失败
 			}
 			
 		}else{
-			return 11; // 添加相册不成功,可能是相册名相同
+			return 5; // 添加相册不成功,可能是相册名相同
 		}
 	}
+
+/*  
+	调用处：backController 中的 albumCoverChange()
+	作用: 
+*/
+	public function albumCoverChange(){
+
+		// 相册封面图片处理
+		// 接收到图片后
+		/*  
+			1. 把图片重新命名, 并移动到 albumCover/ 文件夹下
+			2. 取出当前的相册封面路径
+			2. 删除当前的相册封面图片
+			3. 更新相册数据库的封面图片记录
+		*/
+
+		//$this->moveAlbumCover();exit;
+		//getOldCoverPath();
+		//delOldAlbumCover();
+		//updateAlbumCoverPath();
+		$this->albumID = $_POST['albumID'];
+		$newPath = $this->moveAlbumCover();
+
+		if( $newPath ){
+
+			$nowPath = $this->getOldCoverPath();
+
+			if( $nowPath == $this->albumDefaultCover ){
+				// 当前相册封面图是默认的相册封面图, 则不删除, 只更新数据库数据
+				$this->updateAlbumCoverPath( $newPath );
+				
+			}else{
+				// 当前的相册封面不是默认的, 要删除, 也要更新数据库
+
+				$this->delOldAlbumCover( $nowPath );
+				$this->updateAlbumCoverPath( $newPath );
+			}
+		}
+		
+	}
+
+
+/*  
+	调用处: 本类中 albumCoverChange()
+	作用: 更新相册数据库的 path 封面路径字段
+*/	
+	public function updateAlbumCoverPath( $newPath ){
+
+		$dataArr['path'] = $newPath;  //  需要更新的数据
+		$where = "id=$this->albumID";
+
+		$res = DB::update( $this->_tableName3 , $dataArr , $where );
+		if( $res ){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+
+
+
+
+
+
+/*  
+	调用处: 本类中 albumCoverChange()
+	作用: 删除当前的相册封面图文件.
+*/	
+	public function delOldAlbumCover( $nowPath ){
+
+		if( unlink( $nowPath ) ){
+			return true; 
+		}else{
+			return false;
+		}
+	}
+
+
+
+
+
+
+/*  
+	调用处: 本类中 albumCoverChange()
+	作用 :  把上传来的临时图片移动到 albumCover/ 文件夹下, 并重新命名
+*/
+	public function moveAlbumCover(){
+
+		$randNumFileName = uniqid(true); // 用于命名相册封面图的随机数
+
+		$arr    = explode('.', $_FILES['file']['name']  );
+		$suffix = strtolower( $arr[ count( $arr ) -1] ); // 取到图片文件后缀
+
+		// 目标目录
+		$fileName =  $this->albumPath . $randNumFileName . '.' . $suffix;
+		var_dump($fileName);
+		// 临时目录
+		$tmp_name = $_FILES['file']['tmp_name'];
+
+		if( rename( $tmp_name , $fileName ) ){
+			return $fileName;
+		}else{
+			return false;
+		}
+	}
+
+
+/*  
+	调用处: 本类中 albumCoverChange()
+	作用: 取出当前的相册封面图的路径
+*/
+	public function getOldCoverPath(){
+
+		$sql  = "SELECT `path` FROM $this->_tableName3 WHERE id=$this->albumID ";
+		$res  = DB::findOne( $sql );
+
+		return $res['path'];
+	}
+
 
 
 /*	
 	调用处：拆分于本类中的 albumCreateOp
 	作用:检查上传的POST数据是否为空
 */
-	public function checkPostEmpty($POST){
-
-		if(!empty($POST['albumName'])){
+	public function checkPostEmpty(){
+		
+		if( !empty( $_POST['albumName'] ) ){
 			return true;
 		}else{
 			return false;
@@ -93,7 +196,7 @@ class albumModel{
 */
 	public function checkFilesUploadError($FILES){
 
-		$fileInfo = $FILES['albumCover'];
+		$fileInfo = $FILES['file'];
 
 		// 注意:这里的文件名编码格式要从utf-8转换为gb2312,不然文件名会乱码
 		$fileName  = iconv('utf-8','gb2312',$fileInfo['name']);
@@ -154,34 +257,27 @@ class albumModel{
 	调用处:拆分于本类中的 albumCreateOp
 	作用:合成创建相册所需的数据,产生新的数组,供插入数据库使用
 */
-	public function composeInsertArr($POST,$FILES){
-
-		$userInfo = M('auth')->getauth();
+	public function composeInsertArr(){
 
 		date_default_timezone_set('PRC');
-		$time = date('Y-m-d');
 
-		$fileInfo = $FILES['albumCover'];
 
-		$fileName  = $fileInfo['name'];
-		$fileTemp  = $fileInfo['tmp_name'];
-		$fileError = $fileInfo['error'];
-		$path      = $this->albumPath.$this->albumName;
+		$userInfo = M('auth')->getauth();
+		$time     = date('Y-m-d');
+		$path     = 'pictureGroup/albumCover/albumDefault.png'; // 默认相册封面图
 
 		$albumArr['id']          = '';
 		$albumArr['uid']         = $userInfo['id'];
 		$albumArr['username']    = $userInfo['userName'];
-		$albumArr['title']       = $POST['albumName'];
+		$albumArr['title']       = $_POST['albumName'];
 		$albumArr['time']        = $time;
-		$albumArr['power']		 = $POST['albumPower'];
-		$albumArr['description'] = $POST['albumDescription'];
+		$albumArr['power']		 = $_POST['albumPower'];
+		$albumArr['description'] = $_POST['albumDescription'];
 		$albumArr['browseNum']   = '';
 		$albumArr['commentNum']  = '';
 		$albumArr['path']        = $path;
 	
 		return $albumArr;
-
-
 	}
 
 
@@ -316,33 +412,45 @@ class albumModel{
 */
 	public function updateAlbumDataAndPhoto(){
 		
-			$sql = "SELECT `path` FROM $this->_tableName3 WHERE id=$this->albumID";
-			$res = DB::findOne($sql);
+		$sql = "SELECT `path` FROM $this->_tableName3 WHERE id=$this->albumID";
+		$res = DB::findOne($sql);
+		
+		$OPImgRes = $this->OPImgSize( $_FILES['myFile']['tmp_name']); // 返回 t / f
+
+		if( $OPImgRes ){
 			
-			$OPImgRes = $this->OPImgSize( $_FILES['myFile']['tmp_name']); // 返回 t / f
+			if( $res['path'] ==  $this->albumDefaultCover ){
+				//  如果当前编辑的相册封面 是默认的相册封面, 那就不用删除
+				$updateArr['path'] = $this->albumPath.$this->albumName;
+				// 更新数据库的相册封面path
+				$res = DB::update($this->_tableName3 , $updateArr , 'id='.$this->albumID);
 
-			if($OPImgRes){
-
-				if(unlink($res['path'])){
-
-					$updateArr['path'] = $this->albumPath.$this->albumName;
-					// 更新数据库的相册封面path
-					$res = DB::update($this->_tableName3 , $updateArr , 'id='.$this->albumID);
-					//var_dump($res);
-
-					if($res){
-						return 1; // 相册封面 更新成功
-					}else{
-						return 5; //          更新失败
-					}
-
+				if($res){
+					return 1; // 相册封面 更新成功
 				}else{
-					return 4; // 现有的相册封面图片删除失败
+					return 5; //          更新失败
+				}
+
+			}else if( unlink( $res['path'] ) ){
+
+				$updateArr['path'] = $this->albumPath.$this->albumName;
+				// 更新数据库的相册封面path
+				$res = DB::update($this->_tableName3 , $updateArr , 'id='.$this->albumID);
+				//var_dump($res);
+
+				if($res){
+					return 1; // 相册封面 更新成功
+				}else{
+					return 5; //          更新失败
 				}
 
 			}else{
-				return 3; // 上传来的图片 W H 大小 小于 295 210 无法修改
+				return 4; // 现有的相册封面图片删除失败
 			}
+
+		}else{
+			return 3; // 上传来的图片 W H 大小 小于 295 210 无法修改
+		}
 
 		
 	}
@@ -365,7 +473,6 @@ class albumModel{
 			}else{
 				return 5;
 			}
-
 	}
 
 
@@ -406,7 +513,7 @@ class albumModel{
 		$dir = DB::findOne($sql); // 取出当前要删除的相册文件夹路径
 		$dir = $dir['folderPath'];
 
-		$openDir = opendir($dir);	
+		$openDir = opendir($dir);
 
 		while($file = readdir($openDir)){ // 循环删除里面的文件. (不能删除文件夹)
 			if($file != '.' && $file != '..'){
@@ -435,21 +542,25 @@ class albumModel{
 			$sql = "SELECT `path` FROM $this->_tableName3 WHERE id=$this->albumID";
 			$res = DB::findOne( $sql );
 			$path = $res['path'];
+
+			if( $path == $this->albumDefaultCover ){
+				//  如果当前删除的相册的封面图是默认图, 那就不删除, 
+				return true;
+			}
+
 			if( unlink( './' . $path )){
 				return true;
 			}else{
 				return false;
 			}
-			
-
 		}
 
 /*  
 	调用处:  本类中的  albumCreateOp()
 	作用: 检查当前上传的相册的相册名 长度是否大于25个中文字符 
 */
-	public function checkPostAlbumName( $albumName ){
-		$albumLen = strlen( $albumName );
+	public function checkPostAlbumName(){
+		$albumLen = strlen( $_POST['albumName'] );
 		if($albumLen < 76){ 
 			// 符合
 			return true;

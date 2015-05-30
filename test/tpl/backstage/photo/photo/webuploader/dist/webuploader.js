@@ -2236,7 +2236,7 @@
     
                 width = width || opts.width;
                 height = height || opts.height;
-    
+                
                 image = new Image( opts );
     
                 image.once( 'load', function() {
@@ -2253,7 +2253,7 @@
                     if ( height <= 1 && height > 0 ) {
                         height = file._info.height * height;
                     }
-    
+                    
                     image.resize( width, height );
                 });
     
@@ -2262,6 +2262,7 @@
                     cb( false, image.getAsDataUrl( opts.type ) );
                     image.destroy();
                 });
+
     
                 image.once( 'error', function( reason ) {
                     cb( reason || true );
@@ -2272,8 +2273,11 @@
                     file._info && image.info( file._info );
                     file._meta && image.meta( file._meta );
                     image.loadFromBlob( file.source );
+
+
                 });
-            },
+
+                           },
     
             beforeSendFile: function( file ) {
                 var opts = this.options.compress || this.options.resize,
@@ -6368,7 +6372,7 @@
             resize: function( width, height ) {
                 var canvas = this._canvas ||
                         (this._canvas = document.createElement('canvas'));
-    
+            
                 this._resize( this._img, canvas, width, height );
                 this._blob = null;    // 没用了，可以删掉了。
                 this.modified = true;
@@ -6510,6 +6514,8 @@
                     naturalHeight = img.height,
                     orientation = this.getOrientation(),
                     scale, w, h, x, y;
+
+                    
     
                 // values that require 90 degree rotation
                 if ( ~[ 5, 6, 7, 8 ].indexOf( orientation ) ) {
@@ -6518,16 +6524,20 @@
                     width ^= height;
                     height ^= width;
                     width ^= height;
+
                 }
-    
+                
                 scale = Math[ opts.crop ? 'max' : 'min' ]( width / naturalWidth,
                         height / naturalHeight );
+
     
                 // 不允许放大。
                 opts.allowMagnify || (scale = Math.min( 1, scale ));
     
                 w = naturalWidth * scale;
                 h = naturalHeight * scale;
+
+
     
                 if ( opts.crop ) {
                     cvs.width = width;
@@ -6539,6 +6549,8 @@
     
                 x = (cvs.width - w) / 2;
                 y = (cvs.height - h) / 2;
+
+                
     
                 opts.preserveHeaders || this._rotate2Orientaion( cvs, orientation );
     

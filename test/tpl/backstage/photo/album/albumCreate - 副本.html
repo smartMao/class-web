@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+
+<link rel="stylesheet" type="text/css" href="tpl/backstage/photo/style/album-create.css?ver=1" />
+<link rel="stylesheet" type="text/css" href="tpl/backstage/css/gather.css" />
+
+
+<link rel="stylesheet" type="text/css" href="tpl/backstage/photo/photo/webuploader/css/webuploader.css" />
+<link rel="stylesheet" type="text/css" href="tpl/backstage/photo/photo/webuploader/examples/cover-upload/style.css" />
+
+</head>
+<body>
+
+
+	<div class="add-common-frame">添加相册</div>
+	
+	<!--<div class="album-cover-box">
+		<span>请上传相册封面</span>
+		<img src="" width="295px" height="210" style="display:none;" id="photoCoverImage">
+	</div>-->
+	
+	<!--  <form method="post" action="admin.php?controller=back&method=albumCreateOp"  enctype="multipart/form-data">-->
+		<div class="album-create-box">
+			<table>
+
+				<tr class="album-cover">
+					<div id="wrapper">
+				        <div id="container">
+				            <!--头部，相册选择和格式选择-->
+
+				            <div id="uploader">
+				                <div class="queueList">
+				                    <div id="dndArea" class="placeholder">
+				                        <div id="filePicker"></div>
+				                    </div>
+
+								<input type="hidden" id="albumID" class="albumID" value="{$id}" />
+
+				                </div>
+				                <!--<div class="statusBar" style="display:none;">
+				                    <div class="progress">
+				                        <span class="text">0%</span>
+				                        <span class="percentage"></span>
+				                    </div><div class="info"></div>
+				                    <div class="btns">
+				                        <div id="filePicker2"></div><div class="uploadBtn">开始上传</div>
+				                    </div>
+				                </div>-->
+				            </div>
+				        </div>
+				    </div>
+				</tr>
+
+				<tr class="album-name">
+					<td><span>相册名称</span></td>
+					<td><input type="text" name="albumName" id="albumName" value="11"/></td>
+					<input type="hidden" id="albumNameHidden" value="1cc" />
+				</tr>
+
+				<tr class="album-power">
+					<td><span>相册权限</span></td>
+					<td>
+						<select name="albumPower" id="albumPower">
+						 		<option value="1">全部人都可观看</option>
+								<option value="2">仅登录后的用户可观看</option>
+								<option value="3">仅管理员可观看</option>
+						</select>
+					</td>
+				</tr>
+
+				<tr class="album-description">
+					<td><span>相册描述(可略)</span></td>
+					<td><textarea rows="10" cols="21" name="albumDescription" id="albumDescription"></textarea></td>
+				</tr>
+
+				<tr class="album-submit">
+					<td>
+					 	<!--<input type="submit" id="submit" name="createSubmit" value="创建" onclick="stopRepeatSubmit()">-->
+					 	<input type="submit" id="submit" name="createSubmit" value="创建" >
+						<span id="message"></span>
+						
+					</td>	
+				</tr>
+				<tr class="album-goback">
+					<td><input type="button" onclick="javascript:window.location='admin.php?controller=back&method=albumList';" id="goback" value="返回">
+					</td>
+				</tr>
+
+			</table>
+		</div>
+	<!--</form>  -->
+<button id="imgUpload">上传吧</button>
+<!-- webuploader -->
+	
+<!-- webuploader -->
+</body>
+</html>
+
+
+<script type="text/javascript" src="tpl/backstage/photo/photo/webuploader/examples/cover-upload/jquery.js"></script>
+<script type="text/javascript" src="tpl/backstage/photo/photo/webuploader/dist/webuploader.js"></script>
+<script type="text/javascript" src="tpl/backstage/photo/photo/webuploader/examples/cover-upload/upload.js">
+</script>
+
+<script type="text/javascript" src="tpl/backstage/js/common.js?1"></script>
+<script type="text/javascript" src="tpl/backstage/js/photoEdit.js?ver=2"></script>
+<script type="text/javascript">
+
+//  修改相册封面
+	addPhotoCover();
+
+</script>

@@ -7,21 +7,19 @@
 <link rel="stylesheet" type="text/css" href="tpl/backstage/photo/style/album-create.css" />
 <link rel="stylesheet" type="text/css" href="tpl/backstage/css/gather.css" />
 
+
+<link rel="stylesheet" type="text/css" href="tpl/backstage/photo/photo/webuploader/css/webuploader.css" />
+<link rel="stylesheet" type="text/css" href="tpl/backstage/photo/photo/webuploader/examples/cover-upload/style.css?ver=1" />
+
 </head>
 <body>
 
-<div class="add-common-frame">修改相册信息e</div>
+<div class="add-common-frame">修改相册信息</div>
 
-<img src="{$albumInfo.path}" id="photoCoverImage" class="album-cover-img" width="295" height="210" />
+
 <form method="post" action="admin.php?controller=back&method=albumEditOP&id={$albumInfo.id}" enctype="multipart/form-data">
 	<div class="album-create-box">
 		<table>
-
-			
-			<tr class="album-cover">
-				<td><span>修改封面:</span></td>
-				<td><input type="file" name="myFile" class="upload" id="photoCoverChange" accept="image/jpeg,image/jpg,image/gif,image/png,image/bmp" /></td>
-			</tr>
 			<tr class="album-name">
 				<td><span>相册标题:</span></td>
 				<td><input type="text" value="{$albumInfo.title}" name="albumName" /></td>
@@ -52,9 +50,51 @@
 		</table>
 	</div>
 </form>
+
+
+<div id="wrapper">
+        <div id="container">
+            <!--头部，相册选择和格式选择-->
+
+            <div id="uploader">
+                <div class="queueList"><img src="{$albumInfo.path}" id="photoCoverImage" class="album-cover-img" width="295" height="210" />
+                    <div id="dndArea" class="placeholder">
+                        <div id="filePicker">
+                        	
+                        </div>
+                    </div>
+
+				<input type="hidden" id="albumID" class="albumID" value="{$albumInfo.id}" />
+
+                </div>
+
+                <div class="statusBar" style="display:none;">
+					<a href="admin.php?controller=back&method=albumEditShow&id=30" class="resChangeAlbumCover">修改相册封面</a>
+				</div>
+                <!--
+
+                    <div class="progress">
+                        <span class="text">0%</span>
+                        <span class="percentage"></span>
+                    </div><div class="info"></div>
+                    <div class="btns">
+                        <div id="filePicker2"></div><div class="uploadBtn"><</div>
+                    </div>
+                </div>-->
+            </div>
+        </div>
+    </div>
 	
 </body>
 </html>
+
+
+<script type="text/javascript" src="tpl/backstage/photo/photo/webuploader/examples/cover-upload/jquery.js"></script>
+<script type="text/javascript" src="tpl/backstage/photo/photo/webuploader/dist/webuploader.js"></script>
+<script type="text/javascript" src="tpl/backstage/photo/photo/webuploader/examples/cover-upload/upload.js">
+</script>
+
+
 
 <script type="text/javascript" src="tpl/backstage/js/photoEdit.js?ver=2"></script>
 <script type="text/javascript">
