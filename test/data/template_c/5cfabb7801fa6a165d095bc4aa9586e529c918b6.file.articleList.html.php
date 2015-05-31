@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-30 15:56:55
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-31 15:15:17
          compiled from "tpl\class web\article\articleList.html" */ ?>
-<?php /*%%SmartyHeaderCode:34655569c1a75a5521-67935117%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:18404556b0965bfa494-26946591%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '5cfabb7801fa6a165d095bc4aa9586e529c918b6' => 
     array (
       0 => 'tpl\\class web\\article\\articleList.html',
-      1 => 1432777251,
+      1 => 1433078099,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '34655569c1a75a5521-67935117',
+  'nocache_hash' => '18404556b0965bfa494-26946591',
   'function' => 
   array (
   ),
@@ -26,9 +26,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_5569c1a762a245_05298908',
+  'unifunc' => 'content_556b0965c86eb7_04721625',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5569c1a762a245_05298908')) {function content_5569c1a762a245_05298908($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if ($_valid && !is_callable('content_556b0965c86eb7_04721625')) {function content_556b0965c86eb7_04721625($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
@@ -110,7 +110,7 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 " class="new-album-list-a"><!-- 循环此块 -->
 						<div class="new-album-list">
 							 <img src="<?php echo $_smarty_tpl->tpl_vars['albumData']->value[$_smarty_tpl->tpl_vars['key']->value]['path'];?>
-" width="335" height="210">
+" style="position:absolute;">
 							 <div class="new-album-info"><!-- 最新相册信息块 -->
 								<span class="new-album-title"><?php echo $_smarty_tpl->tpl_vars['albumData']->value[$_smarty_tpl->tpl_vars['key']->value]['title'];?>
 <!-- 相册标题 --></span>
@@ -292,4 +292,8 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 <?php echo '<script'; ?>
  type="text/javascript" src="tpl/class web/js/articleListTab.js"><?php echo '</script'; ?>
 ><!-- 资源下载部分的tab切换 -->
+<?php echo '<script'; ?>
+ type="text/javascript" src="tpl/class web/js/articleListAlbumCenter.js"><?php echo '</script'; ?>
+><!-- 最新相册的封面图居中 -->
+
 <?php }} ?>

@@ -1,25 +1,25 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-30 16:39:42
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-31 16:07:26
          compiled from "tpl\backstage\photo\album\albumCreate.html" */ ?>
-<?php /*%%SmartyHeaderCode:316805569ba71a8ceb2-00462940%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:200556b159e9279b9-54495022%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '9f3486e910fe8fd5518e6b3a328671b0a8fff641' => 
     array (
       0 => 'tpl\\backstage\\photo\\album\\albumCreate.html',
-      1 => 1432996778,
+      1 => 1433080556,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '316805569ba71a8ceb2-00462940',
+  'nocache_hash' => '200556b159e9279b9-54495022',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_5569ba71aac2c1_39925816',
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.21-dev',
+  'unifunc' => 'content_556b159e946db1_52353559',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5569ba71aac2c1_39925816')) {function content_5569ba71aac2c1_39925816($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if ($_valid && !is_callable('content_556b159e946db1_52353559')) {function content_556b159e946db1_52353559($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
@@ -34,6 +34,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 
 	<div class="add-common-frame">添加相册</div>
+
 <form method="post" action="admin.php?controller=back&method=albumCreateOp"  enctype="multipart/form-data">
 		<div class="album-create-box">
 			<table>
@@ -77,7 +78,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 			</table>
 		</div>
+
+		
 </form>
+
 </body>
 </html>
 

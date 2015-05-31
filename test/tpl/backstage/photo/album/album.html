@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<title>Document</title>
 
-<link rel="stylesheet" type="text/css" href="tpl/backstage/photo/style/backAlbum.css?v=3" />
+<link rel="stylesheet" type="text/css" href="tpl/backstage/photo/style/backAlbum.css?v=5" />
 <link rel="stylesheet" type="text/css" href="tpl/backstage/css/gather.css" />
 
 </head>
@@ -50,11 +50,11 @@
 							</ol>
 							
 							<ol class="edit">
-								<a href="admin.php?controller=back&method=albumEditShow&id={$albumList.$key.id}"></a>
+								<a href="admin.php?controller=back&method=albumEditShow&id={$albumList.$key.id}" title="编辑相册"></a>
 							</ol>
 							<ol class="del"> 
 							   <a href="admin.php?controller=back&method=albumDel&id={$albumList.$key.id}" 
-							   onclick="return confirm('删除相册将清空该相册里的所有照片！');"></a>
+							   onclick="return confirm('删除相册将清空该相册里的所有照片！');"  title="删除相册"></a>
 							</ol>
 
 						</li>
@@ -84,5 +84,5 @@
 </html>
 
 <script type="text/javascript" src="tpl/class web/js/jquery-1.8.2-min.js"></script>
-<script type="text/javascript" src="tpl/backstage/js/albumImgCenter.js"></script>
+<script type="text/javascript" src="tpl/backstage/js/albumImgCenter.js?ver=3"></script>
 

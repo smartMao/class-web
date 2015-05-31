@@ -149,7 +149,7 @@ class albumModel{
 
 		// 目标目录
 		$fileName =  $this->albumPath . $randNumFileName . '.' . $suffix;
-		var_dump($fileName);
+		
 		// 临时目录
 		$tmp_name = $_FILES['file']['tmp_name'];
 
@@ -380,6 +380,7 @@ class albumModel{
 
 //  相册编辑页操作 
 	public function albumEditOP(){
+	
 
 		$this->albumID = $_GET['id'];
 
@@ -391,69 +392,16 @@ class albumModel{
 	
 		$albumID = 'id='.$this->albumID;
 
-		$fileUploadError = $_FILES['myFile']['error'];
+	
+		return $this -> updateAlbumData(); // 返回 / 1 / 5
+		
 
-		// 根据文件上传的错误号 判断更新操作
 
-		if( $fileUploadError == 4 ){
-			return $this -> updateAlbumData(); // 返回 / 1 / 5
-		}
+		//$this -> updateAlbumDataAndPhoto(); // 返回 / 1 / 3 / 4 / 5
 
-		if( $fileUploadError == 0 ){
-			return $this -> updateAlbumDataAndPhoto(); // 返回 / 1 / 3 / 4 / 5
-		}
 
 	}
 
-
-/*
-	调用处: 拆分于本类中 albumEditOP
-	作用: 既更新相册封面 , 又更新相册数据
-*/
-	public function updateAlbumDataAndPhoto(){
-		
-		$sql = "SELECT `path` FROM $this->_tableName3 WHERE id=$this->albumID";
-		$res = DB::findOne($sql);
-		
-		$OPImgRes = $this->OPImgSize( $_FILES['myFile']['tmp_name']); // 返回 t / f
-
-		if( $OPImgRes ){
-			
-			if( $res['path'] ==  $this->albumDefaultCover ){
-				//  如果当前编辑的相册封面 是默认的相册封面, 那就不用删除
-				$updateArr['path'] = $this->albumPath.$this->albumName;
-				// 更新数据库的相册封面path
-				$res = DB::update($this->_tableName3 , $updateArr , 'id='.$this->albumID);
-
-				if($res){
-					return 1; // 相册封面 更新成功
-				}else{
-					return 5; //          更新失败
-				}
-
-			}else if( unlink( $res['path'] ) ){
-
-				$updateArr['path'] = $this->albumPath.$this->albumName;
-				// 更新数据库的相册封面path
-				$res = DB::update($this->_tableName3 , $updateArr , 'id='.$this->albumID);
-				//var_dump($res);
-
-				if($res){
-					return 1; // 相册封面 更新成功
-				}else{
-					return 5; //          更新失败
-				}
-
-			}else{
-				return 4; // 现有的相册封面图片删除失败
-			}
-
-		}else{
-			return 3; // 上传来的图片 W H 大小 小于 295 210 无法修改
-		}
-
-		
-	}
 
 
 /*

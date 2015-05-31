@@ -58,7 +58,7 @@
 				{foreach from=$albumData item=item key=key}
 					<a href="index.php?controller=photo&method=photoList&albumID={$albumData.$key.id}" class="new-album-list-a"><!-- 循环此块 -->
 						<div class="new-album-list">
-							 <img src="{$albumData.$key.path}" width="335" height="210">
+							 <img src="{$albumData.$key.path}" style="position:absolute;">
 							 <div class="new-album-info"><!-- 最新相册信息块 -->
 								<span class="new-album-title">{$albumData.$key.title}<!-- 相册标题 --></span>
 								<div class="new-album-date-and-author">
@@ -212,3 +212,5 @@
 <script type="text/javascript" src="tpl/class web/js/js.js"></script><!-- 登录、注册框弹出 -->
 <script type="text/javascript" src="tpl/class web/js/userPhoto.js"></script><!-- 移动到用户头像 -->
 <script type="text/javascript" src="tpl/class web/js/articleListTab.js"></script><!-- 资源下载部分的tab切换 -->
+<script type="text/javascript" src="tpl/class web/js/articleListAlbumCenter.js"></script><!-- 最新相册的封面图居中 -->
+

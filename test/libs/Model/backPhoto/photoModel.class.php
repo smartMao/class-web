@@ -56,8 +56,6 @@ class photoModel{
 		$fileErr  = $fileInfo['error'];
 		$fileSize = $fileInfo['size'];
 
-		var_dump($fileInfo);
-
 		$allowType = array( 'image/jpg' , 'image/jpeg' , 'image/png' , 'image/gif' );
 
 		$this->fileName  = $fileName; // 把文件信息放进类属性里

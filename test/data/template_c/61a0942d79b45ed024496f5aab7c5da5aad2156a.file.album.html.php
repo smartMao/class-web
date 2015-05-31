@@ -1,22 +1,20 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-30 16:31:32
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-31 16:20:31
          compiled from "tpl\backstage\photo\album\album.html" */ ?>
-<?php /*%%SmartyHeaderCode:1690455698dd1e21518-16294365%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:19092556b18afa7dfc4-88344404%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '61a0942d79b45ed024496f5aab7c5da5aad2156a' => 
     array (
       0 => 'tpl\\backstage\\photo\\album\\album.html',
-      1 => 1432996168,
+      1 => 1433069919,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '1690455698dd1e21518-16294365',
+  'nocache_hash' => '19092556b18afa7dfc4-88344404',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_55698dd1e735b4_20316363',
   'variables' => 
   array (
     'count' => 0,
@@ -24,14 +22,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'key' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.21-dev',
+  'unifunc' => 'content_556b18afac8351_78094686',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_55698dd1e735b4_20316363')) {function content_55698dd1e735b4_20316363($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if ($_valid && !is_callable('content_556b18afac8351_78094686')) {function content_556b18afac8351_78094686($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<title>Document</title>
 
-<link rel="stylesheet" type="text/css" href="tpl/backstage/photo/style/backAlbum.css?v=3" />
+<link rel="stylesheet" type="text/css" href="tpl/backstage/photo/style/backAlbum.css?v=5" />
 <link rel="stylesheet" type="text/css" href="tpl/backstage/css/gather.css" />
 
 </head>
@@ -90,12 +90,12 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 							
 							<ol class="edit">
 								<a href="admin.php?controller=back&method=albumEditShow&id=<?php echo $_smarty_tpl->tpl_vars['albumList']->value[$_smarty_tpl->tpl_vars['key']->value]['id'];?>
-"></a>
+" title="编辑相册"></a>
 							</ol>
 							<ol class="del"> 
 							   <a href="admin.php?controller=back&method=albumDel&id=<?php echo $_smarty_tpl->tpl_vars['albumList']->value[$_smarty_tpl->tpl_vars['key']->value]['id'];?>
 " 
-							   onclick="return confirm('删除相册将清空该相册里的所有照片！');"></a>
+							   onclick="return confirm('删除相册将清空该相册里的所有照片！');"  title="删除相册"></a>
 							</ol>
 
 						</li>
@@ -131,7 +131,7 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
  type="text/javascript" src="tpl/class web/js/jquery-1.8.2-min.js"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
- type="text/javascript" src="tpl/backstage/js/albumImgCenter.js"><?php echo '</script'; ?>
+ type="text/javascript" src="tpl/backstage/js/albumImgCenter.js?ver=3"><?php echo '</script'; ?>
 >
 
 <?php }} ?>

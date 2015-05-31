@@ -330,10 +330,11 @@ class backController{
 
 
 //  相册封面图片修改
+//  此方法是在相册编辑页中的“修改相册封面” 由webuploader自动调用
 	public function albumCoverChange(){
-		//var_dump($_FILES);
-		//var_dump($_POST);
+		
 		M('album','backPhoto')->albumCoverChange();
+
 	}
 
 

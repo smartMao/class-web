@@ -152,9 +152,13 @@
                     albumID: albumID,
                     
                 },
+
                 compress: {
                     width: 295,
-                    height: 210
+                    height: 210,
+                    crop: false,
+                    llowMagnify: false,
+                    preserveHeaders: false
                     
                 },
                 
@@ -168,8 +172,8 @@
                 server: 'admin.php?controller=back&method=albumCoverChange', 
                 accept: {
                     title: 'Images',
-                    extensions: 'gif,jpg,jpeg,bmp,png',
-                    mimeTypes: 'image/*'
+                    extensions: 'jpg,jpeg',
+                    mimeTypes: 'image/jpg,image/jpeg'
                 },
                 thumb: {
                     width:  295,
@@ -189,7 +193,7 @@
       
 
         uploader.on( 'uploadSuccess' , function( File , response ){
-            console.log( response );
+            //console.log( response );
         });
 
         // 拖拽时不接受 js, txt 文件。
@@ -212,7 +216,7 @@
         });
 
         uploader.on('dialogOpen', function() {
-            console.log('here');
+            //console.log('here');
         });
 
         // uploader.on('filesQueued', function() {
@@ -339,7 +343,8 @@
             });
 
             $li.on( 'mouseleave', function() {
-                $btns.stop().animate({height: 0});
+      
+             $btns.stop().animate({height: 0});
             });
 
             $btns.on( 'click', 'span', function() {
@@ -502,6 +507,9 @@
                     stats = uploader.getStats();
                     if ( stats.successNum ) {
                         alert( '上传成功' );
+                        window.location = 'admin.php?controller=back&method=albumList'; 
+                     
+                       
                     } else {
                         // 没有成功的图片，重设
                         state = 'done';

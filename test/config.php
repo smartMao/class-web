@@ -13,7 +13,8 @@
 			'right_delimiter' => '}',
 			'template_dir'    => 'tpl',
 			'compile_dir'     => 'data/template_c',
-			'compile_locking' => 'false' // 该选项用于禁止同一时间内对同一模版进行多次编译，默认为true，如果要禁用次功能，设置值为false。
+			'compile_locking' => 'false',// 该选项用于禁止同一时间内对同一模版进行多次编译，默认为true，如果要禁用次功能，设置值为false。
+			'force_compile'  => 'true' // 每次请求都会强制重新生成编译文件, 开发过程中打开
 		),
 
 		// 本地数据库配置

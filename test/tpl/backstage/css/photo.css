@@ -1,0 +1,18 @@
+.gobackAlbumList{
+	font-family: "微软雅黑";
+	width: 120px;height: 40px;
+	border: none;
+	border-radius: 5px;
+	background: #87CEFA;
+	color: #fff;
+	line-height: 40px;
+	text-align: center;
+	margin: 10px;
+	margin-bottom: 0px;
+	
+}
+
+.gobackAlbumList:hover{
+
+	background: #7AC5CD;
+}

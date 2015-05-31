@@ -106,13 +106,14 @@
 .album-cover{ /* 相册封面图 */
 	width: 295px;height: 210px;
 	background: #000;
+	position: relative;
 }
 
 .album-cover img{
-	display:inline-block;
-	margin:auto;
-	line-height: 210px;
+	display:block;
 
+	position: absolute;
+	
 }
 
 .goto-photo{
@@ -201,11 +202,16 @@
 .album-op .edit{
 	display: block;
 	width: 21px;height: 21px;
-	background: url(../../../backstage/images/album/album-edit.png);
+	/*background: url(../../../backstage/images/album/album-edit.png);*/
+	background: url(../../../backstage/images/album/album-edit-hover.png); 
+
 	position: absolute;
 	right: 40px;top: 7px;
 }
-.album-op .edit:hover{ background: url(../../../backstage/images/album/album-edit-hover.png); }
+.album-op .edit:hover{ 
+
+	background: url(../../../backstage/images/album/album-edit-hover.png); 
+}
 .album-op .edit a{
 	width: 21px;height: 21px;display: block;
 }
@@ -214,7 +220,8 @@
 .album-op .del{
 	display: block;
 	width: 21px;height: 21px;
-	background: url(../../../backstage/images/album/album-del.png);
+	/*background: url(../../../backstage/images/album/album-del.png);*/
+	background: url(../../../backstage/images/album/album-del-hover.png);
 	position: absolute;
 	right: 10px;top: 7px;
 }

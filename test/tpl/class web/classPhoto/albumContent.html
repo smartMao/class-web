@@ -53,7 +53,7 @@
 					<div class="position"><!-- 此div用于position定位 -->
 						<div class="photo-list-cover">
 							<!-- 放封面图片 295*210 -->
-							<img src="{$albumData.$key.path}" />
+							<img src="{$albumData.$key.path}" style="position:absolute;"/>
 							<a class="photo-list-more" href="index.php?controller=photo&method=photoList&albumID={$albumData.$key.id}">
 								MORE＞
 							</a>
@@ -114,3 +114,7 @@
 
 </body>
 </html>
+
+
+<script type="text/javascript" src="tpl/class web/js/jquery-1.8.2-min.js"></script>
+<script type="text/javascript" src="tpl/backstage/js/albumImgCenter.js"></script>

@@ -1,29 +1,29 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-30 12:17:01
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-31 16:13:18
          compiled from "tpl\backstage\photo\album\albumEdit.html" */ ?>
-<?php /*%%SmartyHeaderCode:677655698b5713f3a9-75334235%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:3585556b16fe299078-18701032%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'a33677cc57941b6db4ef773a293870756526db52' => 
     array (
       0 => 'tpl\\backstage\\photo\\album\\albumEdit.html',
-      1 => 1432981021,
+      1 => 1433074688,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '677655698b5713f3a9-75334235',
+  'nocache_hash' => '3585556b16fe299078-18701032',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_55698b57172030_29551685',
   'variables' => 
   array (
     'albumInfo' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.21-dev',
+  'unifunc' => 'content_556b16fe2d9df7_10186920',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_55698b57172030_29551685')) {function content_55698b57172030_29551685($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if ($_valid && !is_callable('content_556b16fe2d9df7_10186920')) {function content_556b16fe2d9df7_10186920($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
@@ -34,7 +34,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 
 <link rel="stylesheet" type="text/css" href="tpl/backstage/photo/photo/webuploader/css/webuploader.css" />
-<link rel="stylesheet" type="text/css" href="tpl/backstage/photo/photo/webuploader/examples/cover-upload/style.css?ver=1" />
+<link rel="stylesheet" type="text/css" href="tpl/backstage/photo/photo/webuploader/examples/cover-upload/style.css?ver=2" />
 
 </head>
 <body>
@@ -124,10 +124,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
  type="text/javascript" src="tpl/backstage/photo/photo/webuploader/examples/cover-upload/jquery.js"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
- type="text/javascript" src="tpl/backstage/photo/photo/webuploader/dist/webuploader.js"><?php echo '</script'; ?>
+ type="text/javascript" src="tpl/backstage/photo/photo/webuploader/dist/webuploader.js?ver=1"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
- type="text/javascript" src="tpl/backstage/photo/photo/webuploader/examples/cover-upload/upload.js">
+ type="text/javascript" src="tpl/backstage/photo/photo/webuploader/examples/cover-upload/upload.js?ver=2">
 <?php echo '</script'; ?>
 >
 
@@ -138,8 +138,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 >
 <?php echo '<script'; ?>
  type="text/javascript">
-//  修改相册封面
-	showPhotoCover();
 
 //  选择相册权限
 	selectPhotoPower();

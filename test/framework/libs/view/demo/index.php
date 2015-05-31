@@ -12,7 +12,9 @@ $smarty = new Smarty;
 //$smarty->force_compile = true;
 $smarty->debugging = true;
 $smarty->caching = false;
-$smarty->cache_lifetime = 120;
+//$smarty->cache_lifetime = 120; // 默认
+$smarty->cache_lifetime = 0; // 调试用,
+
 
 $smarty->assign("Name", "Fred Irving Johnathan Bradley Peppergill", true);
 $smarty->assign("FirstName", array("John", "Mary", "James", "Henry"));

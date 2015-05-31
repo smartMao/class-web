@@ -2916,7 +2916,8 @@
     
                 // 类型不匹配，则派送错误事件，并返回。
                 if ( !me.acceptFile( file ) ) {
-                    me.owner.trigger( 'error', 'Q_TYPE_DENIED', file );
+                    //me.owner.trigger( 'error', 'Q_TYPE_DENIED', file );
+                    me.owner.trigger( 'error', '只允许上传jpg/jpeg类型图片', file );
                     return;
                 }
     
