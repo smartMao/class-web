@@ -56,12 +56,13 @@
 			<div class="album-list-theme"><span>最新相册</span></div>
 			{if $albumData}
 				{foreach from=$albumData item=item key=key}
-					<a href="index.php?controller=photo&method=photoList&albumID={$albumData.$key.id}" class="new-album-list-a"><!-- 循环此块 -->
+					<a href="index.php?controller=photo&method=photoList&albumID={$albumData.$key.id}" class="new-album-list-a" title="进入相册"><!-- 循环此块 -->
 						<div class="new-album-list">
 							 <img src="{$albumData.$key.path}" style="position:absolute;">
 							 <div class="new-album-info"><!-- 最新相册信息块 -->
 								<span class="new-album-title">{$albumData.$key.title}<!-- 相册标题 --></span>
 								<div class="new-album-date-and-author">
+								
 									<span>{$albumData.$key.username} | 分享: {$albumData.$key.time}</span>
 
 								</div>

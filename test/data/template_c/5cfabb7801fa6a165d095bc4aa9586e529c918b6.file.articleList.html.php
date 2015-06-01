@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-31 15:15:17
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-06-01 11:19:06
          compiled from "tpl\class web\article\articleList.html" */ ?>
-<?php /*%%SmartyHeaderCode:18404556b0965bfa494-26946591%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:21032556c238a002040-49469947%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '5cfabb7801fa6a165d095bc4aa9586e529c918b6' => 
     array (
       0 => 'tpl\\class web\\article\\articleList.html',
-      1 => 1433078099,
+      1 => 1433124671,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '18404556b0965bfa494-26946591',
+  'nocache_hash' => '21032556c238a002040-49469947',
   'function' => 
   array (
   ),
@@ -26,9 +26,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_556b0965c86eb7_04721625',
+  'unifunc' => 'content_556c238a0734e8_78902132',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_556b0965c86eb7_04721625')) {function content_556b0965c86eb7_04721625($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if ($_valid && !is_callable('content_556c238a0734e8_78902132')) {function content_556c238a0734e8_78902132($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
@@ -107,7 +107,7 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
  $_smarty_tpl->tpl_vars['key']->value = $_smarty_tpl->tpl_vars['item']->key;
 ?>
 					<a href="index.php?controller=photo&method=photoList&albumID=<?php echo $_smarty_tpl->tpl_vars['albumData']->value[$_smarty_tpl->tpl_vars['key']->value]['id'];?>
-" class="new-album-list-a"><!-- 循环此块 -->
+" class="new-album-list-a" title="进入相册"><!-- 循环此块 -->
 						<div class="new-album-list">
 							 <img src="<?php echo $_smarty_tpl->tpl_vars['albumData']->value[$_smarty_tpl->tpl_vars['key']->value]['path'];?>
 " style="position:absolute;">
@@ -115,6 +115,7 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 								<span class="new-album-title"><?php echo $_smarty_tpl->tpl_vars['albumData']->value[$_smarty_tpl->tpl_vars['key']->value]['title'];?>
 <!-- 相册标题 --></span>
 								<div class="new-album-date-and-author">
+								
 									<span><?php echo $_smarty_tpl->tpl_vars['albumData']->value[$_smarty_tpl->tpl_vars['key']->value]['username'];?>
  | 分享: <?php echo $_smarty_tpl->tpl_vars['albumData']->value[$_smarty_tpl->tpl_vars['key']->value]['time'];?>
 </span>

@@ -182,7 +182,7 @@ layer.photos = function(options){
         title: false,
         shade: [.9, '#000', true],
         shadeClose: true,
-        offset: ['25px', ''],
+        offset: ['20px', ''],
         bgcolor: '',
         page: {
             html: '<div class="xubox_bigimg"><img src="'+ log.thissrc +'" alt="'+ (log.name || '') +'" layer-pid="'+ (log.pid || '') +'"><div class="xubox_imgsee">'+ function(){
@@ -323,12 +323,16 @@ layer.photos = function(options){
     
     //相册响应式
     log.resize = function(layero){
+
+
         var relog = {}, wa = [win.width(), win.height()];
         relog.limit = wa[0] - wa[0]/wa[1]*(60*wa[0]/wa[1]);
+
         if(relog.limit < 600){
             relog.limit = 600;
         }
         var area = [relog.limit,  wa[1] > 400 ? wa[1] - 50 : 400];
+console.log(area);
         area[0] = options.html ? area[0] : (area[0] - 300);
         layer.area(log.index, {
             width: area[0] + (options.html ? 15 : 0),
@@ -342,6 +346,7 @@ layer.photos = function(options){
         }
         if(log.imgs.outerHeight() < area[1]){
             log.imgs.css({top: (area[1] - log.imgs.outerHeight())/2});
+          
         }
         log.imgs.css({visibility: 'visible'});
         log.bigimg.css({width: relog.flwidth, height: area[1], 'background-color': options.bgcolor});

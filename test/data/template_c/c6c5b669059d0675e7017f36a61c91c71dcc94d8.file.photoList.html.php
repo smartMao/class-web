@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-31 15:03:05
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-06-01 04:15:18
          compiled from "tpl\class web\classPhoto\photoList.html" */ ?>
-<?php /*%%SmartyHeaderCode:19225556b0689e80939-92113979%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:23007556bc0363034b7-87457437%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'c6c5b669059d0675e7017f36a61c91c71dcc94d8' => 
     array (
       0 => 'tpl\\class web\\classPhoto\\photoList.html',
-      1 => 1432563057,
+      1 => 1433122013,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '19225556b0689e80939-92113979',
+  'nocache_hash' => '23007556bc0363034b7-87457437',
   'function' => 
   array (
   ),
@@ -24,9 +24,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_556b0689ec2fc8_74924639',
+  'unifunc' => 'content_556bc0363499c6_31328890',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_556b0689ec2fc8_74924639')) {function content_556b0689ec2fc8_74924639($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if ($_valid && !is_callable('content_556bc0363499c6_31328890')) {function content_556bc0363499c6_31328890($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
@@ -81,7 +81,7 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 						<img src="<?php echo $_smarty_tpl->tpl_vars['photoData']->value[$_smarty_tpl->tpl_vars['key']->value]['path'];?>
 " layer-src="<?php echo $_smarty_tpl->tpl_vars['photoData']->value[$_smarty_tpl->tpl_vars['key']->value]['path'];?>
 " id="image-show"
-						alt="">
+						alt="" />
 						<input type="hidden" value="<?php echo $_smarty_tpl->tpl_vars['photoData']->value[$_smarty_tpl->tpl_vars['key']->value]['id'];?>
 " /><!-- photo ID -->
 	<!--  相册评论快  --><div id="photoComment-<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
@@ -144,5 +144,5 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
  type="text/javascript" src="tpl/class web/js/userPhoto.js"><?php echo '</script'; ?>
 ><!-- move到用户头像上出来的选项卡 -->
 <?php echo '<script'; ?>
- type="text/javascript" src="tpl/class web/js/frontPhotoShow.js?var=1"><?php echo '</script'; ?>
+ type="text/javascript" src="tpl/class web/js/frontPhotoShow.js?var=2"><?php echo '</script'; ?>
 > <!-- 照片展出层 --><?php }} ?>

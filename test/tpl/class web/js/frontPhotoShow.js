@@ -7,7 +7,7 @@ layer.use('extend/layer.ext.js', function(){
  	//alert(photoInfo);
     layer.ext = function(){
         layer.photosPage({
-            html: ' ' ,
+            html: '' ,
             id: 100, //相册id，可选
             parent:'#photoBox',       
         }); 

@@ -138,7 +138,7 @@
         }
 
         // 获取到 当前相册的 ID 
-        var albumID = parseInt(document.getElementById('albumID').value);
+        var albumID = parseInt( document.getElementById('albumID').value );
         
         // 实例化
         uploader = WebUploader.create({
@@ -150,12 +150,11 @@
             formData: {
                 uid: albumID
             },
-            /*compress: {
-                width: 1600,
-                height: 1600,
-                
-            },*/
-            compress:false,
+            compress: {
+                width: 1000,
+                height: 580,
+            },
+          
 
             dnd: '#dndArea',
             paste: '#uploader',

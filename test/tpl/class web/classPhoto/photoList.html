@@ -38,7 +38,7 @@
 					<div class="pic" id="photoBox">
 					{foreach from=$photoData item=item key=key}
 						<img src="{$photoData.$key.path}" layer-src="{$photoData.$key.path}" id="image-show"
-						alt="">
+						alt="" />
 						<input type="hidden" value="{$photoData.$key.id}" /><!-- photo ID -->
 	<!--  相册评论快  --><div id="photoComment-{$key}" style="display:none;">
 							<span class="photo">11</span><!-- 调试 -->
@@ -82,4 +82,4 @@
 <script type="text/javascript" src="tpl/class web/js/nav.js"></script><!-- 导航点击焦点 -->
 <script type="text/javascript" src="tpl/class web/js/js.js"></script><!-- 登录层 -->
 <script type="text/javascript" src="tpl/class web/js/userPhoto.js"></script><!-- move到用户头像上出来的选项卡 -->
-<script type="text/javascript" src="tpl/class web/js/frontPhotoShow.js?var=1"></script> <!-- 照片展出层 -->
+<script type="text/javascript" src="tpl/class web/js/frontPhotoShow.js?var=2"></script> <!-- 照片展出层 -->
