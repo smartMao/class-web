@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-06-01 13:47:41
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-06-02 12:41:55
          compiled from "tpl\backstage\photo\album\album.html" */ ?>
-<?php /*%%SmartyHeaderCode:21939556c465dbb5ed5-33062562%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:26239556d8873e2eeb2-54130426%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '61a0942d79b45ed024496f5aab7c5da5aad2156a' => 
     array (
       0 => 'tpl\\backstage\\photo\\album\\album.html',
-      1 => 1433069919,
+      1 => 1374193791,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '21939556c465dbb5ed5-33062562',
+  'nocache_hash' => '26239556d8873e2eeb2-54130426',
   'function' => 
   array (
   ),
@@ -23,9 +23,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_556c465dc00269_51986026',
+  'unifunc' => 'content_556d8873e7d0c5_38930557',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_556c465dc00269_51986026')) {function content_556c465dc00269_51986026($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if ($_valid && !is_callable('content_556d8873e7d0c5_38930557')) {function content_556d8873e7d0c5_38930557($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
@@ -133,5 +133,15 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 <?php echo '<script'; ?>
  type="text/javascript" src="tpl/backstage/js/albumImgCenter.js?ver=3"><?php echo '</script'; ?>
 >
+<?php echo '<script'; ?>
+ type="text/javascript">
+	
+	window.onload = function(){
+		albumCoverCenter(); // 后台album列表的封面图上下左右居中
+	}
+
+
+<?php echo '</script'; ?>
+>>
 
 <?php }} ?>

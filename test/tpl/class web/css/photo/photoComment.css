@@ -1,0 +1,184 @@
+
+/* 最外侧的评论盒子 */
+.photo-comment{
+	width: 100%;height: 100%;
+	background: #fff;
+	position: relative;
+	overflow-y:hidden;  
+
+}
+
+
+/* 评论 */
+.photo-comment-left{
+	width: 100%;height: 100%;
+	background: #fff;
+	position: absolute;
+	top: 0;right: 0;
+}
+
+/* 右侧滚动条盒子 */
+.photo-comment-right{
+	width:4%;height: 100%;
+	background: #9B30FF;
+	position: absolute;
+	top: 0;right: 0;
+}
+
+/* 滚动条盒子 */
+.photo-comment-right .scroll-box{
+	width: 100%;height: 100%;
+	position: relative;
+}
+
+/* 滚动条 */
+.photo-comment-right .scroll-bar{
+	position: absolute;
+	top: 100px;right:0;
+	width: 8px;height: 50px;
+	background: #ccc;
+	border-radius:5px;
+	background: #A0522D;
+}
+
+
+/* 评论内容盒子 */
+.photo-comment-box{
+	width: 100%;height: 100%;
+	position: relative;
+}
+
+
+/* 作者信息 */
+.author-info-box{
+	background: #fff;
+	width: 100%; height: 13%;
+	position: relative;
+	z-index: 100;
+}
+
+/* 操作栏(如:评论、分享小按钮) */
+.operation-bar-box{
+	background: #fff;
+	width: 100%; height: 5%;
+	position: relative;
+	z-index: 100;
+}
+
+/* 评论内容 */
+.comment-content-box{
+	background: #fff;
+	width: 100%; height: 67%;
+	position: relative;
+}
+
+/* 输入评论的 */
+.comment-input-box{
+	background: #00FFFF;
+	width: 100%; height: 15%;
+	position: relative;
+	z-index: 100;
+}
+
+
+
+
+/*#######################   相册作者信息块 上传时间    ######################### */
+.author-info{
+	width: 100%;height: 50px;
+
+	position: absolute;
+	margin-top: 14px;
+}
+
+.comment-author-photo{
+	width: 50px;height: 50px;
+	float: left;
+
+	position: absolute;	
+	left: 20px;
+}
+
+
+
+.author-date-and-username{
+	width:230px;height: 50px;
+	float: right;
+
+	font-size: 14px;
+	text-indent: 10px;
+}
+
+.author-date-and-username a{
+	display: inline-block;
+	line-height: 25px;
+	text-indent: 3px;
+	
+}
+.author-date-and-username a:hover{ text-decoration: underline; }
+
+.author-date-and-username span{
+	display: block;
+	
+}
+
+
+
+/*#######################   相册操作块    ######################### */
+.operation-bar-box{
+	border-bottom: 1px solid #ababab;
+	box-shadow: 0px 2px 3px #ababab;
+	margin-bottom: 10px;
+}
+
+
+
+
+/*#######################   照片 评论内容块    ######################### */
+
+
+
+
+.clear{
+	clear: both;
+}
+
+.comment-content-block-small-box{
+	cursor:pointer;
+}
+
+.comment-content-block-small-box:hover{
+ 	background: #F7F7F7;
+}
+
+/* 评论块 头像区域 */
+.comment-content-block-photo{
+	width: 40px;height: 40px;
+	padding:0 10px;
+	float: left;
+
+}
+
+.comment-content-block-box{
+	display: block;
+	float: left;
+	font-size: 14px;
+}
+
+.comment-content-block-username{
+	line-height: 15px;
+	display: block;
+}
+
+.comment-content-block-username a{ color: #145fd4; }
+.comment-content-block-username a:hover{ text-decoration: underline; }
+
+
+.comment-content-block-content{
+	width: 220px;
+	color:#000;
+	display: block;
+	line-height: 20px;
+}
+
+

@@ -1,5 +1,5 @@
-window.onload = function(){
-	
+
+function banner(){
 
 	//  焦点图
 	
@@ -122,9 +122,5 @@ window.onload = function(){
 	container.onmouseover = stop;   //  鼠标移入
 	container.onmouseout = play;   // 鼠标移走
 
-/* 焦点图结束 */
 
-
-
-
-} //  window.onload = function()
+}

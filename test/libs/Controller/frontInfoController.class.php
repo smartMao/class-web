@@ -25,6 +25,13 @@ class frontInfoController{
 	
 		// 资源数据
 		$resourceData['resourceData'] = M('frontResource','front')->getResourceData();
+		//echo "<pre>";
+		//var_dump($resourceData);
+		//var_dump($albumData);
+		//var_dump($pageStr);
+		//var_dump($articleData);
+		//exit;
+
 
 		VIEW::assign( $resourceData );
 		VIEW::assign( $albumData );

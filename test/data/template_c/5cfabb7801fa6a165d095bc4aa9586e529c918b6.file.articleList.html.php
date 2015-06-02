@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-06-01 11:19:06
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-06-02 14:16:48
          compiled from "tpl\class web\article\articleList.html" */ ?>
-<?php /*%%SmartyHeaderCode:21032556c238a002040-49469947%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:30126556d9eb0403ba9-00747528%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '5cfabb7801fa6a165d095bc4aa9586e529c918b6' => 
     array (
       0 => 'tpl\\class web\\article\\articleList.html',
-      1 => 1433124671,
+      1 => 1374196277,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '21032556c238a002040-49469947',
+  'nocache_hash' => '30126556d9eb0403ba9-00747528',
   'function' => 
   array (
   ),
@@ -26,9 +26,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_556c238a0734e8_78902132',
+  'unifunc' => 'content_556d9eb04a7cc7_04193155',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_556c238a0734e8_78902132')) {function content_556c238a0734e8_78902132($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if ($_valid && !is_callable('content_556d9eb04a7cc7_04193155')) {function content_556d9eb04a7cc7_04193155($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
@@ -55,38 +55,41 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <?php echo $_smarty_tpl->getSubTemplate ("class web/index/login.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 
 
-
 <div class="article-page-box">
 
 	<div class="left-article">
 		<div class="article-list-theme"><span>活跃文章</span></div>
 		<div class="article-list-content">
 			<ul>
-	
-				<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
+				<?php if ($_smarty_tpl->tpl_vars['articleData']->value) {?>	
+					<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
  $_smarty_tpl->tpl_vars['key'] = new Smarty_Variable;
  $_from = $_smarty_tpl->tpl_vars['articleData']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 foreach ($_from as $_smarty_tpl->tpl_vars['item']->key => $_smarty_tpl->tpl_vars['item']->value) {
 $_smarty_tpl->tpl_vars['item']->_loop = true;
  $_smarty_tpl->tpl_vars['key']->value = $_smarty_tpl->tpl_vars['item']->key;
 ?>
-					
-					<li>
-						<a href="index.php?controller=frontInfo&method=readArticle&id=<?php echo $_smarty_tpl->tpl_vars['articleData']->value[$_smarty_tpl->tpl_vars['key']->value]['id'];?>
+						
+						<li>
+							<a href="index.php?controller=frontInfo&method=readArticle&id=<?php echo $_smarty_tpl->tpl_vars['articleData']->value[$_smarty_tpl->tpl_vars['key']->value]['id'];?>
 ">
-							<?php echo $_smarty_tpl->tpl_vars['articleData']->value[$_smarty_tpl->tpl_vars['key']->value]['title'];?>
+								<?php echo $_smarty_tpl->tpl_vars['articleData']->value[$_smarty_tpl->tpl_vars['key']->value]['title'];?>
 
-						</a>
-						<span class="article-author-and-time">
-							 <?php echo $_smarty_tpl->tpl_vars['articleData']->value[$_smarty_tpl->tpl_vars['key']->value]['time'];?>
+							</a>
+							<span class="article-author-and-time">
+								 <?php echo $_smarty_tpl->tpl_vars['articleData']->value[$_smarty_tpl->tpl_vars['key']->value]['time'];?>
 <!--发布时间 -->
-						</span>
-					</li>
-				<?php } ?>
+							</span>
+						</li>
+					<?php } ?>
+				<?php } else { ?>
+					<span>暂无数据</span>
+				<?php }?>
+
 
 			</ul>
 	 	</div>
-		
+	
 		<div class="photo-page"> <!-- 分页模块 -->
 			<?php echo $_smarty_tpl->tpl_vars['pageStr']->value;?>
 
@@ -250,6 +253,8 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 
 
 
+<?php echo $_smarty_tpl->getSubTemplate ("class web/index/footer.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+
 
 
 <?php if ($_smarty_tpl->tpl_vars['username']->value) {?>
@@ -275,8 +280,6 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 <?php }?>
 
 
-<?php echo $_smarty_tpl->getSubTemplate ("class web/index/footer.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
-
 
 </body>
 </html>
@@ -296,5 +299,18 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 <?php echo '<script'; ?>
  type="text/javascript" src="tpl/class web/js/articleListAlbumCenter.js"><?php echo '</script'; ?>
 ><!-- 最新相册的封面图居中 -->
+<?php echo '<script'; ?>
+ type="text/javascript">
+	window.onload = function(){
+
+		albumCoverCenter(); // 文章列表页面的右侧相册封面图的上下左右居中
+	
+	}
+<?php echo '</script'; ?>
+>
+
+<?php echo '<script'; ?>
+ type="text/javascript" src="tpl/class web/js/articleInfo.js"><?php echo '</script'; ?>
+>
 
 <?php }} ?>

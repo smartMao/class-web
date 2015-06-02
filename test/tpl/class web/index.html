@@ -27,17 +27,6 @@
 {include file="class web/index/footer.html"}
 
 
-<!--
-	include('header.html'); 
-	include('login.html');  
-	include('banner.html'); 
-	include('study.html');  
-	include('info.html');  
-	include('footer.html');
--->
-
-
-
 {if $username}
 	<script type="text/javascript">
 		var loginModel    = document.getElementById('loginModel');
@@ -64,3 +53,11 @@
 <script type="text/javascript" src="tpl/class web/js/registerCheck.js"></script>
 <script type="text/javascript" src="tpl/class web/js/userPhoto.js"></script>
 <script type="text/javascript" src="tpl/class web/js/infoTabSwitch.js"></script>
+<script type="text/javascript">
+	
+	window.onload = function(){
+		banner();
+
+	}
+
+</script>

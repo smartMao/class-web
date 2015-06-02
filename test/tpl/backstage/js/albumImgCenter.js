@@ -6,26 +6,12 @@
 
 
 
- 	var frontImgList = $('.photo-list img');
-
- 	frontImgList.each(function(){
-		var height = $(this).height();
-		var width  = $(this).width();
-
-		//$(this).offset({ top : 0 , left : 0 });
-		
-		var topValue = (Math.abs(height - 210)) / 2;
-		$(this).css({'top':topValue});
-
-		var leftValue = (Math.abs(width - 295)) / 2;
-		$(this).css({'left':leftValue});
- 	});
+ 	
 
 
+function albumCoverCenter(){
 
-
-window.onload = function(){
-
+/* 后端相册封面图对齐 */
 	var imgList = $('.album-cover img');
 
 	imgList.each(function(){
@@ -39,6 +25,24 @@ window.onload = function(){
 		var leftValue = (Math.abs(width - 295)) / 2;
 		$(this).css({'left':leftValue});
  	});
+
+/* 前端相册封面图对齐 */
+ 	var frontImgList = $('.photo-list img');
+
+ 	frontImgList.each(function(){
+		var height = $(this).height();
+		var width  = $(this).width();
+
+		//$(this).offset({ top : 0 , left : 0 });
+		
+		var topValue = (Math.abs(height - 210)) / 2;
+		$(this).css({'top':topValue});
+
+		var leftValue = (Math.abs(width - 295)) / 2;
+		$(this).css({'left':leftValue});
+
+ 	});
+
 
 
  }

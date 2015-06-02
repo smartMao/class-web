@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-06-01 04:15:18
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-06-02 16:30:23
          compiled from "tpl\class web\classPhoto\photoList.html" */ ?>
-<?php /*%%SmartyHeaderCode:23007556bc0363034b7-87457437%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:24060556dbdff86e628-95906284%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'c6c5b669059d0675e7017f36a61c91c71dcc94d8' => 
     array (
       0 => 'tpl\\class web\\classPhoto\\photoList.html',
-      1 => 1433122013,
+      1 => 1433255422,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '23007556bc0363034b7-87457437',
+  'nocache_hash' => '24060556dbdff86e628-95906284',
   'function' => 
   array (
   ),
@@ -24,9 +24,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_556bc0363499c6_31328890',
+  'unifunc' => 'content_556dbdff8b89b9_02464688',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_556bc0363499c6_31328890')) {function content_556bc0363499c6_31328890($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if ($_valid && !is_callable('content_556dbdff8b89b9_02464688')) {function content_556dbdff8b89b9_02464688($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
@@ -36,6 +36,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <link href="tpl/class web/css/index/header.css"     rel="stylesheet" type="text/css" /><!-- 头部css文件 -->
 <link href="tpl/class web/css/index/login.css"      rel="stylesheet" type="text/css" /><!-- 登录注册css文件 -->
 <link href="tpl/class web/css/index/footer.css"     rel="stylesheet" type="text/css" />
+<link href="tpl/class web/css/photo/photoComment.css"     rel="stylesheet" type="text/css" />
 
 <?php echo '<script'; ?>
  src="tpl/class web/js/jquery-1.8.2-min.js"><?php echo '</script'; ?>
@@ -46,7 +47,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 
 </head>
-<body onload=" waterfall( 'photoBox' , 2 ) "><!-- 调用瀑布流函数 -->
+<body onselectstart="" onload=" waterfall( 'photoBox' , 2 ) "><!-- 调用瀑布流函数 -->
 
 <?php echo $_smarty_tpl->getSubTemplate ('class web/index/header.html', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
          
@@ -84,17 +85,92 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 						alt="" />
 						<input type="hidden" value="<?php echo $_smarty_tpl->tpl_vars['photoData']->value[$_smarty_tpl->tpl_vars['key']->value]['id'];?>
 " /><!-- photo ID -->
-	<!--  相册评论快  --><div id="photoComment-<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
-" style="display:none;">
-							<span class="photo">11</span><!-- 调试 -->
-							<br/>
-							评论块<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
 
-						</div>
+
+
+
+
 					<?php } ?>
 					</div>
 				</li>
-			
+				
+<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
+ $_smarty_tpl->tpl_vars['key'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->tpl_vars['photoData']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['item']->key => $_smarty_tpl->tpl_vars['item']->value) {
+$_smarty_tpl->tpl_vars['item']->_loop = true;
+ $_smarty_tpl->tpl_vars['key']->value = $_smarty_tpl->tpl_vars['item']->key;
+?>
+			<div id="photoComment-<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+" class="comment-big-box" style="display:none;"><!--  相册评论快  -->
+				<div class="photo-comment">
+
+					<div class="photo-comment-left">
+
+						<div class="photo-comment-box">
+							<div class="author-info-box"><!-- 作者信息 -->
+								<div class="author-info">
+									<div class="comment-author-photo">
+										<a href="#">
+										<!-- 作者头像 -->
+											<img src="pictureGroup/userPhotoFolder/defaultPhoto.jpg"
+											width="50" height="50">
+										</a>
+									</div>
+									<div class="author-date-and-username">
+										<a href="#">吸收<!-- username --></a>
+										<span>2015年5月20日<!-- albumDate --></span>
+									</div>
+								</div>
+							</div>
+							<div class="operation-bar-box"></div><!-- 操作栏(如:评论、分享小按钮) -->
+							<div class="comment-content-box">
+								
+								<div class="comment-content-block" title="点击回复">
+									<div class="comment-content-block-small-box">
+									
+										<div class="comment-content-block-photo">
+											<!-- 评论块头像 -->
+											<img src="pictureGroup/userPhotoFolder/defaultPhoto.jpg" 
+											width="40" height="40" />
+											
+										</div>
+
+										<div class="comment-content-block-box">
+											
+											<span class="comment-content-block-username">
+												<a href="#"><!-- 评论username -->刀锋意志:</a>
+											</span>
+											<span class="comment-content-block-content">
+												<!-- 评论内容content -->水水水水群殴水水水水群殴水水水水群殴
+											</span>
+											
+										</div>
+
+										<div class="clear"></div>
+
+									</div>
+								</div>
+
+							</div><!-- 评论内容 -->
+							<div class="comment-input-box"></div><!-- 输入评论的 -->
+						</div>
+					</div>
+
+   <!-- 滚动条块 --><div class="photo-comment-right">
+						<div class="scroll-box">
+							<span class="scroll-bar"></span>
+						</div>
+					</div><!-- 右侧滚动条 -->
+					评论块<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+
+
+
+				</div>
+			</div>
+<?php } ?>
+
+
 		</div>
 	</ul>
 </div>

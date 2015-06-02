@@ -21,29 +21,32 @@
 {include file="class web/index/header.html"}
 {include file="class web/index/login.html"}
 
-
 <div class="article-page-box">
 
 	<div class="left-article">
 		<div class="article-list-theme"><span>活跃文章</span></div>
 		<div class="article-list-content">
 			<ul>
-	
-				{foreach from=$articleData item=item key=key}
-					
-					<li>
-						<a href="index.php?controller=frontInfo&method=readArticle&id={$articleData.$key.id}">
-							{$articleData.$key.title}
-						</a>
-						<span class="article-author-and-time">
-							 {$articleData.$key.time}<!--发布时间 -->
-						</span>
-					</li>
-				{/foreach}
+				{if $articleData}	
+					{foreach from=$articleData item=item key=key}
+						
+						<li>
+							<a href="index.php?controller=frontInfo&method=readArticle&id={$articleData.$key.id}">
+								{$articleData.$key.title}
+							</a>
+							<span class="article-author-and-time">
+								 {$articleData.$key.time}<!--发布时间 -->
+							</span>
+						</li>
+					{/foreach}
+				{else}
+					<span>暂无数据</span>
+				{/if}
+
 
 			</ul>
 	 	</div>
-		
+	
 		<div class="photo-page"> <!-- 分页模块 -->
 			{$pageStr}
 		</div>
@@ -183,6 +186,7 @@
 
 
 
+{include file="class web/index/footer.html"}
 
 
 {if $username}
@@ -204,7 +208,6 @@
 {/if}
 
 
-{include file="class web/index/footer.html"}
 
 </body>
 </html>
@@ -214,4 +217,13 @@
 <script type="text/javascript" src="tpl/class web/js/userPhoto.js"></script><!-- 移动到用户头像 -->
 <script type="text/javascript" src="tpl/class web/js/articleListTab.js"></script><!-- 资源下载部分的tab切换 -->
 <script type="text/javascript" src="tpl/class web/js/articleListAlbumCenter.js"></script><!-- 最新相册的封面图居中 -->
+<script type="text/javascript">
+	window.onload = function(){
+
+		albumCoverCenter(); // 文章列表页面的右侧相册封面图的上下左右居中
+	
+	}
+</script>
+
+<script type="text/javascript" src="tpl/class web/js/articleInfo.js"></script>
 

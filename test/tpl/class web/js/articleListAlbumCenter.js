@@ -1,5 +1,5 @@
 //  此Js 文件是用于 前端文章列表页面 右侧的 两个最新相册 的相册封面图上下左右居中
-
+function albumCoverCenter(){
  	var frontImgList = $('.album-new img');
 
  	frontImgList.each(function(){
@@ -15,3 +15,4 @@
 		var leftValue = (Math.abs(width - 335)) / 2;
 		$(this).css({'left':leftValue});
  	});
+ }

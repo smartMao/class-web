@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-06-01 11:24:07
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-06-02 14:16:49
          compiled from "tpl\class web\classPhoto\albumIndex.html" */ ?>
-<?php /*%%SmartyHeaderCode:11039556c24b7951cf5-45288523%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:16058556d9eb10f6a89-30751088%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '68bf505ac8226d37bf59e4e9a9c74b596b537142' => 
     array (
       0 => 'tpl\\class web\\classPhoto\\albumIndex.html',
-      1 => 1373658006,
+      1 => 1433240428,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '11039556c24b7951cf5-45288523',
+  'nocache_hash' => '16058556d9eb10f6a89-30751088',
   'function' => 
   array (
   ),
@@ -22,9 +22,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_556c24b7988807_94416085',
+  'unifunc' => 'content_556d9eb112d599_98319736',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_556c24b7988807_94416085')) {function content_556c24b7988807_94416085($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if ($_valid && !is_callable('content_556d9eb112d599_98319736')) {function content_556d9eb112d599_98319736($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
@@ -97,7 +97,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 
 <?php echo '<script'; ?>
- type="text/javascript" src="tpl/class web/js/banner.js"><?php echo '</script'; ?>
+ type="text/javascript" src="tpl/class web/js/banner.js?ver=1"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
  type="text/javascript" src="tpl/class web/js/js.js"><?php echo '</script'; ?>
@@ -110,5 +110,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 >
 <?php echo '<script'; ?>
  type="text/javascript" src="tpl/class web/js/userPhoto.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ type="text/javascript">
+	
+	window.onload = function(){
+		banner();
+		albumCoverCenter();
+	}
+
+<?php echo '</script'; ?>
 >
  <?php }} ?>

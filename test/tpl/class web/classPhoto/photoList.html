@@ -8,13 +8,14 @@
 <link href="tpl/class web/css/index/header.css"     rel="stylesheet" type="text/css" /><!-- 头部css文件 -->
 <link href="tpl/class web/css/index/login.css"      rel="stylesheet" type="text/css" /><!-- 登录注册css文件 -->
 <link href="tpl/class web/css/index/footer.css"     rel="stylesheet" type="text/css" />
+<link href="tpl/class web/css/photo/photoComment.css"     rel="stylesheet" type="text/css" />
 
 <script src="tpl/class web/js/jquery-1.8.2-min.js"></script>
 <script src="tpl/class web/classPhoto/layer/layer.min.js"></script>
 
 
 </head>
-<body onload=" waterfall( 'photoBox' , 2 ) "><!-- 调用瀑布流函数 -->
+<body onselectstart="" onload=" waterfall( 'photoBox' , 2 ) "><!-- 调用瀑布流函数 -->
 
 {include file='class web/index/header.html'}         
 {include file='class web/index/login.html'}
@@ -40,15 +41,84 @@
 						<img src="{$photoData.$key.path}" layer-src="{$photoData.$key.path}" id="image-show"
 						alt="" />
 						<input type="hidden" value="{$photoData.$key.id}" /><!-- photo ID -->
-	<!--  相册评论快  --><div id="photoComment-{$key}" style="display:none;">
-							<span class="photo">11</span><!-- 调试 -->
-							<br/>
-							评论块{$key}
-						</div>
+
+
+
+
+
 					{/foreach}
 					</div>
 				</li>
-			
+				
+{foreach from=$photoData item=item key=key}
+			<div id="photoComment-{$key}" class="comment-big-box" style="display:none;"><!--  相册评论快  -->
+				<div class="photo-comment">
+
+					<div class="photo-comment-left">
+
+						<div class="photo-comment-box">
+							<div class="author-info-box"><!-- 作者信息 -->
+								<div class="author-info">
+									<div class="comment-author-photo">
+										<a href="#">
+										<!-- 作者头像 -->
+											<img src="pictureGroup/userPhotoFolder/defaultPhoto.jpg"
+											width="50" height="50">
+										</a>
+									</div>
+									<div class="author-date-and-username">
+										<a href="#">吸收<!-- username --></a>
+										<span>2015年5月20日<!-- albumDate --></span>
+									</div>
+								</div>
+							</div>
+							<div class="operation-bar-box"></div><!-- 操作栏(如:评论、分享小按钮) -->
+							<div class="comment-content-box">
+								
+								<div class="comment-content-block" title="点击回复">
+									<div class="comment-content-block-small-box">
+									
+										<div class="comment-content-block-photo">
+											<!-- 评论块头像 -->
+											<img src="pictureGroup/userPhotoFolder/defaultPhoto.jpg" 
+											width="40" height="40" />
+											
+										</div>
+
+										<div class="comment-content-block-box">
+											
+											<span class="comment-content-block-username">
+												<a href="#"><!-- 评论username -->刀锋意志:</a>
+											</span>
+											<span class="comment-content-block-content">
+												<!-- 评论内容content -->水水水水群殴水水水水群殴水水水水群殴
+											</span>
+											
+										</div>
+
+										<div class="clear"></div>
+
+									</div>
+								</div>
+
+							</div><!-- 评论内容 -->
+							<div class="comment-input-box"></div><!-- 输入评论的 -->
+						</div>
+					</div>
+
+   <!-- 滚动条块 --><div class="photo-comment-right">
+						<div class="scroll-box">
+							<span class="scroll-bar"></span>
+						</div>
+					</div><!-- 右侧滚动条 -->
+					评论块{$key}
+
+
+				</div>
+			</div>
+{/foreach}
+
+
 		</div>
 	</ul>
 </div>

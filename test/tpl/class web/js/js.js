@@ -117,7 +117,6 @@
 
 
 
-
 //  鼠标事件3  -  鼠标松开的时候 （标记元素为不可拖动状态即可）
 	document.onmouseup = function(){
 		isDraging = false;   
@@ -127,6 +126,7 @@
 
 //  展现登录浮层
 	function showDialog(){
+		
 		g('dialog').style.display = 'block';
 		g('mask').style.display = 'block';
 		body[0].style.overflow = 'hidden';

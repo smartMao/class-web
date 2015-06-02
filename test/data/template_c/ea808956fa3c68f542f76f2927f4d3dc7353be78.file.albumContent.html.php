@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-06-01 11:24:07
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-06-02 14:16:49
          compiled from "tpl\class web\classPhoto\albumContent.html" */ ?>
-<?php /*%%SmartyHeaderCode:23099556c24b79bb494-66183875%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:3206556d9eb1160218-74933462%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'ea808956fa3c68f542f76f2927f4d3dc7353be78' => 
     array (
       0 => 'tpl\\class web\\classPhoto\\albumContent.html',
-      1 => 1433076201,
+      1 => 1374193569,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '23099556c24b79bb494-66183875',
+  'nocache_hash' => '3206556d9eb1160218-74933462',
   'function' => 
   array (
   ),
@@ -24,9 +24,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_556c24b79f9ca6_23724635',
+  'unifunc' => 'content_556d9eb119ea24_78836963',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_556c24b79f9ca6_23724635')) {function content_556c24b79f9ca6_23724635($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if ($_valid && !is_callable('content_556d9eb119ea24_78836963')) {function content_556d9eb119ea24_78836963($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
@@ -165,8 +165,5 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 
 
 <?php echo '<script'; ?>
- type="text/javascript" src="tpl/class web/js/jquery-1.8.2-min.js"><?php echo '</script'; ?>
->
-<?php echo '<script'; ?>
- type="text/javascript" src="tpl/backstage/js/albumImgCenter.js"><?php echo '</script'; ?>
+ type="text/javascript" src="tpl/backstage/js/albumImgCenter.js?ver=1"><?php echo '</script'; ?>
 ><?php }} ?>
