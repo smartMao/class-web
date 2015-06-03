@@ -67,50 +67,106 @@
 										</a>
 									</div>
 									<div class="author-date-and-username">
-										<a href="#">吸收<!-- username --></a>
+										<a href="#">吸收{$key}<!-- username --></a>
 										<span>2015年5月20日<!-- albumDate --></span>
 									</div>
 								</div>
 							</div>
-							<div class="operation-bar-box"></div><!-- 操作栏(如:评论、分享小按钮) -->
+
+							<div class="operation-bar-box"><!-- 操作栏(如:评论、分享小按钮) -->
+								<ul>
+									<li class="operation-comment"></li><!-- 评论icon  -->
+									<li class="operation-upvote"></li> <!-- 点赞icon -->
+									<li class="operation-share"></li>  <!-- 分享icon -->
+								</ul>
+							</div>
+
 							<div class="comment-content-box">
-								
-								<div class="comment-content-block" title="点击回复">
-									<div class="comment-content-block-small-box">
-									
-										<div class="comment-content-block-photo">
-											<!-- 评论块头像 -->
-											<img src="pictureGroup/userPhotoFolder/defaultPhoto.jpg" 
-											width="40" height="40" />
-											
+								<div class="comment-content-all" value="{$key}">
+
+								<!--ASDASDASDASDSADSA-->	
+									<div class="comment-content-block" title="点击回复">
+										<div class="comment-content-block-small-box">
+										
+											<div class="comment-content-block-photo">
+												<!-- 评论块头像 -->
+												<img src="pictureGroup/userPhotoFolder/defaultPhoto.jpg" 
+												width="40" height="40" />
+												
+											</div>
+
+											<div class="comment-content-block-box">
+												
+												<span class="comment-content-block-username">
+													<a href="#"><!-- 评论username -->刀锋意志:</a>
+												</span>
+												<span class="comment-content-block-content">
+													<!-- 评论内容content -->水水水水群殴水水水水群殴asdasdasd水水水水群殴
+													<a href="#" class="comment-content-block-reply-icon"></a>
+												</span>
+
+
+												
+											</div>
+
+											<div class="clear"></div>
+
 										</div>
 
-										<div class="comment-content-block-box">
-											
-											<span class="comment-content-block-username">
-												<a href="#"><!-- 评论username -->刀锋意志:</a>
-											</span>
-											<span class="comment-content-block-content">
-												<!-- 评论内容content -->水水水水群殴水水水水群殴水水水水群殴
-											</span>
-											
-										</div>
+										<div class="comment-content-reply">
+											<ul class="reply-list">
 
-										<div class="clear"></div>
+												<li><!-- 照片评论回复 -->
+													<a href="#">三十</a> 回复 <a href="#">恩德尔</a> :
+													你个dog
+													<a href="#" class="comment-content-block-reply-icon"></a>
+												</li>
+
+												
+
+											</ul>
+											<!-- 回复 输入的input -->
+											<div class="comment-reply-input-box" style="display:none;">
+												<i class="comment-reply-info">
+													回复 徐志乔：<!-- 回复对象 -->
+												</i>
+												<textarea id="tValue" onpropertychange="this.style.height=this.scrollHeight + 'px'" oninput="this.style.height=this.scrollHeight + 'px'" ></textarea>
+												<span>回复</span>
+											</div>
+										</div>
 
 									</div>
+								<!-- asdcasdasdasd-->
+								
+
+
+
+								</div><!-- 评论内容 -->
+								
+							</div>
+
+							<div class="comment-input-box"><!-- 输入评论的 -->
+
+								<div class="comment-input" style="display:block;">
+									<textarea></textarea>
+									<span>发表</span>
 								</div>
 
-							</div><!-- 评论内容 -->
-							<div class="comment-input-box"></div><!-- 输入评论的 -->
+								<div class="login-and-register" style="display:none;">
+									<i class="comment-cut-off-rule"></i>
+									<i class="message-box">
+										<i class="message-login"></i>
+										请登录或注册后发表评论
+									</i>
+									<div class="comment-login">登录</div>
+									<div class="comment-register">注册</div>
+								</div>
+
+							</div>
 						</div>
 					</div>
 
-   <!-- 滚动条块 --><div class="photo-comment-right">
-						<div class="scroll-box">
-							<span class="scroll-bar"></span>
-						</div>
-					</div><!-- 右侧滚动条 -->
+ 
 					评论块{$key}
 
 
@@ -122,6 +178,7 @@
 		</div>
 	</ul>
 </div>
+
 
 
 

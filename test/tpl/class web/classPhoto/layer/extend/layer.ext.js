@@ -332,7 +332,7 @@ layer.photos = function(options){
             relog.limit = 600;
         }
         var area = [relog.limit,  wa[1] > 400 ? wa[1] - 50 : 400];
-console.log(area);
+
         area[0] = options.html ? area[0] : (area[0] - 300);
         layer.area(log.index, {
             width: area[0] + (options.html ? 15 : 0),
