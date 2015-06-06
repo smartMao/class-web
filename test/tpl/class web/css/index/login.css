@@ -8,7 +8,7 @@
 		left: 100px;
 		border: 1px solid #d5d5d5;
 		background: #fff;
-		z-index: 6;
+		z-index: 19891018; /* 这里的z-index 设这么大是因为,layer照片照片层弹出时要覆盖 layer */
 		display:none;
 }
 
@@ -60,7 +60,8 @@
 		position: absolute;
 		top:0;right:0px;		
 		display:none;
-		z-index: 5;
+		z-index: 19891017; /* 这里的z-index 设这么大是因为,layer照片照片层弹出时要覆盖 layer */
+				
 }
 
 .link{padding:50px;}
@@ -153,7 +154,7 @@
 		left: 100px;
 		border: 1px solid #d5d5d5;
 		background: #fff;
-		z-index: 6;
+		z-index: 19891018; /* 这里的z-index 设这么大是因为,layer照片照片层弹出时要覆盖 layer */
 		display:none;
 		margin: 0 auto;
 }

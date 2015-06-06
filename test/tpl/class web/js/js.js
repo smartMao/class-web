@@ -160,6 +160,18 @@
 		body[0].setAttribute('onmousewheel','');  //  恢复滚轮滚动
 		body[0].style.overflow = 'visible';
 	}
+
+	// 点击 Esc 键的时候 隐藏登录框和注册框
+	$(window).keydown(function(event){
+		if(event.keyCode  == 27){
+			hideDialog();
+			RhideDialog();
+		}
+
+	});
+
+
+
 //  当调整页面窗口大小的时候
 	window.onresize = function(){
 		autoCenter(g('dialog'));

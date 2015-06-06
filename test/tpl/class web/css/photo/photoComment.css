@@ -165,16 +165,12 @@
 
 }
 
-.comment-content-all{
-
-}
-
 .comment-content-block-small-box{
 	cursor:pointer;
 }
 
 .comment-content-block-small-box:hover{
- 	background: #F7F7F7;
+ 	background: #eaeaea;
 }
 
 /* 评论块 头像区域 */
@@ -233,7 +229,7 @@
 }
 
 .reply-list li:hover{
-	background: #F7F7F7;
+	background: #eaeaea;
 	cursor: pointer;
 }
 
@@ -312,13 +308,14 @@
 
 .comment-input-box textarea{
 	margin-right: 5px;
-	width: 280px;height: 45px;
+	width: 275px;height: 40px;
 	resize:none;
 	position: absolute;
-	top: 0px;
-	left: 5px;
-	padding: 5px;
+	top: 0px;left: 5px;
 	border-radius: 3px;
+	padding: 8px;
+	padding-top:5px;
+	padding-right:5px;  
 	
 }
 
@@ -412,7 +409,7 @@
 
 /* 滚动条样式 */
 ::-webkit-scrollbar{  
-            width:10px; /*滚动条宽度*/  
+            width:13px; /*滚动条宽度*/  
         }  
         /*滚动条按钮*/  
         ::-webkit-scrollbar-button {  

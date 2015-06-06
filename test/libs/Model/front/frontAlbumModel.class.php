@@ -188,7 +188,7 @@ class frontAlbumModel{
 	public function findAlbumTitle( $albumID ){
 		
 		$albumID = intval($albumID);
-		$sql = "SELECT `title` FROM $this->_tableName3 WHERE id=$albumID";
+		$sql = "SELECT `title`,`time` FROM $this->_tableName3 WHERE id=$albumID";
 		$albumData = DB::findOne($sql);
 		return $albumData;
 	}

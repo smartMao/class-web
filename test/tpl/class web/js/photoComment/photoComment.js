@@ -19,55 +19,59 @@
 
 */
 
-
-
-
 $(document).ready(function(){
 
 	$('#photoBox img').click(function(){
-		$(this).delay(500).queue(function(){
-			
-			var index = $('.photo-comment').length-1; // 第 index 个.photo-comment就是
 
-			var commentList = $('.comment-list:eq('+index+')>li .comment-content-block-small-box');
-			var replyList   = $('.comment-list:eq('+index+')>li .reply-list>li');
-
-			
-			commentList.click(function(){
-				// 如果点击了layer评论块中的某一条评论, 显示出回复框, 并添加信息				
-				clickComment( $(this) );
-			});
-
-
-			replyList.click(function(){
-				// 如果点击了layer评论块中的某一条回复, 显示出回复框, 并添加信息
-				clickReply( $(this) );
-			});
-
-			
-			//  动态设置评论块的高度
-			commentBlockHeight();
-
-			
-
-		});
-
-
-
-
+		setTimeout( commentFuncGather , 100);
 	}); 
 
-		$(window).resize(function(){
-			var index = $('.photo-comment').length-1;
-				//alert(11);
-				console.log( $('.photo-comment-box:eq('+ index +')').height() );
-			$(this).delay(1000).queue(function(){
-				var index = $('.photo-comment').length-1;
-				console.log( $('.photo-comment-box:eq('+ index +')').height() );
-				commentBlockHeight();
-			});
-			
-		});
+	// 当浏览器窗口改变大小时, 也动态的改变评论块的高度
+	$(window).resize(function(){   setTimeout( commentBlockHeight , 300 );	});
+	
+}); // ready({
+
+
+/*  
+	调用处: 
+		1. 点击照片出现Layer展示层时.
+		2. 点击了layer展示层的翻页Icon时
+
+	作用: 把照片评论块所需要的功能都 集中到一块.
+*/
+function commentFuncGather(){
+
+	var index = $('.photo-comment').length-1; // 第 index 个.photo-comment就是
+
+	var commentList = $('.comment-list:eq('+index+')>li .comment-content-block-small-box');
+	var replyList   = $('.comment-list:eq('+index+')>li .reply-list>li');
+	var commentIcon = $('.operation-comment').eq( index );
+
+	// 如果点击了layer评论块中的某一条评论, 显示出回复框, 并添加信息		
+	commentList.click(function(){ clickComment( $(this) ) });
+
+	// 如果点击了layer评论块中的某一条回复, 显示出回复框, 并添加信息
+	replyList.click(function(){ clickReply( $(this) ) });
+
+	// 点击操作栏的 评论icon
+	commentIcon.click(function(){
+		clickComIcon();
+	});
+
+	//  动态设置评论块的高度
+	commentBlockHeight();	
+
+}
+
+
+
+/* 
+	作用：Layer照片翻页层点击翻页的时候, 评论也跟着翻页, 但翻页后的评论块高度会乱,这个函数就把评论块调回来 
+ */
+function switchCommentHeiAuto(){
+	setTimeout( commentFuncGather , 100 );
+}
+
 
 /*  
 	作用: 
@@ -84,11 +88,7 @@ $(document).ready(function(){
 function clickComment( thisElm ){
 
 //  1.
-	var index = $('.photo-comment').length-1; 
-	var allReplyTextarea = $('.comment-list:eq('+ index +') .comment-reply-input-box');
-	allReplyTextarea.each(function(){
-		$(this).css({'display':'none'});
-	});
+	hideAllReplyTextarea();
 
 	//  thisElm 代表当前的被点击的 评论条
 
@@ -102,23 +102,8 @@ function clickComment( thisElm ){
 	var replyTextarea = comParent.find(".comment-reply-input-box textarea"); // 回复框
 	var replyRetract = comParent.find(".comment-reply-input-box .reply-retract"); // 回复框
 
-//  2. 
-	replyBox.css({ 'display' : 'block' });
-
-//  3. 
-	replyMes.text( '回复 ' + commentUser + ':' );
-
-//  4.
-	replyTextarea.focus();
-
-//  5. 
-	replyTextarea.css({ 'text-indent' : commentUserLen * 15 + 35 });
-
-//  6.
-	replyRetract.click(function(){
-		replyBox.css({ 'display':'none' });	
-	});
-
+//  2 3 4 5 6
+	showReplyTextarea( commentUser, commentUserLen , replyBox , replyMes , replyTextarea , replyRetract );
 }
 
 
@@ -138,15 +123,9 @@ function clickComment( thisElm ){
 		thisElm :  当前点击的回复条
 */	
 function clickReply( thisElm ){
-	//console.log( thisElm.find('.publish-username').text() );
 
 //  1.
-	var index = $('.photo-comment').length-1; 
-	var allReplyTextarea = $('.comment-list:eq('+ index +') .comment-reply-input-box');
-	allReplyTextarea.each(function(){
-		$(this).css({'display':'none'});
-	});
-
+	hideAllReplyTextarea();
 
 	var replyUser = thisElm.find('.publish-username').text();
 	var replyUserLen  = replyUser.length;
@@ -155,24 +134,51 @@ function clickReply( thisElm ){
 	var replyTextarea  = thisElm.parent().parent().find('.comment-reply-input-box textarea');
 	var replyRetract  = thisElm.parent().parent().find('.comment-reply-input-box .reply-retract');
 
-//  2.
+//  2 3 4 5 6
+	showReplyTextarea( replyUser,  replyUserLen , replyBox,  replyMes , replyTextarea , replyRetract  );
+}
+
+
+/* 
+	调用处 ： clickComment() 、 clickReply()
+	作用: 点击 评论条/回复条 时展示回复框
+	参数:
+		user: 要回复给谁
+		userLen: 用户名长度
+		replyBox : 回复盒子
+		replyMes : 回复信息 (例如: 回复 徐志乔：)
+		replyTextarea : 回复框
+		replyRetract : 回复框的收起按钮
+*/
+function showReplyTextarea( user, userLen , replyBox , replyMes , replyTextarea , replyRetract ){
+
 	replyBox.css({ 'display':'block' });
 
-//  3.
-	replyMes.text( '回复' + replyUser + ':' );
+	replyMes.text( '回复' + user + ':' );
 
-//  4.
 	replyTextarea.focus();
 
-//  5.
-	replyTextarea.css({ 'text-indent' : replyUserLen * 15 + 35 });
-
-//  6. 
+	replyTextarea.css({ 'text-indent' : userLen * 15 + 35 });
+ 
 	replyRetract.click(function(){
 		replyBox.css({ 'display':'none' });	
 	});
 
 }
+
+/*  
+	调用处 ： clickComment() 、 clickReply()
+	作用: 收起所有的回复框
+*/
+function hideAllReplyTextarea(){
+	var index = $('.photo-comment').length-1; 
+	var allReplyTextarea = $('.comment-list:eq('+ index +') .comment-reply-input-box');
+	allReplyTextarea.each(function(){
+		$(this).css({'display':'none'});
+	});
+}
+
+
 
 
 /*  
@@ -187,25 +193,43 @@ function commentBlockHeight(){
 	var index = $('.photo-comment').length-1; 
 
 	// 整个评论块的高度
-	 var overallHeight = $('.photo-comment-box:eq('+ index +')').height();
+	var overallHeight = $('.photo-comment-box:eq('+ index +')').height();
 
 	$('.author-info-box:eq('+ index +')').height( 70 );
 	$('.operation-bar-box:eq('+ index +')').height( 35 );
 	$('.comment-input-box:eq('+ index +')').height( 90 );
 
+	var authorInfoHei = $('.author-info-box:eq('+ index +')').height();
+	var OpBarHei      = $('.operation-bar-box:eq('+ index +')').height();	 
+	var comInputHei   = $('.comment-input-box:eq('+ index +')').height();
+
+	var comAutoHei    =  overallHeight - authorInfoHei - OpBarHei - comInputHei; // 剩下来的高度全给评论块的高度
+	var comContentHei = $('.comment-content-box:eq('+ index +')').height( comAutoHei );
+
+}
 
 
-	 var authorInfoHei = $('.author-info-box:eq('+ index +')').height();
-	 var OpBarHei      = $('.operation-bar-box:eq('+ index +')').height();	 
-	 var comInputHei   = $('.comment-input-box:eq('+ index +')').height();
+/*  
+	点击了操作栏的评论icon
+*/
+function clickComIcon(){
+	var index = $('.photo-comment').length-1; 
 
-	 var comAutoHei    =  overallHeight - authorInfoHei - OpBarHei - comInputHei; // 剩下来的高度全给评论块的高度
-	 console.log(overallHeight +' - '+ authorInfoHei +' - '+ OpBarHei +' - '+ comInputHei +' = ' + comAutoHei);
-	 var comContentHei = $('.comment-content-box:eq('+ index +')').height( comAutoHei );
-
+	var commentTextarea = $('.comment-input:eq('+ index +') textarea');
+	commentTextarea.focus();
+	commentTextarea.attr({'placeholder' : '在此输入评论' });
 }
 
 
 
 
-}); // ready({
+
+
+
+
+
+
+
+
+
+

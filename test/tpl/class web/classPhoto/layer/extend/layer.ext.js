@@ -187,7 +187,7 @@ layer.photos = function(options){
         page: {
             html: '<div class="xubox_bigimg"><img src="'+ log.thissrc +'" alt="'+ (log.name || '') +'" layer-pid="'+ (log.pid || '') +'"><div class="xubox_imgsee">'+ function(){
                 if(log.imgLen > 1){
-                    return '<a href="" class="xubox_iconext xubox_prev"></a><a href="" class="xubox_iconext xubox_next"></a>'
+                    return '<a href="" class="xubox_iconext xubox_prev"  onclick="switchCommentHeiAuto();"></a><a href="" class="xubox_iconext xubox_next" onclick="switchCommentHeiAuto();"></a>'
                 } else {
                     return '';
                 }   
@@ -255,6 +255,7 @@ layer.photos = function(options){
                 log.imgIndex = 1;
             }
             log.tabimg(); 
+          
 
             //console.log(log.imgIndex);
             var photoInfo = $('#key-'+log.imgIndex).attr('id');
@@ -263,6 +264,9 @@ layer.photos = function(options){
 
            
         };
+
+
+
         log.bigimg.find('.xubox_next').on('click', function(event){         
             event.preventDefault();
             var photoInfo = conf.imgnext();
@@ -278,11 +282,11 @@ layer.photos = function(options){
                 var code = event.keyCode;
                 event.preventDefault();
                 if(code === 37){
-                    conf.imgprev();
+                    //conf.imgprev();
                 } else if(code === 39) {
-                    conf.imgnext();
+                    //conf.imgnext();
                 } else if(code === 27) {
-                    layer.close(log.index);
+                    //layer.close(log.index);
                 }
             }
         });
@@ -401,4 +405,6 @@ layer.photosPage = function(options){
            log.run(index);
         });
     });
+
+
 };

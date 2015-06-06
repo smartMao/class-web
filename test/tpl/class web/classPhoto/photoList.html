@@ -13,7 +13,6 @@
 <script src="tpl/class web/js/jquery-1.8.2-min.js"></script>
 <script src="tpl/class web/classPhoto/layer/layer.min.js"></script>
 
-
 </head>
 <body onselectstart="" onload=" waterfall( 'photoBox' , 2 ) "><!-- 调用瀑布流函数 -->
 
@@ -24,9 +23,9 @@
 	<div class="info-box">
 		<span class="title">{$albumData.title}<!-- title --></span>
 		<div class="author-photo">
-			<img src="./tpl/class web/images/banner/01.jpg" /><!-- src -->
+			<img src="{$photo}" /><!-- 作者头像 -->
 		</div>
-		<span class="author-name"><!-- name --></span>
+		<span class="author-name">{$username}<!-- name --></span>
 	</div>
 </div>
 
@@ -38,20 +37,17 @@
 				<li id="li">
 					<div class="pic" id="photoBox">
 					{foreach from=$photoData item=item key=key}
+						
 						<img src="{$photoData.$key.path}" layer-src="{$photoData.$key.path}" id="image-show"
 						alt="" />
 						<input type="hidden" value="{$photoData.$key.id}" /><!-- photo ID -->
-
-
-
-
 
 					{/foreach}
 					</div>
 				</li>
 				
 {foreach from=$photoData item=item key=key}
-			<div id="photoComment-{$key}" class="comment-big-box" style="display:none;"><!--  相册评论快  -->
+			<div id="photoComment-{$key}" class="comment-big-box" style="display:none;"><!--  相册评论块  -->
 				<div class="photo-comment">
 
 					<div class="photo-comment-left">
@@ -62,16 +58,18 @@
 									<div class="comment-author-photo">
 										<a href="#">
 										<!-- 作者头像 -->
-											<img src="pictureGroup/userPhotoFolder/defaultPhoto.jpg"
-											width="50" height="50">
+											<img src="{$photo}" width="50" height="50">
 										</a>
 									</div>
 									<div class="author-date-and-username">
-										<a href="#">吸收{$key}<!-- username --></a>
-										<span>2015年5月20日<!-- albumDate --></span>
+										<a href="#">{$username}<!-- username --></a>
+										<span>{$albumData.time}<!-- albumDate --></span>
 									</div>
 								</div>
 							</div>
+
+							<input type="hidden" class="photo-id" value="{$photoData.$key.id}" />
+							<input type="hidden" class="user-id"  value="{$id}" />
 
 							<div class="operation-bar-box"><!-- 操作栏(如:评论、分享小按钮) -->
 								<ul>
@@ -85,363 +83,78 @@
 								<div class="comment-content-all" value="{$key}">
 									<ul class="comment-list">
 
+									{foreach from=$photoCommentData item=itme key=key}
 
-										<li>
-									<!--ASDASDASDASDSADSA-->	
-										<div class="comment-content-block" title="点击回复">
-											<div class="comment-content-block-small-box" username="刀是是意志">
+										{if $photoCommentData.$key.pid  eq $photoData.$key.id}
+										{foreach from=$photoCommentData item=itme key=key}
+										<!-- 如果评论的 pid 与 当前照片的id 吻合 -->
+
+											<li>
+										<!--ASDASDASDASDSADSA-->	
+											<div class="comment-content-block" title="点击回复">
+												<div class="comment-content-block-small-box" 
+												username="{$photoCommentData.$key.username}">
+												
+													<div class="comment-content-block-photo">
+														<!-- 评论块头像 -->
+														<img src="{$photoCommentData.$key.photo}" 
+														width="40" height="40" />
+														
+													</div>
+
+													<div class="comment-content-block-box">
+														
+														<span class="comment-content-block-username">
+															<a href="#"><!-- 评论username -->{$photoCommentData.$key.username}</a>
+															<span>:</span>
+														</span>
+														<span class="comment-content-block-content">
+															<!-- 评论内容content -->{$photoCommentData.$key.content}
+															<a href="#" class="comment-content-block-reply-icon"></a>
+														</span>
+
+
+														
+													</div>
+
+													<div class="clear"></div>
+
+												</div>
+
+												<div class="comment-content-reply">
+													<ul class="reply-list" style="display:none;">
+
+														<li><!-- 照片评论回复 -->
+															<a href="#" class="publish-username">热而过性值</a> 
+															回复 
+															<a href="#" class="see-username">恩属性值尔</a> :
+															你个dog
+															<a href="#" class="comment-content-block-reply-icon"></a>
+														</li>
+
+														
+
+													</ul>
+													<!-- 回复 输入的input -->
+													<div class="comment-reply-input-box" style="display:none;">
+														<i class="comment-reply-info">
+															回复属性值乔：<!-- 回复对象 -->
+														</i>
+														<textarea onpropertychange="this.style.height=this.scrollHeight + 'px'" oninput="this.style.height=this.scrollHeight + 'px'" ></textarea>
+														<span class="reply-retract">收起</span>
+														<span class="reply-submit">回复</span>
+													</div>
+												</div>
+
+											</div>
+										<!-- asdcasdasdasd-->
+											</li>
+											{/foreach}
 											
-												<div class="comment-content-block-photo">
-													<!-- 评论块头像 -->
-													<img src="pictureGroup/userPhotoFolder/defaultPhoto.jpg" 
-													width="40" height="40" />
-													
-												</div>
+											{/if}
 
-												<div class="comment-content-block-box">
-													
-													<span class="comment-content-block-username">
-														<a href="#"><!-- 评论username -->意志个</a>
-														<span>:</span>
-													</span>
-													<span class="comment-content-block-content">
-														<!-- 评论内容content -->不是大事地方发洞若观火芙蓉国他
-														<a href="#" class="comment-content-block-reply-icon"></a>
-													</span>
-
-
-													
-												</div>
-
-												<div class="clear"></div>
-
-											</div>
-
-											<div class="comment-content-reply">
-												<ul class="reply-list">
-
-													<li><!-- 照片评论回复 -->
-														<a href="#" class="publish-username">热而过性值</a> 
-														回复 
-														<a href="#" class="see-username">恩属性值尔</a> :
-														你个dog
-														<a href="#" class="comment-content-block-reply-icon"></a>
-													</li>
-
-													
-
-												</ul>
-												<!-- 回复 输入的input -->
-												<div class="comment-reply-input-box" style="display:none;">
-													<i class="comment-reply-info">
-														回复属性值乔：<!-- 回复对象 -->
-													</i>
-													<textarea onpropertychange="this.style.height=this.scrollHeight + 'px'" oninput="this.style.height=this.scrollHeight + 'px'" ></textarea>
-													<span class="reply-retract">收起</span>
-													<span class="reply-submit">回复</span>
-												</div>
-											</div>
-
-										</div>
-									<!-- asdcasdasdasd-->
-										</li>
-
-										<li>
-									<!--ASDASDASDASDSADSA-->	
-										<div class="comment-content-block" title="点击回复">
-											<div class="comment-content-block-small-box" username="刀是是意志">
-											
-												<div class="comment-content-block-photo">
-													<!-- 评论块头像 -->
-													<img src="pictureGroup/userPhotoFolder/defaultPhoto.jpg" 
-													width="40" height="40" />
-													
-												</div>
-
-												<div class="comment-content-block-box">
-													
-													<span class="comment-content-block-username">
-														<a href="#"><!-- 评论username -->意志个</a>
-														<span>:</span>
-													</span>
-													<span class="comment-content-block-content">
-														<!-- 评论内容content -->不是大事地方发洞若观火芙蓉国他
-														<a href="#" class="comment-content-block-reply-icon"></a>
-													</span>
-
-
-													
-												</div>
-
-												<div class="clear"></div>
-
-											</div>
-
-											<div class="comment-content-reply">
-												<ul class="reply-list">
-
-													<li><!-- 照片评论回复 -->
-														<a href="#" class="publish-username">热而过性值</a> 
-														回复 
-														<a href="#" class="see-username">恩属性值尔</a> :
-														你个dog
-														<a href="#" class="comment-content-block-reply-icon"></a>
-													</li>
-
-													
-
-												</ul>
-												<!-- 回复 输入的input -->
-												<div class="comment-reply-input-box" style="display:none;">
-													<i class="comment-reply-info">
-														回复属性值乔：<!-- 回复对象 -->
-													</i>
-													<textarea onpropertychange="this.style.height=this.scrollHeight + 'px'" oninput="this.style.height=this.scrollHeight + 'px'" ></textarea>
-													<span class="reply-retract">收起</span>
-													<span class="reply-submit">回复</span>
-												</div>
-											</div>
-
-										</div>
-									<!-- asdcasdasdasd-->
-										</li>
-										<li>
-									<!--ASDASDASDASDSADSA-->	
-										<div class="comment-content-block" title="点击回复">
-											<div class="comment-content-block-small-box" username="刀是是意志">
-											
-												<div class="comment-content-block-photo">
-													<!-- 评论块头像 -->
-													<img src="pictureGroup/userPhotoFolder/defaultPhoto.jpg" 
-													width="40" height="40" />
-													
-												</div>
-
-												<div class="comment-content-block-box">
-													
-													<span class="comment-content-block-username">
-														<a href="#"><!-- 评论username -->意志个</a>
-														<span>:</span>
-													</span>
-													<span class="comment-content-block-content">
-														<!-- 评论内容content -->不是大事地方发洞若观火芙蓉国他
-														<a href="#" class="comment-content-block-reply-icon"></a>
-													</span>
-
-
-													
-												</div>
-
-												<div class="clear"></div>
-
-											</div>
-
-											<div class="comment-content-reply">
-												<ul class="reply-list">
-
-													<li><!-- 照片评论回复 -->
-														<a href="#" class="publish-username">热而过性值</a> 
-														回复 
-														<a href="#" class="see-username">恩属性值尔</a> :
-														你个dog
-														<a href="#" class="comment-content-block-reply-icon"></a>
-													</li>
-
-													
-
-												</ul>
-												<!-- 回复 输入的input -->
-												<div class="comment-reply-input-box" style="display:none;">
-													<i class="comment-reply-info">
-														回复属性值乔：<!-- 回复对象 -->
-													</i>
-													<textarea onpropertychange="this.style.height=this.scrollHeight + 'px'" oninput="this.style.height=this.scrollHeight + 'px'" ></textarea>
-													<span class="reply-retract">收起</span>
-													<span class="reply-submit">回复</span>
-												</div>
-											</div>
-
-										</div>
-									<!-- asdcasdasdasd-->
-										</li>
-										<li>
-									<!--ASDASDASDASDSADSA-->	
-										<div class="comment-content-block" title="点击回复">
-											<div class="comment-content-block-small-box" username="刀是是意志">
-											
-												<div class="comment-content-block-photo">
-													<!-- 评论块头像 -->
-													<img src="pictureGroup/userPhotoFolder/defaultPhoto.jpg" 
-													width="40" height="40" />
-													
-												</div>
-
-												<div class="comment-content-block-box">
-													
-													<span class="comment-content-block-username">
-														<a href="#"><!-- 评论username -->意志个</a>
-														<span>:</span>
-													</span>
-													<span class="comment-content-block-content">
-														<!-- 评论内容content -->不是大事地方发洞若观火芙蓉国他
-														<a href="#" class="comment-content-block-reply-icon"></a>
-													</span>
-
-
-													
-												</div>
-
-												<div class="clear"></div>
-
-											</div>
-
-											<div class="comment-content-reply">
-												<ul class="reply-list">
-
-													<li><!-- 照片评论回复 -->
-														<a href="#" class="publish-username">热而过性值</a> 
-														回复 
-														<a href="#" class="see-username">恩属性值尔</a> :
-														你个dog
-														<a href="#" class="comment-content-block-reply-icon"></a>
-													</li>
-
-													
-
-												</ul>
-												<!-- 回复 输入的input -->
-												<div class="comment-reply-input-box" style="display:none;">
-													<i class="comment-reply-info">
-														回复属性值乔：<!-- 回复对象 -->
-													</i>
-													<textarea onpropertychange="this.style.height=this.scrollHeight + 'px'" oninput="this.style.height=this.scrollHeight + 'px'" ></textarea>
-													<span class="reply-retract">收起</span>
-													<span class="reply-submit">回复</span>
-												</div>
-											</div>
-
-										</div>
-									<!-- asdcasdasdasd-->
-										</li>
-										<li>
-									<!--ASDASDASDASDSADSA-->	
-										<div class="comment-content-block" title="点击回复">
-											<div class="comment-content-block-small-box" username="刀是是意志">
-											
-												<div class="comment-content-block-photo">
-													<!-- 评论块头像 -->
-													<img src="pictureGroup/userPhotoFolder/defaultPhoto.jpg" 
-													width="40" height="40" />
-													
-												</div>
-
-												<div class="comment-content-block-box">
-													
-													<span class="comment-content-block-username">
-														<a href="#"><!-- 评论username -->意志个</a>
-														<span>:</span>
-													</span>
-													<span class="comment-content-block-content">
-														<!-- 评论内容content -->不是大事地方发洞若观火芙蓉国他
-														<a href="#" class="comment-content-block-reply-icon"></a>
-													</span>
-
-
-													
-												</div>
-
-												<div class="clear"></div>
-
-											</div>
-
-											<div class="comment-content-reply">
-												<ul class="reply-list">
-
-													<li><!-- 照片评论回复 -->
-														<a href="#" class="publish-username">热而过性值</a> 
-														回复 
-														<a href="#" class="see-username">恩属性值尔</a> :
-														你个dog
-														<a href="#" class="comment-content-block-reply-icon"></a>
-													</li>
-
-													
-
-												</ul>
-												<!-- 回复 输入的input -->
-												<div class="comment-reply-input-box" style="display:none;">
-													<i class="comment-reply-info">
-														回复属性值乔：<!-- 回复对象 -->
-													</i>
-													<textarea onpropertychange="this.style.height=this.scrollHeight + 'px'" oninput="this.style.height=this.scrollHeight + 'px'" ></textarea>
-													<span class="reply-retract">收起</span>
-													<span class="reply-submit">回复</span>
-												</div>
-											</div>
-
-										</div>
-									<!-- asdcasdasdasd-->
-										</li>
-										<li>
-									<!--ASDASDASDASDSADSA-->	
-										<div class="comment-content-block" title="点击回复">
-											<div class="comment-content-block-small-box" username="刀是是意志">
-											
-												<div class="comment-content-block-photo">
-													<!-- 评论块头像 -->
-													<img src="pictureGroup/userPhotoFolder/defaultPhoto.jpg" 
-													width="40" height="40" />
-													
-												</div>
-
-												<div class="comment-content-block-box">
-													
-													<span class="comment-content-block-username">
-														<a href="#"><!-- 评论username -->意志个</a>
-														<span>:</span>
-													</span>
-													<span class="comment-content-block-content">
-														<!-- 评论内容content -->不是大事地方发洞若观火芙蓉国他
-														<a href="#" class="comment-content-block-reply-icon"></a>
-													</span>
-
-
-													
-												</div>
-
-												<div class="clear"></div>
-
-											</div>
-
-											<div class="comment-content-reply">
-												<ul class="reply-list">
-
-													<li><!-- 照片评论回复 -->
-														<a href="#" class="publish-username">热而过性值</a> 
-														回复 
-														<a href="#" class="see-username">恩属性值尔</a> :
-														你个dog
-														<a href="#" class="comment-content-block-reply-icon"></a>
-													</li>
-
-													
-
-												</ul>
-												<!-- 回复 输入的input -->
-												<div class="comment-reply-input-box" style="display:none;">
-													<i class="comment-reply-info">
-														回复属性值乔：<!-- 回复对象 -->
-													</i>
-													<textarea onpropertychange="this.style.height=this.scrollHeight + 'px'" oninput="this.style.height=this.scrollHeight + 'px'" ></textarea>
-													<span class="reply-retract">收起</span>
-													<span class="reply-submit">回复</span>
-												</div>
-											</div>
-
-										</div>
-									<!-- asdcasdasdasd-->
-										</li>
-
+									{/foreach}
+									
 
 									</ul>
 
@@ -455,7 +168,7 @@
 
 								<div class="comment-input" style="display:block;">
 									<textarea></textarea>
-									<span>发表</span>
+									<span class="comment-submit">发表</span>
 								</div>
 
 								<div class="login-and-register" style="display:none;">
@@ -464,8 +177,8 @@
 										<i class="message-login"></i>
 										请登录或注册后发表评论
 									</i>
-									<div class="comment-login">登录</div>
-									<div class="comment-register">注册</div>
+									<div class="comment-login" onclick="javascript:showDialog();">登录</div>
+									<div class="comment-register" onclick="javascript:RshowDialog();">注册</div>
 								</div>
 
 							</div>
@@ -516,4 +229,6 @@
 <script type="text/javascript" src="tpl/class web/js/js.js"></script><!-- 登录层 -->
 <script type="text/javascript" src="tpl/class web/js/userPhoto.js"></script><!-- move到用户头像上出来的选项卡 -->
 <script type="text/javascript" src="tpl/class web/js/frontPhotoShow.js?var=2"></script> <!-- 照片展出层 -->
-<script type="text/javascript" src="tpl/class web/js/photoComment.js"></script> 
+<script type="text/javascript" src="tpl/class web/classPhoto/layer/extend/layer.ext.js"></script>
+<script type="text/javascript" src="tpl/class web/js/photoComment/photoComment.js"></script><!-- 照片评论块的效果 -->
+<script type="text/javascript" src="tpl/class web/js/photoComment/photoCommentAjax.js"></script> 
