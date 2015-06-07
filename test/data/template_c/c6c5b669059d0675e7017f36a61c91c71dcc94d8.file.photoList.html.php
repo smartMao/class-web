@@ -1,35 +1,35 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-06-06 16:00:41
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-06-07 16:14:48
          compiled from "tpl\class web\classPhoto\photoList.html" */ ?>
-<?php /*%%SmartyHeaderCode:93645572fd093129f3-51736736%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:24264557451d82ca488-79368365%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'c6c5b669059d0675e7017f36a61c91c71dcc94d8' => 
     array (
       0 => 'tpl\\class web\\classPhoto\\photoList.html',
-      1 => 1433596111,
+      1 => 1433684933,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '93645572fd093129f3-51736736',
+  'nocache_hash' => '24264557451d82ca488-79368365',
   'function' => 
   array (
   ),
   'variables' => 
   array (
     'albumData' => 0,
-    'photo' => 0,
-    'username' => 0,
     'photoData' => 0,
     'key' => 0,
+    'username' => 0,
     'id' => 0,
     'photoCommentData' => 0,
+    'Comkey' => 0,
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_5572fd09393895_06680119',
+  'unifunc' => 'content_557451d833b922_47076198',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5572fd09393895_06680119')) {function content_5572fd09393895_06680119($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if ($_valid && !is_callable('content_557451d833b922_47076198')) {function content_557451d833b922_47076198($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
@@ -61,10 +61,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		<span class="title"><?php echo $_smarty_tpl->tpl_vars['albumData']->value['title'];?>
 <!-- title --></span>
 		<div class="author-photo">
-			<img src="<?php echo $_smarty_tpl->tpl_vars['photo']->value;?>
+			<img src="<?php echo $_smarty_tpl->tpl_vars['albumData']->value['photo'];?>
 " /><!-- 作者头像 -->
 		</div>
-		<span class="author-name"><?php echo $_smarty_tpl->tpl_vars['username']->value;?>
+		<span class="author-name"><?php echo $_smarty_tpl->tpl_vars['albumData']->value['username'];?>
 <!-- name --></span>
 	</div>
 </div>
@@ -114,23 +114,23 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 									<div class="comment-author-photo">
 										<a href="#">
 										<!-- 作者头像 -->
-											<img src="<?php echo $_smarty_tpl->tpl_vars['photo']->value;?>
+											<img src="<?php echo $_smarty_tpl->tpl_vars['albumData']->value['photo'];?>
 " width="50" height="50">
 										</a>
 									</div>
 									<div class="author-date-and-username">
-										<a href="#"><?php echo $_smarty_tpl->tpl_vars['username']->value;?>
-<!-- username --></a>
+										<a href="#"><?php echo $_smarty_tpl->tpl_vars['albumData']->value['username'];?>
+<!-- 作者用户名 --></a>
 										<span><?php echo $_smarty_tpl->tpl_vars['albumData']->value['time'];?>
-<!-- albumDate --></span>
+<!-- 发布时间 --></span>
 									</div>
 								</div>
 							</div>
 
 							<input type="hidden" class="photo-id" value="<?php echo $_smarty_tpl->tpl_vars['photoData']->value[$_smarty_tpl->tpl_vars['key']->value]['id'];?>
 " />
-							<input type="hidden" class="user-id"  value="<?php echo $_smarty_tpl->tpl_vars['id']->value;?>
-" />
+							<input type="hidden" class="user-id"  value="<?php if ($_smarty_tpl->tpl_vars['username']->value) {?> <?php echo $_smarty_tpl->tpl_vars['id']->value;?>
+ <?php } else { ?> 0 <?php }?>" />
 
 							<div class="operation-bar-box"><!-- 操作栏(如:评论、分享小按钮) -->
 								<ul>
@@ -144,35 +144,30 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 								<div class="comment-content-all" value="<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
 ">
 									<ul class="comment-list">
-
-									<?php  $_smarty_tpl->tpl_vars['itme'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['itme']->_loop = false;
- $_smarty_tpl->tpl_vars['key'] = new Smarty_Variable;
+				
+									<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
+ $_smarty_tpl->tpl_vars['Comkey'] = new Smarty_Variable;
  $_from = $_smarty_tpl->tpl_vars['photoCommentData']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
-foreach ($_from as $_smarty_tpl->tpl_vars['itme']->key => $_smarty_tpl->tpl_vars['itme']->value) {
-$_smarty_tpl->tpl_vars['itme']->_loop = true;
- $_smarty_tpl->tpl_vars['key']->value = $_smarty_tpl->tpl_vars['itme']->key;
+foreach ($_from as $_smarty_tpl->tpl_vars['item']->key => $_smarty_tpl->tpl_vars['item']->value) {
+$_smarty_tpl->tpl_vars['item']->_loop = true;
+ $_smarty_tpl->tpl_vars['Comkey']->value = $_smarty_tpl->tpl_vars['item']->key;
 ?>
 
-										<?php if ($_smarty_tpl->tpl_vars['photoCommentData']->value[$_smarty_tpl->tpl_vars['key']->value]['pid']==$_smarty_tpl->tpl_vars['photoData']->value[$_smarty_tpl->tpl_vars['key']->value]['id']) {?>
-										<?php  $_smarty_tpl->tpl_vars['itme'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['itme']->_loop = false;
- $_smarty_tpl->tpl_vars['key'] = new Smarty_Variable;
- $_from = $_smarty_tpl->tpl_vars['photoCommentData']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
-foreach ($_from as $_smarty_tpl->tpl_vars['itme']->key => $_smarty_tpl->tpl_vars['itme']->value) {
-$_smarty_tpl->tpl_vars['itme']->_loop = true;
- $_smarty_tpl->tpl_vars['key']->value = $_smarty_tpl->tpl_vars['itme']->key;
-?>
+										<?php if ($_smarty_tpl->tpl_vars['photoCommentData']->value[$_smarty_tpl->tpl_vars['Comkey']->value]['pid']==$_smarty_tpl->tpl_vars['photoData']->value[$_smarty_tpl->tpl_vars['key']->value]['id']) {?>
+										
+										
 										<!-- 如果评论的 pid 与 当前照片的id 吻合 -->
 
-											<li>
+											<li title="点击回复">
 										<!--ASDASDASDASDSADSA-->	
 											<div class="comment-content-block" title="点击回复">
 												<div class="comment-content-block-small-box" 
-												username="<?php echo $_smarty_tpl->tpl_vars['photoCommentData']->value[$_smarty_tpl->tpl_vars['key']->value]['username'];?>
+												username="<?php echo $_smarty_tpl->tpl_vars['photoCommentData']->value[$_smarty_tpl->tpl_vars['Comkey']->value]['username'];?>
 ">
 												
 													<div class="comment-content-block-photo">
 														<!-- 评论块头像 -->
-														<img src="<?php echo $_smarty_tpl->tpl_vars['photoCommentData']->value[$_smarty_tpl->tpl_vars['key']->value]['photo'];?>
+														<img src="<?php echo $_smarty_tpl->tpl_vars['photoCommentData']->value[$_smarty_tpl->tpl_vars['Comkey']->value]['photo'];?>
 " 
 														width="40" height="40" />
 														
@@ -181,12 +176,13 @@ $_smarty_tpl->tpl_vars['itme']->_loop = true;
 													<div class="comment-content-block-box">
 														
 														<span class="comment-content-block-username">
-															<a href="#"><!-- 评论username --><?php echo $_smarty_tpl->tpl_vars['photoCommentData']->value[$_smarty_tpl->tpl_vars['key']->value]['username'];?>
+															<a href="#"><!-- 评论username --><?php echo $_smarty_tpl->tpl_vars['photoCommentData']->value[$_smarty_tpl->tpl_vars['Comkey']->value]['username'];?>
 </a>
 															<span>:</span>
 														</span>
 														<span class="comment-content-block-content">
-															<!-- 评论内容content --><?php echo $_smarty_tpl->tpl_vars['photoCommentData']->value[$_smarty_tpl->tpl_vars['key']->value]['content'];?>
+
+															<!-- 评论内容content --><?php echo $_smarty_tpl->tpl_vars['photoCommentData']->value[$_smarty_tpl->tpl_vars['Comkey']->value]['content'];?>
 
 															<a href="#" class="comment-content-block-reply-icon"></a>
 														</span>
@@ -227,75 +223,12 @@ $_smarty_tpl->tpl_vars['itme']->_loop = true;
 											</div>
 										<!-- asdcasdasdasd-->
 											</li>
-											<?php } ?>
+										
 											
-											<?php }?>
+										<?php }?>
 
 									<?php } ?>
-									<li>
-										<!--ASDASDASDASDSADSA-->	
-											<div class="comment-content-block" title="点击回复">
-												<div class="comment-content-block-small-box" 
-												username="<?php echo $_smarty_tpl->tpl_vars['photoCommentData']->value[$_smarty_tpl->tpl_vars['key']->value]['username'];?>
-">
-												
-													<div class="comment-content-block-photo">
-														<!-- 评论块头像 -->
-														<img src="<?php echo $_smarty_tpl->tpl_vars['photoCommentData']->value[$_smarty_tpl->tpl_vars['key']->value]['photo'];?>
-" 
-														width="40" height="40" />
-														
-													</div>
-
-													<div class="comment-content-block-box">
-														
-														<span class="comment-content-block-username">
-															<a href="#"><!-- 评论username --><?php echo $_smarty_tpl->tpl_vars['photoCommentData']->value[$_smarty_tpl->tpl_vars['key']->value]['username'];?>
-</a>
-															<span>:</span>
-														</span>
-														<span class="comment-content-block-content">
-															<!-- 评论内容content --><?php echo $_smarty_tpl->tpl_vars['photoCommentData']->value[$_smarty_tpl->tpl_vars['key']->value]['content'];?>
-
-															<a href="#" class="comment-content-block-reply-icon"></a>
-														</span>
-
-
-														
-													</div>
-
-													<div class="clear"></div>
-
-												</div>
-
-												<div class="comment-content-reply">
-													<ul class="reply-list" style="display:none;">
-
-														<li><!-- 照片评论回复 -->
-															<a href="#" class="publish-username">热而过性值</a> 
-															回复 
-															<a href="#" class="see-username">恩属性值尔</a> :
-															你个dog
-															<a href="#" class="comment-content-block-reply-icon"></a>
-														</li>
-
-														
-
-													</ul>
-													<!-- 回复 输入的input -->
-													<div class="comment-reply-input-box" style="display:none;">
-														<i class="comment-reply-info">
-															回复属性值乔：<!-- 回复对象 -->
-														</i>
-														<textarea onpropertychange="this.style.height=this.scrollHeight + 'px'" oninput="this.style.height=this.scrollHeight + 'px'" ></textarea>
-														<span class="reply-retract">收起</span>
-														<span class="reply-submit">回复</span>
-													</div>
-												</div>
-
-											</div>
-										<!-- asdcasdasdasd-->
-											</li>
+									
 
 									</ul>
 
@@ -306,21 +239,22 @@ $_smarty_tpl->tpl_vars['itme']->_loop = true;
 							</div>
 
 							<div class="comment-input-box"><!-- 输入评论的 -->
-
-								<div class="comment-input" style="display:block;">
-									<textarea></textarea>
-									<span class="comment-submit">发表</span>
-								</div>
-
-								<div class="login-and-register" style="display:none;">
-									<i class="comment-cut-off-rule"></i>
-									<i class="message-box">
-										<i class="message-login"></i>
-										请登录或注册后发表评论
-									</i>
-									<div class="comment-login" onclick="javascript:showDialog();">登录</div>
-									<div class="comment-register" onclick="javascript:RshowDialog();">注册</div>
-								</div>
+								<?php if ($_smarty_tpl->tpl_vars['username']->value) {?>
+									<div class="comment-input" style="display:block;">
+										<textarea></textarea>
+										<span class="comment-submit">发表</span>
+									</div>
+								<?php } else { ?>
+									<div class="login-and-register" style="display:block;">
+										<i class="comment-cut-off-rule"></i>
+										<i class="message-box">
+											<i class="message-login"></i>
+											请登录或注册后发表评论
+										</i>
+										<div class="comment-login" onclick="javascript:showDialog();">登录</div>
+										<div class="comment-register" onclick="javascript:RshowDialog();">注册</div>
+									</div>
+								<?php }?>
 
 							</div>
 						</div>

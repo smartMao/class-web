@@ -99,7 +99,7 @@ class frontPhotoCommentModel{
 
 //  获取全部评论
 	public function getphotoComment(){
-		$sql = "SELECT `uid`,`pid`,`content` FROM $this->_tableName6 ";
+		$sql = "SELECT `id`,`uid`,`pid`,`content` FROM $this->_tableName6 ";
 		$res = DB::findAll( $sql );
 
 		$commentData = $this->comInfoAddUserInfo( $res );
@@ -111,12 +111,13 @@ class frontPhotoCommentModel{
 	public function comInfoAddUserInfo( $comInfo ){
 		$sql = "SELECT `id`,`userName`,`photo` FROM $this->_tableName2";
 		$userInfo = DB::findAll( $sql );
-		
+	
 
 		// 将评论数组加上 username , photo 信息
 		foreach( $userInfo as $key => $value ){
 			foreach( $comInfo as $k => $v ){
 				// 如果当前评论的uid 等于 当前循环的用户id,那就把当前用户的 username photo 放进这个评论数组里
+
 				if( $comInfo[$k]['uid'] == $userInfo[$key]['id'] ){
 
 					$comInfo[$k]['username'] = $userInfo[$key]['userName'];
@@ -124,6 +125,8 @@ class frontPhotoCommentModel{
 				}
 			}
 		}
+
+		
 		return $comInfo;
 	}
 

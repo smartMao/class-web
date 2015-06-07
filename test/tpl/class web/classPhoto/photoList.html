@@ -23,9 +23,9 @@
 	<div class="info-box">
 		<span class="title">{$albumData.title}<!-- title --></span>
 		<div class="author-photo">
-			<img src="{$photo}" /><!-- 作者头像 -->
+			<img src="{$albumData.photo}" /><!-- 作者头像 -->
 		</div>
-		<span class="author-name">{$username}<!-- name --></span>
+		<span class="author-name">{$albumData.username}<!-- name --></span>
 	</div>
 </div>
 
@@ -58,18 +58,18 @@
 									<div class="comment-author-photo">
 										<a href="#">
 										<!-- 作者头像 -->
-											<img src="{$photo}" width="50" height="50">
+											<img src="{$albumData.photo}" width="50" height="50">
 										</a>
 									</div>
 									<div class="author-date-and-username">
-										<a href="#">{$username}<!-- username --></a>
-										<span>{$albumData.time}<!-- albumDate --></span>
+										<a href="#">{$albumData.username}<!-- 作者用户名 --></a>
+										<span>{$albumData.time}<!-- 发布时间 --></span>
 									</div>
 								</div>
 							</div>
 
 							<input type="hidden" class="photo-id" value="{$photoData.$key.id}" />
-							<input type="hidden" class="user-id"  value="{$id}" />
+							<input type="hidden" class="user-id"  value="{if $username} {$id} {else} 0 {/if}" />
 
 							<div class="operation-bar-box"><!-- 操作栏(如:评论、分享小按钮) -->
 								<ul>
@@ -82,22 +82,23 @@
 							<div class="comment-content-box">
 								<div class="comment-content-all" value="{$key}">
 									<ul class="comment-list">
+				
+									{foreach from=$photoCommentData item=item key=Comkey}
 
-									{foreach from=$photoCommentData item=itme key=key}
-
-										{if $photoCommentData.$key.pid  eq $photoData.$key.id}
-										{foreach from=$photoCommentData item=itme key=key}
+										{if $photoCommentData.$Comkey.pid  eq $photoData.$key.id}
+										
+										
 										<!-- 如果评论的 pid 与 当前照片的id 吻合 -->
 
-											<li>
+											<li title="点击回复">
 										<!--ASDASDASDASDSADSA-->	
 											<div class="comment-content-block" title="点击回复">
 												<div class="comment-content-block-small-box" 
-												username="{$photoCommentData.$key.username}">
+												username="{$photoCommentData.$Comkey.username}">
 												
 													<div class="comment-content-block-photo">
 														<!-- 评论块头像 -->
-														<img src="{$photoCommentData.$key.photo}" 
+														<img src="{$photoCommentData.$Comkey.photo}" 
 														width="40" height="40" />
 														
 													</div>
@@ -105,11 +106,12 @@
 													<div class="comment-content-block-box">
 														
 														<span class="comment-content-block-username">
-															<a href="#"><!-- 评论username -->{$photoCommentData.$key.username}</a>
+															<a href="#"><!-- 评论username -->{$photoCommentData.$Comkey.username}</a>
 															<span>:</span>
 														</span>
 														<span class="comment-content-block-content">
-															<!-- 评论内容content -->{$photoCommentData.$key.content}
+
+															<!-- 评论内容content -->{$photoCommentData.$Comkey.content}
 															<a href="#" class="comment-content-block-reply-icon"></a>
 														</span>
 
@@ -149,9 +151,9 @@
 											</div>
 										<!-- asdcasdasdasd-->
 											</li>
-											{/foreach}
+										
 											
-											{/if}
+										{/if}
 
 									{/foreach}
 									
@@ -165,21 +167,22 @@
 							</div>
 
 							<div class="comment-input-box"><!-- 输入评论的 -->
-
-								<div class="comment-input" style="display:block;">
-									<textarea></textarea>
-									<span class="comment-submit">发表</span>
-								</div>
-
-								<div class="login-and-register" style="display:none;">
-									<i class="comment-cut-off-rule"></i>
-									<i class="message-box">
-										<i class="message-login"></i>
-										请登录或注册后发表评论
-									</i>
-									<div class="comment-login" onclick="javascript:showDialog();">登录</div>
-									<div class="comment-register" onclick="javascript:RshowDialog();">注册</div>
-								</div>
+								{if $username}
+									<div class="comment-input" style="display:block;">
+										<textarea></textarea>
+										<span class="comment-submit">发表</span>
+									</div>
+								{else}
+									<div class="login-and-register" style="display:block;">
+										<i class="comment-cut-off-rule"></i>
+										<i class="message-box">
+											<i class="message-login"></i>
+											请登录或注册后发表评论
+										</i>
+										<div class="comment-login" onclick="javascript:showDialog();">登录</div>
+										<div class="comment-register" onclick="javascript:RshowDialog();">注册</div>
+									</div>
+								{/if}
 
 							</div>
 						</div>

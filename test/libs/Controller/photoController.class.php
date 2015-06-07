@@ -13,6 +13,7 @@ class photoController{
 		if( !empty($userInfo['username']) ){
 			$userInfo['photo'] = './'.$userInfo['photo'];
 		}
+		
 		VIEW::assign( $userInfo );
 	
 		// 相册数据
@@ -31,11 +32,9 @@ class photoController{
 		// 照片评论数据
 		$photoCommentRes = M('frontPhotoComment','front')->getphotoComment();
 		$photoCommentData['photoCommentData'] = $photoCommentRes;
-		
+	
 		VIEW::assign( $photoCommentData );
 
-		//echo "<pre>";
-		//var_dump($photoCommentRes);exit;
 
 		VIEW::display('tpl/class web/classPhoto/photoList.html');
 

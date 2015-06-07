@@ -22,8 +22,8 @@
 $(document).ready(function(){
 
 	$('#photoBox img').click(function(){
-
-		setTimeout( commentFuncGather , 100);
+//alert(11);
+		setTimeout( commentFuncGather , 200);
 	}); 
 
 	// 当浏览器窗口改变大小时, 也动态的改变评论块的高度
@@ -60,6 +60,7 @@ function commentFuncGather(){
 
 	//  动态设置评论块的高度
 	commentBlockHeight();	
+	
 
 }
 

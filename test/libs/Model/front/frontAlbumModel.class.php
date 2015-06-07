@@ -188,9 +188,16 @@ class frontAlbumModel{
 	public function findAlbumTitle( $albumID ){
 		
 		$albumID = intval($albumID);
-		$sql = "SELECT `title`,`time` FROM $this->_tableName3 WHERE id=$albumID";
-		$albumData = DB::findOne($sql);
-		return $albumData;
+		$sql = "SELECT `uid`,`username`,`title`,`time` FROM $this->_tableName3 WHERE id=$albumID";
+		$res = DB::findOne($sql);
+		$uid = $res['uid'];
+
+		// 根据当前打开相册的Uid , 查询出该相册作者的 photo
+		$userSQL = "SELECT `photo` FROM $this->_tableName2 WHERE id=$uid";
+		$userPhoto = DB::findOne( $userSQL );
+		$res['photo'] = $userPhoto['photo'];
+		
+		return $res;
 	}
 
 
