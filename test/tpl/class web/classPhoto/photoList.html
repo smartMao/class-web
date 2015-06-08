@@ -90,7 +90,7 @@
 										
 										<!-- 如果评论的 pid 与 当前照片的id 吻合 -->
 
-											<li title="点击回复">
+											<li title="点击回复" index="{$photoCommentData.$Comkey.id}">
 										<!--ASDASDASDASDSADSA-->	
 											<div class="comment-content-block" title="点击回复">
 												<div class="comment-content-block-small-box" 
@@ -226,12 +226,13 @@
 
 </body>
 </html>
+
 <script type="text/javascript" src="tpl/backstage/js/waterfallFront.js"></script><!-- 照片瀑布流 -->
 <script type="text/javascript" src="tpl/class web/js/registerCheck.js"></script><!-- 注册验证 -->
 <script type="text/javascript" src="tpl/class web/js/nav.js"></script><!-- 导航点击焦点 -->
 <script type="text/javascript" src="tpl/class web/js/js.js"></script><!-- 登录层 -->
 <script type="text/javascript" src="tpl/class web/js/userPhoto.js"></script><!-- move到用户头像上出来的选项卡 -->
 <script type="text/javascript" src="tpl/class web/js/frontPhotoShow.js?var=2"></script> <!-- 照片展出层 -->
-<script type="text/javascript" src="tpl/class web/classPhoto/layer/extend/layer.ext.js"></script>
+
 <script type="text/javascript" src="tpl/class web/js/photoComment/photoComment.js"></script><!-- 照片评论块的效果 -->
-<script type="text/javascript" src="tpl/class web/js/photoComment/photoCommentAjax.js"></script> 
+<script type="text/javascript" src="tpl/class web/js/photoComment/photoCommentAjax.js"></script>

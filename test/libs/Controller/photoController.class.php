@@ -7,7 +7,8 @@ class photoController{
 
 //  进入相册 (根据点击哪个相册,传入ID进行查询)
 	public function photoList(){
-	//echo "<pre>";
+	
+	
 		// 返回当前的登录状态,( cookie \ session \ 未登录 ) (如果登录了就返回用户名和头像)
 		$userInfo = C('index','checkLoginState');
 		if( !empty($userInfo['username']) ){

@@ -32,11 +32,11 @@ class frontPhotoCommentModel{
 		$newComData = $this->comInfoAddUserInfo( $res );
 		//var_dump($newComData);exit;
 
-		$newComment = '<li>
+		$newComment = '<li title="点击回复">
 										<!--ASDASDASDASDSADSA-->	
 											<div class="comment-content-block" title="点击回复">
 												<div class="comment-content-block-small-box" 
-												username="' . $newComData[0]['username'] . '">
+												username="'. $newComData[0]['username'] .'">
 												
 													<div class="comment-content-block-photo">
 														<!-- 评论块头像 -->
@@ -48,11 +48,12 @@ class frontPhotoCommentModel{
 													<div class="comment-content-block-box">
 														
 														<span class="comment-content-block-username">
-															<a href="#"><!-- 评论username -->' . $newComData[0]['username'] . '</a>
+															<a href="#"><!-- 评论username -->' .$newComData[0]['username']. '</a>
 															<span>:</span>
 														</span>
 														<span class="comment-content-block-content">
-															<!-- 评论内容content -->' . $newComData[0]['content'] . '
+
+															<!-- 评论内容content -->'. $newComData[0]['content'] .'
 															<a href="#" class="comment-content-block-reply-icon"></a>
 														</span>
 

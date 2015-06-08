@@ -22,8 +22,9 @@
 $(document).ready(function(){
 
 	$('#photoBox img').click(function(){
-//alert(11);
-		setTimeout( commentFuncGather , 200);
+
+		setTimeout( commentFuncGather , 200);	  //  点击评论显示回复框
+		setTimeout( newCommentShowReply , 200 );  //  点击新的评论也会显示回复框	
 	}); 
 
 	// 当浏览器窗口改变大小时, 也动态的改变评论块的高度
@@ -40,6 +41,7 @@ $(document).ready(function(){
 	作用: 把照片评论块所需要的功能都 集中到一块.
 */
 function commentFuncGather(){
+
 
 	var index = $('.photo-comment').length-1; // 第 index 个.photo-comment就是
 
@@ -61,7 +63,6 @@ function commentFuncGather(){
 	//  动态设置评论块的高度
 	commentBlockHeight();	
 	
-
 }
 
 
@@ -71,6 +72,7 @@ function commentFuncGather(){
  */
 function switchCommentHeiAuto(){
 	setTimeout( commentFuncGather , 100 );
+	setTimeout( newCommentShowReply , 200 );
 }
 
 
@@ -88,10 +90,13 @@ function switchCommentHeiAuto(){
 */
 function clickComment( thisElm ){
 
+
+
 //  1.
 	hideAllReplyTextarea();
 
 	//  thisElm 代表当前的被点击的 评论条
+setTimeout(function(){
 
 	var commentUser =  thisElm.find(".comment-content-block-username a").text();
 	var commentUserLen = commentUser.length;
@@ -103,8 +108,17 @@ function clickComment( thisElm ){
 	var replyTextarea = comParent.find(".comment-reply-input-box textarea"); // 回复框
 	var replyRetract = comParent.find(".comment-reply-input-box .reply-retract"); // 回复框
 
+	//  当前点击评论的id
+	var nowCommentID = thisElm.parent
+
 //  2 3 4 5 6
 	showReplyTextarea( commentUser, commentUserLen , replyBox , replyMes , replyTextarea , replyRetract );
+
+
+
+
+},50);
+	
 }
 
 
@@ -130,10 +144,10 @@ function clickReply( thisElm ){
 
 	var replyUser = thisElm.find('.publish-username').text();
 	var replyUserLen  = replyUser.length;
-	var replyBox  = thisElm.parent().next('.comment-reply-input-box');
-	var replyMes  = thisElm.parent().parent().find('.comment-reply-info');
+	var replyBox      = thisElm.parent().next('.comment-reply-input-box');
+	var replyMes      = thisElm.parent().parent().find('.comment-reply-info');
 	var replyTextarea  = thisElm.parent().parent().find('.comment-reply-input-box textarea');
-	var replyRetract  = thisElm.parent().parent().find('.comment-reply-input-box .reply-retract');
+	var replyRetract   = thisElm.parent().parent().find('.comment-reply-input-box .reply-retract');
 
 //  2 3 4 5 6
 	showReplyTextarea( replyUser,  replyUserLen , replyBox,  replyMes , replyTextarea , replyRetract  );
@@ -153,7 +167,7 @@ function clickReply( thisElm ){
 */
 function showReplyTextarea( user, userLen , replyBox , replyMes , replyTextarea , replyRetract ){
 
-	replyBox.css({ 'display':'block' });
+	replyBox.show({ 'display':'block' });
 
 	replyMes.text( '回复' + user + ':' );
 
@@ -162,7 +176,7 @@ function showReplyTextarea( user, userLen , replyBox , replyMes , replyTextarea 
 	replyTextarea.css({ 'text-indent' : userLen * 15 + 35 });
  
 	replyRetract.click(function(){
-		replyBox.css({ 'display':'none' });	
+		replyBox.hide({ 'display':'none' },'slow');	
 	});
 
 }
@@ -174,9 +188,9 @@ function showReplyTextarea( user, userLen , replyBox , replyMes , replyTextarea 
 function hideAllReplyTextarea(){
 	var index = $('.photo-comment').length-1; 
 	var allReplyTextarea = $('.comment-list:eq('+ index +') .comment-reply-input-box');
-	allReplyTextarea.each(function(){
-		$(this).css({'display':'none'});
-	});
+
+		allReplyTextarea.hide({'display':'none'},'slow');
+	
 }
 
 
@@ -208,6 +222,22 @@ function commentBlockHeight(){
 	var comContentHei = $('.comment-content-box:eq('+ index +')').height( comAutoHei );
 
 }
+
+
+
+
+/*  
+	让新发表的评论也可以即时的显示回复框
+*/
+	function newCommentShowReply(){
+
+		var index       = $('.photo-comment').length-1;
+		var commentList = $('.comment-list').eq( index );
+
+		commentList.click( commentFuncGather );
+	}
+
+
 
 
 /*  
