@@ -187,7 +187,13 @@ layer.photos = function(options){
         page: {
             html: '<div class="xubox_bigimg"><img src="'+ log.thissrc +'" alt="'+ (log.name || '') +'" layer-pid="'+ (log.pid || '') +'"><div class="xubox_imgsee">'+ function(){
                 if(log.imgLen > 1){
-                    return '<a href="" class="xubox_iconext xubox_prev"  onclick="switchCommentHeiAuto(); DelayCommentAjaxGather();"></a><a href="" class="xubox_iconext xubox_next" onclick="switchCommentHeiAuto(); DelayCommentAjaxGather();"></a>'
+
+                   
+                        //index = $('.photo-comment').length-1; 
+                        //photoID = $('.photo-id').eq( index ).val();
+                   
+ 
+                    return '<a href="" class="xubox_iconext xubox_prev"  onclick="switchCommentHeiAuto(); DelayCommentAjaxGather(); prevFunc();"></a><a href="" class="xubox_iconext xubox_next" onclick="switchCommentHeiAuto(); DelayCommentAjaxGather(); nextFunc();"></a>';
                 } else {
                     return '';
                 }   

@@ -18,7 +18,7 @@ function banner(){
 		for(var i=0; i<buttons.length; i++){
 			if(buttons[i].className == 'on'){  // 如果当前 哪个按钮的class是 on  那就把他修改为空
 				buttons[i].className = '';
-				break;   //  然后结束 （也就是 把上一个 小圆点的on 去掉就ok了）
+				break;   //  然后结束 （也就是 把上一个 小圆点的on 去掉就ok了） 
 			}
 		}
 		buttons[index -1].className = 'on';  // buttons对应三个小圆点，下标从0开始，但index开始就是1 ，所以buttons[index-1] 

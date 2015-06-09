@@ -34,7 +34,7 @@ function commentAjaxGather(){
 	var index = $('.photo-comment').length-1; // 第 index 个.photo-comment就是
 
 	var commentSubmit = $('.comment-submit').eq( index );
-	
+
 	var commentList   = $('.comment-list:eq('+ index +')'); // 评论列表
 	
 	var commentBox    = $('.comment-content-box').eq( index );
@@ -47,10 +47,8 @@ function commentAjaxGather(){
 	if( userId == 0 ){
 		// 此时为没有登录状态
 		// 所以并不需要下面的AJAX提交
-	
 		return false;
 	}
-
 
 
 //  如果有人手动地修改了 photoId userId
@@ -61,26 +59,38 @@ function commentAjaxGather(){
 	}
 
 
-	commentSubmit.click(function(){
+	commentSubmit.click(function(){ 
+		
+		commentSubmitFunc(  userId , photoId  , index , commentList , commentBox );
 
-		var commentText   = $('.comment-input:eq('+ index +') textarea');
-
-		commentSubmitFunc( commentText );
-		commentSubmitAjaxFunc( userId , photoId , commentText , index , commentList , commentBox);
-
-	
 	}); // click
 
 } // commentAjaxGather(){
 
 
+/*	
+	点击评论按钮执行的函数
+*/
+	function commentSubmitFunc(  userId , photoId  , index , commentList , commentBox  ){
+
+		var index = $('.photo-comment').length-1;
+		var commentText   = $('.comment-input:eq('+ index +') textarea');
+
+		var inputRes = commentSubmitJudge( commentText ); // 点击了评论提交按钮后,返回判断结果
+
+		if(inputRes){ 
+			commentSubmitAjaxFunc( userId , photoId , commentText , index , commentList , commentBox);
+		}
+	}
+
+
+
 /*  
-	点击评论按钮后执行
+	点击评论按钮后执行的判断
 */
 
-	function commentSubmitFunc( commentText ){
+	function commentSubmitJudge( commentText ){
 		
-
 		var commentData   = commentText[0].value;
 		var textlen = getStrLen( commentData );
 
@@ -89,14 +99,13 @@ function commentAjaxGather(){
 			return false;
 		}
 
-
 		if(textlen > 400){
 			alert('发表内容不得超过200个字符 , 请减少后重试');
 			return false;
 		}
 
 		alert('发表成功！');
-
+		return true;
 	}	
 
 
@@ -106,9 +115,10 @@ function commentAjaxGather(){
 	照片评论块ajax提交 
 */
 
-	function commentSubmitAjaxFunc( userId , photoId , commentText , index , commentList , commentBox ){
+	function commentSubmitAjaxFunc( userId, photoId, commentText, index, commentList, commentBox ){
 		
 		$.ajax({
+
 			type:'POST',
 			url:'index.php?controller=comment&method=photoAddComment',
 			data:{ 
@@ -140,7 +150,21 @@ function commentAjaxGather(){
 
 				// 发表评论成功后,  把评论块中的内容清空
 				commentText[0].value = '';
+
+				// 发表评论成功后,  把发表按钮变灰 2秒钟, 同时把按钮上click事件暂时去掉
+				var commentSubmit = $('.comment-submit').eq( index );
+				commentSubmit.off('click');
+				commentSubmit.css({'background':'#ccc'});
 				
+				// 两秒钟后, 把发表按钮还原, 同时把按钮也还原click
+				setTimeout(function(){
+					commentSubmit.css({'background':'#2caafe'});
+					commentSubmit.click(function(){
+						
+						commentAjaxGather();
+						commentSubmitFunc(  userId , photoId  , index , commentList , commentBox );
+					});
+				},2000);
 
 					
 
@@ -151,8 +175,48 @@ function commentAjaxGather(){
 
 
 
+/*  
+	原因: 当在第一张照片发表了评论, 然后切换到下一张照片后，又切换回来第一张照片, 会发现并没有看到新发表的评论
+	解决：这是因为点击<a>标签的切换按钮的时候, 并没有重新的去数据库加载新的评论,所以切换照片后的评论还是原来的。
+	作用：每次切换图片时调用, 实时去数据库去新评论数据
+
+	函数: prevFunc() nextFunc()
+*/
+	var index = $('.photo-comment').length-1;
+
+	function prevFunc(){
+
+		
+		var photoID = parseInt($('.photo-id').eq( index ).attr('value') );
+		var prev = $('.xubox_prev');
+		console.log(photoID-1);
+	}
+
+	function nextFunc(){
 
 
+		/*
+			切换函数的运行流程:
+				1. 获取当前照片的id,
+				2. 通过ajax将照片id, 传给PHP
+				3. PHP根据照片id, 向数据库发起 SELECT
+				4. ajax的success函数, 接收PHP返回的 当前照片的评论
+		*/
+
+		var index = $('.photo-comment').length-1;
+		var photoID = parseInt($('.photo-id').eq( index ).attr('value') ) + 1; // 当前照片的id
+		console.log(photoID);
+		
+
+	}
+
+/*
+	此函数,在照片切换后调用,
+	作用 ：在照片后, 根据参数 photoID , 向PHP发送请求, success：接收返回的新评论
+*/
+	function loadingNewComment(){
+
+	}
 
 
 

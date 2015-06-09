@@ -71,9 +71,14 @@ class userModel{
 		//$this->userDelFolder( $id ); exit; 
 		     
 
+		 // 其实这里不应该是把数据都删除的, 应该是 在 user_info 表中弄个状态 叫做登录状态
+		//  应该是封号 而不是 删除用户
+
 		$this->userDelArticle( $id );  // 用户删除连带 删除该用户发表的文章
 		$this->userDelAlbum( $id );    // 用户删除连带 删除该用户发表的相册
 		$this->userDelResource( $id ); // 用户删除连带 删除该用户发表的资源
+									// 用户删除连带 删除该用户的发表的评论
+									// 用户删除连带 删除该用户的发表的回复
 
 
 
