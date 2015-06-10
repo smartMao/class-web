@@ -170,6 +170,7 @@
                 chunked: false,
                //chunkSize: 512 * 1024,
                 server: 'admin.php?controller=back&method=albumCoverChange', 
+                // 上传的PHP的action
                 accept: {
                     title: 'Images',
                     extensions: 'jpg,jpeg',

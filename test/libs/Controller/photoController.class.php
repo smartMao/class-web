@@ -33,7 +33,7 @@ class photoController{
 		// 照片评论数据
 		$photoCommentRes = M('frontPhotoComment','front')->getphotoComment();
 		$photoCommentData['photoCommentData'] = $photoCommentRes;
-	
+		//var_dump($photoCommentRes);exit;
 		VIEW::assign( $photoCommentData );
 
 

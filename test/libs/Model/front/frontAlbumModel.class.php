@@ -126,12 +126,12 @@ class frontAlbumModel{
 			$userSQL = "SELECT photo,userName FROM $this->_tableName2 WHERE id=$uid";
 
 			$userData[] = DB::findAll($userSQL);
-
+			
 			$albumData[$i]['username'] = $userData[$i][0]['userName'];  // 把用户数据加入相册数据
 			$albumData[$i]['photo']    = $userData[$i][0]['photo']; 
 			$albumData[$i]['titleLength'] = strlen($albumData[$i]['title']);
 		}
-
+	
 		return $albumData; // 追加好用户信息后的 相册数组
 	}
 

@@ -112,7 +112,8 @@ class frontPhotoCommentModel{
 	public function comInfoAddUserInfo( $comInfo ){
 		$sql = "SELECT `id`,`userName`,`photo` FROM $this->_tableName2";
 		$userInfo = DB::findAll( $sql );
-	
+		
+		if( empty($comInfo) ){ return false; }
 
 		// 将评论数组加上 username , photo 信息
 		foreach( $userInfo as $key => $value ){

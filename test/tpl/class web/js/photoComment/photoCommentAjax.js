@@ -14,10 +14,12 @@ $(document).ready(function(){
 
 /*  
 	用于给照片切换时调用;
-	照片切换后 1 秒后才获取元素
+	
 */
 function DelayCommentAjaxGather(){
-	setTimeout(commentAjaxGather,1000);
+
+	setTimeout( commentAjaxGather , 0 );
+
 }
 
 

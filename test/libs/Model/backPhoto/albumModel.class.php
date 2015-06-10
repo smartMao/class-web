@@ -149,11 +149,15 @@ class albumModel{
 
 		// 目标目录
 		$fileName =  $this->albumPath . $randNumFileName . '.' . $suffix;
+
 		
 		// 临时目录
 		$tmp_name = $_FILES['file']['tmp_name'];
 
 		if( rename( $tmp_name , $fileName ) ){
+
+			chmod ( $fileName ,  0755 ); // 给新的相册封面图权限
+			
 			return $fileName;
 		}else{
 			return false;
