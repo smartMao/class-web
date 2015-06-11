@@ -66,7 +66,9 @@ class adminController{
 		$authobj = M('auth');
 
 		if($authobj -> loginsubmit()){
-			$this->showmessage('登录成功', $_SERVER['HTTP_REFERER'] ); // 登录后还是在当前的页面(不会再跳转到index)
+			//$this->showmessage('登录成功', $_SERVER['HTTP_REFERER'] ); // 登录后还是在当前的页面(不会再跳转到index)
+			$url = $_SERVER['HTTP_REFERER'];
+			echo "<script>window.location='$url'</script>";
 		}else{			
 			$this->showmessage('登录失败', $_SERVER['HTTP_REFERER'] );
 		}
