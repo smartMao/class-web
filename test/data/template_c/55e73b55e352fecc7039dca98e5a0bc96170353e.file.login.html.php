@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-06-11 15:04:15
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-06-12 16:44:53
          compiled from "tpl\class web\index\login.html" */ ?>
-<?php /*%%SmartyHeaderCode:43005579874f25d107-83981318%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:21199557af06528cf22-81877637%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,15 +11,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '43005579874f25d107-83981318',
+  'nocache_hash' => '21199557af06528cf22-81877637',
   'function' => 
   array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_5579874f260f88_32910350',
+  'unifunc' => 'content_557af065290da0_59351905',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5579874f260f88_32910350')) {function content_5579874f260f88_32910350($_smarty_tpl) {?><!DOCTYPE html>
+<?php if ($_valid && !is_callable('content_557af065290da0_59351905')) {function content_557af065290da0_59351905($_smarty_tpl) {?><!DOCTYPE html>
 <html>
 <head>
 	<title>登录、注册</title>

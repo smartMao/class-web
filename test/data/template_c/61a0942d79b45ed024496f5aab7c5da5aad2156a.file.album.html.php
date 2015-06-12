@@ -1,0 +1,147 @@
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-06-12 16:37:17
+         compiled from "tpl\backstage\photo\album\album.html" */ ?>
+<?php /*%%SmartyHeaderCode:32627557aee9d1a5379-75854222%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    '61a0942d79b45ed024496f5aab7c5da5aad2156a' => 
+    array (
+      0 => 'tpl\\backstage\\photo\\album\\album.html',
+      1 => 1433429050,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '32627557aee9d1a5379-75854222',
+  'function' => 
+  array (
+  ),
+  'variables' => 
+  array (
+    'count' => 0,
+    'albumList' => 0,
+    'key' => 0,
+  ),
+  'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.21-dev',
+  'unifunc' => 'content_557aee9d20ac91_02341535',
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_557aee9d20ac91_02341535')) {function content_557aee9d20ac91_02341535($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+
+<link rel="stylesheet" type="text/css" href="tpl/backstage/photo/style/backAlbum.css?v=5" />
+<link rel="stylesheet" type="text/css" href="tpl/backstage/css/gather.css" />
+
+</head>
+<body>
+
+
+
+	<div class="add-common-frame">
+		<span>本站一共有 <?php echo $_smarty_tpl->tpl_vars['count']->value;?>
+ 个相册</span>
+		<div class="album-create-box">
+			<i>+</i>
+			<a href="admin.php?controller=back&method=showAlbumCreate" class="common-add-btn album-create">
+			添加相册
+			</a>
+		</div>
+		
+	</div>
+
+	
+	
+	<ul class="photo-list">
+		<?php if ($_smarty_tpl->tpl_vars['albumList']->value!='') {?>
+			<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
+ $_smarty_tpl->tpl_vars['key'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->tpl_vars['albumList']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['item']->key => $_smarty_tpl->tpl_vars['item']->value) {
+$_smarty_tpl->tpl_vars['item']->_loop = true;
+ $_smarty_tpl->tpl_vars['key']->value = $_smarty_tpl->tpl_vars['item']->key;
+?>
+				<li class="album-box">
+					<ul class="photo-box">
+
+						<li class="album-title"><?php echo $_smarty_tpl->tpl_vars['albumList']->value[$_smarty_tpl->tpl_vars['key']->value]['title'];?>
+</li>
+						<a href="admin.php?controller=back&method=photoList&id=<?php echo $_smarty_tpl->tpl_vars['albumList']->value[$_smarty_tpl->tpl_vars['key']->value]['id'];?>
+" class="goto-photo">
+							<li class="album-cover">
+								<img src="<?php echo $_smarty_tpl->tpl_vars['albumList']->value[$_smarty_tpl->tpl_vars['key']->value]['path'];?>
+" alt=""  />
+							</li>
+						</a>
+						<li class="album-op">
+
+							<ol class="browser">
+								<i class="icon"></i>
+								<span>浏览(<?php echo $_smarty_tpl->tpl_vars['albumList']->value[$_smarty_tpl->tpl_vars['key']->value]['browseNum'];?>
+)<!-- 浏览数 --></span>
+							</ol>
+								
+							<ol class="comment">
+								<i class="icon"></i>
+								<span>评论(<?php echo $_smarty_tpl->tpl_vars['albumList']->value[$_smarty_tpl->tpl_vars['key']->value]['commentNum'];?>
+)<!-- 评论数 --></span>
+							</ol>
+							
+							<ol class="edit">
+								<a href="admin.php?controller=back&method=albumEditShow&id=<?php echo $_smarty_tpl->tpl_vars['albumList']->value[$_smarty_tpl->tpl_vars['key']->value]['id'];?>
+" title="编辑相册"></a>
+							</ol>
+							<ol class="del"> 
+							   <a href="admin.php?controller=back&method=albumDel&id=<?php echo $_smarty_tpl->tpl_vars['albumList']->value[$_smarty_tpl->tpl_vars['key']->value]['id'];?>
+" 
+							   onclick="return confirm('删除相册将清空该相册里的所有照片！');"  title="删除相册"></a>
+							</ol>
+
+						</li>
+						<li class="album-author">
+							<ol class="author">上传作者</ol>
+							<ol class="author-info"><?php echo $_smarty_tpl->tpl_vars['albumList']->value[$_smarty_tpl->tpl_vars['key']->value]['username'];?>
+</ol>
+						</li>
+						<li class="album-time">
+							<ol class="time">上传时间</ol>
+							<ol class="time-info"><?php echo $_smarty_tpl->tpl_vars['albumList']->value[$_smarty_tpl->tpl_vars['key']->value]['time'];?>
+</ol>
+						</li>
+						<li class="album-power">
+							<ol class="power">上传权限</ol>
+							<ol class="power-info"><?php echo $_smarty_tpl->tpl_vars['albumList']->value[$_smarty_tpl->tpl_vars['key']->value]['power'];?>
+</ol>
+						</li>
+				
+					</ul>
+				</li>
+			<?php } ?>
+		<?php } else { ?>
+			<span>暂无相册,请添加</span>
+		<?php }?>
+
+	</ul>
+
+</body>
+</html>
+
+<?php echo '<script'; ?>
+ type="text/javascript" src="tpl/class web/js/jquery-1.8.2-min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ type="text/javascript" src="tpl/backstage/js/albumImgCenter.js?ver=3"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ type="text/javascript">
+	
+	window.onload = function(){
+		albumCoverCenter(); // 后台album列表的封面图上下左右居中
+	}
+
+
+<?php echo '</script'; ?>
+>>
+
+<?php }} ?>
