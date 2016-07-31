@@ -11,6 +11,14 @@
 		echo "<br/>";
 ASDASDAS
 		echo $path;啊 acc
+		1
+		p2222
+		333
+		444
+		asd
+		asdasd
+		asdas
+		dasd
 	}*/
 
 	//  以上的代码就引入了require清单里的所有文件
