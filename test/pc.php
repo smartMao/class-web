@@ -13,8 +13,6 @@ ASDASDAS
 		echo $path;啊 acc
 		444
 		asd
-		asdasd
-		asdas
 		dasd
 	}*/
 
