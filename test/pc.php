@@ -9,6 +9,7 @@
 		//include_once($currentdir."\\".$path); 	// 每次循环抛出$paths的数组存的地址
 		echo $currentdir;
 		echo "<br/>";
+ASDASDAS
 		echo $path;啊 acc
 	}*/
 
