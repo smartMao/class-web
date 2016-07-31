@@ -11,9 +11,6 @@
 		echo "<br/>";
 ASDASDAS
 		echo $path;啊 acc
-		1
-		p2222
-		333
 		444
 		asd
 		asdasd
