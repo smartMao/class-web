@@ -9,16 +9,13 @@
 		//include_once($currentdir."\\".$path); 	// 每次循环抛出$paths的数组存的地址
 		echo $currentdir;
 		echo "<br/>";
-		echo $path;啊 acc
-		1
-		p2222
-		333
-		444
-		asd
-		asdasd
-		asdas
-		dasd
+		ssss
+		s
+
+
+		ss
 	}*/
+
 
 	//  以上的代码就引入了require清单里的所有文件
 
